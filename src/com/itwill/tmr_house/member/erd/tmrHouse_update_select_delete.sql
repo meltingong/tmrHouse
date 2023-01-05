@@ -6,7 +6,7 @@ M_PW               VARCHAR2(100)
 M_NAME             VARCHAR2(100) 
 M_BIRTH            VARCHAR2(100) 
 M_PHONE            VARCHAR2(100) 
-M_ADDRESS          VARCHAR2(200) 
+M_ADDRESS          VARCHAR2(200)
  */
 
 /**********************member update pk************************/
