@@ -11,12 +11,12 @@ M_ADDRESS          VARCHAR2(200)
  */
 public class Member {
 	
-	private String m_id;
-	private String m_pw;
-	private String m_name;
-	private String m_birth;
-	private String m_phone;
-	private String m_address;
+	private String m_id;		// 회원아이디
+	private String m_pw;		// 회원비밀번호
+	private String m_name;		// 회원이름
+	private String m_birth;		// 회원생년월일
+	private String m_phone;		// 회원핸드폰번호
+	private String m_address;	// 회원주소
 	
 	
 	public Member() {
