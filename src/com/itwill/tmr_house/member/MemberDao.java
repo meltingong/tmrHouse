@@ -50,7 +50,7 @@ private DataSource dataSource;
 	
 	public int memberDelete(String m_id) throws Exception {
 		Connection con = dataSource.getConnection();
-		PreparedStatement pstmt = con.prepareStatement(MemberSQL.MEMBER_UPDATE);
+		PreparedStatement pstmt = con.prepareStatement(MemberSQL.MEMBER_DELETE);
 		pstmt.setString(1, m_id);
 		int rowCount = pstmt.executeUpdate();
 		pstmt.close();
