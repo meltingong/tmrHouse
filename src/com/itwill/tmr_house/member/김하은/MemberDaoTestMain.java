@@ -1,4 +1,4 @@
-package com.itwill.tmr_house.member.test;
+package com.itwill.tmr_house.member.김하은;
 
 import com.itwill.tmr_house.member.Member;
 import com.itwill.tmr_house.member.MemberDao;
