@@ -1,37 +1,6 @@
 /**********************member insert************************/
-insert into member(m_id, m_pw, m_name, m_birth, m_phone, m_address) values('aaaa','aaaa','Ã¶¼ö','920630','1234-5698','¶±ÀÙ¸¶À»');
-insert into member(m_id, m_pw, m_name, m_birth, m_phone, m_address) values('bbbb','bbbb','À¯¸®','920731','4568-8547','¶±ÀÙ¸¶À»');
-insert into member(m_id, m_pw, m_name, m_birth, m_phone, m_address) values('cccc','dddd','Â¯±¸','921225','9512-7584','¶±ÀÙ¸¶À»');
-
-/*********************product insert*************************/
-insert into product(p_no, p_name, p_price, p_img, p_desc) values(product_p_no_SEQ.nextval,'Á¶¸³½Ä ½ÄÅ¹',150000,'dafult.jpg','Á÷Á¢ Á¶¸³ÇÏ´Â °¡±¸DIY');
-insert into product(p_no, p_name, p_price, p_img, p_desc) values(product_p_no_SEQ.nextval,'¾ÆÀÏ·£µå ½ÄÅ¹',30000,'dafult.jpg','Æ°Æ°ÇÏ°í ¼¼·ÃµÈ ½ÄÅ¹');
-insert into product(p_no, p_name, p_price, p_img, p_desc) values(product_p_no_SEQ.nextval,'ÆÄ½ºÅÚÅæ Ä¿Æ°',30000,'dafult.jpg','»ê¶æÇÑ »ö±òÀÇ Ä¿Æ°');
-insert into product(p_no, p_name, p_price, p_img, p_desc) values(product_p_no_SEQ.nextval,'´ÙÀ°ÀÌ',15000,'dafult.jpg','±Í¿©¿î ½Ä¹°');
-insert into product(p_no, p_name, p_price, p_img, p_desc) values(product_p_no_SEQ.nextval,'¸Ó½¬·ë½ºÅÄµå',20000,'dafult.jpg','¹ö¼¸¸ğ¾çÀÇ ´À³¦ÀÖ´Â Á¶¸í');
-insert into product(p_no, p_name, p_price, p_img, p_desc) values(product_p_no_SEQ.nextval,'ÆÄ½ºÅÚÅæ Ä¿Æ°',30000,'dafult.jpg','»ê¶æÇÑ »ö±òÀÇ Ä¿Æ°');
-/*********************cart insert**********************/
---aaaa
-insert into cart(cart_no, cart_qty, m_id, p_no) values(cart_cart_no_SEQ.nextval,2,'aaaa',1);
-insert into cart(cart_no, cart_qty, m_id, p_no) values(cart_cart_no_SEQ.nextval,1,'aaaa',2);
-
---bbbb
-insert into cart(cart_no, cart_qty, m_id, p_no) values(cart_cart_no_SEQ.nextval,2,'bbbb',3);
-insert into cart(cart_no, cart_qty, m_id, p_no) values(cart_cart_no_SEQ.nextval,1,'bbbb',1);
-
-/*********************orders insert*********************/
-/*
-aaa´ÔÀÌ
-    Á¦Ç°¹øÈ£ 1¹ø 1°³
-    Á¦Ç°¹øÈ£ 3¹ø 1°³
-*/
--- orders insert
-insert into orders(o_no, o_desc, o_qty, o_price, o_date) values(orders_o_no_SEQ.newtval,'Á¶¸³½Ä ½ÄÅ¹ ¿Ü1°Ç',1,150000,sysdate);
-
--- order item insert
--- Á¦Ç°¹øÈ£ 1¹ø 1°³
-insert into order_item(oi_no, oi_qty, o_no, p_no) values();
-
-
+insert into member(m_id, m_pw, m_name, m_birth, m_phone, m_address) values('aaaa','aaaa','ì² ìˆ˜','920630','1234-5698','ë–¡ìë§ˆì„');
+insert into member(m_id, m_pw, m_name, m_birth, m_phone, m_address) values('bbbb','bbbb','ìœ ë¦¬','920731','4568-8547','ë–¡ìë§ˆì„');
+insert into member(m_id, m_pw, m_name, m_birth, m_phone, m_address) values('cccc','dddd','ì§±êµ¬','921225','9512-7584','ë–¡ìë§ˆì„');
 
 
