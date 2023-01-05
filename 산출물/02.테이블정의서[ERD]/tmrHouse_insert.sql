@@ -35,4 +35,3 @@ insert into order_item(oi_no, oi_qty, o_no, p_no) values();
 
 
 
-
