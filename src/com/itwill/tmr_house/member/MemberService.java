@@ -3,8 +3,8 @@ package com.itwill.tmr_house.member;
 public class MemberService {
 private MemberDao memberDao;
 	
-	public MemberService() {
-		
+	public MemberService() throws Exception {
+		memberDao = new MemberDao();
 	}
 	
 	/*
@@ -14,7 +14,7 @@ private MemberDao memberDao;
 	 *  - 아이디 존재하지 않으면 가입성공
 	*/
 	
-	public String addMember(Member member) throws Exception {
+	private String addMember(Member member) throws Exception {
 		String isSuccess = "";
 		if(memberDao.findByID(member.getM_id())==null) {
 			memberDao.memberInsert(member);
@@ -58,6 +58,7 @@ private MemberDao memberDao;
 		}
 		return isSuccess;
 	}
+	
 	
 	/*
 	 * 회원 로그인

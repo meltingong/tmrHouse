@@ -17,7 +17,7 @@ public class MemberServiceTestMain_S {
 		System.out.println(">> " + memberService.login("bbbb", "aaaa"));
 		System.out.println(">> " + memberService.login("empty", "aaaa"));
 		
-		System.out.println("---- 회원 정보 조회 ----");
+		/*System.out.println("---- 회원 정보 조회 ----");
 		System.out.println(memberService.memberDetail("bbbb"));
 		
 		System.out.println("---- 회원 정보 수정 ----");
@@ -29,6 +29,6 @@ public class MemberServiceTestMain_S {
 		System.out.println("--- 회원탈퇴 ---");
 		rowCount = memberService.delete("aaaa");
 		System.out.println(">> " + rowCount  + "행 삭제 완료");
-		
+		*/
 	}
 }

@@ -1,6 +1,7 @@
 package com.itwill.tmr_house.member.test;
 
-import com.itwill.tmr_house.member.*;
+import com.itwill.tmr_house.member.Member;
+import com.itwill.tmr_house.member.MemberService;
 
 public class MemberServiceTestMain {
 
@@ -9,17 +10,17 @@ public class MemberServiceTestMain {
 		/*
 		 * 회원가입
 		 */
-		System.out.println("회원가입");
+		/*System.out.println("회원가입");
 		String msg = memberService.addMember(new Member("zzzz","zzzz","흰둥이","720926","3452-5444","떡잎유치원"));
 		System.out.println(msg);
 		msg = memberService.addMember(new Member("qqqq","qqqq","초롱이","220405","1234-2321","외계인"));
-		System.out.println(msg);
+		System.out.println(msg);*/
 		
 		/*
 		 * 아이디 생성조건(숫자,소문자만 가능 & 길이 4글자 이상 10글자이내) 있는 회원가입
 		 */
 		System.out.println("아이디 생성조건 있는 회원가입");
-		msg = memberService.addMemberDetail(new Member("zzzz", "zzzz", "원장님", "720926", "3452-5444", "떡잎유치원"));
+		String msg = memberService.addMemberDetail(new Member("zzzz", "zzzz", "원장님", "720926", "3452-5444", "떡잎유치원"));
 		System.out.println(msg);
 		// 아이디에 대문자가 섞여있는 경우
 		System.out.println("--아이디에 대문자가 섞여있는 경우--");
@@ -53,7 +54,7 @@ public class MemberServiceTestMain {
 		 * 	2 : 로그인 성공
 		 */
 		System.out.println("----- login test -----");
-		System.out.println(">> " + memberService.login("aaaa", "aaaa"));
+		System.out.println(">> " + memberService.login("zzzz", "zzzz"));
 		System.out.println(">> " + memberService.login("bbbb", "aaaa"));
 		System.out.println(">> " + memberService.login("empty", "aaaa"));
 
