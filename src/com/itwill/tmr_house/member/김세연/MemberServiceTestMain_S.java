@@ -17,4 +17,3 @@ public class MemberServiceTestMain_S {
 
 	}
 }
-
