@@ -59,14 +59,26 @@ private MemberDao memberDao;
 		return isSuccess;
 	}
 	
-	
-	
 	/*
 	 * 회원 로그인
 	 * 	0 : 아이디 존재안함
 	 * 	1 : 패스워드 불일치
 	 * 	2 : 로그인 성공
 	 */
+	public int login(String m_id, String m_pw) throws Exception {
+		int isSuccess = -999;
+		//Member findMember = memberDao.findByID(m_id);
+		if (memberDao.findByID(m_id) == null) {
+			isSuccess = 0;
+		} else {
+			if (memberDao.findByID(m_id).getM_pw().equals(m_pw)) {
+				isSuccess = 2;
+			}else {
+				isSuccess = 1;
+			}
+		}
+		return isSuccess;
+	}
 	
 	/*
 	 * 회원정보수정
