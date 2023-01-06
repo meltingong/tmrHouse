@@ -98,7 +98,7 @@ public void setP_freeDelivery(String p_freeDelivery) {
 @Override
 public String toString() {
 	return "Product [p_no=" + p_no + ", p_name=" + p_name + ", p_price=" + p_price + ", p_img=" + p_img + ", p_desc="
-			+ p_desc + ", p_freeDelivery=" + p_freeDelivery + "]";
+			+ p_desc + ", p_freeDelivery=" + p_freeDelivery + "]"+"\n";
 }
 
 

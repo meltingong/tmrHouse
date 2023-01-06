@@ -1,0 +1,30 @@
+package com.itwill.tmr_house.cart.김혜지;
+
+public class CartDaoTestMain {
+
+	public static void main(String[] args) throws Exception {
+		CartDao cartDao = new CartDao();
+		
+		/*
+		 * insert, update
+		 */
+		
+		//카트에 담긴 특정 상품 삭제
+		System.out.println("5. Cart_deleteByCartNo");
+		System.out.println(">> "+cartDao.deleteByCartNo(17));
+		
+		//회원의 카트에 담긴 상품 전체 삭제
+		System.out.println("6. Cart_deleteAll");
+		System.out.println(">> "+cartDao.deleteByUserId("aaaa"));
+		
+		//카트에 담긴 특정 상품 찾기(카트 번호로)
+		System.out.println("7. Cart_findByCartNo");
+		System.out.println(">> "+cartDao.findByCartNo(20));
+		
+		//회원의 카트에 담긴 상품 전체 찾기
+		System.out.println("8. Cart_findByUserId");
+		System.out.println(">> "+cartDao.findByUserId("bbbb"));
+
+	}
+
+}
