@@ -16,7 +16,7 @@ update member set m_pw = 'abab', m_name = '맹구', m_birth = '990101', m_phone 
 delete from member where m_id = 'aaaa';
 
 /**********************member select by pk************************/
-select m_pw, m_name, m_birth, m_phone, m_address from member where m_id = 'bbbb';
+select m_id, m_pw, m_name, m_birth, m_phone, m_address from member where m_id = 'bbbb';
 
 /**********************member select all************************/
 select m_id, m_pw, m_name, m_birth, m_phone, m_address from member;
