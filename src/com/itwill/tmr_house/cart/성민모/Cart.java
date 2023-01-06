@@ -5,8 +5,7 @@ public class Cart {
 	private int c_qty;
 	private int p_no;
 	private String m_id;
-	private String p_img;
-	private char p_freeDelivery;
+    private String product_product;
 	
 	public Cart() {
 		// TODO Auto-generated constructor stub
@@ -14,8 +13,8 @@ public class Cart {
 	
 	@Override
 	public String toString() {
-		return "Cart [c_no=" + c_no + ", m_id=" + m_id + ", p_no=" + p_no + ", c_qty=" + c_qty + ", p_img=" + p_img
-				+ ", p_freeDelivery=" + p_freeDelivery + "]";
+		return "Cart [c_no=" + c_no + ", m_id=" + m_id + ", p_no=" + p_no + ", c_qty=" + c_qty + ", product_product="+product_product
+				+ "]";
 	}
 	
 
@@ -25,8 +24,8 @@ public class Cart {
 		this.c_qty = c_qty;
 		this.p_no = p_no;
 		this.m_id = m_id;
-		this.p_img = p_img;
-		this.p_freeDelivery = p_freeDelivery;
+		this.product_product=product_product;
+	
 	}
 
 	public int getC_no() {
@@ -61,22 +60,11 @@ public class Cart {
 		this.m_id = m_id;
 	}
 
-	public String getP_img() {
-		return p_img;
-	}
-
-	public void setP_img(String p_img) {
-		this.p_img = p_img;
-	}
-
-	public char getP_freeDelivery() {
-		return p_freeDelivery;
-	}
-
-	public void setP_freeDelivery(char p_freeDelivery) {
-		this.p_freeDelivery = p_freeDelivery;
+	public String getProduct_product() {
+		return product_product;
 	}
 	
-	
-	
+	public void setProduct_product(String product_product) {
+		this.product_product = product_product;
+	}
 }		

@@ -89,19 +89,8 @@
           <defaultValue></defaultValue>
         </net.java.amateras.db.visual.model.ColumnModel>
         <net.java.amateras.db.visual.model.ColumnModel>
-          <columnName>p-img</columnName>
-          <logicalName>p_img</logicalName>
-          <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../net.java.amateras.db.visual.model.ColumnModel[3]/columnType"/>
-          <size>100</size>
-          <notNull>false</notNull>
-          <primaryKey>false</primaryKey>
-          <description></description>
-          <autoIncrement>false</autoIncrement>
-          <defaultValue></defaultValue>
-        </net.java.amateras.db.visual.model.ColumnModel>
-        <net.java.amateras.db.visual.model.ColumnModel>
-          <columnName>p_freeDelivery</columnName>
-          <logicalName>p_freeDelivery</logicalName>
+          <columnName>product</columnName>
+          <logicalName>product</logicalName>
           <columnType class="net.java.amateras.db.dialect.ColumnType">
             <name>CHAR</name>
             <logicalName>Character</logicalName>
@@ -113,7 +102,7 @@
           <primaryKey>false</primaryKey>
           <description></description>
           <autoIncrement>false</autoIncrement>
-          <defaultValue>&apos;N&apos;</defaultValue>
+          <defaultValue></defaultValue>
         </net.java.amateras.db.visual.model.ColumnModel>
       </columns>
       <indices/>
