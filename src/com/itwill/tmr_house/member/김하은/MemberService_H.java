@@ -17,13 +17,13 @@ public class MemberService_H {
 	 *  - 아이디 존재하지 않으면 가입성공
 	*/
 	
-	public boolean addMember(Member member) throws Exception {
-		boolean isSuccess = false;
+	public String addMember(Member member) throws Exception {
+		String isSuccess = "";
 		if(memberDao.findByID(member.getM_id())==null) {
 			memberDao.memberInsert(member);
-			isSuccess = true;
+			isSuccess = "가입성공";
 		}else {
-			isSuccess = false;
+			isSuccess = "중복된 아이디 입니다.";
 		}
 		return isSuccess;
 	}
@@ -39,24 +39,23 @@ public class MemberService_H {
 	 * 
 	 * >> 기존에 소문자+숫자 조합만 가능이라고 하고싶었으나 char 배열로 구현하려면 여집합으로 해야해서 코드 많이 늘어날 것같음
 	 */
-	public boolean addMemberDetail(Member member) throws Exception {
-		boolean isSuccess = false;
+	public String addMemberDetail(Member member) throws Exception {
+		String isSuccess = "";
 		char[] temp = member.getM_id().toCharArray();
 		for(int i = 0; i < temp.length; i++) {
-			if((temp[i] >= 'a' && temp[i] <= 'z') || (temp[i] >= '0' && temp[i] <= '9')) {
-				if(memberDao.findByID(member.getM_id()) == null) {
+			if((temp.length >= 4  && temp.length <= 10) && ((temp[i] >= 'a' && temp[i] <= 'z' ) || (temp[i] >= '0' && temp[i] <= '9' )) ) {
+				/*if(memberDao.findByID(member.getM_id()) == null) {
 					memberDao.memberInsert(member);
-					isSuccess = true;
+					isSuccess = "가입성공";
 				}else {
-					System.out.println("중복된 아이디 입니다.");
-					isSuccess = false;
-				}
+					isSuccess = "중복된 아이디 입니다.";
+				}*/
 			}else {
-				System.out.println("올바르지 않은 아이디 형식입니다");
-				isSuccess = false;
+				isSuccess = "올바르지 않은 아이디 형식입니다";
+				break;
 			}
 		}
-		
+		String.valueOf(temp);
 		
 		return isSuccess;
 	}

@@ -77,7 +77,7 @@ private DataSource dataSource;
 			String address = rs.getString("m_address");
 			findMember = new Member(i, pw, name, birth, phone, address);
 		} else {
-			System.out.println("회원을 찾을 수 없습니다.");
+			
 		}
 		
 		pstmt.close();
