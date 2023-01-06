@@ -1,6 +1,7 @@
 package com.itwill.tmr_house.member.test;
 
-import com.itwill.tmr_house.member.*;
+import com.itwill.tmr_house.member.Member;
+import com.itwill.tmr_house.member.MemberService;
 
 public class MemberServiceTestMain {
 
@@ -53,7 +54,7 @@ public class MemberServiceTestMain {
 		 * 	2 : 로그인 성공
 		 */
 		System.out.println("----- login test -----");
-		System.out.println(">> " + memberService.login("aaaa", "aaaa"));
+		System.out.println(">> " + memberService.login("zzzz", "zzzz"));
 		System.out.println(">> " + memberService.login("bbbb", "aaaa"));
 		System.out.println(">> " + memberService.login("empty", "aaaa"));
 

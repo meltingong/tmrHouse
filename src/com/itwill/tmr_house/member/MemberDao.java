@@ -80,7 +80,7 @@ private DataSource dataSource;
 		} else {
 			
 		}
-		
+		rs.close();
 		pstmt.close();
 		dataSource.close(con);
 		
