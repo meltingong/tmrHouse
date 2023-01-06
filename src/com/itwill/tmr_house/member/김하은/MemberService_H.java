@@ -43,7 +43,7 @@ public class MemberService_H {
 		String isSuccess = "";
 		char[] temp = member.getM_id().toCharArray();
 		for(int i = 0; i < temp.length; i++) {
-			if(((temp[i] >= 'a' && temp[i] <= 'z') || (temp[i] >= '0' && temp[i] <= '9')) && (temp.length-1 >= 4 && temp.length-1 <= 10)) {
+			if(((temp[i] <= 'z' && temp[i] >='a' ) || (temp[i] <= '9' && temp[i] >= '0'  )) && (temp.length-1 <= 10  && temp.length-1 >= 4)) {
 				if(memberDao.findByID(member.getM_id()) == null) {
 					memberDao.memberInsert(member);
 					isSuccess = "가입성공";
@@ -54,7 +54,7 @@ public class MemberService_H {
 				isSuccess = "올바르지 않은 아이디 형식입니다";
 			}
 		}
-		member.getM_id().toString();
+		String.valueOf(temp);
 		
 		return isSuccess;
 	}

@@ -13,6 +13,8 @@ public class MemberServiceTest_H_Main {
 		System.out.println("회원가입");
 		String msg = memberService.addMember(new Member("zzzz","zzzz","원장님","720926","3452-5444","떡잎유치원"));
 		System.out.println(msg);
+		msg = memberService.addMember(new Member("qqqq","qqqq","초롱이","220405","1234-2321","외계인"));
+		System.out.println(msg);
 		/*
 		 * 아이디 생성조건(숫자,소문자만 가능 & 길이 4글자 이상 10글자이내) 있는 회원가입
 		 */
