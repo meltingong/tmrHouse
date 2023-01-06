@@ -23,7 +23,7 @@ public class MemberService_H {
 			memberDao.memberInsert(member);
 			isSuccess = "가입성공";
 		}else {
-			isSuccess = "존재하는 아이디입니다";
+			isSuccess = "중복된 아이디 입니다.";
 		}
 		return isSuccess;
 	}
@@ -43,18 +43,24 @@ public class MemberService_H {
 		String isSuccess = "";
 		char[] temp = member.getM_id().toCharArray();
 		for(int i = 0; i < temp.length; i++) {
-			if(((temp[i] <= 'z' && temp[i] >='a' ) || (temp[i] <= '9' && temp[i] >= '0'  )) && (temp.length-1 <= 10  && temp.length-1 >= 4)) {
-				if(memberDao.findByID(member.getM_id()) == null) {
+			if((temp.length >= 4  && temp.length <= 10) && ((temp[i] >= 'a' && temp[i] <= 'z' ) || (temp[i] >= '0' && temp[i] <= '9' )) ) {
+				if(temp[i] == temp[temp.length-1]) {
+					String.valueOf(temp);
+					this.addMember(member);
+				}
+				/*if(memberDao.findByID(member.getM_id()) == null) {
 					memberDao.memberInsert(member);
 					isSuccess = "가입성공";
 				}else {
 					isSuccess = "중복된 아이디 입니다.";
-				}
+				}*/
 			}else {
 				isSuccess = "올바르지 않은 아이디 형식입니다";
+				break;
 			}
 		}
-		String.valueOf(temp);
+		
+		
 		
 		return isSuccess;
 	}

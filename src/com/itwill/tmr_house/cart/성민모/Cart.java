@@ -1,4 +1,4 @@
-package com.itwill.tmr_house.product.성민모.vo;
+package com.itwill.tmr_house.cart.성민모;
 
 public class Cart {
 	private int c_no;

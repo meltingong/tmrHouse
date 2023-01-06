@@ -20,3 +20,5 @@ select m_id, m_pw, m_name, m_birth, m_phone, m_address from member where m_id = 
 
 /**********************member select all************************/
 select m_id, m_pw, m_name, m_birth, m_phone, m_address from member;
+
+commit;
