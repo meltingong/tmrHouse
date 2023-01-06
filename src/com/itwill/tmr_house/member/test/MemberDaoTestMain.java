@@ -25,6 +25,7 @@ public class MemberDaoTestMain {
 		
 		System.out.println("모든회원 리스트");
 		System.out.println(memberDao.findAll());
+		
 	}
 
 }

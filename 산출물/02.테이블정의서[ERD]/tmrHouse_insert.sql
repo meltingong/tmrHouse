@@ -31,7 +31,7 @@ insert into orders(o_no, o_desc, o_qty, o_price, o_date) values(orders_o_no_SEQ.
 -- order item insert
 -- 제품번호 1번 1개
 insert into order_item(oi_no, oi_qty, o_no, p_no) values();
-
+commit;
 
 
 
