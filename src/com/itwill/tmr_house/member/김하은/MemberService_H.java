@@ -44,6 +44,10 @@ public class MemberService_H {
 		char[] temp = member.getM_id().toCharArray();
 		for(int i = 0; i < temp.length; i++) {
 			if((temp.length >= 4  && temp.length <= 10) && ((temp[i] >= 'a' && temp[i] <= 'z' ) || (temp[i] >= '0' && temp[i] <= '9' )) ) {
+				if(temp[i] == temp[temp.length-1]) {
+					String.valueOf(temp);
+					this.addMember(member);
+				}
 				/*if(memberDao.findByID(member.getM_id()) == null) {
 					memberDao.memberInsert(member);
 					isSuccess = "가입성공";
@@ -55,7 +59,8 @@ public class MemberService_H {
 				break;
 			}
 		}
-		String.valueOf(temp);
+		
+		
 		
 		return isSuccess;
 	}
