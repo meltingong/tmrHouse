@@ -1,9 +1,9 @@
-package com.itwill.tmr_house.member.test;
+package com.itwill.tmr_house.member.김하은;
 
 import com.itwill.tmr_house.member.Member;
 import com.itwill.tmr_house.member.MemberDao;
 
-public class MemberDaoTestMain {
+public class MemberDaoTest_H_Main {
 
 	public static void main(String[] args) throws Exception {
 		MemberDao memberDao = new MemberDao();
@@ -25,7 +25,6 @@ public class MemberDaoTestMain {
 		
 		System.out.println("모든회원 리스트");
 		System.out.println(memberDao.findAll());
-		
 	}
 
 }
