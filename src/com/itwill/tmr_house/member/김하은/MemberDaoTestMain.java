@@ -8,7 +8,6 @@ public class MemberDaoTestMain {
 	public static void main(String[] args) throws Exception {
 		MemberDao memberDao = new MemberDao();
 		System.out.println("회원 탈퇴");
-		memberDao.memberDelete("aaaa");
 		int rowCount = memberDao.memberDelete("aaaa");
 		System.out.println(">> " + rowCount + "행이 삭제되었습니다");
 		
@@ -18,7 +17,7 @@ public class MemberDaoTestMain {
 		System.out.println(">> " + rowCount + "행이 삽입되었습니다");
 		
 		System.out.println("회원수정");
-		rowCount = memberDao.memberUpdate(newMember);
+		rowCount = memberDao.memberUpdate(new Member("zzzz","zzzz","나미리","19860206","5555-6874","나미리집"));
 		System.out.println(">> " + rowCount + "행이 수정되었습니다");
 		
 		System.out.println("아이디로 회원정보 찾기");
