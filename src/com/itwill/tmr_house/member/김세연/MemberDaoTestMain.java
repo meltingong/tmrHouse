@@ -8,7 +8,6 @@ public class MemberDaoTestMain {
 	public static void main(String[] args) throws Exception {
 		MemberDao memberDao = new MemberDao();
 		System.out.println("회원 탈퇴");
-		memberDao.memberDelete("aaaa");
 		int rowCount = memberDao.memberDelete("aaaa");
 		System.out.println(">> " + rowCount + "행이 삭제되었습니다");
 		

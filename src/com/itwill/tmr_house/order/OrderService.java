@@ -1,5 +1,5 @@
 package com.itwill.tmr_house.order;
 
-public class OrderDaoService {
+public class OrderService {
 
 }

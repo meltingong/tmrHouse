@@ -1,4 +1,4 @@
-package com.itwill.tmr_house.product.성민모;
+package com.itwill.tmr_house.product.성민모.vo;
 
 public class Product {
 	private int p_no;             //상품번호
