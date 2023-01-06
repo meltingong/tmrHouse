@@ -5,7 +5,7 @@ DROP TABLE product CASCADE CONSTRAINTS;
 DROP TABLE member CASCADE CONSTRAINTS;
 
 CREATE TABLE member(
-		m_id                          		VARCHAR2(50)		 NOT NULL,
+		m_id                          		VARCHAR2(50)		 NULL ,
 		m_pw                          		VARCHAR2(100)		 NULL ,
 		m_name                        		VARCHAR2(100)		 NULL ,
 		m_birth                       		VARCHAR2(100)		 NULL ,
@@ -55,6 +55,7 @@ DROP SEQUENCE orders_o_no_SEQ;
 CREATE SEQUENCE orders_o_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
 
 
+
 CREATE TABLE order_item(
 		oi_no                         		NUMBER(10)		 NULL ,
 		oi_qty                        		NUMBER(10)		 NULL ,
@@ -65,6 +66,7 @@ CREATE TABLE order_item(
 DROP SEQUENCE order_item_oi_no_SEQ;
 
 CREATE SEQUENCE order_item_oi_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
+
 
 
 

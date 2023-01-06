@@ -49,6 +49,7 @@ private DataSource dataSource;
 	}
 	
 	public int memberDelete(String m_id) throws Exception {
+		
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(MemberSQL.MEMBER_DELETE);
 		pstmt.setString(1, m_id);
@@ -56,6 +57,7 @@ private DataSource dataSource;
 		pstmt.close();
 		dataSource.close(con);
 		return rowCount;
+		
 	}
 	
 	public Member findByID(String id) throws Exception {
@@ -75,7 +77,7 @@ private DataSource dataSource;
 			String address = rs.getString("m_address");
 			findMember = new Member(i, pw, name, birth, phone, address);
 		} else {
-			System.out.println("회원을 찾을 수 없습니다.");
+			
 		}
 		
 		pstmt.close();
