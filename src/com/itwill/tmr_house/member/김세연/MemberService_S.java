@@ -1,5 +1,6 @@
 package com.itwill.tmr_house.member.김세연;
 
+import com.itwill.tmr_house.member.Member;
 import com.itwill.tmr_house.member.MemberDao;
 
 public class MemberService_S {
@@ -43,4 +44,37 @@ public class MemberService_S {
 		}
 		return isSuccess;
 	}
+	
+	/*
+	 * 로그인한 회원의 정보보기
+	 */
+	public Member memberDetail(Member member) throws Exception {
+		return memberDao.findByID(member.getM_id());
+	}
+
+	/*
+	 * 회원수정
+	 */
+	public int memberUpdate(Member member) throws Exception {
+		return memberDao.memberUpdate(member);
+	}
+	
+	/*
+	 * 아이디중복체크
+	 */
+	public boolean isDuplicatedId(String m_id) throws Exception {
+		if (memberDao.findByID(m_id) == null) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	/*
+	 * 회원탈퇴
+	 */
+	public int delete(String m_id) throws Exception {
+		return memberDao.memberDelete(m_id);
+	}
+
 }
