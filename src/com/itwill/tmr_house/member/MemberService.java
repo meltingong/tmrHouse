@@ -14,7 +14,7 @@ private MemberDao memberDao;
 	 *  - 아이디 존재하지 않으면 가입성공
 	*/
 	
-	public String addMember(Member member) throws Exception {
+	private String addMember(Member member) throws Exception {
 		String isSuccess = "";
 		if(memberDao.findByID(member.getM_id())==null) {
 			memberDao.memberInsert(member);
@@ -59,6 +59,7 @@ private MemberDao memberDao;
 		return isSuccess;
 	}
 	
+	
 	/*
 	 * 회원 로그인
 	 * 	0 : 아이디 존재안함
@@ -67,11 +68,11 @@ private MemberDao memberDao;
 	 */
 	public int login(String m_id, String m_pw) throws Exception {
 		int isSuccess = -999;
-		//Member findMember = memberDao.findByID(m_id);
-		if (memberDao.findByID(m_id) == null) {
+		Member findMember = memberDao.findByID(m_id); // null 발생
+		if (findMember == null) {
 			isSuccess = 0;
 		} else {
-			if (memberDao.findByID(m_id).getM_pw().equals(m_pw)) {
+			if (m_pw.equals(findMember.getM_pw())) {
 				isSuccess = 2;
 			}else {
 				isSuccess = 1;
