@@ -1,6 +1,6 @@
-package com.itwill.tmr_house.member.test;
+package com.itwill.tmr_house.product.test;
 
-public class MemberDaoServiceTestMain {
+public class ProductServiceTestMain {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
