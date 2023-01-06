@@ -1,9 +1,9 @@
 package com.itwill.tmr_house.member;
 
-public class MemberDaoService {
+public class MemberService {
 private MemberDao memberDao;
 	
-	public MemberDaoService() {
+	public MemberService() {
 		
 	}
 	

@@ -1,12 +1,11 @@
 package com.itwill.tmr_house.member.test;
 
 import com.itwill.tmr_house.member.*;
-import com.itwill.tmr_house.member.김하은.*;
 
 public class MemberServiceTestMain {
 
 	public static void main(String[] args) throws Exception {
-		MemberService_H memberService = new MemberService_H();
+		MemberService memberService = new MemberService();
 		/*
 		 * 회원가입
 		 */
