@@ -12,12 +12,12 @@ insert into product(p_no, p_name, p_price, p_img, p_desc) values(product_p_no_SE
 insert into product(p_no, p_name, p_price, p_img, p_desc) values(product_p_no_SEQ.nextval,'파스텔톤 커튼',30000,'dafult.jpg','산뜻한 색깔의 커튼');
 /*********************cart insert**********************/
 --aaaa
-insert into cart(cart_no, cart_qty, m_id, p_no) values(cart_cart_no_SEQ.nextval,2,'aaaa',1);
-insert into cart(cart_no, cart_qty, m_id, p_no) values(cart_cart_no_SEQ.nextval,1,'aaaa',2);
+insert into cart(c_no, c_qty, m_id, p_no) values(cart_c_no_SEQ.nextval,2,'aaaa',1);
+insert into cart(c_no, c_qty, m_id, p_no) values(cart_c_no_SEQ.nextval,1,'aaaa',2);
 
 --bbbb
-insert into cart(cart_no, cart_qty, m_id, p_no) values(cart_cart_no_SEQ.nextval,2,'bbbb',3);
-insert into cart(cart_no, cart_qty, m_id, p_no) values(cart_cart_no_SEQ.nextval,1,'bbbb',1);
+insert into cart(c_no, c_qty, m_id, p_no) values(cart_c_no_SEQ.nextval,2,'bbbb',3);
+insert into cart(c_no, c_qty, m_id, p_no) values(cart_c_no_SEQ.nextval,1,'bbbb',1);
 
 /*********************orders insert*********************/
 /*
@@ -32,6 +32,18 @@ insert into orders(o_no, o_desc, o_qty, o_price, o_date,m_id) values(orders_o_no
 -- 제품번호 1번 1개
 insert into order_item(oi_no, oi_qty, o_no, p_no) values(order_item_oi_no_SEQ.nextval,1,orders_o_no_SEQ.currval,1);
 
+/*
+aaaa님이
+    제품번호 3번 1개
+    제품번호 5번 2개
+    제품번호 6번 1개
+*/
+insert into orders(o_no, o_desc, o_qty, o_price, o_date,m_id) values(orders_o_no_SEQ.nextval,'파스텔톤 커튼 외3건',1,100000,sysdate,'aaaa');
 
-
-
+-- order item insert
+-- 제품번호 3번 1개
+insert into order_item(oi_no, oi_qty, o_no, p_no) values(order_item_oi_no_SEQ.nextval,1,orders_o_no_SEQ.currval,3);
+-- 제품번호 5번 2개
+insert into order_item(oi_no, oi_qty, o_no, p_no) values(order_item_oi_no_SEQ.nextval,2,orders_o_no_SEQ.currval,5);
+-- 제품번호 6번 1개
+insert into order_item(oi_no, oi_qty, o_no, p_no) values(order_item_oi_no_SEQ.nextval,1,orders_o_no_SEQ.currval,6);
