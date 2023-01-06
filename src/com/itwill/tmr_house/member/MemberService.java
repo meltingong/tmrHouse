@@ -3,8 +3,8 @@ package com.itwill.tmr_house.member;
 public class MemberService {
 private MemberDao memberDao;
 	
-	public MemberService() {
-		
+	public MemberService() throws Exception {
+		memberDao = new MemberDao();
 	}
 	
 	/*
@@ -68,11 +68,11 @@ private MemberDao memberDao;
 	 */
 	public int login(String m_id, String m_pw) throws Exception {
 		int isSuccess = -999;
-		Member findMember = memberDao.findByID(m_id); // null 발생
-		if (findMember == null) {
+		//Member findMember = memberDao.findByID(m_id);
+		if (memberDao.findByID(m_id) == null) {
 			isSuccess = 0;
 		} else {
-			if (m_pw.equals(findMember.getM_pw())) {
+			if (memberDao.findByID(m_id).getM_pw().equals(m_pw)) {
 				isSuccess = 2;
 			}else {
 				isSuccess = 1;
