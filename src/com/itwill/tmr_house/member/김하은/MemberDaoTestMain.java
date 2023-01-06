@@ -14,12 +14,12 @@ public class MemberDaoTestMain {
 		
 		System.out.println("회원가입");
 		Member newMember = new Member("zzzz", "zzzz", "흰둥이", "201212", "1234-0000", "짱구네");
-		memberDao.memberInsert(newMember);
-		rowCount = memberDao.memberInsert(new Member());
+		rowCount = memberDao.memberInsert(newMember);
 		System.out.println(">> " + rowCount + "행이 삽입되었습니다");
 		
 		System.out.println("회원수정");
-		memberDao.memberUpdate(newMember);
+		rowCount = memberDao.memberUpdate(newMember);
+		System.out.println(">> " + rowCount + "행이 수정되었습니다");
 		
 		System.out.println("아이디로 회원정보 찾기");
 		System.out.println(memberDao.findByID("zzzz"));
