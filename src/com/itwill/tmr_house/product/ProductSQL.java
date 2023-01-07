@@ -1,6 +1,7 @@
 package com.itwill.tmr_house.product;
 
 public class ProductSQL {
+	public static final String INSERT = "insert into product values (?,?,?,?,?,?)";
 	public static final String PRODUCT_SELECT_BY_P_NO=
 			"select * from product where p_no = ?";
 	
