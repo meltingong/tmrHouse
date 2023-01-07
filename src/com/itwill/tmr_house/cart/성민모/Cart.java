@@ -67,4 +67,20 @@ public class Cart {
 	public void setProduct_product(String product_product) {
 		this.product_product = product_product;
 	}
+
+	public String getUserid() {
+		return null;
+	}
+
+	public Cart getProduct() {
+		return null;
+	}
+
+	public int getCart_qty() {
+		return 0;
+	}
+
+	public int getCart_no() {
+		return 0;
+	}
 }		
