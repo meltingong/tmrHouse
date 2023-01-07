@@ -8,10 +8,6 @@ public class ProductDaoTestMain {
 	public static void main(String[] args) throws Exception {
 		ProductDao productDao = new ProductDao();
 
-		/*
-		 * 1~4 insert, update, delete
-		 */
-
 		// insert(admin)
 		System.out.println("1. Product_insert");
 		Product product = new Product(0, "장스탠드", 50000, "null", "반짝반짝", "N");
