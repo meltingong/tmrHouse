@@ -1,15 +1,7 @@
-package com.itwill.tmr_house.order;
+package com.itwill.tmr_house.order.박주용;
 
-import com.itwill.tmr_house.product.Product;
+import com.itwill.tmr_house.product.김혜지.Product;
 
-/*
-이름     널?       유형         
------- -------- ---------- 
-OI_NO  NOT NULL NUMBER(10) 
-OI_QTY          NUMBER(10) 
-O_NO            NUMBER(10) 
-P_NO            NUMBER(10) 
-*/
 public class OrderItem {
 	private int oi_no;
 	private int oi_qty;
@@ -62,7 +54,11 @@ public class OrderItem {
 
 	@Override
 	public String toString() {
-		return "OrderItem [oi_no=" + oi_no + ", oi_qty=" + oi_qty + ", o_no=" + o_no + ", product=" + product + "]\n";
+		return "OrderItem [oi_no=" + oi_no + ", oi_qty=" + oi_qty + ", o_no=" + o_no + ", product=" + product + "]";
 	}
+	
+	
+	
+
 	
 }

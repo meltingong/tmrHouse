@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import com.itwill.tmr_house.order.OrderItem;
-
 public class Order {
 	private int o_no;
 	private String o_desc;

@@ -8,16 +8,15 @@ public class ProductService {
 		productDao=new ProductDao();
 	}
 	/*
-	 * 전체상품조회
+	 * 상품 상세 조회
 	 */
-	public List<Product> productList() throws Exception{
-			return productDao.findAll();
+	public Product insert(int p_no) throws Exception{
+		return productDao.insert(p_no);
 	}
 	/*
-	 * 상품상세조회
+	 * 전체 상품 조회
 	 */
-	public Product productDetail(int p_no) throws Exception{
-		return productDao.findByPrimaryKey(p_no);
+	public List<Product> insert() throws Exception{
+			return productDao.insert();
 	}
-	
-}
+}	
