@@ -11,7 +11,7 @@ public class OrderDao {
 	public OrderDao() throws Exception {
 		dataSource=new DataSource();
 	}
-	
+	//주문실행
 	public int insert(Order order) throws Exception{
 
 		Connection con=null;
@@ -42,4 +42,6 @@ public class OrderDao {
 		}
 		return 0;
 	}
+	
+	
 }
