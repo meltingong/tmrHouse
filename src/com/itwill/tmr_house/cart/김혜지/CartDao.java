@@ -1,5 +1,6 @@
 package com.itwill.tmr_house.cart.김혜지;
 
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,6 +9,8 @@ import java.util.List;
 
 import com.itwill.tmr_house.common.DataSource;
 import com.itwill.tmr_house.product.김혜지.Product;
+
+
 
 public class CartDao {
 	
@@ -21,6 +24,37 @@ public class CartDao {
 	 * insert, update
 	 */
 	
+	
+	//카트에 새로운 상품을 추가하는 메서드
+	public int insert(int c_qty, String m_id, int p_no) throws Exception {
+		Connection con = dataSource.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(CartSQL.CART_INSERT);
+		
+		pstmt.setInt(1, c_qty);
+		pstmt.setString(2, m_id);
+		pstmt.setInt(3, p_no);
+		
+		int insertRowCount = pstmt.executeUpdate();
+
+		pstmt.close();
+		con.close();
+		return insertRowCount;
+	}
+	
+	
+//	//카트에 존재하는 상품을 추가(수량 변경)
+//	public int updateByCarttNo(int c_qty, String m_id, int c_no) throws Exception{
+////	public int updateByCarttNo(Cart cart) throws Exception {
+//		Connection con = dataSource.getConnection();
+//		PreparedStatement pstmt = con.prepareStatement(CartSQL.CART_UPDATE_BY_CART_NO);
+//		
+//		pstmt.setInt(1, c_qty);
+//		pstmt.setString(2, m_id);
+//		pstmt.setInt(3, c_no);
+//		int updateRowCount = pstmt.executeUpdate();
+//				
+//		return updateRowCount;
+//	}
 	
 	
 	
@@ -70,7 +104,10 @@ public class CartDao {
 												 rs.getString("p_desc"),
 												 rs.getString("p_freeDelivery")))
 					);
-		}
+	}
+
+		
+		
 		return cartItem;
 	}
 	
@@ -95,6 +132,7 @@ public class CartDao {
 													rs.getString("p_freeDelivery"))))
 					);
 		}
+
 		return cartList;
 	}
 

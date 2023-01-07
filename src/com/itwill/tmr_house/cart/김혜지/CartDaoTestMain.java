@@ -1,5 +1,6 @@
 package com.itwill.tmr_house.cart.김혜지;
 
+
 public class CartDaoTestMain {
 
 	public static void main(String[] args) throws Exception {
@@ -9,17 +10,23 @@ public class CartDaoTestMain {
 		 * insert, update
 		 */
 		
-		//카트에 담긴 특정 상품 삭제
-		System.out.println("5. Cart_deleteByCartNo");
-		System.out.println(">> "+cartDao.deleteByCartNo(17));
 		
-		//회원의 카트에 담긴 상품 전체 삭제
-		System.out.println("6. Cart_deleteAll");
-		System.out.println(">> "+cartDao.deleteByUserId("aaaa"));
+		//카트에 새로운 상품 추가
+		System.out.println("1. Cart_insertCartItem");
+		System.out.println(">> "+cartDao.insert(5, "aaaa", 5));
+		
+		
+//		//카트에 담긴 특정 상품 삭제
+//		System.out.println("5. Cart_deleteByCartNo");
+//		System.out.println(">> "+cartDao.deleteByCartNo(17));
+//		
+//		//회원의 카트에 담긴 상품 전체 삭제
+//		System.out.println("6. Cart_deleteAll");
+//		System.out.println(">> "+cartDao.deleteByUserId("aaaa"));
 		
 		//카트에 담긴 특정 상품 찾기(카트 번호로)
 		System.out.println("7. Cart_findByCartNo");
-		System.out.println(">> "+cartDao.findByCartNo(20));
+		System.out.println(">> "+cartDao.findByCartNo(30));
 		
 		//회원의 카트에 담긴 상품 전체 찾기
 		System.out.println("8. Cart_findByUserId");
