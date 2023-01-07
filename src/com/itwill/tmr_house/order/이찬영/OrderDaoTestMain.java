@@ -10,6 +10,8 @@ public class OrderDaoTestMain {
 
 	public static void main(String[] args) throws Exception{
 		OrderDao orderDao=new OrderDao();
+		orderDao.insert(new Order());
+		
 	/*****************주문실행*******************/	
 		// 1. order 셋팅
 		Order order = new Order();
@@ -36,17 +38,9 @@ public class OrderDaoTestMain {
 	System.out.println(orderDao.findByOrderNo("aaaa",20)); 
 	/****************유저 아이디로 주문리스트 불러오기*******************/		
 	ArrayList<Order> ordersList = orderDao.findById("bbbb");
-	for (Order orders : ordersList) {
-		System.out.println(orders.getO_no()+"\t"+
-						   orders.getO_desc()+"\t"+
-						   orders.getO_qty()+"\t"+
-						   orders.getO_price()+"\t"+
-						   orders.getO_date()+"\t"+
-						   orders.getM_id()
-						   
-				        );
+	System.out.println(orderItemList);
 	
-	}
+	
 	}
 
 }
