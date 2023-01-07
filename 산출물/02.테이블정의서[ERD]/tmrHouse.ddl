@@ -19,13 +19,22 @@ CREATE TABLE product(
 		p_name                        		VARCHAR2(100)		 NULL ,
 		p_price                       		NUMBER(10)		 NULL ,
 		p_img                         		VARCHAR2(100)		 NULL ,
-		p_desc                        		VARCHAR2(100)		 NULL 
+		p_desc                        		VARCHAR2(100)		 NULL ,
+		p_freeDelivery                		VARCHAR2(10)		 NULL 
 );
 
 DROP SEQUENCE product_p_no_SEQ;
 
 CREATE SEQUENCE product_p_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
 
+CREATE TRIGGER product_p_no_TRG
+BEFORE INSERT ON product
+FOR EACH ROW
+BEGIN
+IF :NEW.p_no IS NOT NULL THEN
+  SELECT product_p_no_SEQ.NEXTVAL INTO :NEW.p_no FROM DUAL;
+END IF;
+END;
 
 
 CREATE TABLE cart(
@@ -39,6 +48,14 @@ DROP SEQUENCE cart_c_no_SEQ;
 
 CREATE SEQUENCE cart_c_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
 
+CREATE TRIGGER cart_c_no_TRG
+BEFORE INSERT ON cart
+FOR EACH ROW
+BEGIN
+IF :NEW.c_no IS NOT NULL THEN
+  SELECT cart_c_no_SEQ.NEXTVAL INTO :NEW.c_no FROM DUAL;
+END IF;
+END;
 
 
 CREATE TABLE orders(
@@ -54,6 +71,14 @@ DROP SEQUENCE orders_o_no_SEQ;
 
 CREATE SEQUENCE orders_o_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
 
+CREATE TRIGGER orders_o_no_TRG
+BEFORE INSERT ON orders
+FOR EACH ROW
+BEGIN
+IF :NEW.o_no IS NOT NULL THEN
+  SELECT orders_o_no_SEQ.NEXTVAL INTO :NEW.o_no FROM DUAL;
+END IF;
+END;
 
 
 CREATE TABLE order_item(
@@ -67,6 +92,14 @@ DROP SEQUENCE order_item_oi_no_SEQ;
 
 CREATE SEQUENCE order_item_oi_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
 
+CREATE TRIGGER order_item_oi_no_TRG
+BEFORE INSERT ON order_item
+FOR EACH ROW
+BEGIN
+IF :NEW.oi_no IS NOT NULL THEN
+  SELECT order_item_oi_no_SEQ.NEXTVAL INTO :NEW.oi_no FROM DUAL;
+END IF;
+END;
 
 
 
