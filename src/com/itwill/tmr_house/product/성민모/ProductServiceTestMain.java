@@ -6,17 +6,20 @@ public class ProductServiceTestMain {
 		ProductService productService = new ProductService();
 		
 		/*
-		 * insert
+		 * insert, update, delete
 		 */
 		
-		//상품 번호로 특정 상품 찾기
-		System.out.println("5. Product_insert");
+		//insert 상품추가
+		System.out.println("1. Product_insert");
 		System.out.println(">> "+productService.insert(1));
+				
+		//상품 pk로삭제
+		System.out.println("2. Product_deleteByProductNo");
+		System.out.println(">> "+productService.deleteByProductNo(1));
 		
-		
-		//상품 전체 찾기
-		System.out.println("6. Product_insert");
-		System.out.println(">> "+productService.insert());
+		//update 상품변경
+		System.out.println("3. Product_updateByProductNo");
+		System.out.println(">> "+productService.updateByProductNo(1));
 	}
 
 }

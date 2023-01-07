@@ -7,16 +7,24 @@ public class ProductService {
 	public ProductService() throws Exception{
 		productDao=new ProductDao();
 	}
+	
 	/*
-	 * 상품 상세 조회
+	 * insert, update, delete
 	 */
+	
+	//insert 상품추가
 	public Product insert(int p_no) throws Exception{
 		return productDao.insert(p_no);
 	}
-	/*
-	 * 전체 상품 조회
-	 */
-	public List<Product> insert() throws Exception{
-			return productDao.insert();
+	
+	//상품 pk로삭제
+	public Product deleteByProductNo(int p_no)throws Exception{
+	    return productDao.deleteByProductNo(p_no);
 	}
-}	
+	
+	//update 상품변경
+	public Product updateByProductNo(int p_no)throws Exception{
+	    return productDao.updateByProductNo(p_no);
+	}
+	
+}

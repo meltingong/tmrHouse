@@ -6,18 +6,21 @@ public class ProductDaoTestMain {
 		ProductDao productDao = new ProductDao();
 
 		/*
-		 * insert
+		 * insert,delete,update
 		 */
 		
-		//상품번호로 특정 상품 출력
-		System.out.println("5. Product_insert");
+		//insert 상품추가
+		System.out.println("1. Product_insert");
 		System.out.println(">> "+productDao.insert(1));
 		
-		//상품 전체 출력
-		System.out.println("6. Product_insert");
-		System.out.println(">> "+productDao.insert());
+		//상품 pk로삭제
+		System.out.println("2. Product_deleteByProductNo");
+		System.out.println(">> "+productDao.deleteByProductNo(1));
 		
-		
+		//update 상품변경
+		System.out.println("3. Product_updateByProductNo");
+		System.out.println(">> "+productDao.updateByProductNo(1));
+	
 	}
 
 }
