@@ -21,9 +21,9 @@ public class Order {
 	private int o_price;
 	private Date o_date;
 	private String m_id;
-	private List<OrderItem> orderItemList;
+	private ArrayList<OrderItem> orderItemList=new ArrayList<OrderItem>();
 	public Order() {
-		orderItemList=new ArrayList<OrderItem>();
+		
 	}
 	public Order(int o_no, String o_desc, int o_qty, int o_price, Date o_date, String m_id
 			) {
@@ -75,7 +75,7 @@ public class Order {
 	public void setM_id(String m_id) {
 		this.m_id = m_id;
 	}
-	public void setOrderItemList(List<OrderItem> orderItemList) {
+	public void setOrderItemList(ArrayList<OrderItem> orderItemList) {
 		this.orderItemList = orderItemList;
 	}
 	@Override
