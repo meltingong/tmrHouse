@@ -3,7 +3,7 @@ package com.itwill.tmr_house.order.김하은;
 import java.util.Date;
 import java.util.List;
 
-public class Order {
+public class Orders {
 	private int o_no;
 	private String o_desc;
 	private int o_qty;
@@ -12,11 +12,11 @@ public class Order {
 	private String m_id;
 	private List<OrderItem> orderItem;
 	
-	public Order() {
+	public Orders() {
 	
 	}
 
-	public Order(int o_no, String o_desc, int o_qty, int o_price, Date o_date, String m_id) {
+	public Orders(int o_no, String o_desc, int o_qty, int o_price, Date o_date, String m_id) {
 		super();
 		this.o_no = o_no;
 		this.o_desc = o_desc;
