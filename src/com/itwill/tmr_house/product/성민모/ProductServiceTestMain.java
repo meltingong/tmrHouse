@@ -17,8 +17,11 @@ public class ProductServiceTestMain {
 		System.out.println("2. Product_deleteByProductNo");
 		System.out.println(">> "+productService.deleteByProductNo(1));
 		
+		System.out.println("3. Product_deleteByName");
+		System.out.println(">> "+productService.deleteByName(1));
+		
 		//update 상품변경
-		System.out.println("3. Product_updateByProductNo");
+		System.out.println("4. Product_updateByProductNo");
 		System.out.println(">> "+productService.updateByProductNo(1));
 	}
 

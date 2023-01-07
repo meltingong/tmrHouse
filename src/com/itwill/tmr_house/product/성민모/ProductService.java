@@ -14,17 +14,19 @@ public class ProductService {
 	
 	//insert 상품추가
 	public Product insert(int p_no) throws Exception{
-		return productDao.insert(p_no);
+		return productDao.insert(null, p_no, p_no);
 	}
 	
 	//상품 pk로삭제
 	public Product deleteByProductNo(int p_no)throws Exception{
 	    return productDao.deleteByProductNo(p_no);
 	}
-	
+	public Product deleteByName(int p_no)throws Exception{
+	    return productDao.deleteByName(null, p_no, p_no);
+	}
 	//update 상품변경
 	public Product updateByProductNo(int p_no)throws Exception{
-	    return productDao.updateByProductNo(p_no);
+	    return productDao.updateByProductNo(null, p_no, p_no);
 	}
 	
 }

@@ -1,32 +1,30 @@
 package com.itwill.tmr_house.cart.성민모;
 
+import com.itwill.tmr_house.product.성민모.Product;
+
 public class Cart {
-	private int c_no;
+	private int c_no;        
 	private int c_qty;
-	private int p_no;
-	private String m_id;
-    private String product_product;
+	private String m_id;     
+	private Product product;
 	
 	public Cart() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	@Override
-	public String toString() {
-		return "Cart [c_no=" + c_no + ", m_id=" + m_id + ", p_no=" + p_no + ", c_qty=" + c_qty + ", product_product="+product_product
-				+ "]";
-	}
-	
-
-	public Cart(int c_no, int c_qty, int p_no, String m_id, String p_img, char p_freeDelivery) {
+	public Cart(int c_no, int c_qty, String m_id, Product product) {
 		super();
 		this.c_no = c_no;
 		this.c_qty = c_qty;
-		this.p_no = p_no;
 		this.m_id = m_id;
-		this.product_product=product_product;
-	
+		this.product = product;
 	}
+	
+
+	@Override
+	public String toString() {
+		return "Cart [c_no=" + c_no + ", c_qty=" + c_qty + ", m_id=" + m_id + ", product=" + product + "]";
+	}	
 
 	public int getC_no() {
 		return c_no;
@@ -44,14 +42,6 @@ public class Cart {
 		this.c_qty = c_qty;
 	}
 
-	public int getP_no() {
-		return p_no;
-	}
-
-	public void setP_no(int p_no) {
-		this.p_no = p_no;
-	}
-
 	public String getM_id() {
 		return m_id;
 	}
@@ -60,27 +50,12 @@ public class Cart {
 		this.m_id = m_id;
 	}
 
-	public String getProduct_product() {
-		return product_product;
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 	
-	public void setProduct_product(String product_product) {
-		this.product_product = product_product;
-	}
-
-	public String getUserid() {
-		return null;
-	}
-
-	public Cart getProduct() {
-		return null;
-	}
-
-	public int getCart_qty() {
-		return 0;
-	}
-
-	public int getCart_no() {
-		return 0;
-	}
-}		
+}

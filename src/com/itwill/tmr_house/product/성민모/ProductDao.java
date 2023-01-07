@@ -17,23 +17,6 @@ public class ProductDao {
 	 * insert 상품추가
 	 */
 	
-	public Product  insert(int p_no) throws Exception {
-		Product product = null;
-		Connection con=dataSource.getConnection();
-		PreparedStatement pstmt=con.prepareStatement(ProductSQL.PRODUCT_INSERT);
-		pstmt.setInt(1, p_no);
-		ResultSet rs=pstmt.executeQuery();
-		if(rs.next()) {
-			product = new Product(rs.getInt("p_no"),
-											rs.getString("p_name"),
-											rs.getInt("p_price"),
-											rs.getString("p_img"),
-											rs.getString("p_desc"),
-											rs.getString("p_freeDelivery"));
-		}
-		return  product;
-	}
-	
 	public Product insert(String p_name,int p_no,int p_price) throws Exception {
 		Product product = null;
 		Connection con=dataSource.getConnection();
@@ -47,7 +30,7 @@ public class ProductDao {
 											rs.getString("p_img"),
 											rs.getString("p_desc"),
 											rs.getString("p_freeDelivery"));
-		 }
+		}
 		return  product;
 	}
 	
@@ -72,10 +55,10 @@ public class ProductDao {
 		return product;
 	}
 	
-	public Product deleteByProductNo(String p_name,int p_no,int p_price) throws Exception {
+	public Product deleteByName(String p_name,int p_no,int p_price) throws Exception {
 		Product product = null;
 		Connection con=dataSource.getConnection();
-		PreparedStatement pstmt=con.prepareStatement(ProductSQL.PRODUCT_DELETE_BY_P_NAME);
+		PreparedStatement pstmt=con.prepareStatement(ProductSQL.PRODUCT_DELETE_BY_NAME);
 		pstmt.setInt(1, p_no);
 		ResultSet rs=pstmt.executeQuery();
 		if(rs.next()) {
@@ -96,40 +79,6 @@ public class ProductDao {
 	public Product updateByProductNo(String p_name,int p_no,int p_price) throws Exception {
 		Product product = null;
 		Connection con=dataSource.getConnection();
-		PreparedStatement pstmt=con.prepareStatement(ProductSQL.PRODUCT_UPDATE_BY_PRODUCT_NO_P_NAME);
-		pstmt.setInt(1, p_no);
-		ResultSet rs=pstmt.executeQuery();
-		if(rs.next()) {
-			product = new Product(rs.getInt("p_no"),
-											rs.getString("p_name"),
-											rs.getInt("p_price"),
-											rs.getString("p_img"),
-											rs.getString("p_desc"),
-											rs.getString("p_freeDelivery"));
-		}
-		return product;
-	}
-	
-	public Product updateByProductNo(int p_no) throws Exception {
-		Product product = null;
-		Connection con=dataSource.getConnection();
-		PreparedStatement pstmt=con.prepareStatement(ProductSQL.PRODUCT_UPDATE_BY_PRODUCT_NO_P_NAME);
-		pstmt.setInt(1, p_no);
-		ResultSet rs=pstmt.executeQuery();
-		if(rs.next()) {
-			product = new Product(rs.getInt("p_no"),
-											rs.getString("p_name"),
-											rs.getInt("p_price"),
-											rs.getString("p_img"),
-											rs.getString("p_desc"),
-											rs.getString("p_freeDelivery"));
-		}
-		return product;		
-    }
-	
-	public Product updateByProduct(int p_no,int p_price) throws Exception {
-		Product product = null;
-		Connection con=dataSource.getConnection();
 		PreparedStatement pstmt=con.prepareStatement(ProductSQL.PRODUCT_UPDATE_BY_PRODUCT_NO);
 		pstmt.setInt(1, p_no);
 		ResultSet rs=pstmt.executeQuery();
@@ -143,21 +92,4 @@ public class ProductDao {
 		}
 		return product;
 	}
-	
-	public Product updateByProduct(int p_no) throws Exception {
-		Product product = null;
-		Connection con=dataSource.getConnection();
-		PreparedStatement pstmt=con.prepareStatement(ProductSQL.PRODUCT_UPDATE_BY_PRODUCT_NO);
-		pstmt.setInt(1, p_no);
-		ResultSet rs=pstmt.executeQuery();
-		if(rs.next()) {
-			product = new Product(rs.getInt("p_no"),
-											rs.getString("p_name"),
-											rs.getInt("p_price"),
-											rs.getString("p_img"),
-											rs.getString("p_desc"),
-											rs.getString("p_freeDelivery"));
-		}
-		return product;
-	}	
 }	
