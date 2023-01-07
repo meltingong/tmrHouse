@@ -34,11 +34,13 @@ public class MemberService_S {
 	 */
 	public int login(String m_id, String m_pw) throws Exception {
 		int isSuccess = -999;
+		//Member findMember = memberDao.findByID(m_id);
 		if (memberDao.findByID(m_id) == null) {
 			isSuccess = 0;
 		} else {
-			isSuccess = 2;
 			if (memberDao.findByID(m_id).getM_pw().equals(m_pw)) {
+				isSuccess = 2;
+			}else {
 				isSuccess = 1;
 			}
 		}
@@ -48,8 +50,8 @@ public class MemberService_S {
 	/*
 	 * 로그인한 회원의 정보보기
 	 */
-	public Member memberDetail(Member member) throws Exception {
-		return memberDao.findByID(member.getM_id());
+	public Member memberDetail(String m_id) throws Exception {
+		return memberDao.findByID(m_id);
 	}
 
 	/*
@@ -61,14 +63,14 @@ public class MemberService_S {
 	
 	/*
 	 * 아이디중복체크
-	 */
-	public boolean isDuplicatedId(String m_id) throws Exception {
-		if (memberDao.findByID(m_id) == null) {
+	public boolean isDuplicatedId(Member member) throws Exception {
+		if (memberDao.findByID(member.getM_id()) != null) {
 			return true;
 		} else {
 			return false;
 		}
 	}
+	 */
 
 	/*
 	 * 회원탈퇴

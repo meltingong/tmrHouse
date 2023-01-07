@@ -8,7 +8,7 @@ P_NAME                  VARCHAR2(50)
 P_PRICE                 NUMBER(10)    
 P_IMG                   VARCHAR2(50)  
 P_DESC                  VARCHAR2(512) 
-P_FREEDELIVERY NOT NULL CHAR(10) 
+P_FREEDELIVERY          VARCHAR2(50) 
 */
 
 /************************product insert************************/

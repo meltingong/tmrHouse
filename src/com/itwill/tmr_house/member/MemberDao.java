@@ -61,14 +61,15 @@ private DataSource dataSource;
 	}
 	
 	public Member findByID(String id) throws Exception {
+		Member findMember = null;
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(MemberSQL.MEMBER_SELECTED_BY_ID);
 		pstmt.setString(1, id);
 		
 		ResultSet rs = pstmt.executeQuery();
 		
-		Member findMember = null;
-		if (rs.next()) {
+		
+		if(rs.next()) {
 			String i = rs.getString("m_id");
 			String pw = rs.getString("m_pw");
 			String name = rs.getString("m_name");
@@ -79,7 +80,7 @@ private DataSource dataSource;
 		} else {
 			
 		}
-		
+		rs.close();
 		pstmt.close();
 		dataSource.close(con);
 		

@@ -3,8 +3,8 @@ package com.itwill.tmr_house.member;
 public class MemberService {
 private MemberDao memberDao;
 	
-	public MemberService() {
-		
+	public MemberService() throws Exception {
+		memberDao = new MemberDao();
 	}
 	
 	/*
@@ -14,7 +14,7 @@ private MemberDao memberDao;
 	 *  - 아이디 존재하지 않으면 가입성공
 	*/
 	
-	public String addMember(Member member) throws Exception {
+	private String addMember(Member member) throws Exception {
 		String isSuccess = "";
 		if(memberDao.findByID(member.getM_id())==null) {
 			memberDao.memberInsert(member);
@@ -60,13 +60,26 @@ private MemberDao memberDao;
 	}
 	
 	
-	
 	/*
 	 * 회원 로그인
 	 * 	0 : 아이디 존재안함
 	 * 	1 : 패스워드 불일치
 	 * 	2 : 로그인 성공
 	 */
+	public int login(String m_id, String m_pw) throws Exception {
+		int isSuccess = -999;
+		//Member findMember = memberDao.findByID(m_id);
+		if (memberDao.findByID(m_id) == null) {
+			isSuccess = 0;
+		} else {
+			if (memberDao.findByID(m_id).getM_pw().equals(m_pw)) {
+				isSuccess = 2;
+			}else {
+				isSuccess = 1;
+			}
+		}
+		return isSuccess;
+	}
 	
 	/*
 	 * 회원정보수정

@@ -26,21 +26,24 @@ aaa님이
     제품번호 3번 1개
 */
 -- orders insert
-<<<<<<< HEAD
 insert into orders(o_no, o_desc, o_qty, o_price, o_date,m_id) values(orders_o_no_SEQ.nextval,'조립식 식탁 외1건',1,150000,sysdate,'aaaa');
-=======
-insert into orders(o_no, o_pname, o_qty, o_price, o_date, m_id) values(orders_o_no_SEQ.nextval,'조립식 식탁 외1건',1,150000,sysdate,'aaaa');
->>>>>>> branch 'master' of https://github.com/2022-11-JAVA-DEVELOPER/java-project-team3-tmrhouse.git
 
 -- order item insert
 -- 제품번호 1번 1개
-<<<<<<< HEAD
 insert into order_item(oi_no, oi_qty, o_no, p_no) values(order_item_oi_no_SEQ.nextval,1,orders_o_no_SEQ.currval,1);
 
-=======
-insert into order_item(oi_no, oi_qty, o_no, p_no) values(ORDER_ITEM_OI_NO_SEQ.nextval, 1, 1, 1);
-commit;
->>>>>>> branch 'master' of https://github.com/2022-11-JAVA-DEVELOPER/java-project-team3-tmrhouse.git
+/*
+aaaa님이
+    제품번호 3번 1개
+    제품번호 5번 2개
+    제품번호 6번 1개
+*/
+insert into orders(o_no, o_desc, o_qty, o_price, o_date,m_id) values(orders_o_no_SEQ.nextval,'파스텔톤 커튼 외3건',1,100000,sysdate,'aaaa');
 
-
-
+-- order item insert
+-- 제품번호 3번 1개
+insert into order_item(oi_no, oi_qty, o_no, p_no) values(order_item_oi_no_SEQ.nextval,1,orders_o_no_SEQ.currval,3);
+-- 제품번호 5번 2개
+insert into order_item(oi_no, oi_qty, o_no, p_no) values(order_item_oi_no_SEQ.nextval,2,orders_o_no_SEQ.currval,5);
+-- 제품번호 6번 1개
+insert into order_item(oi_no, oi_qty, o_no, p_no) values(order_item_oi_no_SEQ.nextval,1,orders_o_no_SEQ.currval,6);
