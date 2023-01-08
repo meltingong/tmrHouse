@@ -7,24 +7,24 @@ public class ProductDaoTestMain {
 
 	public static void main(String[] args) throws Exception {
 		ProductDao productDao = new ProductDao();
-
+		
 		// insert(admin)
 		System.out.println("1. Product_insert");
 		Product product = new Product(0, "장스탠드", 50000, "null", "반짝반짝", "N");
 		System.out.println(">> " + productDao.insert(product));
-		
-		/*
+				
+				
 		// delete(admin)
-		child record 있어서(orderitem이 fk로 product의 p_no를 가짐) 삭제할 수 없음
+		//child record 있어서(orderitem이 fk로 product의 p_no를 가짐) 삭제할 수 없음
 		System.out.println(">> " + productDao.deleteByNo(4));
-		*/
-
+				
+		
 		// update(admin)
 		System.out.println("2. Product_update");
-		Product updateProduct = new Product(3, "edit", 11111, "edit_img", "edit_desc", "Y");
+		Product updateProduct = new Product(7, "edit", 11111, "edit_img", "edit_desc", "Y");
 		System.out.println(">> " + productDao.updateProduct(updateProduct));
 		System.out.println(productDao.findByProductNo(3));
-		
+
 		// 상품번호로 특정 상품 출력
 		System.out.println("3. Product_findByProductNo");
 		System.out.println(">> " + productDao.findByProductNo(1));

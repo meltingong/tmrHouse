@@ -24,7 +24,7 @@ public class ProductService {
 		List<Product> productList = new ArrayList<Product>();
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_SELECT_BY_P_NAME);
-		pstmt.setString(1, p_name.substring(p_name.length()-3,p_name.length()));
+		pstmt.setString(1,"%"+ p_name );
 		ResultSet rs = pstmt.executeQuery();
 		while(rs.next()) {
 			productList.add(new Product(rs.getInt("p_no"),

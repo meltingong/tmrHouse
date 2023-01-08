@@ -2,8 +2,11 @@ package com.itwill.tmr_house.order;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import com.itwill.tmr_house.common.DataSource;
+import com.itwill.tmr_house.product.Product;
 
 public class OrdersDao {
 private DataSource dataSource;
@@ -109,4 +112,70 @@ private DataSource dataSource;
 		return rowCount;
 		
 	}
+	
+	// 유저 아이디로 주문리스트 불러오기
+		public ArrayList<Orders> findById(String m_id) throws Exception {
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ArrayList<Orders> orderList = new ArrayList<Orders>();
+			ResultSet rs = null;
+			try {
+				con = dataSource.getConnection();
+				// "select * from orders where m_id=?";
+				pstmt = con.prepareStatement(OrdersSQL.ORDERS_DELETE_BY_M_ID);
+				pstmt.setString(1, m_id);
+				rs = pstmt.executeQuery();
+				/*
+				 * 이름 널? 유형 ------- -------- ------------- O_NO NOT NULL NUMBER(10) O_DESC
+				 * VARCHAR2(100) O_QTY NUMBER(10) O_PRICE NUMBER(10) O_DATE DATE M_ID
+				 * VARCHAR2(50)
+				 * 
+				 */
+				while (rs.next()) {
+					orderList.add(new Orders(rs.getInt("o_no"), rs.getString("o_desc"), rs.getInt("o_qty"),
+							rs.getInt("o_price"), rs.getDate("o_date"), rs.getString("m_id")));
+
+				}
+			} finally {
+				rs.close();
+				pstmt.close();
+				if (con != null)
+					con.close();
+			}
+			return orderList;
+
+		}
+
+		// 주문 1개보기 고객아이디,주문번호
+		public Orders findByOrderNo(String m_id, int o_no) throws Exception {
+
+			Orders order = null;
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			con = dataSource.getConnection();
+			/*
+			 * select * from orders o join order_item oi on o.o_no=oi.o_no join product p on
+			 * oi.p_no=p.p_no where o.userid=? and o.o_no = ?
+			 */
+			pstmt = con.prepareStatement(OrdersSQL.ORDERS_SELECT_WITH_PRODUCT_BY_M_ID);
+			pstmt.setString(1, m_id);
+			pstmt.setInt(2, o_no);
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				order = new Orders(rs.getInt("o_no"), rs.getString("o_desc"), rs.getInt("o_qty"), rs.getInt("o_price"),
+						rs.getDate("o_date"), rs.getString("m_id"));
+				do {
+					order.getOrderItemList().add(new OrderItem(rs.getInt("oi_no"), rs.getInt("oi_qty"), rs.getInt("o_no"),
+									new Product(rs.getInt("p_no"), rs.getString("p_name"), rs.getInt("p_price"),
+											rs.getString("p_img"), rs.getString("p_desc"),
+											rs.getString("p_freeDelivery"))));
+							
+				} while (rs.next());
+			}
+			return order;
+		}
+	
+	
 }
