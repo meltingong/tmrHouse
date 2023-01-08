@@ -1,24 +1,23 @@
 package com.itwill.tmr_house.order.이찬영;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-import com.itwill.tmr_house.cart.김혜지.Cart;
-import com.itwill.tmr_house.cart.김혜지.CartDao;
+import com.itwill.tmr_house.cart.Cart;
+import com.itwill.tmr_house.cart.CartDao;
+import com.itwill.tmr_house.order.OrderItem;
+import com.itwill.tmr_house.order.Orders;
+import com.itwill.tmr_house.order.OrdersDao;
+import com.itwill.tmr_house.product.Product;
+import com.itwill.tmr_house.product.ProductDao;
 
-import product.Product;
-import product.ProductDao;
-
-
-
-public class OrderService {
+public class OrdersService {
 	
 	private OrdersDao ordersDao;
 	private CartDao cartDao;
 	private ProductDao productDao;
 	
-	public OrderService() throws Exception {
+	public OrdersService() throws Exception {
 		ordersDao =new OrdersDao();
 		cartDao = new CartDao();
 		productDao = new ProductDao();
@@ -35,7 +34,7 @@ public class OrderService {
 	}
 	//주문리스트 아이디로 찾기
 	public List<Orders> orderList(String m_id) throws Exception {
-		return ordersDao.findByMember(m_id);
+		return ordersDao.findById(m_id);
 	}
 	//주문상세보기
 	public Orders orderListDetail(String m_id,int o_no) throws Exception {
@@ -56,10 +55,10 @@ public class OrderService {
 						   orderItemList.get(0).getOi_qty()*orderItemList.get(0).getProduct().getP_price(),
 						   null,
 						   m_id);
-		newOrders.setOrderItem(orderItemList);
+		newOrders.setOrderItemList(orderItemList);
 		
 		
-		return ordersDao.insert(newOrders);
+		return ordersDao.insertOrder(newOrders);
 	}
 	
 	//cart에서 주문
@@ -77,11 +76,11 @@ public class OrderService {
 		String o_desc = orderItemList.get(0).getProduct().getP_name()+"외 "+(oi_tot_count-1)+" 개";
 		
 		Orders newOrder=new Orders(0, o_desc, oi_tot_count, o_tot_price, null, m_id);
-		newOrder.setOrderItem(orderItemList);
+		newOrder.setOrderItemList(orderItemList);
 		
 		
 		cartDao.deleteByUserId(m_id);
-		return ordersDao.insert(newOrder);
+		return ordersDao.insertOrder(newOrder);
 	}
 	//cart에서 선택주문
 public int cartSelectOrder(String m_id,String[] cart_item_checks) throws Exception{
@@ -99,13 +98,13 @@ public int cartSelectOrder(String m_id,String[] cart_item_checks) throws Excepti
 		String o_desc = orderItemList.get(0).getProduct().getP_name()+"외 "+(oi_tot_count-1)+" 개";
 		
 		Orders newOrder=new Orders(0,o_desc, oi_tot_count, o_tot_price,null, m_id);
-		newOrder.setOrderItem(orderItemList);
-		ordersDao.insert(newOrder);
+		newOrder.setOrderItemList(orderItemList);
+		ordersDao.insertOrder(newOrder);
 		
 		for(int i =0;i<cart_item_checks.length;i++) {
 			cartDao.deleteByCartNo(Integer.parseInt(cart_item_checks[i]));
 		}
-		return ordersDao.insert(newOrder);
+		return ordersDao.insertOrder(newOrder);
 	}
 	
 	

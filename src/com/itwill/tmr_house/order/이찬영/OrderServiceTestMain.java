@@ -8,7 +8,7 @@ import com.itwill.tmr_house.cart.김혜지.CartDao;
 public class OrderServiceTestMain {
 
 	public static void main(String[] args) throws Exception {
-		OrderService orderService = new OrderService();
+		OrdersService orderService = new OrdersService();
 		CartDao cartDao = new CartDao();
 		int rowCount = 0;
 		// 주문 한개 삭제
