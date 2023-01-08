@@ -15,7 +15,7 @@ public class CartDao {
 	public CartDao() throws Exception {
 		dataSource = new DataSource();
 	}
-	
+
 	// Cart 객체로 insert
 	public int insert(Cart cart) throws Exception {
 		Connection con = dataSource.getConnection();
@@ -23,14 +23,14 @@ public class CartDao {
 		pstmt.setInt(1, cart.getC_qty());
 		pstmt.setString(2, cart.getM_id());
 		pstmt.setInt(3, cart.getProduct().getP_no());
-		
+
 		int rowCount = pstmt.executeUpdate();
-		
+
 		pstmt.close();
 		con.close();
 		return rowCount;
 	}
-	
+
 	public int updateByCartNo(int c_no, int qty) throws Exception {
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(CartSQL.CART_UPDATE_BY_CART_NO);
@@ -38,12 +38,12 @@ public class CartDao {
 		pstmt.setInt(1, qty);
 		pstmt.setInt(2, c_no);
 		rowCount = pstmt.executeUpdate();
-		
+
 		pstmt.close();
 		dataSource.close(con);
 		return rowCount;
 	}
-	
+
 	public int updateByProductNo(int p_no, int qty, String m_id) throws Exception {
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(CartSQL.CART_UPDATE_BY_PRODUCT_NO_ID);
@@ -52,12 +52,12 @@ public class CartDao {
 		pstmt.setString(2, m_id);
 		pstmt.setInt(3, p_no);
 		rowCount = pstmt.executeUpdate();
-		
+
 		pstmt.close();
 		dataSource.close(con);
 		return rowCount;
 	}
-	
+
 	// 카트에서 특정 상품 삭제(카트 번호로)
 	public int deleteByCartNo(int c_no) throws Exception {
 		Connection con = dataSource.getConnection();
@@ -91,48 +91,34 @@ public class CartDao {
 		ResultSet rs = pstmt.executeQuery();
 
 		if (rs.next()) {
-			cartItem = new Cart(rs.getInt("c_no"),
-									rs.getInt("c_qty"),
-									rs.getString("m_id"),
-									(new Product(rs.getInt("p_no"),
-												 rs.getString("p_name"),
-												 rs.getInt("p_price"),
-												 rs.getString("p_img"),
-												 rs.getString("p_desc"),
-												 rs.getString("p_freeDelivery")))
-			);
+			cartItem = new Cart(rs.getInt("c_no"), rs.getInt("c_qty"), rs.getString("m_id"),
+					(new Product(rs.getInt("p_no"), rs.getString("p_name"), rs.getInt("p_price"), rs.getString("p_img"),
+							rs.getString("p_desc"), rs.getString("p_freeDelivery"))));
 		}
 		pstmt.close();
 		con.close();
 		return cartItem;
 	}
 
-	//회원의 카트에 담긴 상품 전체 찾기
-	public List<Cart> findByUserId(String m_id) throws Exception{
+	// 회원의 카트에 담긴 상품 전체 찾기
+	public List<Cart> findByUserId(String m_id) throws Exception {
 		List<Cart> cartList = new ArrayList<Cart>();
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(CartSQL.CART_SELECT_BY_ID);
 		pstmt.setString(1, m_id);
 		ResultSet rs = pstmt.executeQuery();
-		
-		while(rs.next()) {
-			cartList.add(new Cart(rs.getInt("c_no"),
-									rs.getInt("c_qty"),
-									rs.getString("m_id"),
-									(new Product(rs.getInt("p_no"),
-													rs.getString("p_name"),
-													rs.getInt("p_price"),
-													rs.getString("p_img"),
-													rs.getString("p_desc"),
-													rs.getString("p_freeDelivery"))))
-					);
+
+		while (rs.next()) {
+			cartList.add(new Cart(rs.getInt("c_no"), rs.getInt("c_qty"), rs.getString("m_id"),
+					(new Product(rs.getInt("p_no"), rs.getString("p_name"), rs.getInt("p_price"), rs.getString("p_img"),
+							rs.getString("p_desc"), rs.getString("p_freeDelivery")))));
 		}
-		
+
 		pstmt.close();
 		con.close();
 		return cartList;
 	}
-	
+
 	// count
 	public int countByProductNo(String m_id, int p_no) throws Exception {
 		Connection con = null;
@@ -145,11 +131,11 @@ public class CartDao {
 			pstmt.setString(1, m_id);
 			pstmt.setInt(2, p_no);
 			rs = pstmt.executeQuery();
-			
+
 			if (rs.next()) {
-				count = rs.getInt(1);			
+				count = rs.getInt(1);
 			}
-			
+
 		} finally {
 			if (con != null) {
 				dataSource.close(con);
