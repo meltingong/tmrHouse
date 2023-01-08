@@ -29,7 +29,7 @@ public class OrderDaoTestMain {
 		  */
 		 
 		//int rowCount = ordersDao.deleteByMemberId("cccc");
-		//System.out.println(">> ccc 회원님 주문 " + rowCount + "건 삭제");
+		//System.out.println(">> cccc 회원님 주문 " + rowCount + "건 삭제");
 		
 		/*
 		 * 고객아이디로 주문리스트 불러오기
