@@ -9,7 +9,7 @@ public class CartDaoTestMain {
 		
 		//카트에 새로운 상품 추가
 		System.out.println("1. Cart_insertCartItem");
-		System.out.println(">> "+cartDao.insertCart(new Cart(2, 2, "aaaa", new Product(2, null, 0, null, null, null))));
+		System.out.println(">> "+ cartDao.insertCart(new Cart(2, 2, "aaaa", new Product(2, null, 0, null, null, null))));
 
 		/*
 		 * updateByCartNo, countByProductNo
