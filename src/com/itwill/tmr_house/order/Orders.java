@@ -95,9 +95,10 @@ public class Orders {
 
 	@Override
 	public String toString() {
-		return "Order [o_no=" + o_no + ", o_desc=" + o_desc + ", o_qty=" + o_qty + ", o_price=" + o_price + ", o_date="
-				+ o_date + ", m_id=" + m_id + "]\n";
+		return "Orders [o_no=" + o_no + ", o_desc=" + o_desc + ", o_qty=" + o_qty + ", o_price=" + o_price + ", o_date="
+				+ o_date + ", m_id=" + m_id + ", orderItemList=" + orderItemList + "]\n";
 	}
+
 	
 	
 }

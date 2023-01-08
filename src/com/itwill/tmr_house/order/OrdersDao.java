@@ -44,7 +44,7 @@ private DataSource dataSource;
 			rowCount = pstmt1.executeUpdate();
 			
 			pstmt2 = con.prepareStatement(OrdersSQL.ORDERS_ITEM_INSERT);
-			for(OrderItem orderItem : order.getOrderItemList()) {
+			for (OrderItem orderItem : order.getOrderItemList()) {
 				pstmt2.setInt(1, orderItem.getOi_qty());
 				pstmt2.setInt(2, orderItem.getProduct().getP_no());
 				pstmt2.executeUpdate();
