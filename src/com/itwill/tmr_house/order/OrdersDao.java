@@ -19,7 +19,7 @@ private DataSource dataSource;
 	/*
 	 * 주문생성
 	 */
-	public int insertOrder(Orders orders) throws Exception{
+	public int insertOrder(Orders order) throws Exception{
 		/*
 		private int o_no;
 		private String o_desc;
@@ -37,14 +37,14 @@ private DataSource dataSource;
 			con = dataSource.getConnection();
 			con.setAutoCommit(false);
 			pstmt1=con.prepareStatement(OrdersSQL.ORDERS_INSERT);
-			pstmt1.setString(1, orders.getO_desc());
-			pstmt1.setInt(2, orders.getO_qty());
-			pstmt1.setInt(3, orders.getO_price());
-			pstmt1.setString(4, orders.getM_id());
+			pstmt1.setString(1, order.getO_desc());
+			pstmt1.setInt(2, order.getO_qty());
+			pstmt1.setInt(3, order.getO_price());
+			pstmt1.setString(4, order.getM_id());
 			rowCount = pstmt1.executeUpdate();
 			
 			pstmt2 = con.prepareStatement(OrdersSQL.ORDERS_ITEM_INSERT);
-			for(OrderItem orderItem : orders.getOrderItemList()) {
+			for(OrderItem orderItem : order.getOrderItemList()) {
 				pstmt2.setInt(1, orderItem.getOi_qty());
 				pstmt2.setInt(2, orderItem.getProduct().getP_no());
 				pstmt2.executeUpdate();

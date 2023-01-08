@@ -26,14 +26,15 @@ public class Orders {
 		this.o_price = o_price;
 		this.o_date = o_date;
 		this.m_id = m_id;
+		this.orderItemList = new ArrayList<OrderItem>();
 	}
 	
 
-	public Orders(String m_id, ArrayList<OrderItem> orderItemList) {
+	/*public Orders(String m_id, ArrayList<OrderItem> orderItemList) {
 		super();
 		this.m_id = m_id;
 		this.orderItemList = orderItemList;
-	}
+	}*/
 
 	public List<OrderItem> getOrderItemList() {
 		return orderItemList;

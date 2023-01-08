@@ -41,7 +41,7 @@ public class OrderDaoTestMain {
 		 * 고객 아이디 , 주문번호로 주문 1개 보기
 		 */
 		
-		System.out.println(ordersDao.findByOrderNo("cccc", 8));
+		System.out.println(ordersDao.findByOrderNo("cccc", 3));
 		
 	}
 }
