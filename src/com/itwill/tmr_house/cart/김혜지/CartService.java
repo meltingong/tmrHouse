@@ -8,11 +8,20 @@ public class CartService {
 		cartDao = new CartDao();
 	}
 	
+	//카트에 새로운 상품 추가
+	public int insertCart(Cart cart) throws Exception {
+		if(cartDao.countByProductNo(cart.getM_id(), cart.getProduct().getP_no(), cart.getC_qty()) > 0) {
+			return cartDao.updateByCartNo(cart.getM_id(), cart.getC_qty(), cart.getProduct().getP_no());
+		}else {
+			return cartDao.insertCart(cart);
+		}
+	}
+	
+	
+	
 	/*
-	 *  insert, update
+	 * updateByCartNo, countByProductNo
 	 */
-	
-	
 	
 	
 	//카트에 담긴 특정 상품 삭제
