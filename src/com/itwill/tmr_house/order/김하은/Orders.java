@@ -1,7 +1,10 @@
 package com.itwill.tmr_house.order.김하은;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import com.itwill.tmr_house.order.OrderItem;
 
 public class Orders {
 	private int o_no;
@@ -10,10 +13,10 @@ public class Orders {
 	private int o_price;
 	private Date o_date;
 	private String m_id;
-	private List<OrderItem> orderItem;
+	private List<OrderItem> orderItemList;
 	
 	public Orders() {
-	
+		orderItemList = new ArrayList<OrderItem>();
 	}
 
 	public Orders(int o_no, String o_desc, int o_qty, int o_price, Date o_date, String m_id) {
@@ -24,7 +27,7 @@ public class Orders {
 		this.o_price = o_price;
 		this.o_date = o_date;
 		this.m_id = m_id;
-		this.orderItem = orderItem;
+		this.orderItemList = new ArrayList<OrderItem>();
 	}
 
 	public int getO_no() {
@@ -75,22 +78,20 @@ public class Orders {
 		this.m_id = m_id;
 	}
 
-	public List<OrderItem> getOrderItem() {
-		return orderItem;
+
+
+	public List<OrderItem> getOrderItemList() {
+		return orderItemList;
 	}
 
-	public void setOrderItem(List<OrderItem> orderItem) {
-		this.orderItem = orderItem;
+	public void setOrderItemList(List<OrderItem> orderItemList) {
+		this.orderItemList = orderItemList;
 	}
 
 	@Override
 	public String toString() {
-		return "Order [o_no=" + o_no + ", o_desc=" + o_desc + ", o_qty=" + o_qty + ", o_price=" + o_price + ", o_date="
-				+ o_date + ", m_id=" + m_id + ", orderItem=" + orderItem + "]\n";
+		return "Orders [o_no=" + o_no + ", o_desc=" + o_desc + ", o_qty=" + o_qty + ", o_price=" + o_price + ", o_date="
+				+ o_date + ", m_id=" + m_id + ", orderItemList=" + orderItemList + "]";
 	}
-	
-	
-	
-	
-	
+
 }
