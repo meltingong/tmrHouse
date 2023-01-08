@@ -16,7 +16,7 @@ public class ProductDaoTestMain {
 				
 		// delete(admin)
 		//child record 있어서(orderitem이 fk로 product의 p_no를 가짐) 삭제할 수 없음
-		System.out.println(">> " + productDao.deleteByNo(4));
+		System.out.println(">> " + productDao.deleteByNo(7));
 				
 		
 		// update(admin)
@@ -24,11 +24,11 @@ public class ProductDaoTestMain {
 		Product updateProduct = new Product(7, "edit", 11111, "edit_img", "edit_desc", "Y");
 		System.out.println(">> " + productDao.updateProduct(updateProduct));
 		System.out.println(productDao.findByProductNo(3));
-
+		
 		// 상품번호로 특정 상품 출력
 		System.out.println("3. Product_findByProductNo");
 		System.out.println(">> " + productDao.findByProductNo(1));
-
+		
 		// 상품 전체 출력
 		System.out.println("4. Product_findAll");
 		System.out.println(">> " + productDao.findAll());
