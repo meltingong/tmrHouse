@@ -2,6 +2,7 @@ package com.itwill.tmr_house.order;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Orders {
 	private int o_no;
@@ -11,8 +12,10 @@ public class Orders {
 	private Date o_date;
 	private String m_id;
 	
-	private ArrayList<OrderItem> orderItemList = new ArrayList<OrderItem>();
+	private List<OrderItem> orderItemList;
+	
 	public Orders() {
+		orderItemList = new ArrayList<OrderItem>();
 	}
 
 	public Orders(int o_no, String o_desc, int o_qty, int o_price, Date o_date, String m_id) {
@@ -32,13 +35,14 @@ public class Orders {
 		this.orderItemList = orderItemList;
 	}
 
-	public ArrayList<OrderItem> getOrderItemList() {
+	public List<OrderItem> getOrderItemList() {
 		return orderItemList;
 	}
 
-	public void setOrderItemList(ArrayList<OrderItem> orderItemList) {
+	public void setOrderItemList(List<OrderItem> orderItemList) {
 		this.orderItemList = orderItemList;
 	}
+
 
 	public int getO_no() {
 		return o_no;
@@ -91,7 +95,7 @@ public class Orders {
 	@Override
 	public String toString() {
 		return "Order [o_no=" + o_no + ", o_desc=" + o_desc + ", o_qty=" + o_qty + ", o_price=" + o_price + ", o_date="
-				+ o_date + ", m_id=" + m_id + "]";
+				+ o_date + ", m_id=" + m_id + "]\n";
 	}
 	
 	

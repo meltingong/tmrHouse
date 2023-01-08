@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.itwill.tmr_house.common.DataSource;
 import com.itwill.tmr_house.product.Product;
@@ -18,7 +19,7 @@ private DataSource dataSource;
 	/*
 	 * 주문생성
 	 */
-	public int insertOrder(Orders order) throws Exception{
+	public int insertOrder(Orders orders) throws Exception{
 		/*
 		private int o_no;
 		private String o_desc;
@@ -31,18 +32,19 @@ private DataSource dataSource;
 		Connection con = null;
 		PreparedStatement pstmt1 = null;
 		PreparedStatement pstmt2 = null;
+		int rowCount = 0;
 		try {
 			con = dataSource.getConnection();
 			con.setAutoCommit(false);
 			pstmt1=con.prepareStatement(OrdersSQL.ORDERS_INSERT);
-			pstmt1.setString(1, order.getO_desc());
-			pstmt1.setInt(2, order.getO_qty());
-			pstmt1.setInt(3, order.getO_price());
-			pstmt1.setString(4, order.getM_id());
-			pstmt1.executeUpdate();
+			pstmt1.setString(1, orders.getO_desc());
+			pstmt1.setInt(2, orders.getO_qty());
+			pstmt1.setInt(3, orders.getO_price());
+			pstmt1.setString(4, orders.getM_id());
+			rowCount = pstmt1.executeUpdate();
 			
 			pstmt2 = con.prepareStatement(OrdersSQL.ORDERS_ITEM_INSERT);
-			for(OrderItem orderItem : order.getOrderItemList()) {
+			for(OrderItem orderItem : orders.getOrderItemList()) {
 				pstmt2.setInt(1, orderItem.getOi_qty());
 				pstmt2.setInt(2, orderItem.getProduct().getP_no());
 				pstmt2.executeUpdate();
@@ -57,7 +59,7 @@ private DataSource dataSource;
 			if(con!=null)con.close();
 		}
 	
-		return 0;
+		return rowCount;
 	}
 	
 	/*
@@ -114,15 +116,15 @@ private DataSource dataSource;
 	}
 	
 	// 유저 아이디로 주문리스트 불러오기
-		public ArrayList<Orders> findById(String m_id) throws Exception {
+		public List<Orders> findById(String m_id) throws Exception {
 			Connection con = null;
 			PreparedStatement pstmt = null;
-			ArrayList<Orders> orderList = new ArrayList<Orders>();
+			List<Orders> orderList = new ArrayList<Orders>();
 			ResultSet rs = null;
 			try {
 				con = dataSource.getConnection();
 				// "select * from orders where m_id=?";
-				pstmt = con.prepareStatement(OrdersSQL.ORDERS_DELETE_BY_M_ID);
+				pstmt = con.prepareStatement(OrdersSQL.ORDERS_SELECT_BY_M_ID);
 				pstmt.setString(1, m_id);
 				rs = pstmt.executeQuery();
 				/*
@@ -132,13 +134,15 @@ private DataSource dataSource;
 				 * 
 				 */
 				while (rs.next()) {
-					orderList.add(new Orders(rs.getInt("o_no"), rs.getString("o_desc"), rs.getInt("o_qty"),
-							rs.getInt("o_price"), rs.getDate("o_date"), rs.getString("m_id")));
+					orderList.add(new Orders(	rs.getInt("o_no"), 
+												rs.getString("o_desc"), 
+												rs.getInt("o_qty"),
+												rs.getInt("o_price"), 
+												rs.getDate("o_date"), 
+												rs.getString("m_id")));
 
 				}
 			} finally {
-				rs.close();
-				pstmt.close();
 				if (con != null)
 					con.close();
 			}
@@ -164,13 +168,23 @@ private DataSource dataSource;
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
-				order = new Orders(rs.getInt("o_no"), rs.getString("o_desc"), rs.getInt("o_qty"), rs.getInt("o_price"),
-						rs.getDate("o_date"), rs.getString("m_id"));
+				order = new Orders(	rs.getInt("o_no"), 
+									rs.getString("o_desc"), 
+									rs.getInt("o_qty"), 
+									rs.getInt("o_price"),
+									rs.getDate("o_date"),
+									rs.getString("m_id"));
 				do {
-					order.getOrderItemList().add(new OrderItem(rs.getInt("oi_no"), rs.getInt("oi_qty"), rs.getInt("o_no"),
-									new Product(rs.getInt("p_no"), rs.getString("p_name"), rs.getInt("p_price"),
-											rs.getString("p_img"), rs.getString("p_desc"),
-											rs.getString("p_freeDelivery"))));
+					order.getOrderItemList()
+							.add(new OrderItem(	rs.getInt("oi_no"), 
+												rs.getInt("oi_qty"), 
+												rs.getInt("o_no"),
+												new Product(rs.getInt("p_no"), 
+															rs.getString("p_name"), 
+															rs.getInt("p_price"),
+															rs.getString("p_img"), 
+															rs.getString("p_desc"),
+															rs.getString("p_freeDelivery"))));
 							
 				} while (rs.next());
 			}

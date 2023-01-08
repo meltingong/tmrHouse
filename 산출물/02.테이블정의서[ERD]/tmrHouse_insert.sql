@@ -15,8 +15,9 @@ insert into cart(c_no, c_qty, m_id, p_no) values(cart_c_no_SEQ.nextval,1,'aaaa',
 insert into cart(c_no, c_qty, m_id, p_no) values(cart_c_no_SEQ.nextval,1,'aaaa',2);
 
 --bbbb
+insert into cart(c_no, c_qty, m_id, p_no) values(cart_c_no_SEQ.nextval,1,'bbbb',2);
 insert into cart(c_no, c_qty, m_id, p_no) values(cart_c_no_SEQ.nextval,2,'bbbb',3);
-insert into cart(c_no, c_qty, m_id, p_no) values(cart_c_no_SEQ.nextval,1,'bbbb',1);
+insert into cart(c_no, c_qty, m_id, p_no) values(cart_c_no_SEQ.nextval,1,'bbbb',4);
 
 /*********************orders insert*********************/
 /*
@@ -41,7 +42,7 @@ bbbb님이
     제품번호 4번 1개
 */
 -- orders insert
-insert into orders(o_no, o_desc, o_qty, o_price, o_date,m_id) values(orders_o_no_SEQ.nextval,'원목 사각테이블 외 1건',1,120000,sysdate,'bbbb');
+insert into orders(o_no, o_desc, o_qty, o_price, o_date,m_id) values(orders_o_no_SEQ.nextval,'원목 사각테이블 외 2건',1,120000,sysdate,'bbbb');
 
 -- order item insert
 -- 제품번호 2번 1개
