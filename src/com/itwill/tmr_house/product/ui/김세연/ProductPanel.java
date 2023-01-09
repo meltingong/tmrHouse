@@ -17,7 +17,7 @@ import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class OrderPanel extends JPanel {
+public class ProductPanel extends JPanel {
 	private JTextField serchField;
 	private JTextField textField;
 	private JTextField productTextField22;
@@ -29,7 +29,7 @@ public class OrderPanel extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public OrderPanel() {
+	public ProductPanel() {
 		setLayout(new BorderLayout(0, 0));
 		
 		JPanel serchPanel = new JPanel();
@@ -72,7 +72,7 @@ public class OrderPanel extends JPanel {
 		textField.setColumns(10);
 		
 		JButton product = new JButton("New button");
-		product.setIcon(new ImageIcon(OrderPanel.class.getResource("/com/itwill/tmr_house/product/images/table_wood_square500.png")));
+		product.setIcon(new ImageIcon(ProductPanel.class.getResource("/com/itwill/tmr_house/product/images/chair_steel_wood.png")));
 		product.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -84,6 +84,7 @@ public class OrderPanel extends JPanel {
 		showProductPanel.add(product);
 		
 		JButton productTextField1 = new JButton("New button");
+		productTextField1.setIcon(new ImageIcon("/Users/seyeonkim/Downloads/iloveimg-resized 2/300chair_steel_wood.png"));
 		productTextField1.setOpaque(true);
 		productTextField1.setBorder(null);
 		productTextField1.setBounds(258, 27, 220, 168);
