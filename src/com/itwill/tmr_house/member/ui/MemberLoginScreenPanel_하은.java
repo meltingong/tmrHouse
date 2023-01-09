@@ -38,7 +38,7 @@ public class MemberLoginScreenPanel_하은 extends JPanel {
 		JLabel lblNewLabel = new JLabel("로그인");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("D2Coding", Font.BOLD, 30));
-		lblNewLabel.setBounds(178, 104, 165, 34);
+		lblNewLabel.setBounds(165, 104, 165, 34);
 		LoginScreenCenterAppTitlePanel.add(lblNewLabel);
 		
 		JLabel loginIdLB = new JLabel("아이디");
