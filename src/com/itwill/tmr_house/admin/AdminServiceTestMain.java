@@ -10,7 +10,7 @@ public class AdminServiceTestMain {
 		//회원전체리스트
 		System.out.println(adminService.adMemberListAll());
 		//주문전체리스트 //오더서비스에 findAll() 메소드 추가 //sql문 추가
-		System.out.println(adminService.adOrderListAll());
+		//System.out.println(adminService.adOrderListAll());
 		//상품추가
 		rowCount =adminService.adProductInsert(new Product(0,"고구마인형",10000,null,"귀여운인형","Y"));
 		System.out.println(rowCount);

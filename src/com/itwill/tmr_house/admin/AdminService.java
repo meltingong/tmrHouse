@@ -26,9 +26,9 @@ public class AdminService {
 		return memberDao.findAll();
 	}
 	//주문전체리스트 //오더서비스에 findAll() 메소드 추가 //sql문 추가
-	public List<Order> adOrderListAll() throws Exception {
+	/*public List<Order> adOrderListAll() throws Exception {
 		return orderDao.findByAll();
-	}
+	}*/
 	//상품추가
 	public int adProductInsert(Product product) throws Exception {
 		return productDao.insert(product);
