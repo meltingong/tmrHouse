@@ -4,6 +4,7 @@ DROP TABLE cart CASCADE CONSTRAINTS;
 DROP TABLE product CASCADE CONSTRAINTS;
 DROP TABLE member CASCADE CONSTRAINTS;
 
+
 CREATE TABLE member(
 		m_id                          		VARCHAR2(50)		 NULL ,
 		m_pw                          		VARCHAR2(100)		 NULL ,
