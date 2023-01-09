@@ -30,12 +30,6 @@ public class Orders {
 	}
 	
 
-	/*public Orders(String m_id, ArrayList<OrderItem> orderItemList) {
-		super();
-		this.m_id = m_id;
-		this.orderItemList = orderItemList;
-	}*/
-
 	public List<OrderItem> getOrderItemList() {
 		return orderItemList;
 	}
