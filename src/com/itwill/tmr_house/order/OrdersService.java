@@ -126,7 +126,6 @@ public class OrdersService {
 			
 			Orders newOrder=new Orders(0,o_desc, oi_tot_count, o_tot_price,null, m_id);
 			newOrder.setOrderItemList(orderItemList);
-			ordersDao.insertOrder(newOrder);
 			
 			for(int i = 0;i<cart_item_checks.length;i++) {
 				cartDao.deleteByCartNo(Integer.parseInt(cart_item_checks[i]));
