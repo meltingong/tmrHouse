@@ -44,7 +44,7 @@ public class OrdersService {
 			orderItemList.add(orderItem);
 			Orders newOrders = null;
 			
-			if(product.getP_freeDelivery().equals("Y")) {
+			if(product.getP_freeDelivery().equals("N")) {
 				newOrders =	new Orders(0, 
 							    orderItemList.get(0).getProduct().getP_name(),
 							   oi_qty,
@@ -87,7 +87,7 @@ public class OrdersService {
 			return ordersDao.insertOrder(newOrder);
 		}
 		//cart에서 선택주문
-	public int cartSelectOrder(String m_id,String[] cart_item_checks) throws Exception{
+		public int cartSelectOrder(String m_id,String[] cart_item_checks) throws Exception{
 			
 			ArrayList<OrderItem> orderItemList=new ArrayList<OrderItem>();
 			int o_tot_price=0;
