@@ -15,6 +15,7 @@ public class ProductService {
 		productDao = new ProductDao();
 		dataSource = new DataSource();
 	}
+
 	
 	// insert
 	public int insertProduct(Product product) throws Exception {
