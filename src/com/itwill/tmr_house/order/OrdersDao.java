@@ -28,7 +28,6 @@ private DataSource dataSource;
 		private Date o_date;
 		private String m_id;
 		 */
-		
 		Connection con = null;
 		PreparedStatement pstmt1 = null;
 		PreparedStatement pstmt2 = null;
@@ -50,15 +49,15 @@ private DataSource dataSource;
 				pstmt2.executeUpdate();
 			}
 			con.commit();
-			
+			pstmt1.close();
+			pstmt2.close();
 		}catch (Exception e) {
 			e.printStackTrace();
 			con.rollback();
 			throw e;
 		}finally {
-			if(con!=null)con.close();
+			if(con!=null) dataSource.close(con);
 		}
-	
 		return rowCount;
 	}
 	
@@ -77,15 +76,14 @@ private DataSource dataSource;
 			pstmt.setInt(1, o_no);
 			rowCount = pstmt.executeUpdate();
 			con.commit();
-			
+			pstmt.close();
 		}catch (Exception e) {
 			con.rollback();
 			e.printStackTrace();
 			throw e;
 		}finally {
-			if(con!=null)con.close();
+			if(con!=null) dataSource.close(con);
 		}
-				
 		return rowCount;
 	}
 	
@@ -103,16 +101,15 @@ private DataSource dataSource;
 			pstmt.setString(1, m_id);
 			rowCount = pstmt.executeUpdate();
 			con.commit();
+			pstmt.close();
 		}catch (Exception e) {
 			con.rollback();
 			e.printStackTrace();
 			throw e;
 		}finally {
-			if(con!=null)con.close();
+			if(con!=null) dataSource.close(con);
 		}
-				
 		return rowCount;
-		
 	}
 	
 	// 유저 아이디로 주문리스트 불러오기
@@ -128,10 +125,14 @@ private DataSource dataSource;
 				pstmt.setString(1, m_id);
 				rs = pstmt.executeQuery();
 				/*
-				 * 이름 널? 유형 ------- -------- ------------- O_NO NOT NULL NUMBER(10) O_DESC
-				 * VARCHAR2(100) O_QTY NUMBER(10) O_PRICE NUMBER(10) O_DATE DATE M_ID
-				 * VARCHAR2(50)
-				 * 
+				 * 이름 	널? 		유형 
+				 * ------- -------- ------------- 
+				 * O_NO 	NOT NULL NUMBER(10) 
+				 * O_DESC 			 VARCHAR2(100)
+				 * O_QTY			 NUMBER(10) 
+				 * O_PRICE 			 NUMBER(10) 
+				 * O_DATE 			 DATE 
+				 * M_ID				 VARCHAR2(50)
 				 */
 				while (rs.next()) {
 					orderList.add(new Orders(	rs.getInt("o_no"), 
@@ -140,14 +141,13 @@ private DataSource dataSource;
 												rs.getInt("o_price"), 
 												rs.getDate("o_date"), 
 												rs.getString("m_id")));
-
 				}
+				rs.close();
+				pstmt.close();
 			} finally {
-				if (con != null)
-					con.close();
+				if (con != null) dataSource.close(con);
 			}
 			return orderList;
-
 		}
 
 		// 주문 1개보기 고객아이디,주문번호
@@ -185,11 +185,11 @@ private DataSource dataSource;
 															rs.getString("p_img"), 
 															rs.getString("p_desc"),
 															rs.getString("p_freeDelivery"))));
-							
 				} while (rs.next());
 			}
+			rs.close();
+			pstmt.close();
+			dataSource.close(con);
 			return order;
 		}
-	
-	
 }

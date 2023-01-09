@@ -14,7 +14,6 @@ private DataSource dataSource;
 		dataSource = new DataSource();
 	}
 	
-	
 	public int memberInsert(Member member) throws Exception {
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(MemberSQL.MEMBER_INSERT);
@@ -25,6 +24,7 @@ private DataSource dataSource;
 		pstmt.setString(5, member.getM_phone());
 		pstmt.setString(6, member.getM_address());
 		int rowCount = pstmt.executeUpdate();
+		
 		pstmt.close();
 		dataSource.close(con);
 		return rowCount;
@@ -39,25 +39,22 @@ private DataSource dataSource;
 		pstmt.setString(4, m.getM_phone());
 		pstmt.setString(5, m.getM_address());
 		pstmt.setString(6, m.getM_id());
-		
 		int rowCount = pstmt.executeUpdate();
 		
 		pstmt.close();
 		dataSource.close(con);
-		
 		return rowCount;
 	}
 	
 	public int memberDelete(String m_id) throws Exception {
-		
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(MemberSQL.MEMBER_DELETE);
 		pstmt.setString(1, m_id);
 		int rowCount = pstmt.executeUpdate();
+		
 		pstmt.close();
 		dataSource.close(con);
 		return rowCount;
-		
 	}
 	
 	public Member findByID(String id) throws Exception {
@@ -65,9 +62,7 @@ private DataSource dataSource;
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(MemberSQL.MEMBER_SELECTED_BY_ID);
 		pstmt.setString(1, id);
-		
 		ResultSet rs = pstmt.executeQuery();
-		
 		
 		if(rs.next()) {
 			String i = rs.getString("m_id");
@@ -80,10 +75,10 @@ private DataSource dataSource;
 		} else {
 			
 		}
+		
 		rs.close();
 		pstmt.close();
 		dataSource.close(con);
-		
 		return findMember;
 	}
 	
@@ -104,10 +99,10 @@ private DataSource dataSource;
 			Member findMember = new Member(id,pw,name,birth,phone,address);
 			memberList.add(findMember);
 		}
+		
 		rs.close();
 		pstmt.close();
 		dataSource.close(con);
-		
 		return memberList;
 	}
 

@@ -27,7 +27,7 @@ public class CartDao {
 		int rowCount = pstmt.executeUpdate();
 
 		pstmt.close();
-		con.close();
+		dataSource.close(con);
 		return rowCount;
 	}
 
@@ -66,7 +66,7 @@ public class CartDao {
 		int deleteRowCount = pstmt.executeUpdate();
 
 		pstmt.close();
-		con.close();
+		dataSource.close(con);
 		return deleteRowCount;
 	}
 
@@ -78,7 +78,7 @@ public class CartDao {
 		int deleteRowCount = pstmt.executeUpdate();
 
 		pstmt.close();
-		con.close();
+		dataSource.close(con);
 		return deleteRowCount;
 	}
 
@@ -91,12 +91,20 @@ public class CartDao {
 		ResultSet rs = pstmt.executeQuery();
 
 		if (rs.next()) {
-			cartItem = new Cart(rs.getInt("c_no"), rs.getInt("c_qty"), rs.getString("m_id"),
-					(new Product(rs.getInt("p_no"), rs.getString("p_name"), rs.getInt("p_price"), rs.getString("p_img"),
-							rs.getString("p_desc"), rs.getString("p_freeDelivery"))));
+			cartItem = new Cart(rs.getInt("c_no"), 
+								rs.getInt("c_qty"), 
+								rs.getString("m_id"),
+								(new Product(rs.getInt("p_no"), 
+										rs.getString("p_name"), 
+										rs.getInt("p_price"), 
+										rs.getString("p_img"),
+										rs.getString("p_desc"), 
+										rs.getString("p_freeDelivery"))));
 		}
+		
+		rs.close();
 		pstmt.close();
-		con.close();
+		dataSource.close(con);
 		return cartItem;
 	}
 
@@ -113,9 +121,10 @@ public class CartDao {
 					(new Product(rs.getInt("p_no"), rs.getString("p_name"), rs.getInt("p_price"), rs.getString("p_img"),
 							rs.getString("p_desc"), rs.getString("p_freeDelivery")))));
 		}
-
+		
+		rs.close();
 		pstmt.close();
-		con.close();
+		dataSource.close(con);
 		return cartList;
 	}
 
@@ -135,11 +144,10 @@ public class CartDao {
 			if (rs.next()) {
 				count = rs.getInt(1);
 			}
-
+			rs.close();
+			pstmt.close();
 		} finally {
-			if (con != null) {
-				dataSource.close(con);
-			}
+			if (con != null) dataSource.close(con);
 		}
 		return count;
 	}

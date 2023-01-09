@@ -11,18 +11,14 @@ public class ProductServiceTestMain {
 		
 		//insert 상품추가
 		System.out.println("1. Product_insert");
-		System.out.println(">> "+productService.insert(1));
-				
-		//상품 pk로삭제
-		System.out.println("2. Product_deleteByProductNo");
-		System.out.println(">> "+productService.deleteByProductNo(1));
-		
-		System.out.println("3. Product_deleteByName");
-		System.out.println(">> "+productService.deleteByName(1));
-		
+		Product insertProduct = new Product(0, "insert", 88888, "null", "desc", "Y");
+		System.out.println(">> " + productService.insert(insertProduct));
+		//상품 pk로삭제(구현 미지정)
+	
 		//update 상품변경
-		System.out.println("4. Product_updateByProductNo");
-		System.out.println(">> "+productService.updateByProductNo(1));
+		System.out.println("2. Product_update");
+		Product updateProduct = new Product(5, "update", 12121, "img.jpg", "details", "N");
+		System.err.println(">> " + productService.updateProduct(updateProduct));
 	}
 
-}
+}	
