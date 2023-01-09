@@ -36,7 +36,6 @@ public class ProductDao {
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_DELETE_BY_P_NO);		
 		pstmt.setInt(1, p_no);
-		
 		int rowCount = pstmt.executeUpdate();
 		
 		pstmt.close();
@@ -54,7 +53,6 @@ public class ProductDao {
 		pstmt.setString(4, product.getP_desc());
 		pstmt.setString(5, product.getP_freeDelivery());
 		pstmt.setInt(6, product.getP_no());
-		
 		int rowCount = pstmt.executeUpdate();
 		
 		pstmt.close();
@@ -69,10 +67,15 @@ public class ProductDao {
 		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_SELECT_BY_P_NO);
 		pstmt.setInt(1, p_no);
 		ResultSet rs = pstmt.executeQuery();
+		
 		if (rs.next()) {
 			product = new Product(rs.getInt("p_no"), rs.getString("p_name"), rs.getInt("p_price"),
-					rs.getString("p_img"), rs.getString("p_desc"), rs.getString("p_freeDelivery"));
+								  rs.getString("p_img"), rs.getString("p_desc"), rs.getString("p_freeDelivery"));
 		}
+		
+		rs.close();
+		pstmt.close();
+		dataSource.close(con);
 		return product;
 	}
 
@@ -85,8 +88,12 @@ public class ProductDao {
 
 		while (rs.next()) {
 			productList.add(new Product(rs.getInt("p_no"), rs.getString("p_name"), rs.getInt("p_price"),
-					rs.getString("p_img"), rs.getString("p_desc"), rs.getString("p_freeDelivery")));
+										rs.getString("p_img"), rs.getString("p_desc"), rs.getString("p_freeDelivery")));
 		}
+		
+		rs.close();
+		pstmt.close();
+		dataSource.close(con);
 		return productList;
 	}
 
