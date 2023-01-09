@@ -30,7 +30,7 @@ public class OrderServiceTestMain {
 		rowCount = ordersService.cartSelectOrder("bbbb",cart_item_checks);
 		System.out.println("bbbb님" + rowCount + "개 주문");*/
 		
-		System.out.println(ordersService.directOrder("aaa", 1, 1));
+		System.out.println(ordersService.directOrder("aaaa", 1, 1));
 		
 		
 		
