@@ -7,7 +7,7 @@ public class OrderServiceTestMain {
 	public static void main(String[] args) throws Exception {
 		OrdersService ordersService = new OrdersService();
 		
-		/*// 주문 한개 삭제(주문번호)
+		// 주문 한개 삭제(주문번호)
 		int rowCount = ordersService.deleteByOrderNo(11);
 		System.out.println(">> " + rowCount + "건 주문 삭제");
 		
@@ -23,16 +23,16 @@ public class OrderServiceTestMain {
 		
 		// 카트에서 주문
 		rowCount = ordersService.cartOrder("bbbb");
-		System.out.println(">> " + rowCount + "개 주문");*/
+		System.out.println(">> " + rowCount + "개 주문");
 		
 		// 카트에서 선택주문
-		String[] cart_item_checks = {"4"};
-		int rowCount = ordersService.cartSelectOrder("bbbb",cart_item_checks);
-		System.out.println("bbbb님" + rowCount + "개 주문");
+		String[] cart_item_checks = {"1"};
+		rowCount = ordersService.cartSelectOrder("aaaa",cart_item_checks);
+		System.out.println("aaaa님" + rowCount + "개 주문");
 		
-		/*// 상품페이지에서 바로주문
-		 * 
-		System.out.println(ordersService.directOrder("aaaa", 1, 1));*/
+		// 상품페이지에서 바로주문
+		
+		System.out.println(ordersService.directOrder("aaaa", 1, 1));
 		
 		
 		
