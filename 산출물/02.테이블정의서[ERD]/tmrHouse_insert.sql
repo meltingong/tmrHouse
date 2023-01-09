@@ -13,6 +13,7 @@ insert into product values (product_p_no_SEQ.nextval, '라탄 원목 의자', 50
 --aaaa
 insert into cart(c_no, c_qty, m_id, p_no) values(cart_c_no_SEQ.nextval,1,'aaaa',1);
 insert into cart(c_no, c_qty, m_id, p_no) values(cart_c_no_SEQ.nextval,1,'aaaa',2);
+insert into cart(c_no, c_qty, m_id, p_no) values(cart_c_no_SEQ.nextval,1,'aaaa',3);
 
 --bbbb
 insert into cart(c_no, c_qty, m_id, p_no) values(cart_c_no_SEQ.nextval,1,'bbbb',2);

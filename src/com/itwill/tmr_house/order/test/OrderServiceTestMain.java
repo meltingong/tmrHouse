@@ -23,14 +23,16 @@ public class OrderServiceTestMain {
 		
 		// 카트에서 주문
 		rowCount = ordersService.cartOrder("bbbb");
-		System.out.println(">> " + rowCount + "개 주문");
+		System.out.println(">> " + rowCount + "개 주문");*/
 		
 		// 카트에서 선택주문
-		String[] cart_item_checks = {"5"};
-		rowCount = ordersService.cartSelectOrder("bbbb",cart_item_checks);
-		System.out.println("bbbb님" + rowCount + "개 주문");*/
+		String[] cart_item_checks = {"4"};
+		int rowCount = ordersService.cartSelectOrder("bbbb",cart_item_checks);
+		System.out.println("bbbb님" + rowCount + "개 주문");
 		
-		System.out.println(ordersService.directOrder("aaaa", 1, 1));
+		/*// 상품페이지에서 바로주문
+		 * 
+		System.out.println(ordersService.directOrder("aaaa", 1, 1));*/
 		
 		
 		

@@ -67,6 +67,7 @@ public class OrdersService {
 		
 		//cart에서 주문
 		public int cartOrder(String m_id) throws Exception{
+			Product product = new Product();
 			List<Cart> cartList=cartDao.findByUserId(m_id);
 			List<OrderItem> orderItemList=new ArrayList<OrderItem>();
 			int o_tot_price=0;
@@ -76,6 +77,11 @@ public class OrdersService {
 				orderItemList.add(orderItem);
 				o_tot_price+=orderItem.getOi_qty()*orderItem.getProduct().getP_price();
 				oi_tot_count+=orderItem.getOi_qty();
+			}
+			if(cartList.get(0).getProduct().getP_freeDelivery().equals("N")) {
+				o_tot_price += 3000;
+			}else {
+				
 			}
 			String o_desc = orderItemList.get(0).getProduct().getP_name()+"외 "+(oi_tot_count-1)+" 개";
 			
@@ -88,16 +94,21 @@ public class OrdersService {
 		}
 		//cart에서 선택주문
 		public int cartSelectOrder(String m_id,String[] cart_item_checks) throws Exception{
-			
-			ArrayList<OrderItem> orderItemList=new ArrayList<OrderItem>();
+			Product product = new Product();
+			List<OrderItem> orderItemList=new ArrayList<OrderItem>();
 			int o_tot_price=0;
 			int oi_tot_count=0;
-			for(int i =0;i<cart_item_checks.length;i++) {
+			for(int i =0; i < cart_item_checks.length;i++) {
 				Cart  cartItem = cartDao.findByCartNo(Integer.parseInt(cart_item_checks[i]));
 				OrderItem orderItem=new OrderItem(0, cartItem.getC_qty(),0,cartItem.getProduct());
 				orderItemList.add(orderItem);
 				o_tot_price+=orderItem.getOi_qty()*orderItem.getProduct().getP_price();
 				oi_tot_count+=orderItem.getOi_qty();
+			}
+			if(orderItemList.get(0).getProduct().getP_freeDelivery().equals("N")) {
+				o_tot_price += 3000;
+			}else {
+				
 			}
 			String o_desc = orderItemList.get(0).getProduct().getP_name()+"외 "+(oi_tot_count-1)+" 개";
 			
@@ -110,6 +121,6 @@ public class OrdersService {
 			}
 			return ordersDao.insertOrder(newOrder);
 		}
-	
+
 	
 }
