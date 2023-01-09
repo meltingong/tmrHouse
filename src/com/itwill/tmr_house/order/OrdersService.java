@@ -40,18 +40,27 @@ public class OrdersService {
 		public int directOrder(String m_id,int p_no,int oi_qty) throws Exception {
 			Product product = productDao.findByProductNo(p_no);
 			OrderItem orderItem = new OrderItem(0, oi_qty, p_no, product);
-			ArrayList<OrderItem> orderItemList = new ArrayList<OrderItem>();
+			List<OrderItem> orderItemList = new ArrayList<OrderItem>();
 			orderItemList.add(orderItem);
+			Orders newOrders = null;
 			
-			Orders newOrders =
-					new Orders(0, 
-							   orderItemList.get(0).getProduct().getP_name(),
+			if(product.getP_freeDelivery().equals("N")) {
+				newOrders =	new Orders(0, 
+							    orderItemList.get(0).getProduct().getP_name(),
 							   oi_qty,
-							   orderItemList.get(0).getOi_qty()*orderItemList.get(0).getProduct().getP_price(),
+							   (orderItemList.get(0).getOi_qty()*orderItemList.get(0).getProduct().getP_price()) + 3000,
 							   null,
 							   m_id);
-			newOrders.setOrderItemList(orderItemList);
-			
+							newOrders.setOrderItemList(orderItemList);
+			}else {
+				newOrders =	new Orders(0, 
+					    orderItemList.get(0).getProduct().getP_name(),
+					   oi_qty,
+					   orderItemList.get(0).getOi_qty()*orderItemList.get(0).getProduct().getP_price(),
+					   null,
+					   m_id);
+				
+			}
 			
 			return ordersDao.insertOrder(newOrders);
 		}
@@ -59,7 +68,7 @@ public class OrdersService {
 		//cart에서 주문
 		public int cartOrder(String m_id) throws Exception{
 			List<Cart> cartList=cartDao.findByUserId(m_id);
-			ArrayList<OrderItem> orderItemList=new ArrayList<OrderItem>();
+			List<OrderItem> orderItemList=new ArrayList<OrderItem>();
 			int o_tot_price=0;
 			int oi_tot_count=0;
 			for (Cart cart : cartList) {
@@ -78,7 +87,7 @@ public class OrdersService {
 			return ordersDao.insertOrder(newOrder);
 		}
 		//cart에서 선택주문
-	public int cartSelectOrder(String m_id,String[] cart_item_checks) throws Exception{
+		public int cartSelectOrder(String m_id,String[] cart_item_checks) throws Exception{
 			
 			ArrayList<OrderItem> orderItemList=new ArrayList<OrderItem>();
 			int o_tot_price=0;

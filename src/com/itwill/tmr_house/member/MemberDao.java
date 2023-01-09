@@ -14,7 +14,6 @@ private DataSource dataSource;
 		dataSource = new DataSource();
 	}
 	
-	
 	public int memberInsert(Member member) throws Exception {
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(MemberSQL.MEMBER_INSERT);
@@ -40,7 +39,6 @@ private DataSource dataSource;
 		pstmt.setString(4, m.getM_phone());
 		pstmt.setString(5, m.getM_address());
 		pstmt.setString(6, m.getM_id());
-		
 		int rowCount = pstmt.executeUpdate();
 		
 		pstmt.close();

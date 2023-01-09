@@ -12,11 +12,11 @@ public class ProductDaoTestMain {
 		System.out.println("1. Product_insert");
 		Product product = new Product(0, "장스탠드", 50000, "null", "반짝반짝", "N");
 		System.out.println(">> " + productDao.insert(product));
-
+	
 		// delete(admin)
 		System.out.println("2. Product_delete");
 		System.out.println(">> " + productDao.deleteByNo(7));
-
+	
 		// update(admin)
 		System.out.println("3. Product_update");
 		Product updateProduct = new Product(7, "edit", 11111, "edit_img", "edit_desc", "Y");

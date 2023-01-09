@@ -14,12 +14,12 @@ public class ProductServiceTestMain {
 		System.out.println("1. Product_insert");
 		Product insertProduct = new Product(0, "insert", 88888, "null", "desc", "Y");
 		System.out.println(">> " + productService.insertProduct(insertProduct));
-
+	
 		// 상품 업데이트
 		System.out.println("2. Product_update");
 		Product updateProduct = new Product(5, "update", 12121, "img.jpg", "details", "N");
 		System.out.println(">> " + productService.updateProduct(updateProduct));
-
+		
 		// 상품 번호로 특정 상품 찾기
 		System.out.println("3. Product_findByProductNo");
 		System.out.println(">> " + productService.findByProductNo(1));

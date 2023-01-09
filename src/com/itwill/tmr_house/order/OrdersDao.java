@@ -56,9 +56,7 @@ private DataSource dataSource;
 			con.rollback();
 			throw e;
 		}finally {
-			if(con!=null) {
-				dataSource.close(con);
-			}
+			if(con!=null) dataSource.close(con);
 		}
 		return rowCount;
 	}
@@ -84,9 +82,7 @@ private DataSource dataSource;
 			e.printStackTrace();
 			throw e;
 		}finally {
-			if(con!=null) {
-				dataSource.close(con);
-			}
+			if(con!=null) dataSource.close(con);
 		}
 		return rowCount;
 	}
@@ -111,9 +107,7 @@ private DataSource dataSource;
 			e.printStackTrace();
 			throw e;
 		}finally {
-			if(con!=null) {
-				dataSource.close(con);
-			}
+			if(con!=null) dataSource.close(con);
 		}
 		return rowCount;
 	}
@@ -151,8 +145,7 @@ private DataSource dataSource;
 				rs.close();
 				pstmt.close();
 			} finally {
-				if (con != null)
-					dataSource.close(con);
+				if (con != null) dataSource.close(con);
 			}
 			return orderList;
 		}

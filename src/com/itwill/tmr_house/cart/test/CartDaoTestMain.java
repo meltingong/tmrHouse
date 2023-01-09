@@ -15,31 +15,31 @@ public class CartDaoTestMain {
 		System.out.println(">> " + cartDao.insert(new Cart(0, 2, "cccc", productDao.findByProductNo(1))));
 
 		// 카트 번호로 update
-		System.out.println("Cart_updateByCartNo");
+		System.out.println("1. Cart_updateByCartNo");
 		System.out.println(">> " + cartDao.updateByCartNo(6, 10));
 
 		// 카트의 상품번호로 update
-		System.out.println("Cart_updateByProductNo");
+		System.out.println("2. Cart_updateByProductNo");
 		System.out.println(">> " + cartDao.updateByProductNo(2, 10, "bbbb"));
 		// 카트 번호로 삭제
-		System.out.println("Cart_deleteByCartNo");
+		System.out.println("3. Cart_deleteByCartNo");
 		System.out.println(">> " + cartDao.deleteByCartNo(6));
 
 		// 회원의 카트에 담긴 상품 전체 삭제
-		System.out.println("Cart_deleteAll");
-		System.out.println(">> " + cartDao.deleteByUserId("bbbb"));
+		System.out.println("4. Cart_deleteAll");
+		System.out.println(">> " + cartDao.deleteByUserId("cccc"));
 
 		// 카트에 담긴 특정 상품 찾기(카트 번호로)
-		System.out.println("Cart_findByCartNo");
-		System.out.println(">> " + cartDao.findByCartNo(8));
+		System.out.println("5. Cart_findByCartNo");
+		System.out.println(">> " + cartDao.findByCartNo(2));
 
 		// 회원의 카트에 담긴 상품 전체 찾기
-		System.out.println("Cart_findByUserId");
+		System.out.println("6. Cart_findByUserId");
 		System.out.println(">> " + cartDao.findByUserId("bbbb"));
 
 		// 회원의 장바구니의 특정 상품 count
-		System.out.println("Cart_countByProductNo");
-		System.out.println(">> " + cartDao.countByProductNo("cccc", 1));
+		System.out.println("7. Cart_countByProductNo");
+		System.out.println(">> " + cartDao.countByProductNo("bbbb", 2));
 		
 	}
 }
