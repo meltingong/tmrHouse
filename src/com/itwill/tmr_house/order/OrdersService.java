@@ -98,6 +98,7 @@ public class OrdersService {
 			List<OrderItem> orderItemList=new ArrayList<OrderItem>();
 			int o_tot_price=0;
 			int oi_tot_count=0;
+			
 			for(int i =0; i < cart_item_checks.length;i++) {
 				Cart  cartItem = cartDao.findByCartNo(Integer.parseInt(cart_item_checks[i]));
 				OrderItem orderItem=new OrderItem(0, cartItem.getC_qty(),0,cartItem.getProduct());
@@ -116,11 +117,10 @@ public class OrdersService {
 			newOrder.setOrderItemList(orderItemList);
 			ordersDao.insertOrder(newOrder);
 			
-			for(int i =0;i<cart_item_checks.length;i++) {
+			for(int i = 0;i<cart_item_checks.length;i++) {
 				cartDao.deleteByCartNo(Integer.parseInt(cart_item_checks[i]));
 			}
 			return ordersDao.insertOrder(newOrder);
 		}
 
-	
 }

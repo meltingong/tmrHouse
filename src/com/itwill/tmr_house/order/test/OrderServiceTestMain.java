@@ -26,7 +26,7 @@ public class OrderServiceTestMain {
 		System.out.println(">> " + rowCount + "개 주문");*/
 		
 		// 카트에서 선택주문
-		String[] cart_item_checks = {"4"};
+		String[] cart_item_checks = {"3"};
 		int rowCount = ordersService.cartSelectOrder("bbbb",cart_item_checks);
 		System.out.println("bbbb님" + rowCount + "개 주문");
 		
