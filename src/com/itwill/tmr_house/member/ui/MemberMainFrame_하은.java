@@ -51,6 +51,12 @@ public class MemberMainFrame_하은 extends JFrame {
 		MemberJoinScreenPanel_하은 memberJoinScreenPanel_하은 = new MemberJoinScreenPanel_하은();
 		parentPanel.add(memberJoinScreenPanel_하은, "name_1111319162628500");
 		
+		MemberLoginScreenPanel_하은 memberLoginScreenPanel_하은 = new MemberLoginScreenPanel_하은();
+		parentPanel.add(memberLoginScreenPanel_하은, "name_1120380709217600");
+		
+		MemberMyPageScreenPanel_하은 memberMyPageScreenPanel_하은 = new MemberMyPageScreenPanel_하은();
+		parentPanel.add(memberMyPageScreenPanel_하은, "name_1120396254812900");
+		
 	}
 
 }
