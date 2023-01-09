@@ -45,12 +45,6 @@ private MemberDao memberDao;
 					isSuccess = this.addMember(member);
 					break;
 				}
-				/*if(memberDao.findByID(member.getM_id()) == null) {
-					memberDao.memberInsert(member);
-					isSuccess = "가입성공";
-				}else {
-					isSuccess = "중복된 아이디 입니다.";
-				}*/
 			}else {
 				isSuccess = "올바르지 않은 아이디 형식입니다";
 				break;
