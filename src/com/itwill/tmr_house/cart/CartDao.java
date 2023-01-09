@@ -144,13 +144,10 @@ public class CartDao {
 			if (rs.next()) {
 				count = rs.getInt(1);
 			}
-
+			rs.close();
+			pstmt.close();
 		} finally {
-			if (con != null) {
-				rs.close();
-				pstmt.close();
-				dataSource.close(con);
-			}
+			if (con != null) dataSource.close(con);
 		}
 		return count;
 	}
