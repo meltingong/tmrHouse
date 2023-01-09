@@ -13,9 +13,9 @@ import javax.swing.JPasswordField;
 
 public class MemberJoinScreenPanel_하은 extends JPanel {
 	private JTextField joinIdTF;
-	private JTextField nameTF;
-	private JTextField phoneNumberTF;
-	private JTextField addressTF;
+	private JTextField joinNameTF;
+	private JTextField joinPhoneNumberTF;
+	private JTextField joinAddressTF;
 	private JPasswordField joinPasswordField;
 	private JPasswordField joinPasswordCorrectField;
 
@@ -41,32 +41,32 @@ public class MemberJoinScreenPanel_하은 extends JPanel {
 		
 		JLabel idLB = new JLabel("아이디");
 		idLB.setFont(new Font("D2Coding", Font.PLAIN, 17));
-		idLB.setBounds(37, 147, 152, 18);
+		idLB.setBounds(47, 147, 152, 18);
 		memberJoinCenterPanel.add(idLB);
 		
 		JLabel pwLB = new JLabel("비밀번호");
 		pwLB.setFont(new Font("D2Coding", Font.PLAIN, 17));
-		pwLB.setBounds(37, 203, 152, 24);
+		pwLB.setBounds(47, 203, 152, 24);
 		memberJoinCenterPanel.add(pwLB);
 		
 		JLabel pwCorrectLB = new JLabel("비밀번호확인");
 		pwCorrectLB.setFont(new Font("D2Coding", Font.PLAIN, 17));
-		pwCorrectLB.setBounds(37, 269, 152, 37);
+		pwCorrectLB.setBounds(47, 269, 152, 37);
 		memberJoinCenterPanel.add(pwCorrectLB);
 		
 		JLabel name = new JLabel("이름");
 		name.setFont(new Font("D2Coding", Font.PLAIN, 17));
-		name.setBounds(37, 326, 152, 37);
+		name.setBounds(47, 326, 152, 37);
 		memberJoinCenterPanel.add(name);
 		
 		JLabel phoneNumberLB = new JLabel("핸드폰 번호");
 		phoneNumberLB.setFont(new Font("D2Coding", Font.PLAIN, 17));
-		phoneNumberLB.setBounds(37, 392, 152, 24);
+		phoneNumberLB.setBounds(47, 391, 152, 24);
 		memberJoinCenterPanel.add(phoneNumberLB);
 		
 		JLabel addressLB = new JLabel("주소");
 		addressLB.setFont(new Font("D2Coding", Font.PLAIN, 17));
-		addressLB.setBounds(37, 457, 152, 18);
+		addressLB.setBounds(47, 457, 152, 18);
 		memberJoinCenterPanel.add(addressLB);
 		
 		JButton joinBtn = new JButton("가입");
@@ -74,40 +74,40 @@ public class MemberJoinScreenPanel_하은 extends JPanel {
 		joinBtn.setBorderPainted(false);
 		joinBtn.setBackground(new Color(64, 184, 255));
 		joinBtn.setFont(new Font("D2Coding", Font.PLAIN, 17));
-		joinBtn.setBounds(92, 537, 97, 37);
+		joinBtn.setBounds(102, 537, 97, 37);
 		memberJoinCenterPanel.add(joinBtn);
 		
-		JButton cancelBtn = new JButton("취소");
-		cancelBtn.setBorderPainted(false);
-		cancelBtn.setBackground(new Color(255, 255, 255));
-		cancelBtn.setFont(new Font("D2Coding", Font.PLAIN, 17));
-		cancelBtn.setBounds(284, 537, 97, 37);
-		memberJoinCenterPanel.add(cancelBtn);
+		JButton joinCancelBtn = new JButton("취소");
+		joinCancelBtn.setBorderPainted(false);
+		joinCancelBtn.setBackground(new Color(255, 255, 255));
+		joinCancelBtn.setFont(new Font("D2Coding", Font.PLAIN, 17));
+		joinCancelBtn.setBounds(323, 537, 97, 37);
+		memberJoinCenterPanel.add(joinCancelBtn);
 		
 		joinIdTF = new JTextField();
 		joinIdTF.setBounds(236, 147, 205, 21);
 		memberJoinCenterPanel.add(joinIdTF);
 		joinIdTF.setColumns(10);
 		
-		nameTF = new JTextField();
-		nameTF.setBounds(236, 335, 205, 21);
-		memberJoinCenterPanel.add(nameTF);
-		nameTF.setColumns(10);
+		joinNameTF = new JTextField();
+		joinNameTF.setBounds(236, 335, 205, 21);
+		memberJoinCenterPanel.add(joinNameTF);
+		joinNameTF.setColumns(10);
 		
-		phoneNumberTF = new JTextField();
-		phoneNumberTF.setBounds(236, 394, 205, 21);
-		memberJoinCenterPanel.add(phoneNumberTF);
-		phoneNumberTF.setColumns(11);
+		joinPhoneNumberTF = new JTextField();
+		joinPhoneNumberTF.setBounds(236, 394, 205, 21);
+		memberJoinCenterPanel.add(joinPhoneNumberTF);
+		joinPhoneNumberTF.setColumns(11);
 		
-		addressTF = new JTextField();
-		addressTF.setBounds(236, 457, 205, 21);
-		memberJoinCenterPanel.add(addressTF);
-		addressTF.setColumns(20);
+		joinAddressTF = new JTextField();
+		joinAddressTF.setBounds(236, 457, 205, 21);
+		memberJoinCenterPanel.add(joinAddressTF);
+		joinAddressTF.setColumns(20);
 		
 		JLabel lblNewLabel = new JLabel("회원가입");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("D2Coding", Font.BOLD, 30));
-		lblNewLabel.setBounds(172, 53, 147, 37);
+		lblNewLabel.setBounds(102, 54, 269, 37);
 		memberJoinCenterPanel.add(lblNewLabel);
 		
 		joinPasswordField = new JPasswordField();

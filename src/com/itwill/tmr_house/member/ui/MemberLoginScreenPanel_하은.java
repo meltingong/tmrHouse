@@ -54,11 +54,13 @@ public class MemberLoginScreenPanel_하은 extends JPanel {
 		LoginScreenCenterAppTitlePanel.add(loginPwLB);
 		
 		loginIdTF = new JTextField();
+		loginIdTF.setFont(new Font("D2Coding", Font.PLAIN, 17));
 		loginIdTF.setBounds(178, 323, 165, 21);
 		LoginScreenCenterAppTitlePanel.add(loginIdTF);
 		loginIdTF.setColumns(10);
 		
 		loginPasswordField = new JPasswordField();
+		loginPasswordField.setFont(new Font("D2Coding", Font.PLAIN, 17));
 		loginPasswordField.setBounds(178, 389, 165, 21);
 		LoginScreenCenterAppTitlePanel.add(loginPasswordField);
 		
