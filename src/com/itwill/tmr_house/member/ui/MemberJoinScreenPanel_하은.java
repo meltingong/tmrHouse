@@ -99,44 +99,7 @@ public class MemberJoinScreenPanel_하은 extends JPanel {
 		joinBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				/***********회원가입**********/
-				try {
-				String id = joinIdTF.getText();
-				String password = new String(joinPasswordField.getPassword());
-				String passwordCorrect = new String(joinPasswordCorrectField.getPassword());
-				String name = joinNameTF.getText();
-				String birth = joinBirthTF.getText();
-				String phoneNumber = joinPhoneNumberTF.getText();
-				String address = joinAddressTF.getText();
-				/************유효성 체크***********/
-				
-				if(id.equals("")) {
-					joinIdMsgLB.setText("아이디를 입력하세요.");
-					joinIdTF.requestFocus();
-					return;
-				}
-				if(password.equals(passwordCorrect)) {
-					Member newMember = new Member (id,password,name,birth,phoneNumber,address);
-					String memberAdd = memberService.addMemberDetail(newMember);
-					if(memberAdd.equals("가입성공")) {
-						// 로그인 화면 전환
-						JOptionPane.showMessageDialog(null, "가입성공");
-					}else if(memberAdd.equals("중복된아이디입니다.")) {
-						joinIdMsgLB.setText("중복된 아이디 입니다.");
-						joinIdTF.requestFocus();
-						return;
-					}else {
-						JOptionPane.showMessageDialog(null, "올바르지 않은 아이디형식입니다.");
-						joinIdTF.requestFocus();
-						return;
-					}
-				}else {
-					joinPwCorrectMsgLB.setText("입력하신 비밀번호와 일치하지 않습니다.");
-					joinPasswordCorrectField.requestFocus();
-					}
-				} catch (Exception e1) {
-					System.out.println("회원가입 -->" +e1.getMessage());
-				
-				}
+				checkJoinId();
 			}
 		});
 		joinBtn.setForeground(new Color(255, 255, 255));
@@ -149,9 +112,8 @@ public class MemberJoinScreenPanel_하은 extends JPanel {
 		joinCancelBtn = new JButton("취소");
 		joinCancelBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
 				// 초기화면으로 전환
-				
+				frame.changePanel(TmrHouseMainFrame.PANEL_MEMBER_PRIMARY_SCREEN);
 			}
 		});
 		joinCancelBtn.setBorderPainted(false);
@@ -230,7 +192,46 @@ public class MemberJoinScreenPanel_하은 extends JPanel {
 		
 		}
 	
-	
+	public void checkJoinId() {
+		try {
+			String id = joinIdTF.getText();
+			String password = new String(joinPasswordField.getPassword());
+			String passwordCorrect = new String(joinPasswordCorrectField.getPassword());
+			String name = joinNameTF.getText();
+			String birth = joinBirthTF.getText();
+			String phoneNumber = joinPhoneNumberTF.getText();
+			String address = joinAddressTF.getText();
+			/************유효성 체크***********/
+			
+			if(id.equals("")) {
+				joinIdMsgLB.setText("아이디를 입력하세요.");
+				joinIdTF.requestFocus();
+				return;
+			}
+			if(password.equals(passwordCorrect)) {
+				Member newMember = new Member (id,password,name,birth,phoneNumber,address);
+				String memberAdd = memberService.addMemberDetail(newMember);
+				if(memberAdd.equals("가입성공")) {
+					// 로그인 화면 전환
+					frame.changePanel(TmrHouseMainFrame.PANEL_MEMBER_LOGIN_SCREEN);
+				}else if(memberAdd.equals("중복된아이디입니다.")) {
+					joinIdMsgLB.setText("중복된 아이디 입니다.");
+					joinIdTF.requestFocus();
+					return;
+				}else {
+					JOptionPane.showMessageDialog(null, "올바르지 않은 아이디형식입니다.");
+					joinIdTF.requestFocus();
+					return;
+				}
+			}else {
+				joinPwCorrectMsgLB.setText("입력하신 비밀번호와 일치하지 않습니다.");
+				joinPasswordCorrectField.requestFocus();
+				}
+			} catch (Exception e1) {
+				System.out.println("회원가입 -->" +e1.getMessage());
+			
+			}
+	}
 
 }
 	
