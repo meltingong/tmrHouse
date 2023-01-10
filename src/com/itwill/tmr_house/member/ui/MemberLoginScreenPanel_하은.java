@@ -132,7 +132,7 @@ public class MemberLoginScreenPanel_하은 extends JPanel {
 
 	/*******************로그인 성공 시 호출 할 메소드*****************/
 	
-	private void loginProcess(String id) throws Exception {
+	public void loginProcess(String id) throws Exception {
 		// 1. 로그인 성공한 멤버객체 멤버필드에 저장
 		this.loginMember = memberService.memberDetail(id);
 		

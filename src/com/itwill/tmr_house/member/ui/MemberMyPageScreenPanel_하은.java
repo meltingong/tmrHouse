@@ -189,7 +189,7 @@ public class MemberMyPageScreenPanel_하은 extends JPanel {
 
 	}
 	
-	private void displayMemberInfo(Member member) {
+	public void displayMemberInfo(Member member) {
 		modifyIdTF.setText(member.getM_id());
 		modifyPasswordField.setText(member.getM_pw());
 		modifyBirthTF.setText(member.getM_birth());
