@@ -9,13 +9,19 @@ import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JTextPane;
+
+import com.itwill.tmr_house.ui.*;
+
 import java.awt.Font;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class MemberPrimaryScreenPanel_하은 extends JPanel {
-
+	
+	/********메인프레임 참조********/
+	TmrHouseMainFrame frame;
+	
 	/**
 	 * Create the panel.
 	 */

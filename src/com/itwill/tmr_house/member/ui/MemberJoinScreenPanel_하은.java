@@ -13,6 +13,7 @@ import javax.swing.SwingConstants;
 
 import com.itwill.tmr_house.member.Member;
 import com.itwill.tmr_house.member.MemberService;
+import com.itwill.tmr_house.ui.*;
 
 import javax.swing.JPasswordField;
 import java.awt.event.ActionListener;
@@ -22,8 +23,8 @@ public class MemberJoinScreenPanel_하은 extends JPanel {
 	/****************MemberService 멤버필드 선언 ***********************/
 	private MemberService memberService;
 	
-
-	
+	/********메인프레임 참조********/
+	TmrHouseMainFrame frame;
 	
 	
 	private JTextField joinIdTF;
