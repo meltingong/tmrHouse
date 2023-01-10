@@ -30,7 +30,16 @@ public class TmrHouseMainFrame extends JFrame {
 	public static final int PANEL_MEMBER_MY_PAGE_SCREEN = 4;
 	
 	// 상품
-	public static final int PANEL_PRODUCT_PANEL = 5;
+	// 20부터 시작함.
+	public static final int PANEL_PRODUCT_PANEL = 20;
+	public static final int PANEL_PRODUCT_TABLE_STEEL = 21;
+	public static final int PANEL_PRODUCT_TABLE_WOOD = 22;
+	public static final int PANEL_PRODUCT_CHAIR_STEEL = 23;
+	public static final int PANEL_PRODUCT_CHAIR_WOOD = 24;
+	public static final int PANEL_PRODUCT_LIGHTING_TABLE = 25;
+	public static final int PANEL_PRODUCT_LIGHTING_PENDANT = 26;
+	public static final int PANEL_PRODUCT_PLANT_MONSTERA = 27;
+	public static final int PANEL_PRODUCT_PLANT_OLIVE = 28;
 	
 	
 	// 카트
@@ -117,8 +126,24 @@ public class TmrHouseMainFrame extends JFrame {
 			
 		}else if(panel_no == PANEL_MEMBER_MY_PAGE_SCREEN) {
 			
+		}else if(panel_no == PANEL_PRODUCT_PANEL) {
+			
+		}else if(panel_no == PANEL_PRODUCT_TABLE_STEEL) {
+			
+		}else if(panel_no == PANEL_PRODUCT_TABLE_WOOD) {
+			
+		}else if(panel_no == PANEL_PRODUCT_CHAIR_STEEL) {
+			
+		}else if(panel_no == PANEL_PRODUCT_CHAIR_WOOD) {
+			
+		}else if(panel_no == PANEL_PRODUCT_LIGHTING_TABLE) {
+			
+		}else if(panel_no == PANEL_PRODUCT_LIGHTING_PENDANT) {
+			
+		}else if(panel_no == PANEL_PRODUCT_PLANT_MONSTERA) {
+			
+		}else if(panel_no == PANEL_PRODUCT_PLANT_OLIVE) {
+			
 		}
 	}
-	
-	
 }
