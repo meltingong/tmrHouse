@@ -1,4 +1,4 @@
-package com.itwill.tmr_house.product.ui.김세연;
+package com.itwill.tmr_house.product.ui.test;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -71,6 +71,12 @@ public class ProductListPanel extends JPanel {
 		
 		/*************product item start*************/
 		JPanel productPanel = new JPanel();
+		productPanel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+			}
+		});
 		productPanel.setBorder(null);
 		productPanel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		
@@ -154,7 +160,7 @@ public class ProductListPanel extends JPanel {
 		/*************product item end*************/
 		productService = new ProductService();
 		productList(null);
-	}
+	} // 생성자 끝
 	
 	public void productList(String keyword) throws Exception {
 		List<Product> productList=null;
@@ -201,6 +207,14 @@ public class ProductListPanel extends JPanel {
 			
 			productItemListPanel.add(productPanel);
 			
+			
 		}
 	}
+	
+		public void productDetail(Product product) throws Exception {
+			productService.findByProductNo(product.getP_no());
+		}
+		
+		
+	
 }

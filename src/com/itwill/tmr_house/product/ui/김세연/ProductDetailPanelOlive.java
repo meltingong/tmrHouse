@@ -16,6 +16,7 @@ import com.itwill.tmr_house.member.MemberService;
 import com.itwill.tmr_house.order.OrdersService;
 import com.itwill.tmr_house.product.Product;
 import com.itwill.tmr_house.product.ProductService;
+import com.itwill.tmr_house.ui.TmrHouseMainFrame;
 
 import java.awt.Font;
 import javax.swing.JComboBox;
@@ -26,6 +27,11 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class ProductDetailPanelOlive extends JPanel {
+	
+	TmrHouseMainFrame frame;
+	public void setFrame(TmrHouseMainFrame frame) throws Exception{
+		this.frame = frame;
+	}
 	
 	/************ Service객체멤버변수선언 ************/
 	MemberService memberService;
@@ -88,6 +94,7 @@ public class ProductDetailPanelOlive extends JPanel {
 		direcOrderButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// 주문으로 전환
+//				frame.changePanel(TmrHouseMainFrame.~~);
 			}
 		});
 		direcOrderButton.setFont(new Font("맑은 고딕", Font.BOLD, 20));
@@ -98,6 +105,7 @@ public class ProductDetailPanelOlive extends JPanel {
 		addCartButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// 카트로 전환
+//				frame.changePanel(TmrHouseMainFrame.~~);
 			}
 		});
 		
@@ -114,7 +122,7 @@ public class ProductDetailPanelOlive extends JPanel {
 		JLabel shippingLabel_1 = new JLabel("");
 		shippingLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		shippingLabel_1.setFont(new Font("맑은 고딕", Font.PLAIN, 12));
-		shippingLabel_1.setBounds(352, 326, 111, 22);
+		shippingLabel_1.setBounds(364, 313, 111, 22);
 		panel.add(shippingLabel_1);
 		
 		JLabel lblNewLabel_4 = new JLabel("데코/식물 > 플라워/식물 > 화분");
@@ -127,6 +135,10 @@ public class ProductDetailPanelOlive extends JPanel {
 		shippingLabel_2.setFont(new Font("맑은 고딕", Font.BOLD, 16));
 		shippingLabel_2.setBounds(288, 246, 50, 22);
 		panel.add(shippingLabel_2);
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setBounds(353, 320, 122, 22);
+		panel.add(lblNewLabel);
 		
 		JPanel southPanel = new JPanel();
 		add(southPanel, BorderLayout.SOUTH);
