@@ -13,6 +13,10 @@ import com.itwill.tmr_house.product.*;
 import java.awt.CardLayout;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Toolkit;
+import com.itwill.tmr_house.member.ui.MemberPrimaryScreenPanel_하은;
+import com.itwill.tmr_house.member.ui.MemberJoinScreenPanel_하은;
+import com.itwill.tmr_house.member.ui.MemberLoginScreenPanel_하은;
 
 public class TmrHouseMainFrame extends JFrame {
 	
@@ -71,8 +75,11 @@ public class TmrHouseMainFrame extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @throws Exception 
 	 */
-	public TmrHouseMainFrame() {
+	public TmrHouseMainFrame() throws Exception {
+		setTitle("Tomorrow's House");
+		setIconImage(Toolkit.getDefaultToolkit().getImage(TmrHouseMainFrame.class.getResource("/com/itwill/tmr_house/member/images/home(30x30).png")));
 		setBackground(new Color(255, 255, 255));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 500, 800);
@@ -86,6 +93,16 @@ public class TmrHouseMainFrame extends JFrame {
 		JPanel parentPanel = new JPanel();
 		parentPanel.setBackground(new Color(255, 255, 255));
 		contentPane.add(parentPanel, BorderLayout.CENTER);
+		parentPanel.setLayout(new CardLayout(0, 0));
+		
+		MemberPrimaryScreenPanel_하은 memberPrimaryScreenPanel_하은 = new MemberPrimaryScreenPanel_하은();
+		parentPanel.add(memberPrimaryScreenPanel_하은, "1");
+		
+		MemberJoinScreenPanel_하은 memberJoinScreenPanel_하은 = new MemberJoinScreenPanel_하은();
+		parentPanel.add(memberJoinScreenPanel_하은, "2");
+		
+		MemberLoginScreenPanel_하은 memberLoginScreenPanel_하은 = new MemberLoginScreenPanel_하은();
+		parentPanel.add(memberLoginScreenPanel_하은, "3");
 	}
 
 	
