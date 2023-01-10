@@ -87,31 +87,7 @@ public class MemberLoginScreenPanel_하은 extends JPanel {
 		JButton loginBtn = new JButton("로그인");
 		loginBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try {
-					String id = loginIdTF.getText();
-					String pw = new String(loginPasswordField.getPassword());
-					int result = memberService.login(id, pw);
-					/*
-					 *  0 : 아이디 존재안함
-					 * 	1 : 패스워드 불일치
-					 * 	2 : 로그인 성공
-					 */
-					if(result == 2) {
-						// 로그인 성공
-						loginProcess(id);
-						JOptionPane.showMessageDialog(null, "로그인 성공");
-						loginIdTF.setText("");
-						loginPasswordField.setText("");
-					}else {
-						JOptionPane.showMessageDialog(null, "아이디 또는 비밀번호가 일치하지 않습니다.");
-						loginIdTF.setSelectionStart(0);
-						loginIdTF.setSelectionEnd(id.length());
-						loginIdTF.requestFocus();
-					}
-					
-				}catch(Exception e1){
-					System.out.println(e1.getMessage());
-				}
+				loginTest();
 			}
 		});
 		loginBtn.setForeground(new Color(255, 255, 255));
@@ -126,6 +102,7 @@ public class MemberLoginScreenPanel_하은 extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				
 				// 초기화면으로 전환
+				frame.changePanel(TmrHouseMainFrame.PANEL_MEMBER_PRIMARY_SCREEN);
 			}
 		});
 		loginBacklBtn.setIcon(new ImageIcon(MemberLoginScreenPanel_하은.class.getResource("/com/itwill/tmr_house/member/images/left-arrow (1).png")));
@@ -140,19 +117,50 @@ public class MemberLoginScreenPanel_하은 extends JPanel {
 		
 		}
 
+	/************로그인 유효성 검사**************/
+	public void loginTest() {
+		try {
+			String id = loginIdTF.getText();
+			String pw = new String(loginPasswordField.getPassword());
+			int result = memberService.login(id, pw);
+			/*
+			 *  0 : 아이디 존재안함
+			 * 	1 : 패스워드 불일치
+			 * 	2 : 로그인 성공
+			 */
+			if(result == 2) {
+				// 로그인 성공
+				loginProcess(id);
+				JOptionPane.showMessageDialog(null, "로그인 성공");
+				loginIdTF.setText("");
+				loginPasswordField.setText("");
+				frame.changePanel(TmrHouseMainFrame.PANEL_PRODUCT_PANEL);
+			}else {
+				JOptionPane.showMessageDialog(null, "아이디 또는 비밀번호가 일치하지 않습니다.");
+				loginIdTF.setSelectionStart(0);
+				loginIdTF.setSelectionEnd(id.length());
+				loginIdTF.requestFocus();
+			}
+			
+		}catch(Exception e1){
+			System.out.println(e1.getMessage());
+		}
+	}
 	/*******************로그인 성공 시 호출 할 메소드*****************/
 	
-	public void loginProcess(String id) throws Exception {
+	private void loginProcess(String id) throws Exception {
 		// 1. 로그인 성공한 멤버객체 멤버필드에 저장
 		this.loginMember = memberService.memberDetail(id);
 		
 		// 2. 타이틀 변경 (변경 안함)
-		// 3. 로그인화면 , 화면가입 불활성화 ( 카드형식이라 상관x )
+		// 3. 로그인화면 , 화면가입 불활성화
+		
 		// 4. 정보보기 화면
 		
 		// 5. 수정작업(x)
 		
 	}
+	
 	
 	
 	

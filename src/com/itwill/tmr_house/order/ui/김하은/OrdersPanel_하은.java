@@ -12,23 +12,27 @@ import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
 
 import com.itwill.tmr_house.order.*;
+import com.itwill.tmr_house.ui.*;
 
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
 import java.util.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class OrdersPanel_하은 extends JPanel {
 	
 	OrdersService ordersService;
-	
+	TmrHouseMainFrame frame;
 	private JTable OrdersTable;
 
 	/**
 	 * Create the panel.
+	 * @throws Exception 
 	 */
-	public OrdersPanel_하은() {
+	public OrdersPanel_하은() throws Exception {
 		setBackground(new Color(255, 255, 255));
 		setLayout(new BorderLayout(0, 0));
 		
@@ -49,7 +53,8 @@ public class OrdersPanel_하은 extends JPanel {
 		OrdersHomeButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				// 초기화면으로 화면전환
+				// 메인화면으로 화면전환
+				frame.changePanel(TmrHouseMainFrame.PANEL_PRODUCT_PANEL);
 				
 			}
 		});
@@ -65,15 +70,24 @@ public class OrdersPanel_하은 extends JPanel {
 		JLabel lblNewLabel = new JLabel("주문내역");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("D2Coding", Font.BOLD, 30));
-		lblNewLabel.setBounds(107, 49, 269, 37);
+		lblNewLabel.setBounds(100, 49, 269, 37);
 		OrdersCenterPanel.add(lblNewLabel);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBackground(new Color(255, 255, 255));
-		scrollPane.setBounds(33, 210, 442, 43);
+		scrollPane.setBounds(23, 211, 442, 230);
 		OrdersCenterPanel.add(scrollPane);
 		
 		OrdersTable = new JTable();
+		OrdersTable.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				frame.changePanel(TmrHouseMainFrame.PANEL_ORDERS_DETAIL);
+				int rowNo=OrdersTable.getSelectedRow();
+				int order_no=(Integer)OrdersTable.getValueAt(rowNo, 0);
+				
+			}
+		});
 		OrdersTable.setFont(new Font("D2Coding", Font.PLAIN, 12));
 		OrdersTable.setModel(new DefaultTableModel(
 			new Object[][] {
@@ -85,22 +99,44 @@ public class OrdersPanel_하은 extends JPanel {
 		));
 		scrollPane.setViewportView(OrdersTable);
 		
+		ordersService = new OrdersService();
+		Orders orders = new Orders();
+		orders.setM_id("aaaa");
+		orders.setO_no(1);
+		displayOrders(orders);
 	}
 	
-	public void displayOrders(Orders order) {
+	public void displayOrders(Orders order)  {
 		/**********주문데이터보기 [Jtable]*********/
-	
-		
-		Vector columnVector = new Vector();
-		columnVector.add("주문번호");
-		columnVector.add("주문상품");
-		columnVector.add("수량");
-		columnVector.add("주문금액");
-		columnVector.add("주문날짜");
-		columnVector.add("주문아이디");
-		
-		Vector tableVector = new Vector();
-		
+		try {
+			Orders curtOrder = ordersService.orderListDetail(order.getM_id(), order.getO_no());
+			System.out.println(curtOrder);
+			Vector columnVector = new Vector();
+			columnVector.add("주문번호");
+			columnVector.add("주문상품");
+			columnVector.add("수량");
+			columnVector.add("주문금액");
+			columnVector.add("주문날짜");
+			columnVector.add("주문아이디");
+			
+			Vector tableVector = new Vector();
+			
+			Vector rowVector = new Vector();
+			rowVector.add(curtOrder.getO_no());
+			rowVector.add(curtOrder.getO_desc());
+			rowVector.add(curtOrder.getO_qty());
+			rowVector.add(curtOrder.getO_price());
+			rowVector.add(curtOrder.getO_date());
+			rowVector.add(curtOrder.getM_id());
+			tableVector.add(rowVector);
+			
+			DefaultTableModel tableModel = new DefaultTableModel(tableVector,columnVector);
+			OrdersTable.setModel(tableModel);
+			
+		}catch(Exception e1) {
+			e1.printStackTrace();
+			System.out.println(e1.getMessage());
+		}
 	
 		
 	}

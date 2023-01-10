@@ -16,6 +16,7 @@ import com.itwill.tmr_house.member.MemberService;
 import com.itwill.tmr_house.order.OrdersService;
 import com.itwill.tmr_house.product.Product;
 import com.itwill.tmr_house.product.ProductService;
+import com.itwill.tmr_house.ui.TmrHouseMainFrame;
 
 import java.awt.Font;
 import javax.swing.JComboBox;
@@ -26,6 +27,11 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class ProductDetailPanelOlive extends JPanel {
+	
+	TmrHouseMainFrame frame;
+	public void setFrame(TmrHouseMainFrame frame) throws Exception{
+		this.frame = frame;
+	}
 	
 	/************ Service객체멤버변수선언 ************/
 	MemberService memberService;
@@ -87,7 +93,8 @@ public class ProductDetailPanelOlive extends JPanel {
 		JButton direcOrderButton = new JButton("바로 구매");
 		direcOrderButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				// 주문으로 전환
+//				frame.changePanel(TmrHouseMainFrame.~~);
 			}
 		});
 		direcOrderButton.setFont(new Font("맑은 고딕", Font.BOLD, 20));
@@ -97,7 +104,8 @@ public class ProductDetailPanelOlive extends JPanel {
 		JButton addCartButton = new JButton("카트 담기");
 		addCartButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				// 카트로 전환
+//				frame.changePanel(TmrHouseMainFrame.~~);
 			}
 		});
 		
@@ -108,19 +116,29 @@ public class ProductDetailPanelOlive extends JPanel {
 		JLabel shippingLabel = new JLabel("배송비");
 		shippingLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		shippingLabel.setFont(new Font("맑은 고딕", Font.BOLD, 16));
-		shippingLabel.setBounds(288, 240, 50, 22);
+		shippingLabel.setBounds(288, 313, 50, 22);
 		panel.add(shippingLabel);
 		
-		JLabel shippingLabel_1 = new JLabel("무료배송");
+		JLabel shippingLabel_1 = new JLabel("");
 		shippingLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		shippingLabel_1.setFont(new Font("맑은 고딕", Font.PLAIN, 12));
-		shippingLabel_1.setBounds(350, 241, 111, 22);
+		shippingLabel_1.setBounds(364, 313, 111, 22);
 		panel.add(shippingLabel_1);
 		
 		JLabel lblNewLabel_4 = new JLabel("데코/식물 > 플라워/식물 > 화분");
 		lblNewLabel_4.setFont(new Font("맑은 고딕", Font.ITALIC, 15));
 		lblNewLabel_4.setBounds(12, 10, 235, 37);
 		panel.add(lblNewLabel_4);
+		
+		JLabel shippingLabel_2 = new JLabel("가격");
+		shippingLabel_2.setHorizontalAlignment(SwingConstants.LEFT);
+		shippingLabel_2.setFont(new Font("맑은 고딕", Font.BOLD, 16));
+		shippingLabel_2.setBounds(288, 246, 50, 22);
+		panel.add(shippingLabel_2);
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setBounds(353, 320, 122, 22);
+		panel.add(lblNewLabel);
 		
 		JPanel southPanel = new JPanel();
 		add(southPanel, BorderLayout.SOUTH);
@@ -133,39 +151,16 @@ public class ProductDetailPanelOlive extends JPanel {
 
 	} // 생성
 	
-	/*	
-		public void actionPerformed(ActionEvent e) {
-			// 로그인한 회원이면 바로 구매 + 주문 페이지로 이동
-			try {
-				product = productService.findByProductNo(8);
-				if (loginMember != null) {
-					ordersService.directOrder(loginMember.getM_id(), product.getP_no(), qtyComboBox.getSelectedIndex());
-					// 주문 화면으로 이동
-					
-				} else {
-					// 로그인 화면으로 이동
-					
-				}
-			} catch (Exception e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-		}
-		
-		public void actionPerformed(ActionEvent e) {
-			// 로그인한 회원이면 카트에 담고 + 카트 화면으로 이동
-			// 비회원이면 로그인 화면으로 이동
-			if (loginMember != null) {
-				try {
-					// qtyComboBox.getSelectedIndex() 이건 인덱스고 콤보박스에서 선택된 값을 가져오는 방법은..?
-					cartService.insertCart(new Cart(0, qtyComboBox.getSelectedIndex(), loginMember.getM_id(), product));
-					// 카트로 이동
-				} catch (Exception e1) {
-					e1.printStackTrace();
-				}
-			}else {
-				// 로그인 페이지로 전환
-			}
-		}
-		*/
+//		public void actionPerformed(ActionEvent e) {
+//			// 로그인한 회원이면 바로 구매 + 주문 페이지로 이동
+//					ordersService.directOrder(loginMember.getM_id(), product.getP_no(), qtyComboBox.get);
+//					// 주문 화면으로 이동
+//		}
+//		
+//		public void actionPerformed(ActionEvent e) {
+//					// qtyComboBox.getSelectedIndex() 이건 인덱스고 콤보박스에서 선택된 값을 가져오는 방법은..?
+//					cartService.insertCart(new Cart(0, qtyComboBox.getSelectedIndex(), loginMember.getM_id(), product));
+//					// 카트로 이동
+//		}
+	
 }

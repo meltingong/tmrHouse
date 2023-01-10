@@ -1,4 +1,4 @@
-package com.itwill.tmr_house.product.ui.김세연;
+package com.itwill.tmr_house.product.ui.test;
 
 import java.awt.EventQueue;
 
