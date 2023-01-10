@@ -18,7 +18,7 @@ import java.awt.Toolkit;
 
 public class TmrHouseMainFrame extends JFrame {
 	
-	private CardLayout cardLayout;
+	private CardLayout cardLayout ;
 	/*
 	 * 패널 체인지 상수
 	 */
@@ -52,8 +52,8 @@ public class TmrHouseMainFrame extends JFrame {
 	
 	// 오더
 	
-	public static final int PANEL_ORDERS = 9;
-	public static final int PANEL_ORDERS_DETAIL = 10;
+	public static final int PANEL_ORDERS = 8;
+	public static final int PANEL_ORDERS_DETAIL = 9;
 	
 	
 	private JPanel contentPane;
@@ -71,6 +71,7 @@ public class TmrHouseMainFrame extends JFrame {
 	 */
 	
 	Member loginMember = null;
+	private JPanel parentPanel;
 	
 
 	/**
@@ -106,7 +107,7 @@ public class TmrHouseMainFrame extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
-		JPanel parentPanel = new JPanel();
+		parentPanel = new JPanel();
 		parentPanel.setBackground(new Color(255, 255, 255));
 		contentPane.add(parentPanel, BorderLayout.CENTER);
 		cardLayout = new CardLayout(0, 0);
@@ -136,6 +137,7 @@ public class TmrHouseMainFrame extends JFrame {
 		memberPrimaryScreenPanel_하은.setFrame(this);
 		memberJoinScreenPanel_하은.setFrame(this);
 		memberLoginScreenPanel_하은.setFrame(this);
+		memberMyPageScreenPanel_하은.setFrame(this);
 		
 	}
 
@@ -145,29 +147,43 @@ public class TmrHouseMainFrame extends JFrame {
 	public void changePanel(int panel_no) {
 		if(panel_no == PANEL_MEMBER_PRIMARY_SCREEN) {
 			
+			cardLayout.show(parentPanel, "1");
+			
 		}else if(panel_no == PANEL_MEMBER_JOIN_SCREEN) {
+			cardLayout.show(parentPanel, "2");
 			
 		}else if(panel_no == PANEL_MEMBER_LOGIN_SCREEN) {
+			cardLayout.show(parentPanel, "3");
 			
 		}else if(panel_no == PANEL_MEMBER_MY_PAGE_SCREEN) {
+			cardLayout.show(parentPanel, "4");
 			
 		}else if(panel_no == PANEL_PRODUCT_LIST_PANEL) {
+			cardLayout.show(parentPanel, "5");
 			
 		}else if(panel_no == PANEL_PRODUCT_TABLE_STEEL) {
+		
 			
 		}else if(panel_no == PANEL_PRODUCT_TABLE_WOOD) {
 			
+			
 		}else if(panel_no == PANEL_PRODUCT_CHAIR_STEEL) {
+			
 			
 		}else if(panel_no == PANEL_PRODUCT_CHAIR_WOOD) {
 			
+			
 		}else if(panel_no == PANEL_PRODUCT_LIGHTING_TABLE) {
+			;
 			
 		}else if(panel_no == PANEL_PRODUCT_LIGHTING_PENDANT) {
 			
+			
 		}else if(panel_no == PANEL_PRODUCT_PLANT_MONSTERA) {
 			
+			
 		}else if(panel_no == PANEL_PRODUCT_PLANT_OLIVE) {
+			
 			
 		}
 	}
