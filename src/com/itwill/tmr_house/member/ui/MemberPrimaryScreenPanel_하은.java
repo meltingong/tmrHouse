@@ -22,6 +22,12 @@ public class MemberPrimaryScreenPanel_하은 extends JPanel {
 	/********메인프레임 참조********/
 	TmrHouseMainFrame frame;
 	
+	
+	public void setFrame(TmrHouseMainFrame frame) {
+		this.frame = frame;
+	}
+
+
 	/**
 	 * Create the panel.
 	 */

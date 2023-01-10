@@ -35,6 +35,12 @@ public class MemberMyPageScreenPanel_하은 extends JPanel {
 	private JLabel modifyPwCorrectLB;
 	
 	private Member loginMember;
+	
+	
+	public void setFrame(TmrHouseMainFrame frame) {
+		this.frame = frame;
+	}
+
 	/**
 	 * Create the panel.
 	 */

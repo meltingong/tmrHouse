@@ -40,6 +40,10 @@ public class MemberJoinScreenPanel_하은 extends JPanel {
 	private JLabel joinBirthLB;
 	private JTextField joinBirthTF;
 
+	public void setFrame(TmrHouseMainFrame frame) {
+		this.frame = frame;
+	}
+
 	/**
 	 * Create the panel.
 	 * @throws Exception 

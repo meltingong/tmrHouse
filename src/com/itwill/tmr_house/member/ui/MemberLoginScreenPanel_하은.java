@@ -30,6 +30,11 @@ public class MemberLoginScreenPanel_하은 extends JPanel {
 	
 	private MemberService memberService;
 	private Member loginMember = null;
+	
+	public void setFrame(TmrHouseMainFrame frame) {
+		this.frame = frame;
+	}
+
 	/**
 	 * Create the panel.
 	 * @throws Exception 
