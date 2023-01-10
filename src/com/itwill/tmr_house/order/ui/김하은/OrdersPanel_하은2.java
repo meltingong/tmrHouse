@@ -22,17 +22,25 @@ import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class OrdersPanel_하은 extends JPanel {
+public class OrdersPanel_하은2 extends JPanel {
 	
 	OrdersService ordersService;
 	TmrHouseMainFrame frame;
+	//OrdersMainFrame_하은 frame;
 	private JTable OrdersTable;
+	
+	OrdersDetailPanel_하은2 ordersDetailPanel_하은2;
+	
+	
+	public void setFrame(TmrHouseMainFrame frame) {
+		this.frame = frame;
+	}
 
 	/**
 	 * Create the panel.
 	 * @throws Exception 
 	 */
-	public OrdersPanel_하은() throws Exception {
+	public OrdersPanel_하은2() throws Exception {
 		setBackground(new Color(255, 255, 255));
 		setLayout(new BorderLayout(0, 0));
 		
@@ -59,7 +67,7 @@ public class OrdersPanel_하은 extends JPanel {
 			}
 		});
 		OrdersHomeButton.setBackground(new Color(64, 184, 255));
-		OrdersHomeButton.setIcon(new ImageIcon(OrdersPanel_하은.class.getResource("/com/itwill/tmr_house/member/images/home(30x30).png")));
+		OrdersHomeButton.setIcon(new ImageIcon(OrdersPanel_하은2.class.getResource("/com/itwill/tmr_house/member/images/home(30x30).png")));
 		OrdersSouthPanel.add(OrdersHomeButton);
 		
 		JPanel OrdersCenterPanel = new JPanel();
@@ -83,9 +91,10 @@ public class OrdersPanel_하은 extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				frame.changePanel(TmrHouseMainFrame.PANEL_ORDERS_DETAIL_하은2);
-				int rowNo=OrdersTable.getSelectedRow();
-				int order_no=(Integer)OrdersTable.getValueAt(rowNo, 0);
+				/*int rowNo=OrdersTable.getSelectedRow();
+				int order_no=(Integer)OrdersTable.getValueAt(rowNo, 0);*/
 				
+				//ordersDetailPanel_하은2.displayOrderDetail(order_no);
 			}
 		});
 		OrdersTable.setFont(new Font("D2Coding", Font.PLAIN, 12));

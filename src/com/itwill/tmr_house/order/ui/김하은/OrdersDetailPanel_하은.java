@@ -55,7 +55,7 @@ public class OrdersDetailPanel_하은 extends JPanel {
 		JButton ordersHomeBtn = new JButton("");
 		ordersHomeBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frame.changePanel(TmrHouseMainFrame.PANEL_ORDERS_DETAIL);
+				frame.changePanel(TmrHouseMainFrame.PANEL_ORDERS_DETAIL_하은2);
 			}
 		});
 		ordersHomeBtn.setBackground(new Color(64, 184, 255));

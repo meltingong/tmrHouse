@@ -25,9 +25,13 @@ import java.awt.event.MouseEvent;
 public class OrdersDetailPanel_하은2 extends JPanel {
 	TmrHouseMainFrame frame;
 	OrdersService ordersService;
-	private JTable orderListTable;
 	private JTable orderDetailTable;
-	Orders curtOrder=null;
+	Orders curtOrder = null;
+	
+	
+	public void setFrame(TmrHouseMainFrame frame) {
+		this.frame = frame;
+	}
 	/**
 	 * Create the panel.
 	 * @throws Exception 
@@ -55,7 +59,7 @@ public class OrdersDetailPanel_하은2 extends JPanel {
 		JButton ordersHomeBtn = new JButton("");
 		ordersHomeBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frame.changePanel(TmrHouseMainFrame.PANEL_ORDERS_DETAIL);
+				frame.changePanel(TmrHouseMainFrame.PANEL_MEMBER_PRIMARY_SCREEN);
 			}
 		});
 		ordersHomeBtn.setBackground(new Color(64, 184, 255));
@@ -67,42 +71,8 @@ public class OrdersDetailPanel_하은2 extends JPanel {
 		add(ordersDetailCenterPanel, BorderLayout.CENTER);
 		ordersDetailCenterPanel.setLayout(null);
 		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setPreferredSize(new Dimension(2, 150));
-		scrollPane.setBackground(new Color(255, 255, 255));
-		scrollPane.setBounds(0, 0, 500, 85);
-		ordersDetailCenterPanel.add(scrollPane);
-		
-		orderListTable = new JTable();
-		orderListTable.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				int rowNo=orderListTable.getSelectedRow();
-				int order_no=(Integer)orderListTable.getValueAt(rowNo, 0);
-				displayOrderDetail(order_no);
-			}
-		});
-		orderListTable.setPreferredScrollableViewportSize(new Dimension(450, 200));
-		orderListTable.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-			},
-			new String[] {
-				"\uC8FC\uBB38\uBC88\uD638", "\uC8FC\uBB38\uC0C1\uD488", "\uC218\uB7C9", "\uAE08\uC561", "\uC8FC\uBB38\uB0A0\uC9DC", "\uC8FC\uBB38\uC544\uC774\uB514"
-			}
-		));
-		orderListTable.getColumnModel().getColumn(0).setPreferredWidth(59);
-		orderListTable.getColumnModel().getColumn(1).setPreferredWidth(170);
-		orderListTable.getColumnModel().getColumn(2).setPreferredWidth(45);
-		orderListTable.setFont(new Font("D2Coding", Font.PLAIN, 12));
-		scrollPane.setViewportView(orderListTable);
-		
 		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(0, 294, 500, 152);
+		scrollPane_1.setBounds(0, 81, 500, 152);
 		ordersDetailCenterPanel.add(scrollPane_1);
 		
 		orderDetailTable = new JTable();
@@ -122,83 +92,14 @@ public class OrdersDetailPanel_하은2 extends JPanel {
 		Orders orders = new Orders();
 		orders.setM_id("aaaa"); // 로그인하고 주문한 아이디로 바꿔줘야함
 		orders.setO_no(1);
-		displayOrderDetail(orders.getO_no());
+		displayOrderDetail(orders);
 	} // 생성자 끝
-	/*
-	private void displayOrderList(Orders order) {
-		try {
-			
-			orderList = ordersService.orderListDetail(order.getM_id(), order.getO_no());
-			OrderItem orderItem = new OrderItem();
-			Vector columnVector = new Vector();
-			columnVector.add("주문번호");
-			columnVector.add("주문상품");
-			columnVector.add("수량");
-			columnVector.add("주문금액");
-			columnVector.add("주문날짜");
-			columnVector.add("주문아이디");
-			
-			Vector tableVector = new Vector();
-			
-			
-			while(order.getO_no() == orderItem.getO_no()) {
-				Vector rowVector = new Vector();
-				rowVector.add(orderList.getO_no());
-				rowVector.add(orderList.getOrderItemList().get(order.getO_no()));
-				rowVector.add(orderList.getO_qty());
-				rowVector.add(orderList.getO_price());
-				rowVector.add(orderList.getO_date());
-				rowVector.add(orderList.getM_id());
-				tableVector.add(rowVector);
-			}
-			
-			DefaultTableModel tableModel = new DefaultTableModel(tableVector,columnVector);
-			orderDetailTable.setModel(tableModel);
-			
-		}catch(Exception e1) {
-			e1.printStackTrace();
-			System.out.println(e1.getMessage());
-		}
-	}
-	*/
-	/*public void displayOrders(Orders order)  {
-			
-		try {
-			curtOrder = ordersService.orderListDetail(order.getM_id(), order.getO_no());
-			System.out.println(curtOrder);
-			Vector columnVector = new Vector();
-			columnVector.add("주문번호");
-			columnVector.add("주문상품");
-			columnVector.add("수량");
-			columnVector.add("주문금액");
-			columnVector.add("주문날짜");
-			columnVector.add("주문아이디");
-			
-			Vector tableVector = new Vector();
-			
-			Vector rowVector = new Vector();
-			rowVector.add(curtOrder.getO_no());
-			rowVector.add(curtOrder.getO_desc());
-			rowVector.add(curtOrder.getO_qty());
-			rowVector.add(curtOrder.getO_price());
-			rowVector.add(curtOrder.getO_date());
-			rowVector.add(curtOrder.getM_id());
-			tableVector.add(rowVector);
-			
-			DefaultTableModel tableModel = new DefaultTableModel(tableVector,columnVector);
-			orderListTable.setModel(tableModel);
-			
-		}catch(Exception e1) {
-			e1.printStackTrace();
-			System.out.println(e1.getMessage());
-		}
-	
-		
-	}
-	*/
-	private void displayOrderDetail(int order_no) {
+
+	public void displayOrderDetail(Orders order) {
 		try {
 			/*******주문리스트 보기[Jtable]**********/
+			
+			curtOrder = ordersService.orderListDetail(order.getM_id(), order.getO_no());
 			List<OrderItem> orderItemList = curtOrder.getOrderItemList();
 			
 			Vector columnVector = new Vector();

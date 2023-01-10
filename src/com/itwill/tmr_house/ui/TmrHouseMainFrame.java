@@ -15,6 +15,8 @@ import java.awt.CardLayout;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Toolkit;
+import com.itwill.tmr_house.order.ui.김하은.OrdersPanel_하은2;
+import com.itwill.tmr_house.order.ui.김하은.OrdersDetailPanel_하은2;
 
 public class TmrHouseMainFrame extends JFrame {
 	
@@ -52,8 +54,8 @@ public class TmrHouseMainFrame extends JFrame {
 	
 	// 오더
 	
-	public static final int PANEL_ORDERS = 8;
-	public static final int PANEL_ORDERS_DETAIL = 9;
+	public static final int PANEL_ORDERS_하은2 = 8;
+	public static final int PANEL_ORDERS_DETAIL_하은2 = 9;
 	
 	
 	private JPanel contentPane;
@@ -126,6 +128,12 @@ public class TmrHouseMainFrame extends JFrame {
 		parentPanel.add(memberMyPageScreenPanel_하은, "4");
 		
 		
+		OrdersPanel_하은2 ordersPanel_하은2 = new OrdersPanel_하은2();
+		parentPanel.add(ordersPanel_하은2, "8");
+		
+		OrdersDetailPanel_하은2 ordersDetailPanel_하은2 = new OrdersDetailPanel_하은2();
+		parentPanel.add(ordersDetailPanel_하은2, "9");
+		
 		
 		
 	/******service 객체 생성******/
@@ -138,6 +146,10 @@ public class TmrHouseMainFrame extends JFrame {
 		memberJoinScreenPanel_하은.setFrame(this);
 		memberLoginScreenPanel_하은.setFrame(this);
 		memberMyPageScreenPanel_하은.setFrame(this);
+		ordersPanel_하은2.setFrame(this);
+		ordersDetailPanel_하은2.setFrame(this);
+		
+		
 		
 	}
 
@@ -184,6 +196,12 @@ public class TmrHouseMainFrame extends JFrame {
 			
 		}else if(panel_no == PANEL_PRODUCT_PLANT_OLIVE) {
 			
+			
+		}else if(panel_no == PANEL_ORDERS_하은2) {
+			cardLayout.show(parentPanel, "8");
+			
+		}else if(panel_no == PANEL_ORDERS_DETAIL_하은2) {
+			cardLayout.show(parentPanel, "9");
 			
 		}
 	}
