@@ -51,8 +51,8 @@ public class OrdersPanel_하은 extends JPanel {
 		OrdersHomeButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				// 초기화면으로 화면전환
-				frame.changePanel(TmrHouseMainFrame.PANEL_ORDERS);
+				// 메인화면으로 화면전환
+				frame.changePanel(TmrHouseMainFrame.PANEL_PRODUCT_PANEL);
 				
 			}
 		});
@@ -89,14 +89,17 @@ public class OrdersPanel_하은 extends JPanel {
 		scrollPane.setViewportView(OrdersTable);
 		
 		ordersService = new OrdersService();
-		
+		Orders orders = new Orders();
+		orders.setM_id("aaaa");
+		orders.setO_no(1);
+		displayOrders(orders);
 	}
 	
 	public void displayOrders(Orders order)  {
 		/**********주문데이터보기 [Jtable]*********/
 		try {
 			Orders curtOrder = ordersService.orderListDetail(order.getM_id(), order.getO_no());
-			
+			System.out.println(curtOrder);
 			Vector columnVector = new Vector();
 			columnVector.add("주문번호");
 			columnVector.add("주문상품");
@@ -108,16 +111,17 @@ public class OrdersPanel_하은 extends JPanel {
 			Vector tableVector = new Vector();
 			
 			Vector rowVector = new Vector();
-			rowVector.add(order.getO_no());
-			rowVector.add(order.getOrderItemList());
-			rowVector.add(order.getO_qty());
-			rowVector.add(order.getO_price());
-			rowVector.add(order.getO_date());
-			rowVector.add(order.getM_id());
+			rowVector.add(curtOrder.getO_no());
+			rowVector.add(curtOrder.getO_desc());
+			rowVector.add(curtOrder.getO_qty());
+			rowVector.add(curtOrder.getO_price());
+			rowVector.add(curtOrder.getO_date());
+			rowVector.add(curtOrder.getM_id());
 			tableVector.add(rowVector);
 			
 			DefaultTableModel tableModel = new DefaultTableModel(tableVector,columnVector);
-		
+			OrdersTable.setModel(tableModel);
+			
 		}catch(Exception e1) {
 			e1.printStackTrace();
 			System.out.println(e1.getMessage());

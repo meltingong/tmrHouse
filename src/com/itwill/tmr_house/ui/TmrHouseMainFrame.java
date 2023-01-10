@@ -26,6 +26,8 @@ public class TmrHouseMainFrame extends JFrame {
 	public static final int PANEL_MEMBER_MY_PAGE_SCREEN = 4;
 	
 	// 상품
+	public static final int PANEL_PRODUCT_PANEL = 5;
+	
 	
 	// 카트
 	
@@ -48,6 +50,7 @@ public class TmrHouseMainFrame extends JFrame {
 	 * 2. 로그인 유저 객체 선언
 	 */
 	
+	Member loginMember = null;
 	
 
 	/**
