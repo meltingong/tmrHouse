@@ -53,13 +53,12 @@ public class ProductMainFrame extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
-		JPanel globalSouthMenuPane = new JPanel();
-		contentPane.add(globalSouthMenuPane, BorderLayout.SOUTH);
-		globalSouthMenuPane.setLayout(new CardLayout(0, 0));
+		JPanel panel = new JPanel();
+		contentPane.add(panel, BorderLayout.CENTER);
+		panel.setLayout(new BorderLayout(0, 0));
 		
-		JPanel ProductAllPanel = new JPanel();
-		contentPane.add(ProductAllPanel, BorderLayout.CENTER);
-		
+		ProductDetailPanelOlive productDetailPanelOlive = new ProductDetailPanelOlive();
+		panel.add(productDetailPanelOlive, BorderLayout.CENTER);
 		
 		/************************************
 		 * 3.Service객체생성
@@ -69,10 +68,4 @@ public class ProductMainFrame extends JFrame {
 		cartService = new CartService();
 		orderservice = new OrdersService();
 	}
-	
-	
-	
-	
-
-	
 }
