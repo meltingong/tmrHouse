@@ -31,8 +31,10 @@ public class MemberMainFrame_하은 extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @throws Exception 
 	 */
-	public MemberMainFrame_하은() {
+	public MemberMainFrame_하은() throws Exception {
+		setTitle("내일의 집");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 500, 800);
 		contentPane = new JPanel();
@@ -45,11 +47,7 @@ public class MemberMainFrame_하은 extends JFrame {
 		contentPane.add(parentPanel, BorderLayout.CENTER);
 		parentPanel.setLayout(new CardLayout(0, 0));
 		
-		MemberPrimaryScreenPanel_하은 memberPrimaryScreenPanel_하은 = new MemberPrimaryScreenPanel_하은();
-		parentPanel.add(memberPrimaryScreenPanel_하은, "name_1111291164044100");
 		
-		MemberJoinScreenPanel_하은 memberJoinScreenPanel_하은 = new MemberJoinScreenPanel_하은();
-		parentPanel.add(memberJoinScreenPanel_하은, "name_1111319162628500");
 		
 		MemberLoginScreenPanel_하은 memberLoginScreenPanel_하은 = new MemberLoginScreenPanel_하은();
 		parentPanel.add(memberLoginScreenPanel_하은, "name_1120380709217600");

@@ -20,7 +20,7 @@ private MemberDao memberDao;
 			memberDao.memberInsert(member);
 			isSuccess = "가입성공";
 		}else {
-			isSuccess = "중복된 아이디 입니다.";
+			isSuccess = "중복된아이디입니다.";
 		}
 		return isSuccess;
 	}
@@ -46,7 +46,7 @@ private MemberDao memberDao;
 					break;
 				}
 			}else {
-				isSuccess = "올바르지 않은 아이디 형식입니다";
+				isSuccess = "올바르지 않은 아이디형식입니다.";
 				break;
 			}
 		}

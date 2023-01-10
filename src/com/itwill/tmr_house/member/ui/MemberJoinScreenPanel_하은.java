@@ -6,23 +6,44 @@ import javax.swing.JTextPane;
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+
+import com.itwill.tmr_house.member.Member;
+import com.itwill.tmr_house.member.MemberService;
+
 import javax.swing.JPasswordField;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class MemberJoinScreenPanel_하은 extends JPanel {
+	/****************MemberService 멤버필드 선언 ***********************/
+	private MemberService memberService;
+	
+
+	
+	
+	
 	private JTextField joinIdTF;
 	private JTextField joinNameTF;
 	private JTextField joinPhoneNumberTF;
 	private JTextField joinAddressTF;
 	private JPasswordField joinPasswordField;
 	private JPasswordField joinPasswordCorrectField;
+	private JButton joinBtn;
+	private JButton joinCancelBtn;
+	private JLabel joinIdMsgLB;
+	private JLabel joinPwCorrectMsgLB;
+	private JLabel joinBirthLB;
+	private JTextField joinBirthTF;
 
 	/**
 	 * Create the panel.
+	 * @throws Exception 
 	 */
-	public MemberJoinScreenPanel_하은() {
+	public MemberJoinScreenPanel_하은() throws Exception {
 		setLayout(new BorderLayout(0, 0));
 		
 		JPanel memberJoinNorthPanel = new JPanel();
@@ -51,25 +72,68 @@ public class MemberJoinScreenPanel_하은 extends JPanel {
 		
 		JLabel pwCorrectLB = new JLabel("비밀번호확인");
 		pwCorrectLB.setFont(new Font("D2Coding", Font.PLAIN, 17));
-		pwCorrectLB.setBounds(47, 269, 152, 37);
+		pwCorrectLB.setBounds(47, 251, 152, 37);
 		memberJoinCenterPanel.add(pwCorrectLB);
 		
 		JLabel name = new JLabel("이름");
 		name.setFont(new Font("D2Coding", Font.PLAIN, 17));
-		name.setBounds(47, 326, 152, 37);
+		name.setBounds(47, 357, 152, 37);
 		memberJoinCenterPanel.add(name);
 		
 		JLabel phoneNumberLB = new JLabel("핸드폰 번호");
 		phoneNumberLB.setFont(new Font("D2Coding", Font.PLAIN, 17));
-		phoneNumberLB.setBounds(47, 391, 152, 24);
+		phoneNumberLB.setBounds(47, 422, 152, 24);
 		memberJoinCenterPanel.add(phoneNumberLB);
 		
 		JLabel addressLB = new JLabel("주소");
 		addressLB.setFont(new Font("D2Coding", Font.PLAIN, 17));
-		addressLB.setBounds(47, 457, 152, 18);
+		addressLB.setBounds(47, 488, 152, 18);
 		memberJoinCenterPanel.add(addressLB);
 		
-		JButton joinBtn = new JButton("가입");
+		joinBtn = new JButton("가입");
+		joinBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				/***********회원가입**********/
+				try {
+				String id = joinIdTF.getText();
+				String password = new String(joinPasswordField.getPassword());
+				String passwordCorrect = new String(joinPasswordCorrectField.getPassword());
+				String name = joinNameTF.getText();
+				String birth = joinBirthTF.getText();
+				String phoneNumber = joinPhoneNumberTF.getText();
+				String address = joinAddressTF.getText();
+				/************유효성 체크***********/
+				
+				if(id.equals("")) {
+					joinIdMsgLB.setText("아이디를 입력하세요.");
+					joinIdTF.requestFocus();
+					return;
+				}
+				if(password.equals(passwordCorrect)) {
+					Member newMember = new Member (id,password,name,birth,phoneNumber,address);
+					String memberAdd = memberService.addMemberDetail(newMember);
+					if(memberAdd.equals("가입성공")) {
+						// 로그인 화면 전환
+						JOptionPane.showMessageDialog(null, "가입성공");
+					}else if(memberAdd.equals("중복된아이디입니다.")) {
+						joinIdMsgLB.setText("중복된 아이디 입니다.");
+						joinIdTF.requestFocus();
+						return;
+					}else {
+						JOptionPane.showMessageDialog(null, "올바르지 않은 아이디형식입니다.");
+						joinIdTF.requestFocus();
+						return;
+					}
+				}else {
+					joinPwCorrectMsgLB.setText("입력하신 비밀번호와 일치하지 않습니다.");
+					joinPasswordCorrectField.requestFocus();
+					}
+				} catch (Exception e1) {
+					System.out.println("회원가입 -->" +e1.getMessage());
+				
+				}
+			}
+		});
 		joinBtn.setForeground(new Color(255, 255, 255));
 		joinBtn.setBorderPainted(false);
 		joinBtn.setBackground(new Color(64, 184, 255));
@@ -77,7 +141,14 @@ public class MemberJoinScreenPanel_하은 extends JPanel {
 		joinBtn.setBounds(102, 537, 97, 37);
 		memberJoinCenterPanel.add(joinBtn);
 		
-		JButton joinCancelBtn = new JButton("취소");
+		joinCancelBtn = new JButton("취소");
+		joinCancelBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				// 초기화면으로 전환
+				
+			}
+		});
 		joinCancelBtn.setBorderPainted(false);
 		joinCancelBtn.setBackground(new Color(255, 255, 255));
 		joinCancelBtn.setFont(new Font("D2Coding", Font.PLAIN, 17));
@@ -85,22 +156,26 @@ public class MemberJoinScreenPanel_하은 extends JPanel {
 		memberJoinCenterPanel.add(joinCancelBtn);
 		
 		joinIdTF = new JTextField();
+		joinIdTF.setFont(new Font("D2Coding", Font.PLAIN, 17));
 		joinIdTF.setBounds(236, 147, 205, 21);
 		memberJoinCenterPanel.add(joinIdTF);
 		joinIdTF.setColumns(10);
 		
 		joinNameTF = new JTextField();
-		joinNameTF.setBounds(236, 335, 205, 21);
+		joinNameTF.setFont(new Font("D2Coding", Font.PLAIN, 17));
+		joinNameTF.setBounds(236, 366, 205, 21);
 		memberJoinCenterPanel.add(joinNameTF);
 		joinNameTF.setColumns(10);
 		
 		joinPhoneNumberTF = new JTextField();
-		joinPhoneNumberTF.setBounds(236, 394, 205, 21);
+		joinPhoneNumberTF.setFont(new Font("D2Coding", Font.PLAIN, 17));
+		joinPhoneNumberTF.setBounds(236, 425, 205, 21);
 		memberJoinCenterPanel.add(joinPhoneNumberTF);
 		joinPhoneNumberTF.setColumns(11);
 		
 		joinAddressTF = new JTextField();
-		joinAddressTF.setBounds(236, 457, 205, 21);
+		joinAddressTF.setFont(new Font("D2Coding", Font.PLAIN, 17));
+		joinAddressTF.setBounds(236, 488, 205, 21);
 		memberJoinCenterPanel.add(joinAddressTF);
 		joinAddressTF.setColumns(20);
 		
@@ -111,12 +186,60 @@ public class MemberJoinScreenPanel_하은 extends JPanel {
 		memberJoinCenterPanel.add(lblNewLabel);
 		
 		joinPasswordField = new JPasswordField();
+		joinPasswordField.setFont(new Font("D2Coding", Font.PLAIN, 17));
 		joinPasswordField.setBounds(236, 206, 205, 21);
 		memberJoinCenterPanel.add(joinPasswordField);
 		
 		joinPasswordCorrectField = new JPasswordField();
-		joinPasswordCorrectField.setBounds(236, 278, 205, 21);
+		joinPasswordCorrectField.setFont(new Font("D2Coding", Font.PLAIN, 17));
+		joinPasswordCorrectField.setBounds(236, 260, 205, 21);
 		memberJoinCenterPanel.add(joinPasswordCorrectField);
+		
+		joinIdMsgLB = new JLabel("");
+		joinIdMsgLB.setFont(new Font("D2Coding", Font.PLAIN, 12));
+		joinIdMsgLB.setForeground(new Color(255, 0, 0));
+		joinIdMsgLB.setBounds(236, 167, 205, 29);
+		memberJoinCenterPanel.add(joinIdMsgLB);
+		
+		joinPwCorrectMsgLB = new JLabel("");
+		joinPwCorrectMsgLB.setHorizontalAlignment(SwingConstants.CENTER);
+		joinPwCorrectMsgLB.setForeground(Color.RED);
+		joinPwCorrectMsgLB.setFont(new Font("D2Coding", Font.PLAIN, 12));
+		joinPwCorrectMsgLB.setBounds(205, 279, 269, 29);
+		memberJoinCenterPanel.add(joinPwCorrectMsgLB);
+		
+		joinBirthLB = new JLabel("생년월일");
+		joinBirthLB.setFont(new Font("D2Coding", Font.PLAIN, 17));
+		joinBirthLB.setBounds(47, 298, 152, 37);
+		memberJoinCenterPanel.add(joinBirthLB);
+		
+		joinBirthTF = new JTextField();
+		joinBirthTF.setFont(new Font("D2Coding", Font.PLAIN, 17));
+		joinBirthTF.setBounds(236, 307, 205, 21);
+		memberJoinCenterPanel.add(joinBirthTF);
+		joinBirthTF.setColumns(10);
+		
+	
+		/*****************멤버필드 객체생성******************/
+		memberService = new MemberService();
+		
+		}
+	
+	
 
-	}
 }
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
