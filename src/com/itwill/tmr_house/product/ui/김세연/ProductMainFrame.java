@@ -57,8 +57,9 @@ public class ProductMainFrame extends JFrame {
 		contentPane.add(globalSouthMenuPane, BorderLayout.SOUTH);
 		globalSouthMenuPane.setLayout(new CardLayout(0, 0));
 		
-		ProductPanel productPanel = new ProductPanel();
-		contentPane.add(productPanel, BorderLayout.CENTER);
+		JPanel ProductAllPanel = new JPanel();
+		contentPane.add(ProductAllPanel, BorderLayout.CENTER);
+		
 		
 		/************************************
 		 * 3.Service객체생성

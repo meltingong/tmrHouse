@@ -108,19 +108,31 @@ public class ProductDetailPanelOlive extends JPanel {
 		JLabel shippingLabel = new JLabel("배송비");
 		shippingLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		shippingLabel.setFont(new Font("맑은 고딕", Font.BOLD, 16));
-		shippingLabel.setBounds(288, 240, 50, 22);
+		shippingLabel.setBounds(290, 325, 50, 22);
 		panel.add(shippingLabel);
 		
-		JLabel shippingLabel_1 = new JLabel("무료배송");
+		JLabel shippingLabel_1 = new JLabel("");
 		shippingLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		shippingLabel_1.setFont(new Font("맑은 고딕", Font.PLAIN, 12));
-		shippingLabel_1.setBounds(350, 241, 111, 22);
+		shippingLabel_1.setBounds(352, 326, 111, 22);
 		panel.add(shippingLabel_1);
 		
 		JLabel lblNewLabel_4 = new JLabel("데코/식물 > 플라워/식물 > 화분");
 		lblNewLabel_4.setFont(new Font("맑은 고딕", Font.ITALIC, 15));
 		lblNewLabel_4.setBounds(12, 10, 235, 37);
 		panel.add(lblNewLabel_4);
+		
+		JLabel shippingLabel_2 = new JLabel("가격");
+		shippingLabel_2.setHorizontalAlignment(SwingConstants.LEFT);
+		shippingLabel_2.setFont(new Font("맑은 고딕", Font.BOLD, 16));
+		shippingLabel_2.setBounds(289, 260, 50, 22);
+		panel.add(shippingLabel_2);
+		
+		JLabel shippingLabel_1_1 = new JLabel("");
+		shippingLabel_1_1.setHorizontalAlignment(SwingConstants.CENTER);
+		shippingLabel_1_1.setFont(new Font("맑은 고딕", Font.PLAIN, 12));
+		shippingLabel_1_1.setBounds(351, 261, 111, 22);
+		panel.add(shippingLabel_1_1);
 		
 		JPanel southPanel = new JPanel();
 		add(southPanel, BorderLayout.SOUTH);
@@ -168,4 +180,5 @@ public class ProductDetailPanelOlive extends JPanel {
 			}
 		}
 		*/
+	
 }
