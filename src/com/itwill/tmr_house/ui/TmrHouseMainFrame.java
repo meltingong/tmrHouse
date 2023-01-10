@@ -17,6 +17,7 @@ import java.awt.Toolkit;
 import com.itwill.tmr_house.member.ui.MemberPrimaryScreenPanel_하은;
 import com.itwill.tmr_house.member.ui.MemberJoinScreenPanel_하은;
 import com.itwill.tmr_house.member.ui.MemberLoginScreenPanel_하은;
+import com.itwill.tmr_house.member.ui.MemberMyPageScreenPanel_하은;
 
 public class TmrHouseMainFrame extends JFrame {
 	
@@ -39,9 +40,6 @@ public class TmrHouseMainFrame extends JFrame {
 	
 	public static final int PANEL_ORDERS = 9;
 	
-	
-	private JPanel contentPane;
-	
 	/*
 	 * 1. Service 객체선언
 	 */
@@ -56,6 +54,14 @@ public class TmrHouseMainFrame extends JFrame {
 	
 	Member loginMember = null;
 	
+	
+	private CardLayout cardLayout;
+	private JPanel parentPanel;
+	private JPanel contentPane;
+	private MemberPrimaryScreenPanel_하은 memberPrimaryScreenPanel_하은;
+	private MemberJoinScreenPanel_하은 memberJoinScreenPanel_하은;
+	private MemberLoginScreenPanel_하은 memberLoginScreenPanel_하은;
+	private MemberMyPageScreenPanel_하은 memberMyPageScreenPanel_하은;
 
 	/**
 	 * Launch the application.
@@ -90,19 +96,22 @@ public class TmrHouseMainFrame extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
-		JPanel parentPanel = new JPanel();
+		parentPanel = new JPanel();
 		parentPanel.setBackground(new Color(255, 255, 255));
 		contentPane.add(parentPanel, BorderLayout.CENTER);
 		parentPanel.setLayout(new CardLayout(0, 0));
 		
-		MemberPrimaryScreenPanel_하은 memberPrimaryScreenPanel_하은 = new MemberPrimaryScreenPanel_하은();
+		memberPrimaryScreenPanel_하은 = new MemberPrimaryScreenPanel_하은();
 		parentPanel.add(memberPrimaryScreenPanel_하은, "1");
 		
-		MemberJoinScreenPanel_하은 memberJoinScreenPanel_하은 = new MemberJoinScreenPanel_하은();
+		memberJoinScreenPanel_하은 = new MemberJoinScreenPanel_하은();
 		parentPanel.add(memberJoinScreenPanel_하은, "2");
 		
-		MemberLoginScreenPanel_하은 memberLoginScreenPanel_하은 = new MemberLoginScreenPanel_하은();
+		memberLoginScreenPanel_하은 = new MemberLoginScreenPanel_하은();
 		parentPanel.add(memberLoginScreenPanel_하은, "3");
+		
+		memberMyPageScreenPanel_하은 = new MemberMyPageScreenPanel_하은();
+		parentPanel.add(memberMyPageScreenPanel_하은, "4");
 	}
 
 	
@@ -110,13 +119,13 @@ public class TmrHouseMainFrame extends JFrame {
 	
 	public void changePanel(int panel_no) {
 		if(panel_no == PANEL_MEMBER_PRIMARY_SCREEN) {
-			
+			cardLayout.show(parentPanel, "1");
 		}else if(panel_no == PANEL_MEMBER_JOIN_SCREEN) {
-			
+			cardLayout.show(parentPanel, "2");
 		}else if(panel_no == PANEL_MEMBER_LOGIN_SCREEN) {
-			
+			cardLayout.show(parentPanel, "3");
 		}else if(panel_no == PANEL_MEMBER_MY_PAGE_SCREEN) {
-			
+			cardLayout.show(parentPanel, "4");
 		}
 	}
 	
