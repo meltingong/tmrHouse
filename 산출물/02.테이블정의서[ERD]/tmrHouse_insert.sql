@@ -4,14 +4,14 @@ insert into member(m_id, m_pw, m_name, m_birth, m_phone, m_address) values('bbbb
 insert into member(m_id, m_pw, m_name, m_birth, m_phone, m_address) values('cccc','cccc','짱구','921225','9512-7584','떡잎마을');
 
 /*********************product insert*************************/
-insert into product values (product_p_no_SEQ.nextval, '스틸 원형 테이블', 120000, null, '미드센추리 모던 테이블', 'N');
-insert into product values (product_p_no_SEQ.nextval, '원목 사각 테이블', 90000, null, '내추럴한 원목 테이블', 'N');
-insert into product values (product_p_no_SEQ.nextval, '스틸 원목 의자', 110000, null, '미드센추리 모던 감성의 미니멀한 의자', 'Y');
-insert into product values (product_p_no_SEQ.nextval, '라탄 원목 의자', 50000, null, '고무나무 원목과 라탄이 조화로운 의자', 'Y');
-insert into product values (product_p_no_SEQ.nextval, '테이블 조명', 10000, null, '탁상용 단스탠드. 지름 20cm, 높이 30cm', 'Y');
-insert into product values (product_p_no_SEQ.nextval, '팬턴트 조명', 50000, null, '식탁용 천장 조명. 지름 40cm, 길이 160cm', 'Y');
-insert into product values (product_p_no_SEQ.nextval, '몬스테라 화분', 30000, null, '초보자도 키우기 쉬운 공기정화 식물', 'Y');
-insert into product values (product_p_no_SEQ.nextval, '올리브 나무 화분', 20000, null, '건조한 환경을 좋아하는 플랜테리어 식물', 'Y');
+insert into product values (product_p_no_SEQ.nextval, '스틸 원형 테이블', 120000, '\com\itwill\tmr_house\product\images\table_steel_round150.png', '미드센추리 모던 테이블', 'N');
+insert into product values (product_p_no_SEQ.nextval, '원목 사각 테이블', 90000, '\com\itwill\tmr_house\product\images\table_wood_square150', '내추럴한 원목 테이블', 'N');
+insert into product values (product_p_no_SEQ.nextval, '스틸 원목 의자', 110000, '\com\itwill\tmr_house\product\images\chair_steel_wood150.png', '미드센추리 모던 감성의 미니멀한 의자', 'Y');
+insert into product values (product_p_no_SEQ.nextval, '라탄 원목 의자', 50000, '\com\itwill\tmr_house\product\images\chair_rattan_wood150.png', '고무나무 원목과 라탄이 조화로운 의자', 'Y');
+insert into product values (product_p_no_SEQ.nextval, '테이블 조명', 10000, '\com\itwill\tmr_house\product\images\lighting_short_table150.png', '탁상용 단스탠드. 지름 20cm, 높이 30cm', 'Y');
+insert into product values (product_p_no_SEQ.nextval, '팬턴트 조명', 50000, '\com\itwill\tmr_house\product\images\lighting_ceiling_pendant150.png', '식탁용 천장 조명. 지름 40cm, 길이 160cm', 'Y');
+insert into product values (product_p_no_SEQ.nextval, '몬스테라 화분', 30000, '\com\itwill\tmr_house\product\images\plant_monstera150.png', '초보자도 키우기 쉬운 공기정화 식물', 'Y');
+insert into product values (product_p_no_SEQ.nextval, '올리브 나무 화분', 20000, '\com\itwill\tmr_house\product\images\plant_olive150.png', '건조한 환경을 좋아하는 플랜테리어 식물', 'Y');
 
 /*********************cart insert**********************/
 --aaaa
