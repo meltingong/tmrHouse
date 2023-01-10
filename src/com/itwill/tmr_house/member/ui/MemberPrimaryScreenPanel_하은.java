@@ -16,6 +16,7 @@ import java.awt.Font;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Cursor;
 
 public class MemberPrimaryScreenPanel_하은 extends JPanel {
 	
@@ -55,10 +56,10 @@ public class MemberPrimaryScreenPanel_하은 extends JPanel {
 		primaryScreenCenterPanel.add(houseImageLB);
 		
 		JButton memberJoinBtn = new JButton("회원가입 바로가기");
+		memberJoinBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		memberJoinBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				
+				frame.changePanel(TmrHouseMainFrame.PANEL_MEMBER_JOIN_SCREEN);
 			}
 		});
 		memberJoinBtn.setBounds(50, 462, 400, 45);
@@ -69,6 +70,12 @@ public class MemberPrimaryScreenPanel_하은 extends JPanel {
 		primaryScreenCenterPanel.add(memberJoinBtn);
 		
 		JButton loginBtn = new JButton("로그인 바로가기");
+		loginBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.changePanel(TmrHouseMainFrame.PANEL_MEMBER_LOGIN_SCREEN);
+			}
+		});
+		loginBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		loginBtn.setBounds(50, 527, 400, 45);
 		loginBtn.setFont(new Font("D2Coding", Font.PLAIN, 30));
 		loginBtn.setBackground(new Color(255, 255, 255));
