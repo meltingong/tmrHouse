@@ -6,6 +6,11 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import com.itwill.tmr_house.cart.*;
+import com.itwill.tmr_house.member.*;
+import com.itwill.tmr_house.order.*;
+import com.itwill.tmr_house.product.*;
+
 public class TmrHouseMainFrame extends JFrame {
 	
 	/*
@@ -16,15 +21,21 @@ public class TmrHouseMainFrame extends JFrame {
 	public static final int PANEL_MEMBER_LOGIN_SCREEN = 3;
 	public static final int PANEL_MEMBER_MY_PAGE_SCREEN = 4;
 	
-	
-	
+	private JPanel contentPane;
 	
 	/*
 	 * 1. Service 객체선언
 	 */
+	MemberService memberService;
+	CartService cartService;
+	OrdersService orderService;
+	ProductService productService;
+	
+	/*
+	 * 2. 로그인 유저 객체 선언
+	 */
 	
 	
-	private JPanel contentPane;
 
 	/**
 	 * Launch the application.
