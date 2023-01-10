@@ -11,6 +11,7 @@ import javax.swing.JTable;
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JButton;
+import javax.swing.ImageIcon;
 
 public class OrdersPanel_하은 extends JPanel {
 	private JTable OrdersTable;
@@ -36,13 +37,9 @@ public class OrdersPanel_하은 extends JPanel {
 		add(OrdersSouthPanel, BorderLayout.SOUTH);
 		
 		JButton OrdersHomeButton = new JButton("");
+		OrdersHomeButton.setBackground(new Color(64, 184, 255));
+		OrdersHomeButton.setIcon(new ImageIcon(OrdersPanel_하은.class.getResource("/com/itwill/tmr_house/member/images/home(30x30).png")));
 		OrdersSouthPanel.add(OrdersHomeButton);
-		
-		JButton btnNewButton_1 = new JButton("New button");
-		OrdersSouthPanel.add(btnNewButton_1);
-		
-		JButton btnNewButton_2 = new JButton("New button");
-		OrdersSouthPanel.add(btnNewButton_2);
 		
 		JPanel OrdersCenterPanel = new JPanel();
 		OrdersCenterPanel.setBackground(new Color(255, 255, 255));
