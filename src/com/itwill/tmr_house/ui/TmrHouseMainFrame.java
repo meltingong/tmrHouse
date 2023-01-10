@@ -32,20 +32,24 @@ public class TmrHouseMainFrame extends JFrame {
 	
 	// 상품
 	public static final int PANEL_PRODUCT_PANEL = 5;
+	public static final int PANEL_PRODUCT_DETAIL_OLIVE = 6;
+	public static final int PANEL_PRODUCT_DETAIL_MONSTERA = 7;
 	
 	
 	// 카트
 	
+	
 	// 오더
 	
 	public static final int PANEL_ORDERS = 9;
+	public static final int PANEL_ORDERS_DETAIL = 10;
 	
 	/*
 	 * 1. Service 객체선언
 	 */
 	MemberService memberService;
 	CartService cartService;
-	OrdersService orderService;
+	OrdersService ordersService;
 	ProductService productService;
 	
 	/*
@@ -99,7 +103,8 @@ public class TmrHouseMainFrame extends JFrame {
 		parentPanel = new JPanel();
 		parentPanel.setBackground(new Color(255, 255, 255));
 		contentPane.add(parentPanel, BorderLayout.CENTER);
-		parentPanel.setLayout(new CardLayout(0, 0));
+		cardLayout = new CardLayout(0, 0);
+		parentPanel.setLayout(cardLayout);
 		
 		memberPrimaryScreenPanel_하은 = new MemberPrimaryScreenPanel_하은();
 		parentPanel.add(memberPrimaryScreenPanel_하은, "1");
@@ -112,6 +117,22 @@ public class TmrHouseMainFrame extends JFrame {
 		
 		memberMyPageScreenPanel_하은 = new MemberMyPageScreenPanel_하은();
 		parentPanel.add(memberMyPageScreenPanel_하은, "4");
+		
+		
+		
+		
+	/******service 객체 생성******/
+		memberService = new MemberService();
+		cartService = new CartService();
+		productService = new ProductService();
+		ordersService = new OrdersService();
+		
+		memberPrimaryScreenPanel_하은.setFrame(this);
+		memberJoinScreenPanel_하은.setFrame(this);
+		memberLoginScreenPanel_하은.setFrame(this);
+		memberMyPageScreenPanel_하은.setFrame(this);
+		
+		
 	}
 
 	

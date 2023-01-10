@@ -44,8 +44,15 @@ public class OrdersMainFrame_하은 extends JFrame {
 		contentPane.add(parentPanel, BorderLayout.CENTER);
 		parentPanel.setLayout(new CardLayout(0, 0));
 		
-		OrdersPanel_하은 ordersPanel_하은 = new OrdersPanel_하은();
-		parentPanel.add(ordersPanel_하은, "name_1549984821216900");
+		
+		
+		
+		
+		OrdersDetailPanel_하은 ordersDetailPanel_하은 = new OrdersDetailPanel_하은();
+		parentPanel.add(ordersDetailPanel_하은, "name_1561802639164400");
+		
+		OrdersDetailPanel_하은2 ordersDetailPanel_하은2 = new OrdersDetailPanel_하은2();
+		parentPanel.add(ordersDetailPanel_하은2, "name_1563129758683100");
 	}
 
 }

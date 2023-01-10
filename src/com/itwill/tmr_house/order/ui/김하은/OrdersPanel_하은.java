@@ -19,6 +19,8 @@ import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
 import java.util.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class OrdersPanel_하은 extends JPanel {
 	
@@ -73,10 +75,19 @@ public class OrdersPanel_하은 extends JPanel {
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBackground(new Color(255, 255, 255));
-		scrollPane.setBounds(23, 211, 442, 43);
+		scrollPane.setBounds(23, 211, 442, 230);
 		OrdersCenterPanel.add(scrollPane);
 		
 		OrdersTable = new JTable();
+		OrdersTable.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				frame.changePanel(TmrHouseMainFrame.PANEL_ORDERS_DETAIL);
+				int rowNo=OrdersTable.getSelectedRow();
+				int order_no=(Integer)OrdersTable.getValueAt(rowNo, 0);
+				
+			}
+		});
 		OrdersTable.setFont(new Font("D2Coding", Font.PLAIN, 12));
 		OrdersTable.setModel(new DefaultTableModel(
 			new Object[][] {

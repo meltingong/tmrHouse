@@ -22,7 +22,7 @@ import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class OrdersDetailPanel_하은 extends JPanel {
+public class OrdersDetailPanel_하은2 extends JPanel {
 	TmrHouseMainFrame frame;
 	OrdersService ordersService;
 	private JTable orderListTable;
@@ -32,7 +32,7 @@ public class OrdersDetailPanel_하은 extends JPanel {
 	 * Create the panel.
 	 * @throws Exception 
 	 */
-	public OrdersDetailPanel_하은() throws Exception {
+	public OrdersDetailPanel_하은2() throws Exception {
 		setLayout(new BorderLayout(0, 0));
 		
 		JPanel ordersDetailNorthPanel = new JPanel();
@@ -59,7 +59,7 @@ public class OrdersDetailPanel_하은 extends JPanel {
 			}
 		});
 		ordersHomeBtn.setBackground(new Color(64, 184, 255));
-		ordersHomeBtn.setIcon(new ImageIcon(OrdersDetailPanel_하은.class.getResource("/com/itwill/tmr_house/member/images/home(30x30).png")));
+		ordersHomeBtn.setIcon(new ImageIcon(OrdersDetailPanel_하은2.class.getResource("/com/itwill/tmr_house/member/images/home(30x30).png")));
 		ordersDetailSouthPanel.add(ordersHomeBtn);
 		
 		JPanel ordersDetailCenterPanel = new JPanel();
@@ -122,7 +122,7 @@ public class OrdersDetailPanel_하은 extends JPanel {
 		Orders orders = new Orders();
 		orders.setM_id("aaaa"); // 로그인하고 주문한 아이디로 바꿔줘야함
 		orders.setO_no(1);
-		displayOrders(orders);
+		displayOrderDetail(orders.getO_no());
 	} // 생성자 끝
 	/*
 	private void displayOrderList(Orders order) {
@@ -161,8 +161,8 @@ public class OrdersDetailPanel_하은 extends JPanel {
 		}
 	}
 	*/
-	public void displayOrders(Orders order)  {
-		/**********주문데이터보기 [Jtable]*********/
+	/*public void displayOrders(Orders order)  {
+			
 		try {
 			curtOrder = ordersService.orderListDetail(order.getM_id(), order.getO_no());
 			System.out.println(curtOrder);
@@ -195,7 +195,7 @@ public class OrdersDetailPanel_하은 extends JPanel {
 	
 		
 	}
-	
+	*/
 	private void displayOrderDetail(int order_no) {
 		try {
 			/*******주문리스트 보기[Jtable]**********/
