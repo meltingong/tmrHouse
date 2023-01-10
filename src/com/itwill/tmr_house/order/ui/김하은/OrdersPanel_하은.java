@@ -10,12 +10,19 @@ import javax.swing.SwingConstants;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
+
+import com.itwill.tmr_house.order.*;
+
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
+import java.util.*;
 import java.awt.event.ActionEvent;
 
 public class OrdersPanel_하은 extends JPanel {
+	
+	OrdersService ordersService;
+	
 	private JTable OrdersTable;
 
 	/**
@@ -73,10 +80,30 @@ public class OrdersPanel_하은 extends JPanel {
 				{null, null, null, null, null, null},
 			},
 			new String[] {
-				"\uC8FC\uBB38\uBC88\uD638", "\uC8FC\uBB38\uC0C1\uD488", "\uC8FC\uBB38\uB0B4\uC5ED", "\uC8FC\uBB38\uAE08\uC561", "\uC8FC\uBB38\uB0A0\uC9DC", "\uC8FC\uBB38\uC544\uC774\uB514"
+				"\uC8FC\uBB38\uBC88\uD638", "\uC8FC\uBB38\uC0C1\uD488", "\uC218\uB7C9", "\uC8FC\uBB38\uAE08\uC561", "\uC8FC\uBB38\uB0A0\uC9DC", "\uC8FC\uBB38\uC544\uC774\uB514"
 			}
 		));
 		scrollPane.setViewportView(OrdersTable);
-
+		
 	}
+	
+	public void displayOrders(Orders order) {
+		/**********주문데이터보기 [Jtable]*********/
+	
+		
+		Vector columnVector = new Vector();
+		columnVector.add("주문번호");
+		columnVector.add("주문상품");
+		columnVector.add("수량");
+		columnVector.add("주문금액");
+		columnVector.add("주문날짜");
+		columnVector.add("주문아이디");
+		
+		Vector tableVector = new Vector();
+		
+	
+		
+	}
+	
+	
 }
