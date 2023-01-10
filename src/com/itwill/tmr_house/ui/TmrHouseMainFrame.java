@@ -7,7 +7,12 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 public class TmrHouseMainFrame extends JFrame {
-
+	
+	/*
+	 * 1. Service 객체선언
+	 */
+	
+	
 	private JPanel contentPane;
 
 	/**
