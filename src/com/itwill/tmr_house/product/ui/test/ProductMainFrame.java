@@ -57,7 +57,7 @@ public class ProductMainFrame extends JFrame {
 		contentPane.add(panel, BorderLayout.CENTER);
 		panel.setLayout(new BorderLayout(0, 0));
 		
-		ProductListPanel productListPanel = new ProductListPanel();
+		ProductListPanel_하은 productListPanel = new ProductListPanel_하은();
 		panel.add(productListPanel, BorderLayout.CENTER);
 		
 		/************************************

@@ -12,23 +12,28 @@ import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Color;
 
-public class ProductDetailPanelMonstera extends JPanel {
+public class ProductDetailPanelMonstera_하은 extends JPanel {
 
 	/**
 	 * Create the panel.
 	 */
-	public ProductDetailPanelMonstera() {
+	public ProductDetailPanelMonstera_하은() {
 		setLayout(new BorderLayout(0, 0));
 		
 		JPanel northPanel = new JPanel();
+		northPanel.setBackground(new Color(255, 255, 255));
 		add(northPanel, BorderLayout.NORTH);
 		northPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JLabel lblNewLabel = new JLabel("~ 상품 상세보기 페이지~");
 		northPanel.add(lblNewLabel);
 		
-		JButton btnNewButton = new JButton("카트로 가기 아이콘");
+		JButton btnNewButton = new JButton("");
+		btnNewButton.setBorderPainted(false);
+		btnNewButton.setBackground(new Color(255, 255, 255));
+		btnNewButton.setIcon(new ImageIcon(ProductDetailPanelMonstera_하은.class.getResource("/com/itwill/tmr_house/product/images/shopping-cart_25.png")));
 		northPanel.add(btnNewButton);
 		
 		JPanel centerPanel = new JPanel();
@@ -36,6 +41,7 @@ public class ProductDetailPanelMonstera extends JPanel {
 		centerPanel.setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel = new JPanel();
+		panel.setBackground(new Color(255, 255, 255));
 		centerPanel.add(panel);
 		panel.setLayout(null);
 		
@@ -43,7 +49,7 @@ public class ProductDetailPanelMonstera extends JPanel {
 		productImgLabel1.setBounds(12, 60, 250, 350);
 		panel.add(productImgLabel1);
 		productImgLabel1.setHorizontalAlignment(SwingConstants.CENTER);
-		productImgLabel1.setIcon(new ImageIcon(ProductDetailPanelMonstera.class.getResource("/com/itwill/tmr_house/product/images/plant_monstera350.png")));
+		productImgLabel1.setIcon(new ImageIcon(ProductDetailPanelMonstera_하은.class.getResource("/com/itwill/tmr_house/product/images/plant_monstera350.png")));
 		
 		JLabel productNameLabel = new JLabel("몬스테라 화분");
 		productNameLabel.setBounds(288, 90, 200, 50);
@@ -111,9 +117,12 @@ public class ProductDetailPanelMonstera extends JPanel {
 		panel.add(lblNewLabel_4);
 		
 		JPanel southPanel = new JPanel();
+		southPanel.setBackground(new Color(255, 255, 255));
 		add(southPanel, BorderLayout.SOUTH);
 		
-		JButton btnNewButton_1 = new JButton("초기화면으로 돌아가는 아이콘?");
+		JButton btnNewButton_1 = new JButton("");
+		btnNewButton_1.setBackground(new Color(84, 164, 255));
+		btnNewButton_1.setIcon(new ImageIcon(ProductDetailPanelMonstera_하은.class.getResource("/com/itwill/tmr_house/member/images/home(30x30).png")));
 		southPanel.add(btnNewButton_1);
 
 	}

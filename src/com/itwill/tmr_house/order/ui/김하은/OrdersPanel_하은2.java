@@ -83,7 +83,7 @@ public class OrdersPanel_하은2 extends JPanel {
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBackground(new Color(255, 255, 255));
-		scrollPane.setBounds(23, 211, 442, 230);
+		scrollPane.setBounds(23, 211, 442, 43);
 		OrdersCenterPanel.add(scrollPane);
 		
 		OrdersTable = new JTable();
@@ -119,7 +119,6 @@ public class OrdersPanel_하은2 extends JPanel {
 		/**********주문데이터보기 [Jtable]*********/
 		try {
 			Orders curtOrder = ordersService.orderListDetail(order.getM_id(), order.getO_no());
-			System.out.println(curtOrder);
 			Vector columnVector = new Vector();
 			columnVector.add("주문번호");
 			columnVector.add("주문상품");

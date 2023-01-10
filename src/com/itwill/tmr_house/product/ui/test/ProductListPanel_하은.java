@@ -29,8 +29,9 @@ import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.CardLayout;
 
-public class ProductListPanel extends JPanel {
+public class ProductListPanel_하은 extends JPanel {
 	TmrHouseMainFrame frame;
 	
 	public void setFrame(TmrHouseMainFrame frame) throws Exception{
@@ -54,7 +55,8 @@ public class ProductListPanel extends JPanel {
 	 * Create the panel.
 	 * @throws Exception 
 	 */
-	public ProductListPanel() throws Exception {
+	public ProductListPanel_하은() throws Exception {
+		setBackground(new Color(255, 255, 255));
 		setLayout(null);
 		
 		productListScrollPane = new JScrollPane();
@@ -62,6 +64,7 @@ public class ProductListPanel extends JPanel {
 		add(productListScrollPane);
 		
 		productItemListPanel = new JPanel();
+		productItemListPanel.setBackground(new Color(255, 255, 255));
 		FlowLayout fl_productItemListPanel = (FlowLayout) productItemListPanel.getLayout();
 		fl_productItemListPanel.setVgap(10);
 		fl_productItemListPanel.setHgap(30);
@@ -74,7 +77,7 @@ public class ProductListPanel extends JPanel {
 		productPanel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
+				// 상품 상세페이지로 이동
 			}
 		});
 		productPanel.setBorder(null);
@@ -100,24 +103,26 @@ public class ProductListPanel extends JPanel {
 		});
 		productImageLabel.setHorizontalTextPosition(SwingConstants.LEADING);
 		productImageLabel.setVerticalTextPosition(SwingConstants.BOTTOM);
-		productImageLabel.setIcon(new ImageIcon(ProductListPanel.class.getResource("/com/itwill/tmr_house/product/images/plant_monstera150.png")));
+		productImageLabel.setIcon(new ImageIcon(ProductListPanel_하은.class.getResource("/com/itwill/tmr_house/product/images/plant_monstera150.png")));
 		productImageLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		productImageLabel.setBounds(-15, 4, 185, 121);
 		productPanel.add(productImageLabel);
 		
 		JLabel productNameLabel = new JLabel("몬스테라 화분");
-		productNameLabel.setFont(new Font("굴림", Font.BOLD, 14));
+		productNameLabel.setFont(new Font("맑은 고딕", Font.BOLD, 14));
 		productNameLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		productNameLabel.setHorizontalTextPosition(SwingConstants.CENTER);
 		productNameLabel.setBounds(22, 135, 126, 15);
 		productPanel.add(productNameLabel);
 		
 		JPanel serchPanel = new JPanel();
+		serchPanel.setBackground(new Color(255, 255, 255));
 		serchPanel.setBounds(0, 0, 500, 58);
 		add(serchPanel);
 		serchPanel.setLayout(null);
 		
 		serchTextField = new JTextField();
+		serchTextField.setBackground(new Color(240, 240, 240));
 		serchTextField.setBounds(26, 14, 306, 34);
 		serchTextField.setToolTipText("검색어를 입력하세요.");
 		serchTextField.setFont(new Font("D2Coding ligature", Font.PLAIN, 15));
@@ -125,6 +130,7 @@ public class ProductListPanel extends JPanel {
 		serchPanel.add(serchTextField);
 		
 		JButton serchBtn = new JButton("");
+		serchBtn.setBackground(new Color(64, 164, 255));
 		serchBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// 조회된 페이지로 전환 필요
@@ -143,18 +149,21 @@ public class ProductListPanel extends JPanel {
 			}
 		});
 		serchBtn.setBounds(344, 14, 57, 33);
-		serchBtn.setIcon(new ImageIcon(ProductListPanel.class.getResource("/com/itwill/tmr_house/product/images/search_25.png")));
+		serchBtn.setIcon(new ImageIcon(ProductListPanel_하은.class.getResource("/com/itwill/tmr_house/product/images/search_25.png")));
 		serchBtn.setFont(new Font("Dialog", Font.PLAIN, 16));
 		serchPanel.add(serchBtn);
 		
 		JButton cartButton = new JButton("");
+		cartButton.setBorderPainted(false);
+		cartButton.setOpaque(false);
+		cartButton.setBackground(new Color(255, 255, 255));
 		cartButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			// 카드로 전환
+			// 카트로 전환
 			}
 		});
 		cartButton.setBounds(413, 14, 57, 34);
-		cartButton.setIcon(new ImageIcon(ProductListPanel.class.getResource("/com/itwill/tmr_house/product/images/shopping-cart_25.png")));
+		cartButton.setIcon(new ImageIcon(ProductListPanel_하은.class.getResource("/com/itwill/tmr_house/product/images/shopping-cart_25.png")));
 		cartButton.setToolTipText("카트에 담기");
 		serchPanel.add(cartButton);
 		/*************product item end*************/
@@ -163,20 +172,23 @@ public class ProductListPanel extends JPanel {
 	} // 생성자 끝
 	
 	public void productList(String keyword) throws Exception {
-		List<Product> productList=null;
-		if(keyword==null) {
+		List<Product> productList = null;
+		if(keyword == null) {
 			productList= productService.ProductList();
-			System.out.println(productList);
+			//System.out.println(productList);
 		}else {
 			productList= productService.searchAll(keyword);
+			//System.out.println(productList); // 잘 나옴
 		}
-		
+		productItemListPanel.removeAll();
 		for (Product product:productList) {
 			JPanel productPanel = new JPanel();
 			productPanel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 			productPanel.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
+					//상품디테일 패널로
+					
 				}
 			});
 			productPanel.setLayout(null);
@@ -193,7 +205,7 @@ public class ProductListPanel extends JPanel {
 			JLabel productImageLabel = new JLabel("");
 			productImageLabel.setHorizontalTextPosition(SwingConstants.LEADING);
 			productImageLabel.setVerticalTextPosition(SwingConstants.BOTTOM);
-			productImageLabel.setIcon(new ImageIcon(ProductListPanel.class.getResource("/com/itwill/tmr_house/product/images/plant_monstera150.png")));
+			productImageLabel.setIcon(new ImageIcon(ProductListPanel_하은.class.getResource("/com/itwill/tmr_house/product/images/" + product.getP_img())));
 			productImageLabel.setHorizontalAlignment(SwingConstants.CENTER);
 			productImageLabel.setBounds(22, 4, 126, 121);
 			productPanel.add(productImageLabel);
@@ -206,7 +218,7 @@ public class ProductListPanel extends JPanel {
 			productPanel.add(productNameLabel);
 			
 			productItemListPanel.add(productPanel);
-			
+		
 			
 		}
 	}
@@ -214,7 +226,4 @@ public class ProductListPanel extends JPanel {
 		public void productDetail(Product product) throws Exception {
 			productService.findByProductNo(product.getP_no());
 		}
-		
-		
-	
 }
