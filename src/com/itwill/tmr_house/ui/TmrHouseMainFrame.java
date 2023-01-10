@@ -121,8 +121,8 @@ public class TmrHouseMainFrame extends JFrame {
 		MemberLoginScreenPanel_하은 memberLoginScreenPanel_하은 = new MemberLoginScreenPanel_하은();
 		parentPanel.add(memberLoginScreenPanel_하은, "3");
 
-		MemberMyPageScreenPanel_하은 = new MemberMyPageScreenPanel_하은();
-		parentPanel.add(MemberMyPageScreenPanel_하은, "4");
+		MemberMyPageScreenPanel_하은 memberMyPageScreenPanel_하은 = new MemberMyPageScreenPanel_하은();
+		parentPanel.add(memberMyPageScreenPanel_하은, "4");
 		
 		
 		
@@ -136,8 +136,6 @@ public class TmrHouseMainFrame extends JFrame {
 		memberPrimaryScreenPanel_하은.setFrame(this);
 		memberJoinScreenPanel_하은.setFrame(this);
 		memberLoginScreenPanel_하은.setFrame(this);
-		memberMyPageScreenPanel_하은.setFrame(this);
-		
 		
 	}
 
