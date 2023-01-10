@@ -126,7 +126,7 @@ public class TmrHouseMainFrame extends JFrame {
 			
 		}else if(panel_no == PANEL_MEMBER_MY_PAGE_SCREEN) {
 			
-		}else if(panel_no == PANEL_PRODUCT_PANEL) {
+		}else if(panel_no == PANEL_PRODUCT_LIST_PANEL) {
 			
 		}else if(panel_no == PANEL_PRODUCT_TABLE_STEEL) {
 			
