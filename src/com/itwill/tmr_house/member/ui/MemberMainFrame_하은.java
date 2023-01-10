@@ -52,7 +52,7 @@ public class MemberMainFrame_하은 extends JFrame {
 		parentPanel.setLayout(new CardLayout(0, 0));
 		
 		
-	
+		
 		memberLoginScreenPanel_하은 = new MemberLoginScreenPanel_하은();
 		parentPanel.add(memberLoginScreenPanel_하은, "name_1549632722540400");
 		
