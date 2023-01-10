@@ -25,9 +25,6 @@ public class ProductDetailPanelMonstera extends JPanel {
 		add(northPanel, BorderLayout.NORTH);
 		northPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
-		JButton btnNewButton_1 = new JButton("초기화면으로 돌아가는 아이콘?");
-		northPanel.add(btnNewButton_1);
-		
 		JLabel lblNewLabel = new JLabel("~ 상품 상세보기 페이지~");
 		northPanel.add(lblNewLabel);
 		
@@ -115,6 +112,9 @@ public class ProductDetailPanelMonstera extends JPanel {
 		
 		JPanel southPanel = new JPanel();
 		add(southPanel, BorderLayout.SOUTH);
+		
+		JButton btnNewButton_1 = new JButton("초기화면으로 돌아가는 아이콘?");
+		southPanel.add(btnNewButton_1);
 
 	}
 }
