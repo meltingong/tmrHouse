@@ -9,6 +9,17 @@ import javax.swing.border.EmptyBorder;
 public class TmrHouseMainFrame extends JFrame {
 	
 	/*
+	 * 패널 체인지 상수
+	 */
+	public static final int PANEL_MEMBER_PRIMARY_SCREEN = 1;
+	public static final int PANEL_MEMBER_JOIN_SCREEN = 2;
+	public static final int PANEL_MEMBER_LOGIN_SCREEN = 3;
+	public static final int PANEL_MEMBER_MY_PAGE_SCREEN = 4;
+	
+	
+	
+	
+	/*
 	 * 1. Service 객체선언
 	 */
 	
@@ -43,4 +54,20 @@ public class TmrHouseMainFrame extends JFrame {
 		setContentPane(contentPane);
 	}
 
+	
+	/******************패널 체인지 메소드************************/
+	
+	public void changePanel(int panel_no) {
+		if(panel_no == PANEL_MEMBER_PRIMARY_SCREEN) {
+			
+		}else if(panel_no == PANEL_MEMBER_JOIN_SCREEN) {
+			
+		}else if(panel_no == PANEL_MEMBER_LOGIN_SCREEN) {
+			
+		}else if(panel_no == PANEL_MEMBER_MY_PAGE_SCREEN) {
+			
+		}
+	}
+	
+	
 }
