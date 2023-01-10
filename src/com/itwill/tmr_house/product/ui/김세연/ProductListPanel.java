@@ -86,7 +86,12 @@ public class ProductListPanel extends JPanel {
 		
 		productItemListPanel.add(productPanel);
 		
-		JLabel productImageLabel = new JLabel("");
+		JLabel productImageLabel = new JLabel();
+		productImageLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+		});
 		productImageLabel.setHorizontalTextPosition(SwingConstants.LEADING);
 		productImageLabel.setVerticalTextPosition(SwingConstants.BOTTOM);
 		productImageLabel.setIcon(new ImageIcon(ProductListPanel.class.getResource("/com/itwill/tmr_house/product/images/plant_monstera150.png")));
@@ -214,8 +219,21 @@ public class ProductListPanel extends JPanel {
 			productPanel.add(productNameLabel);
 			
 			productItemListPanel.add(productPanel);
+			
+			public void displaylProductDetail(Product product) {
+				productImageLabel.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						frame.changePanel(TmrHouseMainFrame.product);
+					}
+			}
+			});
+			
+			public void displayPopularProduct(Product product) {
+				System.out.println("popular product"+product);
+				productNameLB.setText(product.getP_name());
+				productImageLB.setIcon(new ImageIcon(PopularProductPanel.class.getResource("/images/"+product.getP_image())));
 		}
-		
 		
 		
 	}

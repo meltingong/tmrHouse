@@ -31,7 +31,7 @@ public class TmrHouseMainFrame extends JFrame {
 	
 	// 상품
 	// 20부터 시작함.
-	public static final int PANEL_PRODUCT_PANEL = 20;
+	public static final int PANEL_PRODUCT_LIST_PANEL = 20;
 	public static final int PANEL_PRODUCT_TABLE_STEEL = 21;
 	public static final int PANEL_PRODUCT_TABLE_WOOD = 22;
 	public static final int PANEL_PRODUCT_CHAIR_STEEL = 23;
