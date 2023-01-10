@@ -100,7 +100,7 @@ public class MemberLoginScreenPanel_하은 extends JPanel {
 					}
 					
 				}catch(Exception e1){
-					
+					System.out.println(e1.getMessage());
 				}
 			}
 		});
@@ -138,8 +138,12 @@ public class MemberLoginScreenPanel_하은 extends JPanel {
 		
 		// 2. 타이틀 변경 (변경 안함)
 		// 3. 로그인화면 , 화면가입 불활성화 ( 카드형식이라 상관x )
-		// 4. 정보보기 화면 (x)
+		// 4. 정보보기 화면
+		
 		// 5. 수정작업(x)
 		
 	}
+	
+	
+	
 }
