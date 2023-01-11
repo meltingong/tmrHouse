@@ -117,7 +117,7 @@ public class OrdersDetailPanel_하은3 extends JPanel {
 			
 			Vector columnVector = new Vector();
 			columnVector.add("주문번호");
-			//columnVector.add("주문상품번호");
+			columnVector.add("주문상품번호");
 			columnVector.add("수량");
 			columnVector.add("상품명");
 			columnVector.add("상품금액");
@@ -131,11 +131,13 @@ public class OrdersDetailPanel_하은3 extends JPanel {
 			for(OrderItem orderItem:orderItemList) {
 				Vector rowVector = new Vector();
 				rowVector.add(orderItem.getO_no());
-				//rowVector.add(orderItem.getOi_no());
+				rowVector.add(orderItem.getOi_no());
 				rowVector.add(orderItem.getOi_qty());
 				rowVector.add(orderItem.getProduct().getP_name());
 				rowVector.add(orderItem.getProduct().getP_price());
 				//rowVector.add(orderItem.getProduct().getP_desc());
+				//rowVector.add(orderItem.getProduct().getP_price());
+				
 				rowVector.add(orderItem.getProduct().getP_freeDelivery());
 				tableVector.add(rowVector);
 			}

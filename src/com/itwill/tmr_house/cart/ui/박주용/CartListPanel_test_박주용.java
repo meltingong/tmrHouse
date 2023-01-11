@@ -19,6 +19,8 @@ import com.itwill.tmr_house.member.MemberService;
 import com.itwill.tmr_house.order.OrdersService;
 import com.itwill.tmr_house.product.Product;
 import com.itwill.tmr_house.product.ProductService;
+import com.itwill.tmr_house.ui.*;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
@@ -28,14 +30,17 @@ import java.awt.event.ItemEvent;
 
 public class CartListPanel_test_박주용 extends JPanel {
 	
+	
+	TmrHouseMainFrame frame;
+	
 	/******Service 객체 멤버 변수 선언******/
 	private ProductService productService;
 	private MemberService memberService;
 	private CartService cartService;
 	private OrdersService ordersService;
 	/***************************************/
-	private Member loginMember = null;
-	
+	//private Member loginMember = null;
+	Member member;
 	
 	
 	private JScrollPane cartContentPanelScrollPane;
@@ -110,7 +115,7 @@ public class CartListPanel_test_박주용 extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				
 				// 오더창으로 넘어가기
-				
+				frame.changePanel(TmrHouseMainFrame.PANEL_ORDERS_하은2);
 			}
 		});
 		orderAllBTN.setBounds(297, 621, 150, 25);
@@ -123,18 +128,19 @@ public class CartListPanel_test_박주용 extends JPanel {
 		memberService = new MemberService();
 		cartService = new CartService();
 		ordersService = new OrdersService();
-		
-		loginMember = new Member("aaaa", null, null, null, null, null);
-		displayCartList();
+		member = new Member();
+		member.setM_id("aaaa");
+		//loginMember = new Member("aaaa", null, null, null, null, null);
+		displayCartList(member); // frame.loginMember.getM_id
 		
 
 	}/**생성자 끝*/
 	
 	
-	public void displayCartList() throws Exception {
+	public void displayCartList(Member member) throws Exception {
 		
 		cartContentPanel.removeAll();
-		List<Cart> cartList = cartService.findCartItemByUserId(loginMember.getM_id());
+		List<Cart> cartList = cartService.findCartItemByUserId(member.getM_id());
 		for(Cart cart : cartList) {
 			
 			JPanel cartItemPanel = new JPanel();
