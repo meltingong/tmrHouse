@@ -150,7 +150,7 @@ public class TestTmrHouseMainFrame extends JFrame {
 		productService = new ProductService();
 		ordersService = new OrdersService();
 		
-		productListPanel.setFrame(this);
+//		productListPanel.setFrame(this);
 		
 		/**************** 상품 상세페이지 setFrame 설정해주기 *****************/
 		
@@ -160,8 +160,8 @@ public class TestTmrHouseMainFrame extends JFrame {
 		productDetailPanelChairRattan.setFrame(this);
 		productDetailPanelShortstand.setFrame(this);
 		productDetailPanelPendant.setFrame(this);
-		productDetailPanelMonstera.setFrame(this);
-		productDetailPanelOlive.setFrame(this);
+//		productDetailPanelMonstera.setFrame(this);
+//		productDetailPanelOlive.setFrame(this);
 		
 	}
 	
