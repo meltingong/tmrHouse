@@ -11,6 +11,7 @@ import com.itwill.tmr_house.order.OrdersService;
 import com.itwill.tmr_house.product.Product;
 import com.itwill.tmr_house.product.ProductService;
 //import com.itwill.tmr_house.ui.TmrHouseMainFrame;
+import com.itwill.tmr_house.ui.TmrHouseMainFrame;
 
 import javax.swing.JLabel;
 import java.awt.Dimension;
@@ -117,7 +118,7 @@ public class ProductListPanel extends JPanel {
 		serchPanel.setLayout(null);
 		
 		serchTextField = new JTextField();
-		serchTextField.setBounds(26, 14, 306, 34);
+		serchTextField.setBounds(26, 13, 254, 35);
 		serchTextField.setToolTipText("검색어를 입력하세요.");
 		serchTextField.setFont(new Font("D2Coding ligature", Font.PLAIN, 15));
 		serchTextField.setColumns(10);
@@ -141,7 +142,7 @@ public class ProductListPanel extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 			}
 		});
-		serchBtn.setBounds(344, 14, 57, 33);
+		serchBtn.setBounds(291, 15, 57, 33);
 		serchBtn.setIcon(new ImageIcon(ProductListPanel.class.getResource("/com/itwill/tmr_house/product/images/search_25.png")));
 		serchBtn.setFont(new Font("Dialog", Font.PLAIN, 16));
 		serchPanel.add(serchBtn);
@@ -149,16 +150,29 @@ public class ProductListPanel extends JPanel {
 		JButton cartButton = new JButton("");
 		cartButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			// 카드로 전환
+			// 카트로 전환
 			}
 		});
-		cartButton.setBounds(413, 14, 57, 34);
+		cartButton.setBounds(353, 15, 57, 34);
 		cartButton.setIcon(new ImageIcon(ProductListPanel.class.getResource("/com/itwill/tmr_house/product/images/shopping-cart_25.png")));
 		cartButton.setToolTipText("카트에 담기");
 		serchPanel.add(cartButton);
+		
+		JButton myPageButton = new JButton("");
+		myPageButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				frame.changePanel(TmrHouseMainFrame.PANEL_MEMBER_MY_PAGE_SCREEN);
+			}
+		});
+		myPageButton.setIcon(new ImageIcon(ProductListPanel.class.getResource("/com/itwill/tmr_house/product/images/user 30.png")));
+		myPageButton.setBounds(416, 16, 53, 34);
+		serchPanel.add(myPageButton);
 		/*************product item end*************/
 		productService = new ProductService();
 		productList(null);
+		
+		
 	}
 	
 	public void productList(String keyword) throws Exception {

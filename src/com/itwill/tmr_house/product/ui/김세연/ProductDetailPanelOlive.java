@@ -111,8 +111,9 @@ public class ProductDetailPanelOlive extends JPanel {
 		qtyComboBox.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
 		
 		JLabel productDetailLabel = new JLabel("건조한 환경을 좋아하는 플랜테리어 식물");
+//		JLabel productDetailLabel = new JLabel("");
 //		"건조한 환경을 좋아하는 플랜테리어 식물"
-//		productDetailLabel.setText(productInfo().getP_desc());
+//		productDetailLabel.setText(productInfo(8).getP_desc());
 		productDetailLabel.setFont(new Font("맑은 고딕", Font.PLAIN, 18));
 		productDetailLabel.setBounds(12, 511, 476, 120);
 		productDetailPanel.add(productDetailLabel);
@@ -215,11 +216,9 @@ public class ProductDetailPanelOlive extends JPanel {
 		/****************************** loginMember id 가져와주기 **********************************/
 //		cartService.insertCart(new Cart(0, cart_qty, frame.loginMember.getM_id(), product));
 		cartService.insertCart(new Cart(0, cart_qty, "aaaa", product));
-
 	}
 	
-//	public Product productInfo() throws Exception {
-//		Product product = productService.findByProductNo(8);
-//		return product;
-//	}
+	public Product productInfo(int no) throws Exception {
+		return productService.findByProductNo(no);
+	}
 }
