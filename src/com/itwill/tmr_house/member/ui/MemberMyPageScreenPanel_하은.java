@@ -6,6 +6,8 @@ import java.awt.Color;
 
 import com.itwill.tmr_house.member.Member;
 import com.itwill.tmr_house.member.MemberService;
+import com.itwill.tmr_house.order.*;
+import com.itwill.tmr_house.order.ui.김하은.*;
 import com.itwill.tmr_house.ui.*;
 
 import java.awt.event.ActionListener;
@@ -35,9 +37,8 @@ public class MemberMyPageScreenPanel_하은 extends JPanel {
 	private JTextField modifyBirthTF;
 	private JLabel modifyPwCorrectLB;
 	
-	
-	
-	
+	/*********추가********/
+	OrdersDetailPanel_하은2 ordersDetailPanel_하은2;
 
 	/**
 	 * Create the panel.
@@ -220,7 +221,6 @@ public class MemberMyPageScreenPanel_하은 extends JPanel {
 		memberMyPageCenterPanel.add(btnNewButton);
 		
 		memberService = new MemberService();
-
 	}
 	
 	public void setFrame(TmrHouseMainFrame frame) {
