@@ -183,17 +183,17 @@ public class ProductListPanel extends JPanel {
 	}
 	
 	public void productList(String keyword) throws Exception {
-		List<Product> productList=null;
-		if(keyword==null) {
-			productList= productService.ProductList();
-			System.out.println(productList);
-		}else {
-			productList= productService.searchAll(keyword);
+		List<Product> productList = null;
+		if (keyword == null) {
+			productList = productService.ProductList();
+//			System.out.println(productList);
+		} else {
+			productList = productService.searchAll(keyword);
 		}
 		productItemListPanel.removeAll();
-		for (Product product:productList) {
+		for (Product product : productList) {
 			JPanel productPanel = new JPanel();
-			//productPanel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+			// productPanel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 			productPanel.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
