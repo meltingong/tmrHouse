@@ -26,6 +26,7 @@ import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
+import java.awt.Color;
 
 
 public class CartListPanel_test_박주용 extends JPanel {
@@ -61,6 +62,7 @@ public class CartListPanel_test_박주용 extends JPanel {
 	 * Create the panel.
 	 */
 	public CartListPanel_test_박주용() throws Exception {
+		setBackground(new Color(255, 255, 255));
 		setLayout(null);
 		
 		cartContentPanelScrollPane = new JScrollPane();
@@ -113,7 +115,7 @@ public class CartListPanel_test_박주용 extends JPanel {
 		cartItemPanel.add(cartItemUpdateBTN);
 		
 		JButton orderSelectedBTN = new JButton("선택 상품 주문");
-		orderSelectedBTN.setBounds(52, 621, 150, 25);
+		orderSelectedBTN.setBounds(51, 592, 150, 25);
 		add(orderSelectedBTN);
 		
 		JButton orderAllBTN = new JButton("전체 상품 주문");
@@ -124,8 +126,21 @@ public class CartListPanel_test_박주용 extends JPanel {
 				frame.changePanel(TmrHouseMainFrame.PANEL_ORDERS_하은2);
 			}
 		});
-		orderAllBTN.setBounds(297, 621, 150, 25);
+		orderAllBTN.setBounds(296, 592, 150, 25);
 		add(orderAllBTN);
+		
+		JButton ordersHomeBtn = new JButton("");
+		ordersHomeBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.changePanel(TmrHouseMainFrame.PANEL_PRODUCT_LIST_PANEL);
+			}
+		});
+		ordersHomeBtn.setBorderPainted(false);
+		ordersHomeBtn.setOpaque(false);
+		ordersHomeBtn.setIcon(new ImageIcon(CartListPanel_test_박주용.class.getResource("/com/itwill/tmr_house/member/images/home(30x30).png")));
+		ordersHomeBtn.setBackground(new Color(64, 184, 255));
+		ordersHomeBtn.setBounds(218, 651, 63, 39);
+		add(ordersHomeBtn);
 		/****************카트 패널 끝*****************/
 		
 		
@@ -205,5 +220,4 @@ public class CartListPanel_test_박주용 extends JPanel {
 		}
 		
 	}
-	
 }
