@@ -151,6 +151,7 @@ public class ProductListPanel extends JPanel {
 		serchPanel.add(serchBtn);
 		
 		JButton cartButton = new JButton("");
+		cartButton.setBackground(new Color(255, 255, 255));
 		cartButton.setBorderPainted(false);
 		cartButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -163,6 +164,7 @@ public class ProductListPanel extends JPanel {
 		serchPanel.add(cartButton);
 		
 		JButton myPageButton = new JButton("");
+		myPageButton.setBackground(new Color(255, 255, 255));
 		myPageButton.setBorderPainted(false);
 		myPageButton.addMouseListener(new MouseAdapter() {
 			@Override
