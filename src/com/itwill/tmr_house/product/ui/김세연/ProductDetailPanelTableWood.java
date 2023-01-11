@@ -121,7 +121,7 @@ public class ProductDetailPanelTableWood extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				try {
 					directOrder(Integer.parseInt((String)qtyComboBox.getSelectedItem()));
-					frame.changePanel(TmrHouseMainFrame.PANEL_ORDERS_하은2);
+					frame.changePanel(TmrHouseMainFrame.PANEL_ORDERS_DETAIL_하은);
 				} catch (NumberFormatException e1) {
 					e1.printStackTrace();
 				} catch (Exception e1) {

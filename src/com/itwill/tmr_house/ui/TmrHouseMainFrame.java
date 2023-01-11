@@ -27,6 +27,9 @@ import com.itwill.tmr_house.product.ui.김세연.ProductDetailPanelShortstand;
 import com.itwill.tmr_house.product.ui.김세연.ProductDetailPanelTableSteel;
 import com.itwill.tmr_house.product.ui.김세연.ProductDetailPanelTableWood;
 import com.itwill.tmr_house.cart.ui.박주용.CartListPanel_test_박주용;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeEvent;
+import com.itwill.tmr_house.order.ui.김하은.OrdersDetailPanel_하은;
 
 public class TmrHouseMainFrame extends JFrame {
 	
@@ -59,8 +62,7 @@ public class TmrHouseMainFrame extends JFrame {
 	
 	// 오더
 	
-	public static final int PANEL_ORDERS_하은2 = 8;
-	public static final int PANEL_ORDERS_DETAIL_하은2 = 9;
+	public static final int PANEL_ORDERS_DETAIL_하은 = 9;
 	
 	
 	private JPanel contentPane;
@@ -68,10 +70,10 @@ public class TmrHouseMainFrame extends JFrame {
 	/*
 	 * 1. Service 객체선언
 	 */
-	MemberService memberService;
-	CartService cartService;
-	OrdersService ordersService;
-	ProductService productService;
+	public MemberService memberService;
+	public CartService cartService;
+	public OrdersService ordersService;
+	public ProductService productService;
 	
 	/*
 	 * 2. 로그인 유저 객체 선언
@@ -84,8 +86,6 @@ public class TmrHouseMainFrame extends JFrame {
 	private MemberJoinScreenPanel_하은 memberJoinScreenPanel_하은;
 	private MemberLoginScreenPanel_하은 memberLoginScreenPanel_하은;
 	private MemberMyPageScreenPanel_하은 memberMyPageScreenPanel_하은;
-	private OrdersPanel_하은2 ordersPanel_하은2;
-	private OrdersDetailPanel_하은2 ordersDetailPanel_하은2;
 	private ProductListPanel productListPanel;
 	private ProductDetailPanelChairRattan productDetailPanelChairRattan;
 	private ProductDetailPanelChairSteel productDetailPanelChairSteel;
@@ -96,6 +96,7 @@ public class TmrHouseMainFrame extends JFrame {
 	private ProductDetailPanelTableSteel productDetailPanelTableSteel;
 	private ProductDetailPanelTableWood productDetailPanelTableWood;
 	private CartListPanel_test_박주용 cartListPanel_test_박주용;
+	private OrdersDetailPanel_하은 ordersDetailPanel_하은;
 
 	
 	/**
@@ -132,6 +133,11 @@ public class TmrHouseMainFrame extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
 		parentPanel = new JPanel();
+		parentPanel.addPropertyChangeListener(new PropertyChangeListener() {
+			public void propertyChange(PropertyChangeEvent evt) {
+				System.out.println(evt);
+			}
+		});
 		parentPanel.setBackground(new Color(255, 255, 255));
 		contentPane.add(parentPanel, BorderLayout.CENTER);
 		cardLayout = new CardLayout(0, 0);
@@ -149,12 +155,7 @@ public class TmrHouseMainFrame extends JFrame {
 		memberMyPageScreenPanel_하은 = new MemberMyPageScreenPanel_하은();
 		parentPanel.add(memberMyPageScreenPanel_하은, "4");
 		
-		
-		ordersPanel_하은2 = new OrdersPanel_하은2();
-		parentPanel.add(ordersPanel_하은2, "8");
-		
-		ordersDetailPanel_하은2 = new OrdersDetailPanel_하은2();
-		parentPanel.add(ordersDetailPanel_하은2, "9");
+	
 		
 		productListPanel = new ProductListPanel();
 		parentPanel.add(productListPanel, "20");
@@ -186,6 +187,9 @@ public class TmrHouseMainFrame extends JFrame {
 		cartListPanel_test_박주용 = new CartListPanel_test_박주용();
 		parentPanel.add(cartListPanel_test_박주용, "99");
 		
+		ordersDetailPanel_하은 = new OrdersDetailPanel_하은();
+		parentPanel.add(ordersDetailPanel_하은, "9");
+		
 	/******service 객체 생성******/
 		memberService = new MemberService();
 		cartService = new CartService();
@@ -196,8 +200,8 @@ public class TmrHouseMainFrame extends JFrame {
 		memberJoinScreenPanel_하은.setFrame(this);
 		memberLoginScreenPanel_하은.setFrame(this);
 		memberMyPageScreenPanel_하은.setFrame(this);
-		ordersPanel_하은2.setFrame(this);
-		ordersDetailPanel_하은2.setFrame(this);
+	
+		ordersDetailPanel_하은.setFrame(this);
 		productListPanel.setFrame(this);
 		productDetailPanelChairRattan.setFrame(this);
 		productDetailPanelChairSteel.setFrame(this);
@@ -263,15 +267,19 @@ public class TmrHouseMainFrame extends JFrame {
 			
 		}else if(panel_no == PANEL_PRODUCT_PLANT_OLIVE) {
 			cardLayout.show(parentPanel, "28");
-			
-		}else if(panel_no == PANEL_ORDERS_하은2) {
-			cardLayout.show(parentPanel, "8");
-			
-		}else if(panel_no == PANEL_ORDERS_DETAIL_하은2) {
+				
+		}else if(panel_no == PANEL_ORDERS_DETAIL_하은) {
 			cardLayout.show(parentPanel, "9");
-			
+			ordersDetailPanel_하은.displayOrders();
 		}else if(panel_no == PANEL_CARTLIST ) {
+			
 			cardLayout.show(parentPanel, "99");
+			try {
+				cartListPanel_test_박주용.displayCartList(loginMember);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 	

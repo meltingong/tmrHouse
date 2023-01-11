@@ -196,12 +196,13 @@ public class MemberMyPageScreenPanel_하은 extends JPanel {
 		modifyPwCorrectLB.setBounds(253, 274, 205, 15);
 		memberMyPageCenterPanel.add(modifyPwCorrectLB);
 		
-		JLabel lblNewLabel_1 = new JLabel("주문내역상세보기");
+		JLabel lblNewLabel_1 = new JLabel("주문내역보기");
 		lblNewLabel_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				frame.changePanel(TmrHouseMainFrame.PANEL_ORDERS_DETAIL_하은2);
+				frame.changePanel(TmrHouseMainFrame.PANEL_ORDERS_DETAIL_하은);
+				
 			}
 		});
 		lblNewLabel_1.setFont(new Font("D2Coding", Font.PLAIN, 14));

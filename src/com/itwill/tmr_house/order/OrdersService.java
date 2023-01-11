@@ -33,7 +33,7 @@ public class OrdersService {
 		}
 		
 		// 주문리스트 ( orderitem리스트까지) 아이디로찾기
-		public Orders orderListAddOrderItemList(String m_id) throws Exception{
+		public List<Orders>orderListAddOrderItemList(String m_id) throws Exception{
 			return ordersDao.findByMid(m_id);
 		}
 		

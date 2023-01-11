@@ -193,46 +193,34 @@ private DataSource dataSource;
 			return order;
 		}
 		// 주문 여러개 보기
-		public Orders findByMid(String m_id) throws Exception {
+		public List<Orders> findByMid(String m_id) throws Exception {
 
-			Orders order = null;
+			List<Orders> orderList = new ArrayList<Orders>();
+			
 			Connection con = null;
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
 			con = dataSource.getConnection();
-			/*
-			 * select * from orders o join order_item oi on o.o_no=oi.o_no join product p on
-			 * oi.p_no=p.p_no where o.userid=? and o.o_no = ?
-			 */
-			pstmt = con.prepareStatement(OrdersSQL.ORDERS_SELECT_WITH_PRODUCT_BY_M_ID);
+
+			pstmt = con.prepareStatement(OrdersSQL.ORDERS_SELECT_BY_M_ID);
 			pstmt.setString(1, m_id);
 			rs = pstmt.executeQuery();
-
+			
 			while (rs.next()) {
-				order = new Orders(	rs.getInt("o_no"), 
+				Orders order = new Orders(	rs.getInt("o_no"), 
 									rs.getString("o_desc"), 
 									rs.getInt("o_qty"), 
 									rs.getInt("o_price"),
 									rs.getDate("o_date"),
 									rs.getString("m_id"));
-				do {
-					order.getOrderItemList()
-							.add(new OrderItem(	rs.getInt("oi_no"), 
-												rs.getInt("oi_qty"), 
-												rs.getInt("o_no"),
-												new Product(rs.getInt("p_no"), 
-															rs.getString("p_name"), 
-															rs.getInt("p_price"),
-															rs.getString("p_img"), 
-															rs.getString("p_desc"),
-															rs.getString("p_freeDelivery"))));
-				} while (rs.next());
-				//orderList.add(order);
+				
+				orderList.add(order);
 			}
 			rs.close();
 			pstmt.close();
 			dataSource.close(con);
-			return order;
+			System.out.println(orderList.size()+"   Dao");
+			return orderList;
 		}
 	
 }

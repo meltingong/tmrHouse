@@ -39,15 +39,7 @@ public class OrdersDetailPanel_하은2 extends JPanel {
 	 * @throws Exception 
 	 */
 	public OrdersDetailPanel_하은2() throws Exception {
-		addComponentListener(new ComponentAdapter() {
-			@Override
-			public void componentShown(ComponentEvent e) {
-				Orders orders = new Orders();
-				orders.setM_id(frame.loginMember.getM_id());
-				System.out.println(orders);
-				displayOrderDetail(orders);
-			}
-		});
+		
 		setLayout(new BorderLayout(0, 0));
 		
 		JPanel ordersDetailNorthPanel = new JPanel();
@@ -100,19 +92,16 @@ public class OrdersDetailPanel_하은2 extends JPanel {
 		scrollPane_1.setViewportView(orderDetailTable);
 		
 		ordersService = new OrdersService();
-		Orders orders = new Orders();
+	
 		//orders.setM_id(frame.loginMember.getM_id()); // 로그인하고 주문한 아이디로 바꿔줘야함
 		//orders.setO_no(findOrderNo(frame.loginMember.getM_id()));
-		orders.setM_id("aaaa");
-		orders.setO_no(1);
-		displayOrderDetail(orders);
+	
+		//displayOrderDetail(orders);
 	} // 생성자 끝
 
-	public void displayOrderDetail(Orders order) {
+	public void displayOrderDetail(int o_no) {
 		try {
-			/*******주문리스트 보기[Jtable]**********/
-			
-			curtOrder = ordersService.orderListDetail(order.getM_id(), order.getO_no());
+			curtOrder = ordersService.orderListDetail(frame.loginMember.getM_id(),o_no);
 			List<OrderItem> orderItemList = curtOrder.getOrderItemList();
 			
 			Vector columnVector = new Vector();

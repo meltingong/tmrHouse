@@ -127,7 +127,7 @@ public class ProductDetailPanelOlive extends JPanel {
 				try {
 					directOrder(Integer.parseInt((String)qtyComboBox.getSelectedItem()));
 					/**************************************** 주문 페이지로 전환 *******************************/
-					frame.changePanel(TmrHouseMainFrame.PANEL_ORDERS_하은2);
+					frame.changePanel(TmrHouseMainFrame.PANEL_ORDERS_DETAIL_하은);
 				} catch (NumberFormatException e1) {
 					e1.printStackTrace();
 				} catch (Exception e1) {

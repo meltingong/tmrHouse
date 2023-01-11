@@ -123,7 +123,7 @@ public class ProductDetailPanelChairRattan extends JPanel {
 //				바로구매
 				try {
 					directOrder(Integer.parseInt((String)qtyComboBox.getSelectedItem()));
-					frame.changePanel(TmrHouseMainFrame.PANEL_ORDERS_하은2);
+					frame.changePanel(TmrHouseMainFrame.PANEL_ORDERS_DETAIL_하은);
 				} catch (NumberFormatException e1) {
 					e1.printStackTrace();
 				} catch (Exception e1) {

@@ -34,15 +34,6 @@ public class CartListPanel_test_박주용 extends JPanel {
 	
 	TmrHouseMainFrame frame;
 	
-	/******Service 객체 멤버 변수 선언******/
-	private ProductService productService;
-	private MemberService memberService;
-	private CartService cartService;
-	private OrdersService ordersService;
-	/***************************************/
-	//private Member loginMember = null;
-	Member member;
-	
 	
 	private JScrollPane cartContentPanelScrollPane;
 	private JPanel cartContentPanel;
@@ -53,8 +44,9 @@ public class CartListPanel_test_박주용 extends JPanel {
 	private JButton cartItemUpdateBTN;
 
 	
-	public void setFrame(TmrHouseMainFrame frame) {
+	public void setFrame(TmrHouseMainFrame frame) throws Exception {
 		this.frame = frame;
+		
 	}
 
 
@@ -128,7 +120,7 @@ public class CartListPanel_test_박주용 extends JPanel {
 					e1.printStackTrace();
 				}
 				// 오더창으로 넘어가기
-				frame.changePanel(TmrHouseMainFrame.PANEL_ORDERS_하은2);
+				frame.changePanel(TmrHouseMainFrame.PANEL_ORDERS_DETAIL_하은);
 			}
 		});
 		orderAllBTN.setBounds(296, 592, 150, 25);
@@ -150,14 +142,8 @@ public class CartListPanel_test_박주용 extends JPanel {
 		
 		
 		/**************Service 객체 멤버 변수 초기화****************/
-		productService = new ProductService();
-		memberService = new MemberService();
-		cartService = new CartService();
-		ordersService = new OrdersService();
-		member = new Member();
-		member.setM_id("aaaa");
-		//loginMember = new Member("aaaa", null, null, null, null, null);
-		displayCartList(member); // frame.loginMember.getM_id
+		
+
 		
 
 	}/**생성자 끝*/
@@ -166,8 +152,9 @@ public class CartListPanel_test_박주용 extends JPanel {
 	public void displayCartList(Member member) throws Exception {
 		
 		cartContentPanel.removeAll();
-		List<Cart> cartList = cartService.findCartItemByUserId(member.getM_id());
-		for(Cart cart : cartList) {
+		List<Cart> cartList = frame.cartService.findCartItemByUserId(member.getM_id());
+		System.out.println(cartList);
+		for(final Cart cart : cartList) {
 			
 			JPanel cartItemPanel = new JPanel();
 			cartItemPanel.setPreferredSize(new Dimension(420, 120));
@@ -198,7 +185,7 @@ public class CartListPanel_test_박주용 extends JPanel {
 			cartItemDeleteBTN.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					try {
-						cartService.deleteCartItemByCartNo(cart.getC_no());
+						deleteCartItem(cart.getC_no());
 						
 //						cartPanel.remove(cartPanel);
 						System.out.println("제품이 삭제되었습니다");
@@ -227,11 +214,13 @@ public class CartListPanel_test_박주용 extends JPanel {
 	}
 	
 	public void orderAllCart(String m_id) throws Exception {
-		ordersService.cartOrder(m_id);
+		frame.ordersService.cartOrder(m_id);
 	}
 	
 	public void deleteCartItem(int c_no) throws Exception {
-		cartService.deleteCartItemByCartNo(c_no);
+		frame.cartService.deleteCartItemByCartNo(c_no);
 	}
+	
+	
 	
 }

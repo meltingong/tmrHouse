@@ -157,6 +157,7 @@ public class ProductListPanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 			// 카트로 전환
 				frame.changePanel(TmrHouseMainFrame.PANEL_CARTLIST);
+				
 			}
 		});
 		cartButton.setBounds(353, 15, 57, 34);
