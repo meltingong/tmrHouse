@@ -149,7 +149,7 @@ public class ProductListPanel extends JPanel {
 		JButton cartButton = new JButton("");
 		cartButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			// 카트로 전환
+			// 카드로 전환
 			}
 		});
 		cartButton.setBounds(413, 14, 57, 34);
@@ -209,7 +209,6 @@ public class ProductListPanel extends JPanel {
 					}
 				}
 			});
-			
 			productNameLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 			productNameLabel.setFont(new Font("굴림", Font.BOLD, 14));
 			productNameLabel.setHorizontalAlignment(SwingConstants.CENTER);
