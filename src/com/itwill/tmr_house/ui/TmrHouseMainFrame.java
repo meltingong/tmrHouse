@@ -17,6 +17,7 @@ import java.awt.Color;
 import java.awt.Toolkit;
 import com.itwill.tmr_house.order.ui.김하은.OrdersPanel_하은2;
 import com.itwill.tmr_house.order.ui.김하은.OrdersDetailPanel_하은2;
+import com.itwill.tmr_house.product.ui.test.ProductListPanel_하은;
 
 public class TmrHouseMainFrame extends JFrame {
 	
@@ -30,11 +31,6 @@ public class TmrHouseMainFrame extends JFrame {
 	public static final int PANEL_MEMBER_LOGIN_SCREEN = 3;
 	public static final int PANEL_MEMBER_MY_PAGE_SCREEN = 4;
 	
-	// 상품
-
-	public static final int PANEL_PRODUCT_PANEL = 5;
-	public static final int PANEL_PRODUCT_DETAIL_OLIVE = 6;
-	public static final int PANEL_PRODUCT_DETAIL_MONSTERA = 7;
 
 	// 20부터 시작함.
 	public static final int PANEL_PRODUCT_LIST_PANEL = 20;
@@ -134,6 +130,8 @@ public class TmrHouseMainFrame extends JFrame {
 		OrdersDetailPanel_하은2 ordersDetailPanel_하은2 = new OrdersDetailPanel_하은2();
 		parentPanel.add(ordersDetailPanel_하은2, "9");
 		
+		ProductListPanel_하은 productListPanel_하은 = new ProductListPanel_하은();
+		parentPanel.add(productListPanel_하은, "20");
 		
 		
 	/******service 객체 생성******/
@@ -148,6 +146,7 @@ public class TmrHouseMainFrame extends JFrame {
 		memberMyPageScreenPanel_하은.setFrame(this);
 		ordersPanel_하은2.setFrame(this);
 		ordersDetailPanel_하은2.setFrame(this);
+		productListPanel_하은.setFrame(this);
 		
 		
 		
@@ -171,7 +170,7 @@ public class TmrHouseMainFrame extends JFrame {
 			cardLayout.show(parentPanel, "4");
 			
 		}else if(panel_no == PANEL_PRODUCT_LIST_PANEL) {
-			cardLayout.show(parentPanel, "5");
+			cardLayout.show(parentPanel, "20");
 			
 		}else if(panel_no == PANEL_PRODUCT_TABLE_STEEL) {
 		
