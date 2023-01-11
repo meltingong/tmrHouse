@@ -97,7 +97,6 @@ public class ProductDetailPanelOlive extends JPanel {
 		qtyComboBox.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
 				if(e.getStateChange()==ItemEvent.SELECTED) {
-					
 					int cart_qty=Integer.parseInt((String)qtyComboBox.getSelectedItem());
 //					System.out.println(cart_qty);
 				}
@@ -119,8 +118,11 @@ public class ProductDetailPanelOlive extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 //				바로구매
-				
+				directOrder();
 //				주문 페이지로 전환
+//				frame.changePanel(TestTmrHouseMainFrame.PANEL_ORDERS_하은2);
+//				아직 주문페이지를 메인프레임에 불러오지 않아 테스트 용으로 상품전체 리스트 패널로 전환
+				frame.changePanel(TestTmrHouseMainFrame.PANEL_PRODUCT_LIST_PANEL);
 			}
 		});
 		directOrderButton.setFont(new Font("맑은 고딕", Font.BOLD, 20));
@@ -132,9 +134,9 @@ public class ProductDetailPanelOlive extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 //				카트에 담기
-				
+				addCart();
 //				카트 페이지로 전환
-				
+				frame.changePanel(TestTmrHouseMainFrame.PANEL_PRODUCT_LIST_PANEL);
 			}
 		});
 		
@@ -192,6 +194,7 @@ public class ProductDetailPanelOlive extends JPanel {
 						Product product;
 						product = productService.findByProductNo(8);
 						ordersService.directOrder(frame.loginMember.getM_id(), product.getP_no(), cart_qty);
+						ordersService.directOrder("aaaa", product.getP_no(), cart_qty);
 					} catch (Exception e1) {
 						e1.printStackTrace();
 					}
@@ -209,7 +212,8 @@ public class ProductDetailPanelOlive extends JPanel {
 						int cart_qty = Integer.parseInt((String) qtyComboBox.getSelectedItem());
 						Product product;
 						product = productService.findByProductNo(8);
-						cartService.insertCart(new Cart(0, cart_qty, frame.loginMember.getM_id(), product));
+//						cartService.insertCart(new Cart(0, cart_qty, frame.loginMember.getM_id(), product));
+						cartService.insertCart(new Cart(0, cart_qty, "aaaa", product));
 					} catch (Exception e1) {
 						e1.printStackTrace();
 					}
