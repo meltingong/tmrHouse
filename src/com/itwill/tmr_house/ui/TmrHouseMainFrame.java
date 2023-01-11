@@ -8,18 +8,19 @@ import javax.swing.border.EmptyBorder;
 
 import com.itwill.tmr_house.cart.*;
 import com.itwill.tmr_house.member.*;
+import com.itwill.tmr_house.member.ui.*;
 import com.itwill.tmr_house.order.*;
 import com.itwill.tmr_house.product.*;
 import java.awt.CardLayout;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Toolkit;
-import com.itwill.tmr_house.member.ui.MemberPrimaryScreenPanel_하은;
-import com.itwill.tmr_house.member.ui.MemberJoinScreenPanel_하은;
-import com.itwill.tmr_house.member.ui.MemberLoginScreenPanel_하은;
+import com.itwill.tmr_house.order.ui.김하은.OrdersPanel_하은2;
+import com.itwill.tmr_house.order.ui.김하은.OrdersDetailPanel_하은2;
 
 public class TmrHouseMainFrame extends JFrame {
 	
+	private CardLayout cardLayout ;
 	/*
 	 * 패널 체인지 상수
 	 */
@@ -30,6 +31,11 @@ public class TmrHouseMainFrame extends JFrame {
 	public static final int PANEL_MEMBER_MY_PAGE_SCREEN = 4;
 	
 	// 상품
+
+	public static final int PANEL_PRODUCT_PANEL = 5;
+	public static final int PANEL_PRODUCT_DETAIL_OLIVE = 6;
+	public static final int PANEL_PRODUCT_DETAIL_MONSTERA = 7;
+
 	// 20부터 시작함.
 	public static final int PANEL_PRODUCT_LIST_PANEL = 20;
 	public static final int PANEL_PRODUCT_TABLE_STEEL = 21;
@@ -40,13 +46,16 @@ public class TmrHouseMainFrame extends JFrame {
 	public static final int PANEL_PRODUCT_LIGHTING_PENDANT = 26;
 	public static final int PANEL_PRODUCT_PLANT_MONSTERA = 27;
 	public static final int PANEL_PRODUCT_PLANT_OLIVE = 28;
+
 	
 	
 	// 카트
 	
+	
 	// 오더
 	
-	public static final int PANEL_ORDERS = 9;
+	public static final int PANEL_ORDERS_하은2 = 8;
+	public static final int PANEL_ORDERS_DETAIL_하은2 = 9;
 	
 	
 	private JPanel contentPane;
@@ -56,7 +65,7 @@ public class TmrHouseMainFrame extends JFrame {
 	 */
 	MemberService memberService;
 	CartService cartService;
-	OrdersService orderService;
+	OrdersService ordersService;
 	ProductService productService;
 	
 	/*
@@ -64,6 +73,7 @@ public class TmrHouseMainFrame extends JFrame {
 	 */
 	
 	Member loginMember = null;
+	private JPanel parentPanel;
 	
 
 	/**
@@ -99,10 +109,11 @@ public class TmrHouseMainFrame extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
-		JPanel parentPanel = new JPanel();
+		parentPanel = new JPanel();
 		parentPanel.setBackground(new Color(255, 255, 255));
 		contentPane.add(parentPanel, BorderLayout.CENTER);
-		parentPanel.setLayout(new CardLayout(0, 0));
+		cardLayout = new CardLayout(0, 0);
+		parentPanel.setLayout(cardLayout);
 		
 		MemberPrimaryScreenPanel_하은 memberPrimaryScreenPanel_하은 = new MemberPrimaryScreenPanel_하은();
 		parentPanel.add(memberPrimaryScreenPanel_하은, "1");
@@ -112,6 +123,34 @@ public class TmrHouseMainFrame extends JFrame {
 		
 		MemberLoginScreenPanel_하은 memberLoginScreenPanel_하은 = new MemberLoginScreenPanel_하은();
 		parentPanel.add(memberLoginScreenPanel_하은, "3");
+
+		MemberMyPageScreenPanel_하은 memberMyPageScreenPanel_하은 = new MemberMyPageScreenPanel_하은();
+		parentPanel.add(memberMyPageScreenPanel_하은, "4");
+		
+		
+		OrdersPanel_하은2 ordersPanel_하은2 = new OrdersPanel_하은2();
+		parentPanel.add(ordersPanel_하은2, "8");
+		
+		OrdersDetailPanel_하은2 ordersDetailPanel_하은2 = new OrdersDetailPanel_하은2();
+		parentPanel.add(ordersDetailPanel_하은2, "9");
+		
+		
+		
+	/******service 객체 생성******/
+		memberService = new MemberService();
+		cartService = new CartService();
+		productService = new ProductService();
+		ordersService = new OrdersService();
+		
+		memberPrimaryScreenPanel_하은.setFrame(this);
+		memberJoinScreenPanel_하은.setFrame(this);
+		memberLoginScreenPanel_하은.setFrame(this);
+		memberMyPageScreenPanel_하은.setFrame(this);
+		ordersPanel_하은2.setFrame(this);
+		ordersDetailPanel_하은2.setFrame(this);
+		
+		
+		
 	}
 
 	
@@ -120,29 +159,49 @@ public class TmrHouseMainFrame extends JFrame {
 	public void changePanel(int panel_no) {
 		if(panel_no == PANEL_MEMBER_PRIMARY_SCREEN) {
 			
+			cardLayout.show(parentPanel, "1");
+			
 		}else if(panel_no == PANEL_MEMBER_JOIN_SCREEN) {
+			cardLayout.show(parentPanel, "2");
 			
 		}else if(panel_no == PANEL_MEMBER_LOGIN_SCREEN) {
+			cardLayout.show(parentPanel, "3");
 			
 		}else if(panel_no == PANEL_MEMBER_MY_PAGE_SCREEN) {
+			cardLayout.show(parentPanel, "4");
 			
 		}else if(panel_no == PANEL_PRODUCT_LIST_PANEL) {
+			cardLayout.show(parentPanel, "5");
 			
 		}else if(panel_no == PANEL_PRODUCT_TABLE_STEEL) {
+		
 			
 		}else if(panel_no == PANEL_PRODUCT_TABLE_WOOD) {
 			
+			
 		}else if(panel_no == PANEL_PRODUCT_CHAIR_STEEL) {
+			
 			
 		}else if(panel_no == PANEL_PRODUCT_CHAIR_WOOD) {
 			
+			
 		}else if(panel_no == PANEL_PRODUCT_LIGHTING_TABLE) {
+			;
 			
 		}else if(panel_no == PANEL_PRODUCT_LIGHTING_PENDANT) {
 			
+			
 		}else if(panel_no == PANEL_PRODUCT_PLANT_MONSTERA) {
 			
+			
 		}else if(panel_no == PANEL_PRODUCT_PLANT_OLIVE) {
+			
+			
+		}else if(panel_no == PANEL_ORDERS_하은2) {
+			cardLayout.show(parentPanel, "8");
+			
+		}else if(panel_no == PANEL_ORDERS_DETAIL_하은2) {
+			cardLayout.show(parentPanel, "9");
 			
 		}
 	}
