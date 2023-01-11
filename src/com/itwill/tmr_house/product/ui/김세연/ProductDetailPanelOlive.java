@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import java.awt.FlowLayout;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
+import javax.swing.table.TableModel;
 
 import com.itwill.tmr_house.cart.Cart;
 import com.itwill.tmr_house.cart.CartService;
@@ -23,14 +24,18 @@ import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.List;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
+import java.awt.GridLayout;
 
 public class ProductDetailPanelOlive extends JPanel {
 	
 	TmrHouseMainFrame frame;
-	public void setFrame(TmrHouseMainFrame frame) throws Exception{
-		this.frame = frame;
+	public void setFrame(TmrHouseMainFrame frame) throws Exception{		
+	 this.frame = frame;
 	}
 	
 	/************ Service객체멤버변수선언 ************/
@@ -43,6 +48,9 @@ public class ProductDetailPanelOlive extends JPanel {
 	Member loginMember = null;
 	Product product = null;
 	
+	/************** 콤보박스를 전역변수로 ****************/
+	private JComboBox qtyComboBox;
+	
 	/**
 	 * Create the panel.
 	 * @throws Exception 
@@ -52,96 +60,135 @@ public class ProductDetailPanelOlive extends JPanel {
 		
 		JPanel northPanel = new JPanel();
 		add(northPanel, BorderLayout.NORTH);
-		northPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		
+		JButton productListButton = new JButton("이전 페이지로");
+		productListButton.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
+		productListButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// 상품리스트 페이지로 전환
+				frame.changePanel(TmrHouseMainFrame.PANEL_PRODUCT_LIST_PANEL);
+				
+			}
+		});
+		northPanel.setLayout(new GridLayout(0, 1, 0, 0));
+		northPanel.add(productListButton);
 		
 		JPanel centerPanel = new JPanel();
 		add(centerPanel, BorderLayout.CENTER);
 		centerPanel.setLayout(new BorderLayout(0, 0));
 		
-		JPanel panel = new JPanel();
-		centerPanel.add(panel);
-		panel.setLayout(null);
+		JPanel productDetailPanel = new JPanel();
+		centerPanel.add(productDetailPanel);
+		productDetailPanel.setLayout(null);
 		
-		JLabel productImgLabel1 = new JLabel("");
-		productImgLabel1.setBounds(12, 60, 250, 350);
-		panel.add(productImgLabel1);
-		productImgLabel1.setHorizontalAlignment(SwingConstants.CENTER);
-		productImgLabel1.setIcon(new ImageIcon(ProductDetailPanelOlive.class.getResource("/com/itwill/tmr_house/product/images/plant_olive350.png")));
+		JLabel productImgLabel = new JLabel("");
+		productImgLabel.setBounds(12, 60, 250, 350);
+		productDetailPanel.add(productImgLabel);
+		productImgLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		productImgLabel.setIcon(new ImageIcon(ProductDetailPanelOlive.class.getResource("/com/itwill/tmr_house/product/images/plant_olive350.png")));
 		
 		JLabel productNameLabel = new JLabel("올리브 나무 화분");
 		productNameLabel.setBounds(288, 90, 200, 50);
-		panel.add(productNameLabel);
+		productDetailPanel.add(productNameLabel);
 		productNameLabel.setFont(new Font("맑은 고딕", Font.BOLD, 20));
 		
-		JLabel lblNewLabel_1 = new JLabel("수   량");
-		lblNewLabel_1.setBounds(288, 176, 50, 22);
-		panel.add(lblNewLabel_1);
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.LEFT);
-		lblNewLabel_1.setFont(new Font("맑은 고딕", Font.BOLD, 16));
+		JLabel qtyLabel = new JLabel("수   량");
+		qtyLabel.setBounds(288, 176, 50, 22);
+		productDetailPanel.add(qtyLabel);
+		qtyLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		qtyLabel.setFont(new Font("맑은 고딕", Font.BOLD, 16));
 		
-		JComboBox qtyComboBox = new JComboBox();
+		qtyComboBox = new JComboBox();
+		qtyComboBox.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				if(e.getStateChange()==ItemEvent.SELECTED) {
+					int cart_qty=Integer.parseInt((String)qtyComboBox.getSelectedItem());
+//					System.out.println(cart_qty);
+				}
+			}
+		});
+		
 		qtyComboBox.setBounds(419, 179, 42, 22);
-		panel.add(qtyComboBox);
+		productDetailPanel.add(qtyComboBox);
 		qtyComboBox.setFont(new Font("굴림", Font.PLAIN, 13));
 		qtyComboBox.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
 		
 		JLabel productDetailLabel = new JLabel("건조한 환경을 좋아하는 플랜테리어 식물");
 		productDetailLabel.setFont(new Font("맑은 고딕", Font.PLAIN, 18));
 		productDetailLabel.setBounds(12, 511, 476, 120);
-		panel.add(productDetailLabel);
+		productDetailPanel.add(productDetailLabel);
 		
-		JButton direcOrderButton = new JButton("바로 구매");
-		direcOrderButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				// 주문으로 전환
-//				frame.changePanel(TmrHouseMainFrame.~~);
+		JButton directOrderButton = new JButton("바로 구매");
+		directOrderButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+//				바로구매
+				try {
+					directOrder(Integer.parseInt((String)qtyComboBox.getSelectedItem()));
+					/**************************************** 주문 페이지로 전환 *******************************/
+					frame.changePanel(TmrHouseMainFrame.PANEL_ORDERS_DETAIL_하은);
+				} catch (NumberFormatException e1) {
+					e1.printStackTrace();
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
 			}
 		});
-		direcOrderButton.setFont(new Font("맑은 고딕", Font.BOLD, 20));
-		direcOrderButton.setBounds(37, 430, 200, 50);
-		panel.add(direcOrderButton);
+		directOrderButton.setFont(new Font("맑은 고딕", Font.BOLD, 20));
+		directOrderButton.setBounds(37, 430, 200, 50);
+		productDetailPanel.add(directOrderButton);
 		
 		JButton addCartButton = new JButton("카트 담기");
-		addCartButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				// 카트로 전환
-//				frame.changePanel(TmrHouseMainFrame.~~);
+		addCartButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+//				카트에 담기
+				try {
+					addCart(Integer.parseInt((String)qtyComboBox.getSelectedItem()));
+		/**************************************** 카트 페이지로 전환 *******************************/
+					frame.changePanel(TmrHouseMainFrame.PANEL_CARTLIST);
+					
+					
+					
+					
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
 			}
 		});
 		
 		addCartButton.setFont(new Font("맑은 고딕", Font.BOLD, 20));
 		addCartButton.setBounds(261, 430, 200, 50);
-		panel.add(addCartButton);
+		productDetailPanel.add(addCartButton);
 		
-		JLabel shippingLabel = new JLabel("배송비");
-		shippingLabel.setHorizontalAlignment(SwingConstants.LEFT);
-		shippingLabel.setFont(new Font("맑은 고딕", Font.BOLD, 16));
-		shippingLabel.setBounds(288, 313, 50, 22);
-		panel.add(shippingLabel);
+		JLabel freeDeliveryLabel = new JLabel("배송비");
+		freeDeliveryLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		freeDeliveryLabel.setFont(new Font("맑은 고딕", Font.BOLD, 16));
+		freeDeliveryLabel.setBounds(288, 313, 50, 22);
+		productDetailPanel.add(freeDeliveryLabel);
 		
-		JLabel shippingLabel_1 = new JLabel("");
-		shippingLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		shippingLabel_1.setFont(new Font("맑은 고딕", Font.PLAIN, 12));
-		shippingLabel_1.setBounds(364, 313, 111, 22);
-		panel.add(shippingLabel_1);
+		JLabel categoryLabel = new JLabel("데코/식물 > 플라워/식물 > 화분");
+		categoryLabel.setFont(new Font("맑은 고딕", Font.ITALIC, 15));
+		categoryLabel.setBounds(12, 10, 235, 37);
+		productDetailPanel.add(categoryLabel);
 		
-		JLabel lblNewLabel_4 = new JLabel("데코/식물 > 플라워/식물 > 화분");
-		lblNewLabel_4.setFont(new Font("맑은 고딕", Font.ITALIC, 15));
-		lblNewLabel_4.setBounds(12, 10, 235, 37);
-		panel.add(lblNewLabel_4);
+		JLabel priceLabel = new JLabel("가   격");
+		priceLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		priceLabel.setFont(new Font("맑은 고딕", Font.BOLD, 16));
+		priceLabel.setBounds(288, 246, 50, 22);
+		productDetailPanel.add(priceLabel);
 		
-		JLabel shippingLabel_2 = new JLabel("가격");
-		shippingLabel_2.setHorizontalAlignment(SwingConstants.LEFT);
-		shippingLabel_2.setFont(new Font("맑은 고딕", Font.BOLD, 16));
-		shippingLabel_2.setBounds(288, 246, 50, 22);
-		panel.add(shippingLabel_2);
+		JLabel priceDataLabel = new JLabel("20,000원");
+		priceDataLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+		priceDataLabel.setFont(new Font("맑은 고딕", Font.BOLD, 15));
+		priceDataLabel.setBounds(366, 249, 95, 22);
+		productDetailPanel.add(priceDataLabel);
 		
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setBounds(353, 320, 122, 22);
-		panel.add(lblNewLabel);
-		
-		JPanel southPanel = new JPanel();
-		add(southPanel, BorderLayout.SOUTH);
+		JLabel freeDeliveryDataLabel = new JLabel("무료배송");
+		freeDeliveryDataLabel.setFont(new Font("맑은 고딕", Font.BOLD, 15));
+		freeDeliveryDataLabel.setBounds(393, 316, 68, 22);
+		productDetailPanel.add(freeDeliveryDataLabel);
 
 		/************ Service객체멤버변수선언 ************/
 		memberService = new MemberService();
@@ -151,16 +198,44 @@ public class ProductDetailPanelOlive extends JPanel {
 
 	} // 생성
 	
-//		public void actionPerformed(ActionEvent e) {
-//			// 로그인한 회원이면 바로 구매 + 주문 페이지로 이동
-//					ordersService.directOrder(loginMember.getM_id(), product.getP_no(), qtyComboBox.get);
-//					// 주문 화면으로 이동
-//		}
-//		
-//		public void actionPerformed(ActionEvent e) {
-//					// qtyComboBox.getSelectedIndex() 이건 인덱스고 콤보박스에서 선택된 값을 가져오는 방법은..?
-//					cartService.insertCart(new Cart(0, qtyComboBox.getSelectedIndex(), loginMember.getM_id(), product));
-//					// 카트로 이동
-//		}
+	public Product findProduct() throws Exception {
+		Product findProduct = productService.findByProductNo(8);
+		return findProduct;
+	}
 	
+	public void directOrder(int cart_qty) throws Exception {
+		Product product;
+		product = productService.findByProductNo(8);
+		/****************************** loginMember id 가져와주기 **********************************/
+		ordersService.directOrder(frame.loginMember.getM_id(), product.getP_no(), cart_qty);
+	}
+	
+	public void addCart(int cart_qty) throws Exception {
+		Product product;
+		product = productService.findByProductNo(8);
+		/****************************** loginMember id 가져와주기 **********************************/
+		cartService.insertCart(new Cart(0, cart_qty, frame.loginMember.getM_id(), product));
+	}
+		/*	
+		public Product productInfo(int no) throws Exception {
+			List<Product> productList = productService.ProductList();
+			Product product = null;
+			if (productList.get(0).getP_no() == 1) {
+				product = productService.findByProductNo(1);
+			} else if (productList.get(1).getP_no() == 2) {
+				product = productService.findByProductNo(2);
+			} else if (productList.get(2).getP_no() == 3) {
+				product = productService.findByProductNo(3);
+			} else if (productList.get(3).getP_no() == 4) {
+				product = productService.findByProductNo(4);
+			} else if (productList.get(4).getP_no() == 5) {
+				product = productService.findByProductNo(5);
+			} else if (productList.get(5).getP_no() == 6) {
+				product = productService.findByProductNo(6);
+			} else if (productList.get(6).getP_no() == 7) {
+				product = productService.findByProductNo(7);
+			}
+			return product;
+		}
+		*/
 }

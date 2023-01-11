@@ -31,7 +31,7 @@ aaaa님이
     제품번호 3번 1개
 */
 -- orders insert
-insert into orders(o_no, o_desc, o_qty, o_price, o_date,m_id) values(orders_o_no_SEQ.nextval,'스틸 원형 테이블 외 1건',1,120000,sysdate,'aaaa');
+insert into orders(o_no, o_desc, o_qty, o_price, o_date,m_id) values(orders_o_no_SEQ.nextval,'스틸 원형 테이블 외 1건',1,230000,sysdate,'aaaa');
 
 -- order item insert
 -- 제품번호 1번 1개 
@@ -47,7 +47,7 @@ bbbb님이
     제품번호 4번 1개
 */
 -- orders insert
-insert into orders(o_no, o_desc, o_qty, o_price, o_date,m_id) values(orders_o_no_SEQ.nextval,'원목 사각테이블 외 2건',1,120000,sysdate,'bbbb');
+insert into orders(o_no, o_desc, o_qty, o_price, o_date,m_id) values(orders_o_no_SEQ.nextval,'원목 사각테이블 외 2건',1,363000,sysdate,'bbbb');
 
 -- order item insert
 -- 제품번호 2번 1개

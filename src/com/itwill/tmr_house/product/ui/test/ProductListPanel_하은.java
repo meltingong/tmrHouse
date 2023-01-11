@@ -123,7 +123,7 @@ public class ProductListPanel_하은 extends JPanel {
 		
 		serchTextField = new JTextField();
 		serchTextField.setBackground(new Color(240, 240, 240));
-		serchTextField.setBounds(26, 14, 306, 34);
+		serchTextField.setBounds(26, 14, 228, 34);
 		serchTextField.setToolTipText("검색어를 입력하세요.");
 		serchTextField.setFont(new Font("D2Coding ligature", Font.PLAIN, 15));
 		serchTextField.setColumns(10);
@@ -148,7 +148,7 @@ public class ProductListPanel_하은 extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 			}
 		});
-		serchBtn.setBounds(344, 14, 57, 33);
+		serchBtn.setBounds(280, 14, 57, 33);
 		serchBtn.setIcon(new ImageIcon(ProductListPanel_하은.class.getResource("/com/itwill/tmr_house/product/images/search_25.png")));
 		serchBtn.setFont(new Font("Dialog", Font.PLAIN, 16));
 		serchPanel.add(serchBtn);
@@ -162,10 +162,22 @@ public class ProductListPanel_하은 extends JPanel {
 			// 카트로 전환
 			}
 		});
-		cartButton.setBounds(413, 14, 57, 34);
+		cartButton.setBounds(349, 14, 57, 34);
 		cartButton.setIcon(new ImageIcon(ProductListPanel_하은.class.getResource("/com/itwill/tmr_house/product/images/shopping-cart_25.png")));
 		cartButton.setToolTipText("카트에 담기");
 		serchPanel.add(cartButton);
+		
+		JButton btnNewButton = new JButton("");
+		btnNewButton.setBorderPainted(false);
+		btnNewButton.setBackground(new Color(255, 255, 255));
+		btnNewButton.setIcon(new ImageIcon(ProductListPanel_하은.class.getResource("/com/itwill/tmr_house/product/images/user 30.png")));
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.changePanel(TmrHouseMainFrame.PANEL_MEMBER_MY_PAGE_SCREEN);
+			}
+		});
+		btnNewButton.setBounds(411, 14, 58, 34);
+		serchPanel.add(btnNewButton);
 		/*************product item end*************/
 		productService = new ProductService();
 		productList(null);

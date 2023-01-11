@@ -1,4 +1,4 @@
-package com.itwill.tmr_house.order.ui.김하은;
+package com.itwill.tmr_house.order.ui.김세연;
 
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
@@ -39,7 +39,15 @@ public class OrdersDetailPanel_하은2 extends JPanel {
 	 * @throws Exception 
 	 */
 	public OrdersDetailPanel_하은2() throws Exception {
-		
+		addComponentListener(new ComponentAdapter() {
+			@Override
+			public void componentShown(ComponentEvent e) {
+				Orders orders = new Orders();
+				orders.setM_id(frame.loginMember.getM_id());
+				System.out.println(orders);
+				displayOrderDetail(orders);
+			}
+		});
 		setLayout(new BorderLayout(0, 0));
 		
 		JPanel ordersDetailNorthPanel = new JPanel();
@@ -62,7 +70,7 @@ public class OrdersDetailPanel_하은2 extends JPanel {
 		JButton ordersHomeBtn = new JButton("");
 		ordersHomeBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frame.changePanel(TmrHouseMainFrame.PANEL_PRODUCT_LIST_PANEL);
+				frame.changePanel(TmrHouseMainFrame.PANEL_MEMBER_PRIMARY_SCREEN);
 			}
 		});
 		ordersHomeBtn.setBackground(new Color(64, 184, 255));
@@ -92,16 +100,19 @@ public class OrdersDetailPanel_하은2 extends JPanel {
 		scrollPane_1.setViewportView(orderDetailTable);
 		
 		ordersService = new OrdersService();
-	
+		Orders orders = new Orders();
 		//orders.setM_id(frame.loginMember.getM_id()); // 로그인하고 주문한 아이디로 바꿔줘야함
 		//orders.setO_no(findOrderNo(frame.loginMember.getM_id()));
-	
-		//displayOrderDetail(orders);
+		orders.setM_id("aaaa");
+		orders.setO_no(1);
+		displayOrderDetail(orders);
 	} // 생성자 끝
 
-	public void displayOrderDetail(int o_no) {
+	public void displayOrderDetail(Orders order) {
 		try {
-			curtOrder = ordersService.orderListDetail(frame.loginMember.getM_id(),o_no);
+			/*******주문리스트 보기[Jtable]**********/
+			
+			curtOrder = ordersService.orderListDetail(order.getM_id(), order.getO_no());
 			List<OrderItem> orderItemList = curtOrder.getOrderItemList();
 			
 			Vector columnVector = new Vector();
@@ -138,7 +149,7 @@ public class OrdersDetailPanel_하은2 extends JPanel {
 		}
 	}
 	
-	/*public int findOrderNo(String id) throws Exception {
+	/*	public int findOrderNo(String id) throws Exception {
 			List<Orders> orderList = ordersService.orderList(id);
 			int row = 0;
 			for(Orders order : orderList) {
@@ -147,8 +158,8 @@ public class OrdersDetailPanel_하은2 extends JPanel {
 				}
 			}
 			return row;
-		}
-	*/
+		}*/
+	
 	
 	
 }

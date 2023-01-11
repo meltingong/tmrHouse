@@ -192,4 +192,35 @@ private DataSource dataSource;
 			dataSource.close(con);
 			return order;
 		}
+		// 주문 여러개 보기
+		public List<Orders> findByMid(String m_id) throws Exception {
+
+			List<Orders> orderList = new ArrayList<Orders>();
+			
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			con = dataSource.getConnection();
+
+			pstmt = con.prepareStatement(OrdersSQL.ORDERS_SELECT_BY_M_ID);
+			pstmt.setString(1, m_id);
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				Orders order = new Orders(	rs.getInt("o_no"), 
+									rs.getString("o_desc"), 
+									rs.getInt("o_qty"), 
+									rs.getInt("o_price"),
+									rs.getDate("o_date"),
+									rs.getString("m_id"));
+				
+				orderList.add(order);
+			}
+			rs.close();
+			pstmt.close();
+			dataSource.close(con);
+			System.out.println(orderList.size()+"   Dao");
+			return orderList;
+		}
+	
 }

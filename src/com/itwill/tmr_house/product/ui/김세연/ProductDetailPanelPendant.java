@@ -30,7 +30,7 @@ import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
 import java.awt.GridLayout;
 
-public class ProductDetailPanelMonstera extends JPanel {
+public class ProductDetailPanelPendant extends JPanel {
 	
 	TmrHouseMainFrame frame;
 	public void setFrame(TmrHouseMainFrame frame) throws Exception{		
@@ -52,7 +52,7 @@ public class ProductDetailPanelMonstera extends JPanel {
 	 * Create the panel.
 	 * @throws Exception 
 	 */
-	public ProductDetailPanelMonstera() throws Exception {
+	public ProductDetailPanelPendant() throws Exception {
 		setLayout(new BorderLayout(0, 0));
 		
 		JPanel northPanel = new JPanel();
@@ -63,8 +63,8 @@ public class ProductDetailPanelMonstera extends JPanel {
 		productListButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-			/**************************************** 상품리스트 페이지로 전환 *******************************/
-				frame.changePanel(TmrHouseMainFrame.PANEL_PRODUCT_LIST_PANEL);	
+				// 상품리스트 페이지로 전환
+				frame.changePanel(TmrHouseMainFrame.PANEL_PRODUCT_LIST_PANEL);
 			}
 		});
 		northPanel.setLayout(new GridLayout(0, 1, 0, 0));
@@ -82,9 +82,9 @@ public class ProductDetailPanelMonstera extends JPanel {
 		productImgLabel.setBounds(12, 60, 250, 350);
 		productDetailPanel.add(productImgLabel);
 		productImgLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		productImgLabel.setIcon(new ImageIcon(ProductDetailPanelMonstera.class.getResource("/com/itwill/tmr_house/product/images/plant_monstera350.png")));
+		productImgLabel.setIcon(new ImageIcon(ProductDetailPanelPendant.class.getResource("/com/itwill/tmr_house/product/images/lighting_ceiling_pendant350.png")));
 		
-		JLabel productNameLabel = new JLabel("몬스테라 화분");
+		JLabel productNameLabel = new JLabel("팬턴트 조명");
 		productNameLabel.setBounds(288, 90, 200, 50);
 		productDetailPanel.add(productNameLabel);
 		productNameLabel.setFont(new Font("맑은 고딕", Font.BOLD, 20));
@@ -110,7 +110,7 @@ public class ProductDetailPanelMonstera extends JPanel {
 		qtyComboBox.setFont(new Font("굴림", Font.PLAIN, 13));
 		qtyComboBox.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
 		
-		JLabel productDetailLabel = new JLabel("초보자도 키우기 쉬운 공기정화 식물");
+		JLabel productDetailLabel = new JLabel("식탁용 천장 조명. 지름 40cm, 길이 160cm");
 		productDetailLabel.setFont(new Font("맑은 고딕", Font.PLAIN, 18));
 		productDetailLabel.setBounds(12, 511, 476, 120);
 		productDetailPanel.add(productDetailLabel);
@@ -122,7 +122,6 @@ public class ProductDetailPanelMonstera extends JPanel {
 //				바로구매
 				try {
 					directOrder(Integer.parseInt((String)qtyComboBox.getSelectedItem()));
-		/**************************************** 주문 페이지로 전환 *******************************/
 					frame.changePanel(TmrHouseMainFrame.PANEL_ORDERS_DETAIL_하은);
 				} catch (NumberFormatException e1) {
 					e1.printStackTrace();
@@ -142,9 +141,10 @@ public class ProductDetailPanelMonstera extends JPanel {
 //				카트에 담기
 				try {
 					addCart(Integer.parseInt((String)qtyComboBox.getSelectedItem()));
-		/**************************************** 카트 페이지로 전환 *******************************/
-					
+//				카트 페이지로 전환
 					frame.changePanel(TmrHouseMainFrame.PANEL_CARTLIST);
+					
+					
 					
 					
 					
@@ -164,7 +164,7 @@ public class ProductDetailPanelMonstera extends JPanel {
 		freeDeliveryLabel.setBounds(288, 313, 50, 22);
 		productDetailPanel.add(freeDeliveryLabel);
 		
-		JLabel categoryLabel = new JLabel("데코/식물 > 플라워/식물 > 화분");
+		JLabel categoryLabel = new JLabel("조명 > 벽조명");
 		categoryLabel.setFont(new Font("맑은 고딕", Font.ITALIC, 15));
 		categoryLabel.setBounds(12, 10, 235, 37);
 		productDetailPanel.add(categoryLabel);
@@ -175,10 +175,9 @@ public class ProductDetailPanelMonstera extends JPanel {
 		priceLabel.setBounds(288, 246, 50, 22);
 		productDetailPanel.add(priceLabel);
 		
-		JLabel priceDataLabel = new JLabel("30,000원");
-		priceDataLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+		JLabel priceDataLabel = new JLabel("50,000원");
 		priceDataLabel.setFont(new Font("맑은 고딕", Font.BOLD, 15));
-		priceDataLabel.setBounds(366, 249, 95, 22);
+		priceDataLabel.setBounds(393, 249, 68, 22);
 		productDetailPanel.add(priceDataLabel);
 		
 		JLabel freeDeliveryDataLabel = new JLabel("무료배송");
@@ -201,16 +200,15 @@ public class ProductDetailPanelMonstera extends JPanel {
 	
 	public void directOrder(int cart_qty) throws Exception {
 		Product product;
-		product = productService.findByProductNo(7);
+		product = productService.findByProductNo(6);
 		/****************************** loginMember id 가져와주기 **********************************/
 		ordersService.directOrder(frame.loginMember.getM_id(), product.getP_no(), cart_qty);
 	}
 	
 	public void addCart(int cart_qty) throws Exception {
 		Product product;
-		product = productService.findByProductNo(7);
+		product = productService.findByProductNo(6);
 		/****************************** loginMember id 가져와주기 **********************************/
 		cartService.insertCart(new Cart(0, cart_qty, frame.loginMember.getM_id(), product));
-
 		}
 }

@@ -57,24 +57,24 @@ public class MemberServiceTestMain {
 		System.out.println(">> " + memberService.login("zzzz", "zzzz"));
 		System.out.println(">> " + memberService.login("bbbb", "aaaa"));
 		System.out.println(">> " + memberService.login("empty", "aaaa"));
-
-		/*
-		 * 회원정보수정
-		 */ 
-		int rowCount = memberService.memberUpdate(new Member("hhhh", "hhhh", "원장님부인", "720926", "3452-5444", "떡잎유치원"));
-		System.out.println(">>" + rowCount + "행이 수정되었습니다");
 		
 		/*
+		 * 회원정보수정
+		 */
+		int rowCount = memberService.memberUpdate(new Member("qqqq", "qqqq", "원장님부인", "720926", "3452-5444", "떡잎유치원"));
+		System.out.println(">>" + rowCount + "행이 수정되었습니다");
+
+		/*
 		 * 회원탈퇴
-		 */ 
+		 */
 		rowCount = memberService.memerDelete("hhhh");
 		System.out.println(">>" + rowCount + "명이 탈퇴하였습니다");
 		
-	    /*
+		/*
 		 * 회원정보 상세보기
-		 */ 
+		  */
 		System.out.println(memberService.memberDetail("qqqq"));
-
+		
 	}
 
 }

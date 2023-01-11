@@ -29,7 +29,7 @@ public class MemberLoginScreenPanel_하은 extends JPanel {
 	private JPasswordField loginPasswordField;
 	
 	private MemberService memberService;
-	private Member loginMember = null;
+	
 	
 	public void setFrame(TmrHouseMainFrame frame) {
 		this.frame = frame;
@@ -100,7 +100,6 @@ public class MemberLoginScreenPanel_하은 extends JPanel {
 		JButton loginBacklBtn = new JButton("");
 		loginBacklBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
 				// 초기화면으로 전환
 				frame.changePanel(TmrHouseMainFrame.PANEL_MEMBER_PRIMARY_SCREEN);
 			}
@@ -116,6 +115,7 @@ public class MemberLoginScreenPanel_하은 extends JPanel {
 		memberService = new MemberService();
 		
 		}
+		
 
 	/************로그인 유효성 검사**************/
 	public void loginTest() {
@@ -148,16 +148,16 @@ public class MemberLoginScreenPanel_하은 extends JPanel {
 	}
 	/*******************로그인 성공 시 호출 할 메소드*****************/
 	
-	private void loginProcess(String id) throws Exception {
+	public void loginProcess(String id) throws Exception {
 		// 1. 로그인 성공한 멤버객체 멤버필드에 저장
-		this.loginMember = memberService.memberDetail(id);
+		frame.loginMember = memberService.memberDetail(id);
 		
 		// 2. 타이틀 변경 (변경 안함)
-		// 3. 로그인화면 , 화면가입 불활성화
+		// 3. 로그인화면 , 화면가입 불활성화 (x)
 		
 		// 4. 정보보기 화면
 		
-		// 5. 수정작업(x)
+		// 5. 수정작업(x 다른패널)
 		
 	}
 	

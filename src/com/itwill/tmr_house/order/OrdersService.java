@@ -31,6 +31,12 @@ public class OrdersService {
 		public List<Orders> orderList(String m_id) throws Exception {
 			return ordersDao.findById(m_id);
 		}
+		
+		// 주문리스트 ( orderitem리스트까지) 아이디로찾기
+		public List<Orders>orderListAddOrderItemList(String m_id) throws Exception{
+			return ordersDao.findByMid(m_id);
+		}
+		
 		//주문상세보기
 		public Orders orderListDetail(String m_id,int o_no) throws Exception {
 			return ordersDao.findByOrderNo(m_id, o_no);
