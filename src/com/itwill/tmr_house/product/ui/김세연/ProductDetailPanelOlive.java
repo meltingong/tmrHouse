@@ -32,8 +32,8 @@ import java.awt.GridLayout;
 
 public class ProductDetailPanelOlive extends JPanel {
 	
-	TestTmrHouseMainFrame frame;
-	public void setFrame(TestTmrHouseMainFrame frame) throws Exception{		
+	TmrHouseMainFrame frame;
+	public void setFrame(TmrHouseMainFrame frame) throws Exception{		
 	 this.frame = frame;
 	}
 	
@@ -46,6 +46,8 @@ public class ProductDetailPanelOlive extends JPanel {
 	/***** 로그인한 member객체저장할 Member객체선언 **********/
 	Member loginMember = null;
 	Product product = null;
+	
+	/************** 콤보박스를 전역변수로 ****************/
 	private JComboBox qtyComboBox;
 	
 	/**
@@ -64,7 +66,8 @@ public class ProductDetailPanelOlive extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				// 상품리스트 페이지로 전환
-				frame.changePanel(TestTmrHouseMainFrame.PANEL_PRODUCT_LIST_PANEL);
+				
+				
 			}
 		});
 		northPanel.setLayout(new GridLayout(0, 1, 0, 0));
@@ -111,9 +114,6 @@ public class ProductDetailPanelOlive extends JPanel {
 		qtyComboBox.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
 		
 		JLabel productDetailLabel = new JLabel("건조한 환경을 좋아하는 플랜테리어 식물");
-//		JLabel productDetailLabel = new JLabel("");
-//		"건조한 환경을 좋아하는 플랜테리어 식물"
-//		productDetailLabel.setText(productInfo(8).getP_desc());
 		productDetailLabel.setFont(new Font("맑은 고딕", Font.PLAIN, 18));
 		productDetailLabel.setBounds(12, 511, 476, 120);
 		productDetailPanel.add(productDetailLabel);
@@ -125,15 +125,15 @@ public class ProductDetailPanelOlive extends JPanel {
 //				바로구매
 				try {
 					directOrder(Integer.parseInt((String)qtyComboBox.getSelectedItem()));
-//				주문 페이지로 전환
-//				frame.changePanel(TestTmrHouseMainFrame.PANEL_ORDERS_하은2);
-//				아직 주문페이지를 메인프레임에 불러오지 않아 테스트 용으로 상품전체 리스트 패널로 전환
-//				frame.changePanel(TestTmrHouseMainFrame.PANEL_PRODUCT_LIST_PANEL);
+					/**************************************** 주문 페이지로 전환 *******************************/
+					
+					
+					
+					
+					
 				} catch (NumberFormatException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				} catch (Exception e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
@@ -149,8 +149,12 @@ public class ProductDetailPanelOlive extends JPanel {
 //				카트에 담기
 				try {
 					addCart(Integer.parseInt((String)qtyComboBox.getSelectedItem()));
-//				카트 페이지로 전환
-//				frame.changePanel(TestTmrHouseMainFrame.PANEL_PRODUCT_LIST_PANEL);
+		/**************************************** 카트 페이지로 전환 *******************************/
+					
+					
+					
+					
+					
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
@@ -217,8 +221,26 @@ public class ProductDetailPanelOlive extends JPanel {
 //		cartService.insertCart(new Cart(0, cart_qty, frame.loginMember.getM_id(), product));
 		cartService.insertCart(new Cart(0, cart_qty, "aaaa", product));
 	}
-	
-	public Product productInfo(int no) throws Exception {
-		return productService.findByProductNo(no);
-	}
+		/*	
+		public Product productInfo(int no) throws Exception {
+			List<Product> productList = productService.ProductList();
+			Product product = null;
+			if (productList.get(0).getP_no() == 1) {
+				product = productService.findByProductNo(1);
+			} else if (productList.get(1).getP_no() == 2) {
+				product = productService.findByProductNo(2);
+			} else if (productList.get(2).getP_no() == 3) {
+				product = productService.findByProductNo(3);
+			} else if (productList.get(3).getP_no() == 4) {
+				product = productService.findByProductNo(4);
+			} else if (productList.get(4).getP_no() == 5) {
+				product = productService.findByProductNo(5);
+			} else if (productList.get(5).getP_no() == 6) {
+				product = productService.findByProductNo(6);
+			} else if (productList.get(6).getP_no() == 7) {
+				product = productService.findByProductNo(7);
+			}
+			return product;
+		}
+		*/
 }

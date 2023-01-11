@@ -33,9 +33,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class ProductListPanel extends JPanel {
-	TestTmrHouseMainFrame frame;
+	TmrHouseMainFrame frame;
 	
-	public void setFrame(TestTmrHouseMainFrame frame) throws Exception{
+	public void setFrame(TmrHouseMainFrame frame) throws Exception{
 		this.frame = frame;
 		productList(null);
 	}
@@ -235,24 +235,25 @@ public class ProductListPanel extends JPanel {
 		}
 	}
 	
+	/**************************** 최종 메인프레임의 changePanel 메소드로 바꿈 *********************************************/
 	public void findProductDetail(String p_name) throws Exception {
 		List<Product> productList = productService.ProductList();
 		if (productList.get(0).getP_name().equals(p_name)) {
-			frame.changePanel(TestTmrHouseMainFrame.PANEL_PRODUCT_TABLE_STEEL);
+			frame.changePanel(TmrHouseMainFrame.PANEL_PRODUCT_TABLE_STEEL);
 		} else if(productList.get(1).getP_name().equals(p_name)) {
-			frame.changePanel(TestTmrHouseMainFrame.PANEL_PRODUCT_TABLE_WOOD);
+			frame.changePanel(TmrHouseMainFrame.PANEL_PRODUCT_TABLE_WOOD);
 		} else if(productList.get(2).getP_name().equals(p_name)) {
-			frame.changePanel(TestTmrHouseMainFrame.PANEL_PRODUCT_CHAIR_STEEL);
+			frame.changePanel(TmrHouseMainFrame.PANEL_PRODUCT_CHAIR_STEEL);
 		} else if(productList.get(3).getP_name().equals(p_name)) {
-			frame.changePanel(TestTmrHouseMainFrame.PANEL_PRODUCT_CHAIR_WOOD);
+			frame.changePanel(TmrHouseMainFrame.PANEL_PRODUCT_CHAIR_WOOD);
 		} else if(productList.get(4).getP_name().equals(p_name)) {
-			frame.changePanel(TestTmrHouseMainFrame.PANEL_PRODUCT_LIGHTING_TABLE);
+			frame.changePanel(TmrHouseMainFrame.PANEL_PRODUCT_LIGHTING_TABLE);
 		} else if(productList.get(5).getP_name().equals(p_name)) {
-			frame.changePanel(TestTmrHouseMainFrame.PANEL_PRODUCT_LIGHTING_PENDANT);
+			frame.changePanel(TmrHouseMainFrame.PANEL_PRODUCT_LIGHTING_PENDANT);
 		} else if(productList.get(6).getP_name().equals(p_name)) {
-			frame.changePanel(TestTmrHouseMainFrame.PANEL_PRODUCT_PLANT_MONSTERA);
+			frame.changePanel(TmrHouseMainFrame.PANEL_PRODUCT_PLANT_MONSTERA);
 		} else if(productList.get(7).getP_name().equals(p_name)) {
-			frame.changePanel(TestTmrHouseMainFrame.PANEL_PRODUCT_PLANT_OLIVE);
+			frame.changePanel(TmrHouseMainFrame.PANEL_PRODUCT_PLANT_OLIVE);
 		}
 	}
 }

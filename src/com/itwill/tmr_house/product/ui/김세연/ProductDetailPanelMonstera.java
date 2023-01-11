@@ -32,8 +32,8 @@ import java.awt.GridLayout;
 
 public class ProductDetailPanelMonstera extends JPanel {
 	
-	TestTmrHouseMainFrame frame;
-	public void setFrame(TestTmrHouseMainFrame frame) throws Exception{		
+	TmrHouseMainFrame frame;
+	public void setFrame(TmrHouseMainFrame frame) throws Exception{		
 	 this.frame = frame;
 	}
 	
@@ -63,8 +63,8 @@ public class ProductDetailPanelMonstera extends JPanel {
 		productListButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				// 상품리스트 페이지로 전환
-				frame.changePanel(TestTmrHouseMainFrame.PANEL_PRODUCT_LIST_PANEL);
+			/**************************************** 상품리스트 페이지로 전환 *******************************/
+				
 			}
 		});
 		northPanel.setLayout(new GridLayout(0, 1, 0, 0));
@@ -122,15 +122,15 @@ public class ProductDetailPanelMonstera extends JPanel {
 //				바로구매
 				try {
 					directOrder(Integer.parseInt((String)qtyComboBox.getSelectedItem()));
-//				주문 페이지로 전환
-//				frame.changePanel(TestTmrHouseMainFrame.PANEL_ORDERS_하은2);
-//				아직 주문페이지를 메인프레임에 불러오지 않아 테스트 용으로 상품전체 리스트 패널로 전환
-//				frame.changePanel(TestTmrHouseMainFrame.PANEL_PRODUCT_LIST_PANEL);
+		/**************************************** 주문 페이지로 전환 *******************************/
+					
+					
+					
+					
+					
 				} catch (NumberFormatException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				} catch (Exception e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
@@ -146,8 +146,12 @@ public class ProductDetailPanelMonstera extends JPanel {
 //				카트에 담기
 				try {
 					addCart(Integer.parseInt((String)qtyComboBox.getSelectedItem()));
-//				카트 페이지로 전환
-//				frame.changePanel(TestTmrHouseMainFrame.PANEL_PRODUCT_LIST_PANEL);
+		/**************************************** 카트 페이지로 전환 *******************************/
+					
+					
+					
+					
+					
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
