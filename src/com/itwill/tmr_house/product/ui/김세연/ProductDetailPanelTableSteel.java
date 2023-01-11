@@ -119,18 +119,12 @@ public class ProductDetailPanelTableSteel extends JPanel {
 		directOrderButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-//				바로구매
 				try {
 					directOrder(Integer.parseInt((String)qtyComboBox.getSelectedItem()));
-//				주문 페이지로 전환
-//				frame.changePanel(TestTmrHouseMainFrame.PANEL_ORDERS_하은2);
-//				아직 주문페이지를 메인프레임에 불러오지 않아 테스트 용으로 상품전체 리스트 패널로 전환
-//				frame.changePanel(TestTmrHouseMainFrame.PANEL_PRODUCT_LIST_PANEL);
+				frame.changePanel(TmrHouseMainFrame.PANEL_ORDERS_하은2);
 				} catch (NumberFormatException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				} catch (Exception e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
@@ -143,11 +137,10 @@ public class ProductDetailPanelTableSteel extends JPanel {
 		addCartButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-//				카트에 담기
 				try {
 					addCart(Integer.parseInt((String)qtyComboBox.getSelectedItem()));
-//				카트 페이지로 전환
-//				frame.changePanel(TestTmrHouseMainFrame.PANEL_PRODUCT_LIST_PANEL);
+//					카트 패널로 전환
+					
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
@@ -201,18 +194,16 @@ public class ProductDetailPanelTableSteel extends JPanel {
 	
 	public void directOrder(int cart_qty) throws Exception {
 		Product product;
-		product = productService.findByProductNo(8);
+		product = productService.findByProductNo(1);
 		/****************************** loginMember id 가져와주기 **********************************/
-//		ordersService.directOrder(frame.loginMember.getM_id(), product.getP_no(), cart_qty);
-		ordersService.directOrder("bbbb", product.getP_no(), cart_qty);
+		ordersService.directOrder(frame.loginMember.getM_id(), product.getP_no(), cart_qty);
 	}
 	
 	public void addCart(int cart_qty) throws Exception {
 		Product product;
-		product = productService.findByProductNo(8);
+		product = productService.findByProductNo(1);
 		/****************************** loginMember id 가져와주기 **********************************/
-//		cartService.insertCart(new Cart(0, cart_qty, frame.loginMember.getM_id(), product));
-		cartService.insertCart(new Cart(0, cart_qty, "aaaa", product));
+		cartService.insertCart(new Cart(0, cart_qty, frame.loginMember.getM_id(), product));
 
 				}
 }

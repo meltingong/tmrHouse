@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import java.awt.FlowLayout;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
+import javax.swing.table.TableModel;
 
 import com.itwill.tmr_house.cart.Cart;
 import com.itwill.tmr_house.cart.CartService;
@@ -126,11 +127,7 @@ public class ProductDetailPanelOlive extends JPanel {
 				try {
 					directOrder(Integer.parseInt((String)qtyComboBox.getSelectedItem()));
 					/**************************************** 주문 페이지로 전환 *******************************/
-					
-					
-					
-					
-					
+					frame.changePanel(TmrHouseMainFrame.PANEL_ORDERS_하은2);
 				} catch (NumberFormatException e1) {
 					e1.printStackTrace();
 				} catch (Exception e1) {
@@ -210,16 +207,14 @@ public class ProductDetailPanelOlive extends JPanel {
 		Product product;
 		product = productService.findByProductNo(8);
 		/****************************** loginMember id 가져와주기 **********************************/
-//		ordersService.directOrder(frame.loginMember.getM_id(), product.getP_no(), cart_qty);
-		ordersService.directOrder("bbbb", product.getP_no(), cart_qty);
+		ordersService.directOrder(frame.loginMember.getM_id(), product.getP_no(), cart_qty);
 	}
 	
 	public void addCart(int cart_qty) throws Exception {
 		Product product;
 		product = productService.findByProductNo(8);
 		/****************************** loginMember id 가져와주기 **********************************/
-//		cartService.insertCart(new Cart(0, cart_qty, frame.loginMember.getM_id(), product));
-		cartService.insertCart(new Cart(0, cart_qty, "aaaa", product));
+		cartService.insertCart(new Cart(0, cart_qty, frame.loginMember.getM_id(), product));
 	}
 		/*	
 		public Product productInfo(int no) throws Exception {
