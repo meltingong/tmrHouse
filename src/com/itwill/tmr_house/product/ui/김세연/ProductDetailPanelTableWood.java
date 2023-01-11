@@ -163,7 +163,7 @@ public class ProductDetailPanelTableWood extends JPanel {
 		categoryLabel.setBounds(12, 10, 398, 37);
 		productDetailPanel.add(categoryLabel);
 		
-		JLabel priceLabel = new JLabel("가격");
+		JLabel priceLabel = new JLabel("가   격");
 		priceLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		priceLabel.setFont(new Font("맑은 고딕", Font.BOLD, 16));
 		priceLabel.setBounds(288, 246, 50, 22);
