@@ -83,7 +83,7 @@ public class OrdersDetailPanel_하은2 extends JPanel {
 				{null, null, null, null, null},
 			},
 			new String[] {
-				"New column", "New column", "New column", "New column", "New column"
+				"New column", "New column", "New column", "New column", "New column", "New column"
 			}
 		));
 		scrollPane_1.setViewportView(orderDetailTable);
@@ -104,11 +104,13 @@ public class OrdersDetailPanel_하은2 extends JPanel {
 			
 			Vector columnVector = new Vector();
 			columnVector.add("주문번호");
-			columnVector.add("주문상품");
+			//columnVector.add("주문상품번호");
 			columnVector.add("수량");
-			columnVector.add("주문금액");
-			columnVector.add("주문날짜");
-			columnVector.add("주문아이디");
+			columnVector.add("상품명");
+			columnVector.add("상품금액");
+			//columnVector.add("상세설명");
+			//columnVector.add("주문날짜");
+			columnVector.add("배송비유무");
 			
 			Vector tableVector = new Vector();
 			
@@ -116,10 +118,11 @@ public class OrdersDetailPanel_하은2 extends JPanel {
 			for(OrderItem orderItem:orderItemList) {
 				Vector rowVector = new Vector();
 				rowVector.add(orderItem.getO_no());
-				rowVector.add(orderItem.getOi_no());
+				//rowVector.add(orderItem.getOi_no());
 				rowVector.add(orderItem.getOi_qty());
 				rowVector.add(orderItem.getProduct().getP_name());
-				rowVector.add(orderItem.getProduct().getP_desc());
+				rowVector.add(orderItem.getProduct().getP_price());
+				//rowVector.add(orderItem.getProduct().getP_desc());
 				rowVector.add(orderItem.getProduct().getP_freeDelivery());
 				tableVector.add(rowVector);
 			}

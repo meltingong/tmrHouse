@@ -29,7 +29,7 @@ public class MemberLoginScreenPanel_하은 extends JPanel {
 	private JPasswordField loginPasswordField;
 	
 	private MemberService memberService;
-	private Member loginMember = null;
+	Member loginMember = null;
 	
 	public void setFrame(TmrHouseMainFrame frame) {
 		this.frame = frame;

@@ -17,6 +17,8 @@ import com.itwill.tmr_house.ui.*;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class MemberMyPageScreenPanel_하은 extends JPanel {
 	
@@ -56,80 +58,80 @@ public class MemberMyPageScreenPanel_하은 extends JPanel {
 		memberMyPageAppTitleLB.setFont(new Font("D2Coding", Font.BOLD, 20));
 		memberMyPageNorthPanel.add(memberMyPageAppTitleLB);
 		
-		JPanel panel = new JPanel();
-		panel.setBackground(new Color(255, 255, 255));
-		add(panel, BorderLayout.CENTER);
-		panel.setLayout(null);
+		JPanel memberMyPageCenterPanel = new JPanel();
+		memberMyPageCenterPanel.setBackground(new Color(255, 255, 255));
+		add(memberMyPageCenterPanel, BorderLayout.CENTER);
+		memberMyPageCenterPanel.setLayout(null);
 		
 		JLabel idLB = new JLabel("아이디");
 		idLB.setFont(new Font("D2Coding", Font.PLAIN, 17));
 		idLB.setBounds(54, 130, 152, 18);
-		panel.add(idLB);
+		memberMyPageCenterPanel.add(idLB);
 		
 		JLabel pwLB = new JLabel("비밀번호");
 		pwLB.setFont(new Font("D2Coding", Font.PLAIN, 17));
 		pwLB.setBounds(54, 178, 152, 24);
-		panel.add(pwLB);
+		memberMyPageCenterPanel.add(pwLB);
 		
 		JLabel pwCorrectLB = new JLabel("비밀번호확인");
 		pwCorrectLB.setFont(new Font("D2Coding", Font.PLAIN, 17));
 		pwCorrectLB.setBounds(54, 232, 152, 37);
-		panel.add(pwCorrectLB);
+		memberMyPageCenterPanel.add(pwCorrectLB);
 		
 		JLabel name = new JLabel("이름");
 		name.setFont(new Font("D2Coding", Font.PLAIN, 17));
 		name.setBounds(54, 345, 152, 37);
-		panel.add(name);
+		memberMyPageCenterPanel.add(name);
 		
 		JLabel phoneNumberLB = new JLabel("핸드폰 번호");
 		phoneNumberLB.setFont(new Font("D2Coding", Font.PLAIN, 17));
 		phoneNumberLB.setBounds(54, 410, 152, 24);
-		panel.add(phoneNumberLB);
+		memberMyPageCenterPanel.add(phoneNumberLB);
 		
 		JLabel addressLB = new JLabel("주소");
 		addressLB.setFont(new Font("D2Coding", Font.PLAIN, 17));
 		addressLB.setBounds(54, 475, 152, 18);
-		panel.add(addressLB);
+		memberMyPageCenterPanel.add(addressLB);
 		
 		modifyIdTF = new JTextField();
 		modifyIdTF.setFont(new Font("D2Coding", Font.PLAIN, 17));
 		modifyIdTF.setColumns(10);
 		modifyIdTF.setBounds(253, 130, 205, 21);
-		panel.add(modifyIdTF);
+		memberMyPageCenterPanel.add(modifyIdTF);
 		
 		modifyPasswordField = new JPasswordField();
 		modifyPasswordField.setFont(new Font("D2Coding", Font.PLAIN, 17));
 		modifyPasswordField.setBounds(253, 180, 205, 21);
-		panel.add(modifyPasswordField);
+		memberMyPageCenterPanel.add(modifyPasswordField);
 		
 		modifyPasswordCorrectField = new JPasswordField();
 		modifyPasswordCorrectField.setFont(new Font("D2Coding", Font.PLAIN, 17));
 		modifyPasswordCorrectField.setBounds(253, 241, 205, 21);
-		panel.add(modifyPasswordCorrectField);
+		memberMyPageCenterPanel.add(modifyPasswordCorrectField);
 		
 		modifyNameTF = new JTextField();
 		modifyNameTF.setFont(new Font("D2Coding", Font.PLAIN, 17));
 		modifyNameTF.setColumns(10);
 		modifyNameTF.setBounds(253, 353, 205, 21);
-		panel.add(modifyNameTF);
+		memberMyPageCenterPanel.add(modifyNameTF);
 		
 		modifyPhoneNumberTF = new JTextField();
 		modifyPhoneNumberTF.setFont(new Font("D2Coding", Font.PLAIN, 17));
 		modifyPhoneNumberTF.setColumns(11);
 		modifyPhoneNumberTF.setBounds(253, 412, 205, 21);
-		panel.add(modifyPhoneNumberTF);
+		memberMyPageCenterPanel.add(modifyPhoneNumberTF);
 		
 		modifyAddressTF = new JTextField();
 		modifyAddressTF.setFont(new Font("D2Coding", Font.PLAIN, 17));
 		modifyAddressTF.setColumns(20);
 		modifyAddressTF.setBounds(253, 474, 205, 21);
-		panel.add(modifyAddressTF);
+		memberMyPageCenterPanel.add(modifyAddressTF);
 		
 		JLabel lblNewLabel = new JLabel("회원정보 수정");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("D2Coding", Font.BOLD, 30));
 		lblNewLabel.setBounds(140, 42, 218, 37);
-		panel.add(lblNewLabel);
+		memberMyPageCenterPanel.add(lblNewLabel);
 		
 		JButton modifyBtn = new JButton("저장");
 		modifyBtn.addActionListener(new ActionListener() {
@@ -164,7 +166,7 @@ public class MemberMyPageScreenPanel_하은 extends JPanel {
 		modifyBtn.setBorderPainted(false);
 		modifyBtn.setBackground(new Color(64, 184, 255));
 		modifyBtn.setBounds(95, 535, 97, 37);
-		panel.add(modifyBtn);
+		memberMyPageCenterPanel.add(modifyBtn);
 		
 		JButton cancelBtn = new JButton("취소");
 		cancelBtn.addActionListener(new ActionListener() {
@@ -177,17 +179,17 @@ public class MemberMyPageScreenPanel_하은 extends JPanel {
 		cancelBtn.setBorderPainted(false);
 		cancelBtn.setBackground(Color.WHITE);
 		cancelBtn.setBounds(316, 535, 97, 37);
-		panel.add(cancelBtn);
+		memberMyPageCenterPanel.add(cancelBtn);
 		
 		JLabel modifyBirthLB = new JLabel("생년월일");
 		modifyBirthLB.setFont(new Font("D2Coding", Font.PLAIN, 17));
 		modifyBirthLB.setBounds(54, 295, 152, 29);
-		panel.add(modifyBirthLB);
+		memberMyPageCenterPanel.add(modifyBirthLB);
 		
 		modifyBirthTF = new JTextField();
 		modifyBirthTF.setFont(new Font("D2Coding", Font.PLAIN, 17));
 		modifyBirthTF.setBounds(253, 299, 205, 21);
-		panel.add(modifyBirthTF);
+		memberMyPageCenterPanel.add(modifyBirthTF);
 		modifyBirthTF.setColumns(10);
 		
 		modifyPwCorrectLB = new JLabel("");
@@ -196,7 +198,18 @@ public class MemberMyPageScreenPanel_하은 extends JPanel {
 		modifyPwCorrectLB.setForeground(new Color(255, 0, 0));
 		modifyPwCorrectLB.setFont(new Font("D2Coding", Font.PLAIN, 12));
 		modifyPwCorrectLB.setBounds(253, 274, 205, 15);
-		panel.add(modifyPwCorrectLB);
+		memberMyPageCenterPanel.add(modifyPwCorrectLB);
+		
+		JLabel lblNewLabel_1 = new JLabel("주문내역상세보기");
+		lblNewLabel_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				frame.changePanel(TmrHouseMainFrame.PANEL_ORDERS_DETAIL_하은2);
+			}
+		});
+		lblNewLabel_1.setFont(new Font("D2Coding", Font.PLAIN, 14));
+		lblNewLabel_1.setBounds(354, 72, 118, 24);
+		memberMyPageCenterPanel.add(lblNewLabel_1);
 
 	}
 	
@@ -208,5 +221,4 @@ public class MemberMyPageScreenPanel_하은 extends JPanel {
 		modifyPhoneNumberTF.setText(member.getM_phone());
 		modifyAddressTF.setText(member.getM_address());
 	}
-	
 }

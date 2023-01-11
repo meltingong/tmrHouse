@@ -185,7 +185,7 @@ public class TmrHouseMainFrame extends JFrame {
 			
 			
 		}else if(panel_no == PANEL_PRODUCT_LIGHTING_TABLE) {
-			;
+			
 			
 		}else if(panel_no == PANEL_PRODUCT_LIGHTING_PENDANT) {
 			

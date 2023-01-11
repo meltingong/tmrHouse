@@ -11,6 +11,7 @@ import javax.swing.JTable;
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
 
+import com.itwill.tmr_house.member.*;
 import com.itwill.tmr_house.order.*;
 import com.itwill.tmr_house.ui.*;
 
@@ -28,6 +29,7 @@ public class OrdersPanel_하은2 extends JPanel {
 	TmrHouseMainFrame frame;
 	//OrdersMainFrame_하은 frame;
 	private JTable OrdersTable;
+	Member loginmember;
 	
 	OrdersDetailPanel_하은2 ordersDetailPanel_하은2;
 	
