@@ -91,6 +91,7 @@ public class OrdersPanel_하은3 extends JPanel {
 		OrdersTable.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				// 클릭시 상품디테일로 전환
 				frame.changePanel(TmrHouseMainFrame.PANEL_ORDERS_DETAIL_하은2);
 				/*int rowNo=OrdersTable.getSelectedRow();
 				int order_no=(Integer)OrdersTable.getValueAt(rowNo, 0);*/
@@ -130,14 +131,14 @@ public class OrdersPanel_하은3 extends JPanel {
 			
 			Vector tableVector = new Vector();
 			
-			Vector rowVector = new Vector();
-			rowVector.add(curtOrder.getO_no());
-			rowVector.add(curtOrder.getO_desc());
-			rowVector.add(curtOrder.getO_qty());
-			rowVector.add(curtOrder.getO_price());
-			rowVector.add(curtOrder.getO_date());
-			rowVector.add(curtOrder.getM_id());
-			tableVector.add(rowVector);
+				Vector rowVector = new Vector();
+				rowVector.add(curtOrder.getO_no());
+				rowVector.add(curtOrder.getO_desc());
+				rowVector.add(curtOrder.getO_qty());
+				rowVector.add(curtOrder.getO_price());
+				rowVector.add(curtOrder.getO_date());
+				rowVector.add(curtOrder.getM_id());
+				tableVector.add(rowVector);
 			
 			DefaultTableModel tableModel = new DefaultTableModel(tableVector,columnVector);
 			OrdersTable.setModel(tableModel);

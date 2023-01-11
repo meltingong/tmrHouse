@@ -105,7 +105,8 @@ public class OrdersDetailPanel_하은3 extends JPanel {
 		//orders.setO_no(findOrderNo(frame.loginMember.getM_id()));
 		//orders.setM_id("aaa");
 		//orders.setO_no(1);
-		//displayOrderDetail(orders);
+		orders.setM_id("bbbb");
+		displayOrderDetail(orders);
 	} // 생성자 끝
 
 	public void displayOrderDetail(Orders order) {
@@ -116,7 +117,7 @@ public class OrdersDetailPanel_하은3 extends JPanel {
 			List<OrderItem> orderItemList = new ArrayList<OrderItem>();
 			
 			for(Orders order1 : curtOrder) {
-				order1.getOrderItemList();
+				System.out.println(order1.getOrderItemList());
 			}
 			
 			Vector columnVector = new Vector();
