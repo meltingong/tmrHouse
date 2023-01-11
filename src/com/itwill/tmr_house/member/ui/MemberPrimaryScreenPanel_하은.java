@@ -64,7 +64,7 @@ public class MemberPrimaryScreenPanel_하은 extends JPanel {
 		});
 		memberJoinBtn.setBounds(50, 462, 400, 45);
 		memberJoinBtn.setBorderPainted(false);
-		memberJoinBtn.setFont(new Font("굴림", Font.PLAIN, 30));
+		memberJoinBtn.setFont(new Font("D2Coding", Font.PLAIN, 30));
 		memberJoinBtn.setForeground(new Color(255, 255, 255));
 		memberJoinBtn.setBackground(new Color(64, 184, 255));
 		primaryScreenCenterPanel.add(memberJoinBtn);
@@ -77,7 +77,7 @@ public class MemberPrimaryScreenPanel_하은 extends JPanel {
 		});
 		loginBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		loginBtn.setBounds(50, 527, 400, 45);
-		loginBtn.setFont(new Font("굴림", Font.PLAIN, 30));
+		loginBtn.setFont(new Font("D2Coding", Font.PLAIN, 30));
 		loginBtn.setBackground(new Color(255, 255, 255));
 		loginBtn.setBorderPainted(false);
 		primaryScreenCenterPanel.add(loginBtn);
