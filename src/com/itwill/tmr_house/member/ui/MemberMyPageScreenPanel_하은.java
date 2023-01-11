@@ -168,7 +168,7 @@ public class MemberMyPageScreenPanel_하은 extends JPanel {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				frame.changePanel(TmrHouseMainFrame.PANEL_PRODUCT_LIST_PANEL_하은);
+				frame.changePanel(TmrHouseMainFrame.PANEL_PRODUCT_LIST_PANEL);
 			}
 		});
 		cancelBtn.setFont(new Font("D2Coding", Font.PLAIN, 17));
@@ -211,7 +211,7 @@ public class MemberMyPageScreenPanel_하은 extends JPanel {
 		JButton btnNewButton = new JButton("");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frame.changePanel(TmrHouseMainFrame.PANEL_PRODUCT_LIST_PANEL_하은);
+				frame.changePanel(TmrHouseMainFrame.PANEL_PRODUCT_LIST_PANEL);
 			}
 		});
 		btnNewButton.setBorderPainted(false);

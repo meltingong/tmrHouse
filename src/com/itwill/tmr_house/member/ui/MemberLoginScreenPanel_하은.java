@@ -134,7 +134,7 @@ public class MemberLoginScreenPanel_하은 extends JPanel {
 				JOptionPane.showMessageDialog(null, "로그인 성공");
 				loginIdTF.setText("");
 				loginPasswordField.setText("");
-				frame.changePanel(TmrHouseMainFrame.PANEL_PRODUCT_LIST_PANEL_하은);
+				frame.changePanel(TmrHouseMainFrame.PANEL_PRODUCT_LIST_PANEL);
 			}else {
 				JOptionPane.showMessageDialog(null, "아이디 또는 비밀번호가 일치하지 않습니다.");
 				loginIdTF.setSelectionStart(0);
