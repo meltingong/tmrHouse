@@ -10,7 +10,7 @@ import com.itwill.tmr_house.member.MemberService;
 import com.itwill.tmr_house.order.OrdersService;
 import com.itwill.tmr_house.product.Product;
 import com.itwill.tmr_house.product.ProductService;
-import com.itwill.tmr_house.ui.TmrHouseMainFrame;
+//import com.itwill.tmr_house.ui.TmrHouseMainFrame;
 
 import javax.swing.JLabel;
 import java.awt.Dimension;
@@ -20,6 +20,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
 
+//import javax.net.ssl.CertPathTrustManagerParameters;
 import javax.swing.ImageIcon;
 
 import java.awt.Color;
@@ -31,9 +32,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class ProductListPanel extends JPanel {
-	TmrHouseMainFrame frame;
+	TestTmrHouseMainFrame frame;
 	
-	public void setFrame(TmrHouseMainFrame frame) throws Exception{
+	public void setFrame(TestTmrHouseMainFrame frame) throws Exception{
 		this.frame = frame;
 		productList(null);
 	}
@@ -71,6 +72,8 @@ public class ProductListPanel extends JPanel {
 		
 		/*************product item start*************/
 		JPanel productPanel = new JPanel();
+		productPanel.addMouseListener(new MouseAdapter() {
+		});
 		productPanel.setBorder(null);
 		productPanel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		
@@ -87,23 +90,25 @@ public class ProductListPanel extends JPanel {
 		productItemListPanel.add(productPanel);
 		
 		JLabel productImageLabel = new JLabel("");
-		productImageLabel.addMouseListener(new MouseAdapter() {
+		/*productImageLabel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 			}
-		});
+		});*/
 		productImageLabel.setHorizontalTextPosition(SwingConstants.LEADING);
 		productImageLabel.setVerticalTextPosition(SwingConstants.BOTTOM);
 		productImageLabel.setIcon(new ImageIcon(ProductListPanel.class.getResource("/com/itwill/tmr_house/product/images/plant_monstera150.png")));
 		productImageLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		productImageLabel.setBounds(-15, 4, 185, 121);
+		productImageLabel.setBounds(0, 0, 185, 121);
 		productPanel.add(productImageLabel);
 		
-		JLabel productNameLabel = new JLabel("몬스테라 화분");
+ 		JLabel productNameLabel = new JLabel("몬스테라 화분");
+ 		productNameLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		
 		productNameLabel.setFont(new Font("굴림", Font.BOLD, 14));
 		productNameLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		productNameLabel.setHorizontalTextPosition(SwingConstants.CENTER);
-		productNameLabel.setBounds(22, 135, 126, 15);
+		productNameLabel.setBounds(0, 131, 200, 15);
 		productPanel.add(productNameLabel);
 		
 		JPanel serchPanel = new JPanel();
@@ -144,7 +149,7 @@ public class ProductListPanel extends JPanel {
 		JButton cartButton = new JButton("");
 		cartButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			// 카드로 전환
+			// 카트로 전환
 			}
 		});
 		cartButton.setBounds(413, 14, 57, 34);
@@ -164,10 +169,10 @@ public class ProductListPanel extends JPanel {
 		}else {
 			productList= productService.searchAll(keyword);
 		}
-		
+		productItemListPanel.removeAll();
 		for (Product product:productList) {
 			JPanel productPanel = new JPanel();
-			productPanel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+			//productPanel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 			productPanel.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
@@ -187,12 +192,25 @@ public class ProductListPanel extends JPanel {
 			JLabel productImageLabel = new JLabel("");
 			productImageLabel.setHorizontalTextPosition(SwingConstants.LEADING);
 			productImageLabel.setVerticalTextPosition(SwingConstants.BOTTOM);
-			productImageLabel.setIcon(new ImageIcon(ProductListPanel.class.getResource("/com/itwill/tmr_house/product/images/plant_monstera150.png")));
+			productImageLabel.setIcon(new ImageIcon(ProductListPanel.class.getResource("/com/itwill/tmr_house/product/images/" + product.getP_img())));
 			productImageLabel.setHorizontalAlignment(SwingConstants.CENTER);
 			productImageLabel.setBounds(22, 4, 126, 121);
 			productPanel.add(productImageLabel);
 			
 			JLabel productNameLabel = new JLabel(product.getP_name());
+			productNameLabel.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					try {
+						String p_name = productNameLabel.getText();
+						findProductDetail(p_name);
+					} catch (Exception e1) {
+						e1.printStackTrace();
+					}
+				}
+			});
+			
+			productNameLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 			productNameLabel.setFont(new Font("굴림", Font.BOLD, 14));
 			productNameLabel.setHorizontalAlignment(SwingConstants.CENTER);
 			productNameLabel.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -201,6 +219,27 @@ public class ProductListPanel extends JPanel {
 			
 			productItemListPanel.add(productPanel);
 			
+		}
+	}
+	
+	public void findProductDetail(String p_name) throws Exception {
+		List<Product> productList = productService.ProductList();
+		if (productList.get(0).getP_name().equals(p_name)) {
+			frame.changePanel(TestTmrHouseMainFrame.PANEL_PRODUCT_TABLE_STEEL);
+		} else if(productList.get(1).getP_name().equals(p_name)) {
+			frame.changePanel(TestTmrHouseMainFrame.PANEL_PRODUCT_TABLE_WOOD);
+		} else if(productList.get(2).getP_name().equals(p_name)) {
+			frame.changePanel(TestTmrHouseMainFrame.PANEL_PRODUCT_CHAIR_STEEL);
+		} else if(productList.get(3).getP_name().equals(p_name)) {
+			frame.changePanel(TestTmrHouseMainFrame.PANEL_PRODUCT_CHAIR_WOOD);
+		} else if(productList.get(4).getP_name().equals(p_name)) {
+			frame.changePanel(TestTmrHouseMainFrame.PANEL_PRODUCT_LIGHTING_TABLE);
+		} else if(productList.get(5).getP_name().equals(p_name)) {
+			frame.changePanel(TestTmrHouseMainFrame.PANEL_PRODUCT_LIGHTING_PENDANT);
+		} else if(productList.get(6).getP_name().equals(p_name)) {
+			frame.changePanel(TestTmrHouseMainFrame.PANEL_PRODUCT_PLANT_MONSTERA);
+		} else if(productList.get(7).getP_name().equals(p_name)) {
+			frame.changePanel(TestTmrHouseMainFrame.PANEL_PRODUCT_PLANT_OLIVE);
 		}
 	}
 }
