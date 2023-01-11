@@ -53,6 +53,7 @@ public class OrdersMainFrame_하은 extends JFrame {
 		cardLayout = new CardLayout(0, 0);
 		parentPanel.setLayout(cardLayout);
 		
+	
 		
 		
 		//ordersPanel_하은2.setFrame(this);
