@@ -56,6 +56,7 @@ public class ProductListPanel extends JPanel {
 	 * @throws Exception 
 	 */
 	public ProductListPanel() throws Exception {
+		setBackground(new Color(255, 255, 255));
 		setLayout(null);
 		
 		productListScrollPane = new JScrollPane();
@@ -63,6 +64,7 @@ public class ProductListPanel extends JPanel {
 		add(productListScrollPane);
 		
 		productItemListPanel = new JPanel();
+		productItemListPanel.setBackground(new Color(255, 255, 255));
 		FlowLayout fl_productItemListPanel = (FlowLayout) productItemListPanel.getLayout();
 		fl_productItemListPanel.setVgap(10);
 		fl_productItemListPanel.setHgap(30);
@@ -83,7 +85,7 @@ public class ProductListPanel extends JPanel {
 		productPanel.setMinimumSize(new Dimension(150, 150));
 		productPanel.setMaximumSize(new Dimension(250, 250));
 		productPanel.setBounds(new Rectangle(0, 0, 120, 120));
-		productPanel.setBackground(Color.WHITE);
+		productPanel.setBackground(new Color(192, 192, 192));
 		productPanel.setAlignmentY(1.0f);
 		productPanel.setAlignmentX(1.0f);
 		
@@ -112,6 +114,7 @@ public class ProductListPanel extends JPanel {
 		productPanel.add(productNameLabel);
 		
 		JPanel serchPanel = new JPanel();
+		serchPanel.setBackground(new Color(255, 255, 255));
 		serchPanel.setBounds(0, 0, 500, 58);
 		add(serchPanel);
 		serchPanel.setLayout(null);
@@ -124,6 +127,7 @@ public class ProductListPanel extends JPanel {
 		serchPanel.add(serchTextField);
 		
 		JButton serchBtn = new JButton("");
+		serchBtn.setBackground(new Color(84, 164, 255));
 		serchBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// 조회된 페이지로 전환 필요
@@ -147,6 +151,7 @@ public class ProductListPanel extends JPanel {
 		serchPanel.add(serchBtn);
 		
 		JButton cartButton = new JButton("");
+		cartButton.setBorderPainted(false);
 		cartButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			// 카트로 전환
@@ -158,6 +163,7 @@ public class ProductListPanel extends JPanel {
 		serchPanel.add(cartButton);
 		
 		JButton myPageButton = new JButton("");
+		myPageButton.setBorderPainted(false);
 		myPageButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -210,7 +216,7 @@ public class ProductListPanel extends JPanel {
 			productImageLabel.setBounds(22, 4, 126, 121);
 			productPanel.add(productImageLabel);
 			
-			JLabel productNameLabel = new JLabel(product.getP_name());
+			final JLabel productNameLabel = new JLabel(product.getP_name());
 			productNameLabel.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {

@@ -64,7 +64,7 @@ public class ProductDetailPanelMonstera extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 			/**************************************** 상품리스트 페이지로 전환 *******************************/
-				
+				frame.changePanel(TmrHouseMainFrame.PANEL_PRODUCT_LIST_PANEL);	
 			}
 		});
 		northPanel.setLayout(new GridLayout(0, 1, 0, 0));
@@ -123,7 +123,6 @@ public class ProductDetailPanelMonstera extends JPanel {
 				try {
 					directOrder(Integer.parseInt((String)qtyComboBox.getSelectedItem()));
 		/**************************************** 주문 페이지로 전환 *******************************/
-					
 					
 					
 					

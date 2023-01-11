@@ -124,7 +124,7 @@ public class ProductDetailPanelChairRattan extends JPanel {
 				try {
 					directOrder(Integer.parseInt((String)qtyComboBox.getSelectedItem()));
 //				주문 페이지로 전환
-//				frame.changePanel(TestTmrHouseMainFrame.PANEL_ORDERS_하은2);
+					frame.changePanel(TmrHouseMainFrame.PANEL_ORDERS_하은2);
 //				아직 주문페이지를 메인프레임에 불러오지 않아 테스트 용으로 상품전체 리스트 패널로 전환
 //				frame.changePanel(TestTmrHouseMainFrame.PANEL_PRODUCT_LIST_PANEL);
 				} catch (NumberFormatException e1) {
@@ -203,16 +203,16 @@ public class ProductDetailPanelChairRattan extends JPanel {
 		Product product;
 		product = productService.findByProductNo(8);
 		/****************************** loginMember id 가져와주기 **********************************/
-//		ordersService.directOrder(frame.loginMember.getM_id(), product.getP_no(), cart_qty);
-		ordersService.directOrder("bbbb", product.getP_no(), cart_qty);
+		ordersService.directOrder(frame.loginMember.getM_id(), product.getP_no(), cart_qty);
+		//ordersService.directOrder("bbbb", product.getP_no(), cart_qty);
 	}
 	
 	public void addCart(int cart_qty) throws Exception {
 		Product product;
 		product = productService.findByProductNo(8);
 		/****************************** loginMember id 가져와주기 **********************************/
-//		cartService.insertCart(new Cart(0, cart_qty, frame.loginMember.getM_id(), product));
-		cartService.insertCart(new Cart(0, cart_qty, "aaaa", product));
+		cartService.insertCart(new Cart(0, cart_qty, frame.loginMember.getM_id(), product));
+		// cartService.insertCart(new Cart(0, cart_qty, "aaaa", product));
 
 				}
 }

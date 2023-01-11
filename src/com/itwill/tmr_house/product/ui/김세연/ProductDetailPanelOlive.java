@@ -66,7 +66,7 @@ public class ProductDetailPanelOlive extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				// 상품리스트 페이지로 전환
-				
+				frame.changePanel(TmrHouseMainFrame.PANEL_PRODUCT_LIST_PANEL);
 				
 			}
 		});

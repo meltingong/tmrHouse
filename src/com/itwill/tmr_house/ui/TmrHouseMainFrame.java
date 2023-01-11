@@ -154,31 +154,6 @@ public class TmrHouseMainFrame extends JFrame {
 		ordersDetailPanel_하은2 = new OrdersDetailPanel_하은2();
 		parentPanel.add(ordersDetailPanel_하은2, "9");
 		
-	
-		
-	/******service 객체 생성******/
-		memberService = new MemberService();
-		cartService = new CartService();
-		productService = new ProductService();
-		ordersService = new OrdersService();
-		
-		memberPrimaryScreenPanel_하은.setFrame(this);
-		memberJoinScreenPanel_하은.setFrame(this);
-		memberLoginScreenPanel_하은.setFrame(this);
-		memberMyPageScreenPanel_하은.setFrame(this);
-		ordersPanel_하은2.setFrame(this);
-		ordersDetailPanel_하은2.setFrame(this);
-		productListPanel.setFrame(this);
-		productDetailPanelChairRattan.setFrame(this);
-		productDetailPanelChairSteel.setFrame(this);
-		productDetailPanelMonstera.setFrame(this);
-		productDetailPanelOlive.setFrame(this);
-		productDetailPanelPendant.setFrame(this);
-		productDetailPanelShortstand.setFrame(this);
-		productDetailPanelTableSteel.setFrame(this);
-		productDetailPanelTableWood.setFrame(this);
-		
-		
 		productListPanel = new ProductListPanel();
 		parentPanel.add(productListPanel, "20");
 		
@@ -205,6 +180,31 @@ public class TmrHouseMainFrame extends JFrame {
 		
 		productDetailPanelTableWood = new ProductDetailPanelTableWood();
 		parentPanel.add(productDetailPanelTableWood, "22");
+	
+		
+	/******service 객체 생성******/
+		memberService = new MemberService();
+		cartService = new CartService();
+		productService = new ProductService();
+		ordersService = new OrdersService();
+		
+		memberPrimaryScreenPanel_하은.setFrame(this);
+		memberJoinScreenPanel_하은.setFrame(this);
+		memberLoginScreenPanel_하은.setFrame(this);
+		memberMyPageScreenPanel_하은.setFrame(this);
+		ordersPanel_하은2.setFrame(this);
+		ordersDetailPanel_하은2.setFrame(this);
+		productListPanel.setFrame(this);
+		productDetailPanelChairRattan.setFrame(this);
+		productDetailPanelChairSteel.setFrame(this);
+		productDetailPanelMonstera.setFrame(this);
+		productDetailPanelOlive.setFrame(this);
+		productDetailPanelPendant.setFrame(this);
+		productDetailPanelShortstand.setFrame(this);
+		productDetailPanelTableSteel.setFrame(this);
+		productDetailPanelTableWood.setFrame(this);
+		
+		
 		
 		
 	}

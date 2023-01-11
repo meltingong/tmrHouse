@@ -123,7 +123,7 @@ public class ProductDetailPanelChairSteel extends JPanel {
 				try {
 					directOrder(Integer.parseInt((String)qtyComboBox.getSelectedItem()));
 //				주문 페이지로 전환
-//				frame.changePanel(TestTmrHouseMainFrame.PANEL_ORDERS_하은2);
+				frame.changePanel(TmrHouseMainFrame.PANEL_ORDERS_하은2);
 //				아직 주문페이지를 메인프레임에 불러오지 않아 테스트 용으로 상품전체 리스트 패널로 전환
 //				frame.changePanel(TestTmrHouseMainFrame.PANEL_PRODUCT_LIST_PANEL);
 				} catch (NumberFormatException e1) {
