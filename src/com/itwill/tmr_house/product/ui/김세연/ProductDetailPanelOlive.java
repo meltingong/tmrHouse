@@ -23,10 +23,12 @@ import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.List;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
+import java.awt.GridLayout;
 
 public class ProductDetailPanelOlive extends JPanel {
 	
@@ -54,7 +56,6 @@ public class ProductDetailPanelOlive extends JPanel {
 		
 		JPanel northPanel = new JPanel();
 		add(northPanel, BorderLayout.NORTH);
-		northPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JButton productListButton = new JButton("이전 페이지로");
 		productListButton.addMouseListener(new MouseAdapter() {
@@ -64,6 +65,7 @@ public class ProductDetailPanelOlive extends JPanel {
 				frame.changePanel(TestTmrHouseMainFrame.PANEL_PRODUCT_LIST_PANEL);
 			}
 		});
+		northPanel.setLayout(new GridLayout(0, 1, 0, 0));
 		northPanel.add(productListButton);
 		
 		JPanel centerPanel = new JPanel();
@@ -97,9 +99,7 @@ public class ProductDetailPanelOlive extends JPanel {
 				if(e.getStateChange()==ItemEvent.SELECTED) {
 					
 					int cart_qty=Integer.parseInt((String)qtyComboBox.getSelectedItem());
-					//System.out.println(cart_qty);
-					
-					
+//					System.out.println(cart_qty);
 				}
 			}
 		});
@@ -115,11 +115,12 @@ public class ProductDetailPanelOlive extends JPanel {
 		productDetailPanel.add(productDetailLabel);
 		
 		JButton directOrderButton = new JButton("바로 구매");
-		directOrderButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-//				바로 구매 + 주문 페이지로 이동
-//				ordersService.directOrder(loginMember.getM_id(), product.getP_no(), qtyComboBox.get);
-//				frame.changePanel(TmrHouseMainFrame.~~);
+		directOrderButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+//				바로구매
+				
+//				주문 페이지로 전환
 			}
 		});
 		directOrderButton.setFont(new Font("맑은 고딕", Font.BOLD, 20));
@@ -127,10 +128,13 @@ public class ProductDetailPanelOlive extends JPanel {
 		productDetailPanel.add(directOrderButton);
 		
 		JButton addCartButton = new JButton("카트 담기");
-		addCartButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				// 카트로 전환
-//				frame.changePanel(TmrHouseMainFrame.~~);
+		addCartButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+//				카트에 담기
+				
+//				카트 페이지로 전환
+				
 			}
 		});
 		
@@ -172,4 +176,51 @@ public class ProductDetailPanelOlive extends JPanel {
 		ordersService = new OrdersService();
 
 	} // 생성
+	
+	public Product findProduct() throws Exception {
+		Product findProduct = productService.findByProductNo(8);
+		return findProduct;
+	}
+	
+	public void directOrder() {
+		JComboBox qtyComboBox = new JComboBox();
+		qtyComboBox.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				if (e.getStateChange() == ItemEvent.SELECTED) {
+					try {
+						int cart_qty = Integer.parseInt((String) qtyComboBox.getSelectedItem());
+						Product product;
+						product = productService.findByProductNo(8);
+						ordersService.directOrder(frame.loginMember.getM_id(), product.getP_no(), cart_qty);
+					} catch (Exception e1) {
+						e1.printStackTrace();
+					}
+				}
+			}
+		});
+	}
+	
+	public void addCart() {
+		JComboBox qtyComboBox = new JComboBox();
+		qtyComboBox.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				if (e.getStateChange() == ItemEvent.SELECTED) {
+					try {
+						int cart_qty = Integer.parseInt((String) qtyComboBox.getSelectedItem());
+						Product product;
+						product = productService.findByProductNo(8);
+						cartService.insertCart(new Cart(0, cart_qty, frame.loginMember.getM_id(), product));
+					} catch (Exception e1) {
+						e1.printStackTrace();
+					}
+				}
+			}
+		});
+	}
+	
 }
+
+
+
+
+
