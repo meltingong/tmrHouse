@@ -33,10 +33,11 @@ import java.awt.GridLayout;
 public class ProductDetailPanelChairRattan extends JPanel {
 	
 	TmrHouseMainFrame frame;
-	public void setFrame(TmrHouseMainFrame frame) throws Exception{		
-	 this.frame = frame;
-	}
 	
+	public void setFrame(TmrHouseMainFrame frame) {
+		this.frame = frame;
+	}
+
 	/************ Service객체멤버변수선언 ************/
 	MemberService memberService;
 	ProductService productService;

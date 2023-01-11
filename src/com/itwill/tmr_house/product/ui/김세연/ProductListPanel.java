@@ -35,11 +35,10 @@ import java.awt.event.ActionEvent;
 public class ProductListPanel extends JPanel {
 	TmrHouseMainFrame frame;
 	
-	public void setFrame(TmrHouseMainFrame frame) throws Exception{
+	public void setFrame(TmrHouseMainFrame frame) {
 		this.frame = frame;
-		productList(null);
 	}
-	
+
 	private JPanel productItemListPanel;
 	private JTextField serchTextField;
 	

@@ -103,7 +103,7 @@ public class OrdersDetailPanel_하은2 extends JPanel {
 		Orders orders = new Orders();
 		//orders.setM_id(frame.loginMember.getM_id()); // 로그인하고 주문한 아이디로 바꿔줘야함
 		//orders.setO_no(findOrderNo(frame.loginMember.getM_id()));
-		orders.setM_id("aaa");
+		orders.setM_id("aaaa");
 		orders.setO_no(1);
 		displayOrderDetail(orders);
 	} // 생성자 끝
