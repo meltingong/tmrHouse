@@ -193,7 +193,7 @@ public class MemberMyPageScreenPanel_하은 extends JPanel {
 		modifyPwCorrectLB.setBackground(new Color(255, 255, 255));
 		modifyPwCorrectLB.setForeground(new Color(255, 0, 0));
 		modifyPwCorrectLB.setFont(new Font("D2Coding", Font.PLAIN, 12));
-		modifyPwCorrectLB.setBounds(253, 274, 205, 15);
+		modifyPwCorrectLB.setBounds(219, 274, 239, 15);
 		memberMyPageCenterPanel.add(modifyPwCorrectLB);
 		
 		JLabel lblNewLabel_1 = new JLabel("주문내역보기");

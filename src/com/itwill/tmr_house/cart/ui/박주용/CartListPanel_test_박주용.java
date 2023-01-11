@@ -30,6 +30,7 @@ import java.awt.Color;
 import javax.swing.SwingConstants;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.FlowLayout;
 
 
 public class CartListPanel_test_박주용 extends JPanel {
@@ -61,14 +62,13 @@ public class CartListPanel_test_박주용 extends JPanel {
 		setLayout(null);
 		
 		cartContentPanelScrollPane = new JScrollPane();
-		cartContentPanelScrollPane.setBounds(0, 65, 475, 517);
+		cartContentPanelScrollPane.setBounds(0, 65, 477, 507);
 		add(cartContentPanelScrollPane);
 		
 		cartContentPanel = new JPanel();
 		cartContentPanel.setPreferredSize(new Dimension(10, 700));
 		cartContentPanelScrollPane.setViewportView(cartContentPanel);
-		
-		/*******************카트 패널 시작*****************/
+		cartContentPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		JPanel cartItemPanel = new JPanel();
 		cartItemPanel.setPreferredSize(new Dimension(420, 120));
 		cartContentPanel.add(cartItemPanel);
@@ -80,7 +80,8 @@ public class CartListPanel_test_박주용 extends JPanel {
 		cartItemPanel.add(productImageLB);
 		
 		productTitleLB = new JLabel("상품 이름");
-		productTitleLB.setBounds(87, 50, 125, 25);
+		productTitleLB.setFont(new Font("굴림", Font.PLAIN, 10));
+		productTitleLB.setBounds(101, 51, 126, 25);
 		cartItemPanel.add(productTitleLB);
 		
 		cartItemQtyCB = new JComboBox();
@@ -93,29 +94,30 @@ public class CartListPanel_test_박주용 extends JPanel {
 			}
 		});
 		cartItemQtyCB.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
-		cartItemQtyCB.setBounds(257, 50, 50, 25);
+		cartItemQtyCB.setBounds(239, 50, 50, 25);
 		cartItemPanel.add(cartItemQtyCB);
 		
 		cartItemDeleteBTN_1 = new JButton("삭제");
 		cartItemDeleteBTN_1.setOpaque(false);
 		cartItemDeleteBTN_1.setBackground(new Color(255, 255, 255));
-		cartItemDeleteBTN_1.setFont(new Font("D2Coding", Font.PLAIN, 12));
+		cartItemDeleteBTN_1.setFont(new Font("굴림", Font.PLAIN, 12));
 		cartItemDeleteBTN_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 			}
 		});
-		cartItemDeleteBTN_1.setBounds(319, 68, 89, 32);
+		cartItemDeleteBTN_1.setBounds(331, 68, 89, 32);
 		cartItemPanel.add(cartItemDeleteBTN_1);
 		
 		cartItemUpdateBTN = new JButton("수정");
+		cartItemUpdateBTN.setFont(new Font("굴림", Font.PLAIN, 12));
 		cartItemUpdateBTN.setOpaque(false);
 		cartItemUpdateBTN.setBackground(new Color(255, 255, 255));
 		cartItemUpdateBTN.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		cartItemUpdateBTN.setBounds(319, 20, 89, 25);
+		cartItemUpdateBTN.setBounds(331, 20, 89, 25);
 		cartItemPanel.add(cartItemUpdateBTN);
 		
 		JButton orderSelectedBTN = new JButton("선택 상품 주문");
@@ -262,8 +264,10 @@ public class CartListPanel_test_박주용 extends JPanel {
 			cartItemPanel.add(lblTotprice);
 			
 			JComboBox cartItemQtyCB = new JComboBox();
+			cartItemQtyCB.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
 			cartItemQtyCB.setBounds(210, 50, 50, 25);
 			cartItemPanel.add(cartItemQtyCB);
+			
 			
 			JButton cartItemDeleteBTN = new JButton("삭제");
 			//cartItemDeleteBTN.setIcon(new ImageIcon());
