@@ -41,8 +41,9 @@ public class MemberMyPageScreenPanel_하은 extends JPanel {
 
 	/**
 	 * Create the panel.
+	 * @throws Exception 
 	 */
-	public MemberMyPageScreenPanel_하은() {
+	public MemberMyPageScreenPanel_하은() throws Exception {
 		addComponentListener(new ComponentAdapter() {
 			@Override
 			public void componentShown(ComponentEvent e) {
@@ -139,7 +140,7 @@ public class MemberMyPageScreenPanel_하은 extends JPanel {
 		JLabel lblNewLabel = new JLabel("회원정보 수정");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("D2Coding", Font.BOLD, 30));
-		lblNewLabel.setBounds(140, 42, 218, 37);
+		lblNewLabel.setBounds(140, 26, 218, 37);
 		memberMyPageCenterPanel.add(lblNewLabel);
 		
 		JButton modifyBtn = new JButton("저장");
@@ -203,10 +204,22 @@ public class MemberMyPageScreenPanel_하은 extends JPanel {
 			}
 		});
 		lblNewLabel_1.setFont(new Font("D2Coding", Font.PLAIN, 14));
-		lblNewLabel_1.setBounds(354, 72, 118, 24);
+		lblNewLabel_1.setBounds(354, 81, 118, 24);
 		memberMyPageCenterPanel.add(lblNewLabel_1);
 		
+		JButton btnNewButton = new JButton("");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.changePanel(TmrHouseMainFrame.PANEL_PRODUCT_LIST_PANEL_하은);
+			}
+		});
+		btnNewButton.setBorderPainted(false);
+		btnNewButton.setBackground(new Color(255, 255, 255));
+		btnNewButton.setIcon(new ImageIcon(MemberMyPageScreenPanel_하은.class.getResource("/com/itwill/tmr_house/member/images/home(30x30).png")));
+		btnNewButton.setBounds(194, 619, 97, 37);
+		memberMyPageCenterPanel.add(btnNewButton);
 		
+		memberService = new MemberService();
 
 	}
 	
@@ -239,12 +252,12 @@ public class MemberMyPageScreenPanel_하은 extends JPanel {
 				memberService.memberUpdate(updateMember);
 				frame.loginMember = memberService.memberDetail(id);
 				JOptionPane.showMessageDialog(null, "저장되었습니다.");
-			} else  {
-				modifyPwCorrectLB.setText("입력하신 비밀번호와 일치하지 않습니다.");
-				modifyPasswordCorrectField.requestFocus();
-				frame.loginMember = memberService.memberDetail(id);
-				return;
-				}
+				} else  {
+					modifyPwCorrectLB.setText("입력하신 비밀번호와 일치하지 않습니다.");
+					modifyPasswordCorrectField.requestFocus();
+					frame.loginMember = memberService.memberDetail(id);
+					return;
+					}
 		}catch(Exception e1) {
 			System.out.println(e1.getMessage());
 		}
