@@ -24,7 +24,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 
-public class OrdersDetailPanel_하은2 extends JPanel {
+public class OrdersDetailPanel_하은3 extends JPanel {
 	TmrHouseMainFrame frame;
 	OrdersService ordersService;
 	private JTable orderDetailTable;
@@ -38,7 +38,7 @@ public class OrdersDetailPanel_하은2 extends JPanel {
 	 * Create the panel.
 	 * @throws Exception 
 	 */
-	public OrdersDetailPanel_하은2() throws Exception {
+	public OrdersDetailPanel_하은3() throws Exception {
 		addComponentListener(new ComponentAdapter() {
 			@Override
 			public void componentShown(ComponentEvent e) {
@@ -74,7 +74,7 @@ public class OrdersDetailPanel_하은2 extends JPanel {
 			}
 		});
 		ordersHomeBtn.setBackground(new Color(64, 184, 255));
-		ordersHomeBtn.setIcon(new ImageIcon(OrdersDetailPanel_하은2.class.getResource("/com/itwill/tmr_house/member/images/home(30x30).png")));
+		ordersHomeBtn.setIcon(new ImageIcon(OrdersDetailPanel_하은3.class.getResource("/com/itwill/tmr_house/member/images/home(30x30).png")));
 		ordersDetailSouthPanel.add(ordersHomeBtn);
 		
 		JPanel ordersDetailCenterPanel = new JPanel();
@@ -112,7 +112,7 @@ public class OrdersDetailPanel_하은2 extends JPanel {
 		try {
 			/*******주문리스트 보기[Jtable]**********/
 			
-			curtOrder = ordersService.orderListDetail(order.getM_id(), order.getO_no());
+			curtOrder = ordersService.orderListAddOrderItemList(order.getM_id());
 			List<OrderItem> orderItemList = curtOrder.getOrderItemList();
 			
 			Vector columnVector = new Vector();
