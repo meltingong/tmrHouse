@@ -27,6 +27,9 @@ import java.awt.Font;
 import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
 import java.awt.Color;
+import javax.swing.SwingConstants;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 
 public class CartListPanel_test_박주용 extends JPanel {
@@ -58,7 +61,7 @@ public class CartListPanel_test_박주용 extends JPanel {
 		setLayout(null);
 		
 		cartContentPanelScrollPane = new JScrollPane();
-		cartContentPanelScrollPane.setBounds(20, 100, 460, 450);
+		cartContentPanelScrollPane.setBounds(0, 65, 475, 517);
 		add(cartContentPanelScrollPane);
 		
 		cartContentPanel = new JPanel();
@@ -73,32 +76,41 @@ public class CartListPanel_test_박주용 extends JPanel {
 		
 		productImageLB = new JLabel("");
 		productImageLB.setIcon(new ImageIcon(CartListPanel_test_박주용.class.getResource("/com/itwill/tmr_house/product/김혜지/images/chair_rattan_wood.png")));
-		productImageLB.setBounds(40, 20, 80, 80);
+		productImageLB.setBounds(12, 20, 80, 80);
 		cartItemPanel.add(productImageLB);
 		
 		productTitleLB = new JLabel("상품 이름");
-		productTitleLB.setBounds(132, 50, 100, 25);
+		productTitleLB.setBounds(87, 50, 125, 25);
 		cartItemPanel.add(productTitleLB);
 		
 		cartItemQtyCB = new JComboBox();
 		cartItemQtyCB.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
+				if(e.getStateChange()==ItemEvent.SELECTED) {
+					Integer.parseInt((String)cartItemQtyCB.getSelectedItem());
+				}
+				
 			}
 		});
-		cartItemQtyCB.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5"}));
-		cartItemQtyCB.setBounds(210, 50, 50, 25);
+		cartItemQtyCB.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
+		cartItemQtyCB.setBounds(257, 50, 50, 25);
 		cartItemPanel.add(cartItemQtyCB);
 		
 		cartItemDeleteBTN_1 = new JButton("삭제");
+		cartItemDeleteBTN_1.setOpaque(false);
+		cartItemDeleteBTN_1.setBackground(new Color(255, 255, 255));
 		cartItemDeleteBTN_1.setFont(new Font("D2Coding", Font.PLAIN, 12));
 		cartItemDeleteBTN_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 			}
 		});
 		cartItemDeleteBTN_1.setBounds(319, 68, 89, 32);
 		cartItemPanel.add(cartItemDeleteBTN_1);
 		
 		cartItemUpdateBTN = new JButton("수정");
+		cartItemUpdateBTN.setOpaque(false);
+		cartItemUpdateBTN.setBackground(new Color(255, 255, 255));
 		cartItemUpdateBTN.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -107,10 +119,13 @@ public class CartListPanel_test_박주용 extends JPanel {
 		cartItemPanel.add(cartItemUpdateBTN);
 		
 		JButton orderSelectedBTN = new JButton("선택 상품 주문");
+		orderSelectedBTN.setOpaque(false);
 		orderSelectedBTN.setBounds(51, 592, 150, 25);
 		add(orderSelectedBTN);
 		
 		JButton orderAllBTN = new JButton("전체 상품 주문");
+		orderAllBTN.setBackground(new Color(64, 184, 255));
+		orderAllBTN.setOpaque(false);
 		orderAllBTN.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -138,6 +153,12 @@ public class CartListPanel_test_박주용 extends JPanel {
 		ordersHomeBtn.setBackground(new Color(64, 184, 255));
 		ordersHomeBtn.setBounds(218, 651, 63, 39);
 		add(ordersHomeBtn);
+		
+		JLabel lblNewLabel = new JLabel("Tomorrow's House");
+		lblNewLabel.setFont(new Font("D2Coding", Font.BOLD, 30));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(83, 10, 304, 29);
+		add(lblNewLabel);
 		/****************카트 패널 끝*****************/
 		
 		
@@ -149,7 +170,7 @@ public class CartListPanel_test_박주용 extends JPanel {
 	}/**생성자 끝*/
 	
 	
-	public void displayCartList(Member member) throws Exception {
+	/*public void displayCartList(Member member) throws Exception {
 		
 		cartContentPanel.removeAll();
 		List<Cart> cartList = frame.cartService.findCartItemByUserId(member.getM_id());
@@ -162,7 +183,7 @@ public class CartListPanel_test_박주용 extends JPanel {
 			cartItemPanel.setLayout(null);
 			
 			JLabel productImageLB = new JLabel(cart.getProduct().getP_name());
-			//productImageLB.setIcon(new ImageIcon(CartListPanel_test.class.getResource(cart.getProduct().getP_img())));
+			productImageLB.setIcon(new ImageIcon(CartListPanel_test_박주용.class.getResource("/com/itwill/tmr_house/product/images/"+cart.getProduct().getP_img())));
 			productImageLB.setBounds(40, 20, 80, 80);
 			cartItemPanel.add(productImageLB);
 			
@@ -212,6 +233,70 @@ public class CartListPanel_test_박주용 extends JPanel {
 		}
 		
 	}
+	*/
+		public void displayCartList(String m_id) throws Exception {
+		
+		cartContentPanel.removeAll();
+		List<Cart> cartList = frame.cartService.findCartItemByUserId(frame.loginMember.getM_id());
+		System.out.println(cartList);
+		for(final Cart cart : cartList) {
+			
+			JPanel cartItemPanel = new JPanel();
+			cartItemPanel.setPreferredSize(new Dimension(420, 120));
+			cartContentPanel.add(cartItemPanel);
+			cartItemPanel.setLayout(null);
+			
+			JLabel productImageLB = new JLabel(cart.getProduct().getP_name());
+			productImageLB.setIcon(new ImageIcon(CartListPanel_test_박주용.class.getResource("/com/itwill/tmr_house/product/images/"+cart.getProduct().getP_img())));
+			productImageLB.setBounds(40, 20, 80, 80);
+			cartItemPanel.add(productImageLB);
+			
+			JLabel productTitleLB = new JLabel(cart.getProduct().getP_name());
+			productTitleLB.setBounds(132, 50, 100, 25);
+			productTitleLB.setText(cart.getProduct().getP_name());
+			cartItemPanel.add(productTitleLB);
+			
+			JLabel lblTotprice = new JLabel("가격");
+			lblTotprice.setBounds(286, 50, 80, 25);
+			lblTotprice.setText(Integer.toString(cart.getProduct().getP_price()));
+			cartItemPanel.add(lblTotprice);
+			
+			JComboBox cartItemQtyCB = new JComboBox();
+			cartItemQtyCB.setBounds(210, 50, 50, 25);
+			cartItemPanel.add(cartItemQtyCB);
+			
+			JButton cartItemDeleteBTN = new JButton("삭제");
+			//cartItemDeleteBTN.setIcon(new ImageIcon());
+			cartItemDeleteBTN.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					try {
+						deleteCartItem(cart.getC_no());
+						displayCartList(frame.loginMember.getM_id());
+//						cartPanel.remove(cartPanel);
+						System.out.println("제품이 삭제되었습니다");
+					} catch (Exception e1) {
+						e1.getMessage();
+					}
+				}
+			});
+			cartItemDeleteBTN.setFont(new Font("D2Coding", Font.BOLD, 10));
+			cartItemDeleteBTN.setBounds(350, 75, 55, 23);
+			cartItemPanel.add(cartItemDeleteBTN);
+			
+			cartItemUpdateBTN = new JButton("수정");
+			cartItemUpdateBTN.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					
+				}
+			});
+			cartItemUpdateBTN.setFont(new Font("D2Coding", Font.BOLD, 10));
+			cartItemUpdateBTN.setBounds(350, 20, 55, 23);
+			cartItemPanel.add(cartItemUpdateBTN);
+			
+			
+		}
+		
+	}
 	
 	public void orderAllCart(String m_id) throws Exception {
 		frame.ordersService.cartOrder(m_id);
@@ -220,7 +305,4 @@ public class CartListPanel_test_박주용 extends JPanel {
 	public void deleteCartItem(int c_no) throws Exception {
 		frame.cartService.deleteCartItemByCartNo(c_no);
 	}
-	
-	
-	
 }

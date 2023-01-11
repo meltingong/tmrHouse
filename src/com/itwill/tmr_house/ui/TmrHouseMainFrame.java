@@ -275,7 +275,7 @@ public class TmrHouseMainFrame extends JFrame {
 			
 			cardLayout.show(parentPanel, "99");
 			try {
-				cartListPanel_test_박주용.displayCartList(loginMember);
+				cartListPanel_test_박주용.displayCartList(loginMember.getM_id());
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
