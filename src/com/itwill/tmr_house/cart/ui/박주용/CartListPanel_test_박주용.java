@@ -121,7 +121,12 @@ public class CartListPanel_test_박주용 extends JPanel {
 		JButton orderAllBTN = new JButton("전체 상품 주문");
 		orderAllBTN.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				try {
+					orderAllCart(frame.loginMember.getM_id());
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				// 오더창으로 넘어가기
 				frame.changePanel(TmrHouseMainFrame.PANEL_ORDERS_하은2);
 			}
@@ -220,4 +225,13 @@ public class CartListPanel_test_박주용 extends JPanel {
 		}
 		
 	}
+	
+	public void orderAllCart(String m_id) throws Exception {
+		ordersService.cartOrder(m_id);
+	}
+	
+	public void deleteCartItem(int c_no) throws Exception {
+		cartService.deleteCartItemByCartNo(c_no);
+	}
+	
 }
