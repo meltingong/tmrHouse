@@ -24,12 +24,12 @@ import java.awt.event.MouseEvent;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 
-public class OrdersDetailPanel_하은2 extends JPanel {
+public class OrdersDetailPanel_하은3 extends JPanel {
 	TmrHouseMainFrame frame;
 	OrdersService ordersService;
 	private JTable orderDetailTable;
-	Orders curtOrder = null;
-	
+	List<Orders> curtOrder = null;
+	Orders detailOrder;
 	
 	public void setFrame(TmrHouseMainFrame frame) {
 		this.frame = frame;
@@ -38,7 +38,7 @@ public class OrdersDetailPanel_하은2 extends JPanel {
 	 * Create the panel.
 	 * @throws Exception 
 	 */
-	public OrdersDetailPanel_하은2() throws Exception {
+	public OrdersDetailPanel_하은3() throws Exception {
 		addComponentListener(new ComponentAdapter() {
 			@Override
 			public void componentShown(ComponentEvent e) {
@@ -74,7 +74,7 @@ public class OrdersDetailPanel_하은2 extends JPanel {
 			}
 		});
 		ordersHomeBtn.setBackground(new Color(64, 184, 255));
-		ordersHomeBtn.setIcon(new ImageIcon(OrdersDetailPanel_하은2.class.getResource("/com/itwill/tmr_house/member/images/home(30x30).png")));
+		ordersHomeBtn.setIcon(new ImageIcon(OrdersDetailPanel_하은3.class.getResource("/com/itwill/tmr_house/member/images/home(30x30).png")));
 		ordersDetailSouthPanel.add(ordersHomeBtn);
 		
 		JPanel ordersDetailCenterPanel = new JPanel();
@@ -112,8 +112,12 @@ public class OrdersDetailPanel_하은2 extends JPanel {
 		try {
 			/*******주문리스트 보기[Jtable]**********/
 			
-			curtOrder = ordersService.orderListDetail(order.getM_id(), order.getO_no());
-			List<OrderItem> orderItemList = curtOrder.getOrderItemList();
+			curtOrder = ordersService.orderListAddOrderItemList(order.getM_id());
+			List<OrderItem> orderItemList = new ArrayList<OrderItem>();
+			
+			for(Orders order1 : curtOrder) {
+				order1.getOrderItemList();
+			}
 			
 			Vector columnVector = new Vector();
 			columnVector.add("주문번호");
@@ -128,7 +132,7 @@ public class OrdersDetailPanel_하은2 extends JPanel {
 			Vector tableVector = new Vector();
 			
 			
-			for(OrderItem orderItem:orderItemList) {
+			for(OrderItem orderItem: orderItemList) {
 				Vector rowVector = new Vector();
 				rowVector.add(orderItem.getO_no());
 				//rowVector.add(orderItem.getOi_no());
@@ -149,17 +153,6 @@ public class OrdersDetailPanel_하은2 extends JPanel {
 		}
 	}
 	
-	/*	public int findOrderNo(String id) throws Exception {
-			List<Orders> orderList = ordersService.orderList(id);
-			int row = 0;
-			for(Orders order : orderList) {
-				if(id.equals(order.getM_id())) {
-					row = order.getO_no();
-				}
-			}
-			return row;
-		}*/
-	
-	
+
 	
 }

@@ -10,8 +10,8 @@ import java.awt.CardLayout;
 
 public class OrdersMainFrame_하은 extends JFrame {
 
-	public static final int PANEL_ORDERS_하은2 = 8;
-	public static final int PANEL_ORDERS_DETAIL_하은2 = 9;
+	public static final int PANEL_ORDERS_하은3 = 8;
+	public static final int PANEL_ORDERS_DETAIL_하은3 = 9;
 	
 	
 	private JPanel contentPane;
@@ -19,7 +19,7 @@ public class OrdersMainFrame_하은 extends JFrame {
 	
 	
 	CardLayout cardLayout;
-	private OrdersDetailPanel_하은2 ordersDetailPanel_하은2;
+	private OrdersDetailPanel_하은3 ordersDetailPanel_하은3;
 	/**
 	 * Launch the application.
 	 */
@@ -54,11 +54,13 @@ public class OrdersMainFrame_하은 extends JFrame {
 		cardLayout = new CardLayout(0, 0);
 		parentPanel.setLayout(cardLayout);
 		
-		OrdersPanel_하은2 ordersPanel_하은2 = new OrdersPanel_하은2();
-		parentPanel.add(ordersPanel_하은2, "8");
+		OrdersPanel_하은3 ordersPanel_하은3 = new OrdersPanel_하은3();
+		parentPanel.add(ordersPanel_하은3, "8");
 		
-		OrdersDetailPanel_하은2 ordersDetailPanel_하은2 = new OrdersDetailPanel_하은2();
-		parentPanel.add(ordersDetailPanel_하은2, "9");
+		ordersDetailPanel_하은3 = new OrdersDetailPanel_하은3();
+		parentPanel.add(ordersDetailPanel_하은3, "9");
+		
+		
 		
 		//ordersPanel_하은2.setFrame(this);
 		
@@ -70,9 +72,9 @@ public class OrdersMainFrame_하은 extends JFrame {
 	/******************패널 체인지 메소드************************/
 	
 	public void changePanel(int panel_no) {
-		if(panel_no == PANEL_ORDERS_하은2) {
+		if(panel_no == PANEL_ORDERS_하은3) {
 			cardLayout.show(parentPanel, "8");
-		}else if(panel_no == PANEL_ORDERS_DETAIL_하은2) {
+		}else if(panel_no == PANEL_ORDERS_DETAIL_하은3) {
 			cardLayout.show(parentPanel, "9");
 		}
 		
