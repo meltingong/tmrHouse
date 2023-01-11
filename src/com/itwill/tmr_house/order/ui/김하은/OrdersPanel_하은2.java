@@ -63,7 +63,7 @@ public class OrdersPanel_하은2 extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				
 				// 메인화면으로 화면전환
-				frame.changePanel(TmrHouseMainFrame.PANEL_PRODUCT_LIST_PANEL_하은);
+				frame.changePanel(TmrHouseMainFrame.PANEL_PRODUCT_LIST_PANEL);
 				
 			}
 		});

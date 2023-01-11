@@ -19,6 +19,14 @@ import com.itwill.tmr_house.order.ui.김하은.OrdersPanel_하은2;
 import com.itwill.tmr_house.order.ui.김하은.OrdersDetailPanel_하은2;
 import com.itwill.tmr_house.product.ui.test.ProductListPanel_하은;
 import com.itwill.tmr_house.product.ui.김세연.ProductListPanel;
+import com.itwill.tmr_house.product.ui.김세연.ProductDetailPanelChairRattan;
+import com.itwill.tmr_house.product.ui.김세연.ProductDetailPanelChairSteel;
+import com.itwill.tmr_house.product.ui.김세연.ProductDetailPanelMonstera;
+import com.itwill.tmr_house.product.ui.김세연.ProductDetailPanelOlive;
+import com.itwill.tmr_house.product.ui.김세연.ProductDetailPanelPendant;
+import com.itwill.tmr_house.product.ui.김세연.ProductDetailPanelShortstand;
+import com.itwill.tmr_house.product.ui.김세연.ProductDetailPanelTableSteel;
+import com.itwill.tmr_house.product.ui.김세연.ProductDetailPanelTableWood;
 
 public class TmrHouseMainFrame extends JFrame {
 	
@@ -78,8 +86,15 @@ public class TmrHouseMainFrame extends JFrame {
 	private MemberMyPageScreenPanel_하은 memberMyPageScreenPanel_하은;
 	private OrdersPanel_하은2 ordersPanel_하은2;
 	private OrdersDetailPanel_하은2 ordersDetailPanel_하은2;
-	private ProductListPanel_하은 productListPanel_하은;
 	private ProductListPanel productListPanel;
+	private ProductDetailPanelChairRattan productDetailPanelChairRattan;
+	private ProductDetailPanelChairSteel productDetailPanelChairSteel;
+	private ProductDetailPanelMonstera productDetailPanelMonstera;
+	private ProductDetailPanelOlive productDetailPanelOlive;
+	private ProductDetailPanelPendant productDetailPanelPendant;
+	private ProductDetailPanelShortstand productDetailPanelShortstand;
+	private ProductDetailPanelTableSteel productDetailPanelTableSteel;
+	private ProductDetailPanelTableWood productDetailPanelTableWood;
 
 
 	/**
@@ -154,10 +169,43 @@ public class TmrHouseMainFrame extends JFrame {
 		memberMyPageScreenPanel_하은.setFrame(this);
 		ordersPanel_하은2.setFrame(this);
 		ordersDetailPanel_하은2.setFrame(this);
+		productListPanel.setFrame(this);
+		productDetailPanelChairRattan.setFrame(this);
+		productDetailPanelChairSteel.setFrame(this);
+		productDetailPanelMonstera.setFrame(this);
+		productDetailPanelOlive.setFrame(this);
+		productDetailPanelPendant.setFrame(this);
+		productDetailPanelShortstand.setFrame(this);
+		productDetailPanelTableSteel.setFrame(this);
+		productDetailPanelTableWood.setFrame(this);
+		
 		
 		productListPanel = new ProductListPanel();
-		parentPanel.add(productListPanel, "name_1634332826311300");
-		productListPanel_하은.setFrame(this);
+		parentPanel.add(productListPanel, "20");
+		
+		productDetailPanelChairRattan = new ProductDetailPanelChairRattan();
+		parentPanel.add(productDetailPanelChairRattan, "24");
+		
+		productDetailPanelChairSteel = new ProductDetailPanelChairSteel();
+		parentPanel.add(productDetailPanelChairSteel, "23");
+		
+		productDetailPanelMonstera = new ProductDetailPanelMonstera();
+		parentPanel.add(productDetailPanelMonstera, "27");
+		
+		productDetailPanelOlive = new ProductDetailPanelOlive();
+		parentPanel.add(productDetailPanelOlive, "28");
+		
+		productDetailPanelPendant = new ProductDetailPanelPendant();
+		parentPanel.add(productDetailPanelPendant, "25");
+		
+		productDetailPanelShortstand = new ProductDetailPanelShortstand();
+		parentPanel.add(productDetailPanelShortstand, "26");
+		
+		productDetailPanelTableSteel = new ProductDetailPanelTableSteel();
+		parentPanel.add(productDetailPanelTableSteel, "21");
+		
+		productDetailPanelTableWood = new ProductDetailPanelTableWood();
+		parentPanel.add(productDetailPanelTableWood, "22");
 		
 		
 	}
@@ -183,28 +231,31 @@ public class TmrHouseMainFrame extends JFrame {
 			cardLayout.show(parentPanel, "20");
 			
 		}else if(panel_no == PANEL_PRODUCT_TABLE_STEEL) {
-		
+			
+			cardLayout.show(parentPanel, "21");
 			
 		}else if(panel_no == PANEL_PRODUCT_TABLE_WOOD) {
 			
+			cardLayout.show(parentPanel, "22");
 			
 		}else if(panel_no == PANEL_PRODUCT_CHAIR_STEEL) {
 			
+			cardLayout.show(parentPanel, "23");
 			
 		}else if(panel_no == PANEL_PRODUCT_CHAIR_WOOD) {
-			
+			cardLayout.show(parentPanel, "24");
 			
 		}else if(panel_no == PANEL_PRODUCT_LIGHTING_TABLE) {
-			
+			cardLayout.show(parentPanel, "26");
 			
 		}else if(panel_no == PANEL_PRODUCT_LIGHTING_PENDANT) {
-			
+			cardLayout.show(parentPanel, "25");
 			
 		}else if(panel_no == PANEL_PRODUCT_PLANT_MONSTERA) {
-			
+			cardLayout.show(parentPanel, "27");
 			
 		}else if(panel_no == PANEL_PRODUCT_PLANT_OLIVE) {
-			
+			cardLayout.show(parentPanel, "28");
 			
 		}else if(panel_no == PANEL_ORDERS_하은2) {
 			cardLayout.show(parentPanel, "8");
