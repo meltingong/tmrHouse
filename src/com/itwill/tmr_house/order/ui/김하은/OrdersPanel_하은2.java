@@ -29,7 +29,6 @@ public class OrdersPanel_하은2 extends JPanel {
 	TmrHouseMainFrame frame;
 	//OrdersMainFrame_하은 frame;
 	private JTable OrdersTable;
-	Member loginmember;
 	
 	OrdersDetailPanel_하은2 ordersDetailPanel_하은2;
 	
@@ -64,7 +63,7 @@ public class OrdersPanel_하은2 extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				
 				// 메인화면으로 화면전환
-				frame.changePanel(TmrHouseMainFrame.PANEL_PRODUCT_LIST_PANEL);
+				frame.changePanel(TmrHouseMainFrame.PANEL_PRODUCT_LIST_PANEL_하은);
 				
 			}
 		});
@@ -112,8 +111,10 @@ public class OrdersPanel_하은2 extends JPanel {
 		
 		ordersService = new OrdersService();
 		Orders orders = new Orders();
-		orders.setM_id("aaaa");
+		orders.setM_id("aaaa"); // 로그인하고 주문한 아이디로 바꿔줘야함
 		orders.setO_no(1);
+		/*orders.setM_id(frame.loginMember.getM_id());
+		orders.setO_no(orders.getO_no());*/
 		displayOrders(orders);
 	}
 	

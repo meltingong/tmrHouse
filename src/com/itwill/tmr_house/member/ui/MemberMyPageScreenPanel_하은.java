@@ -19,12 +19,15 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 
 public class MemberMyPageScreenPanel_하은 extends JPanel {
 	
 	/********메인프레임 참조********/
 	TmrHouseMainFrame frame;
 	
+
 	private JTextField modifyIdTF;
 	private JPasswordField modifyPasswordField;
 	private JPasswordField modifyPasswordCorrectField;
@@ -36,17 +39,25 @@ public class MemberMyPageScreenPanel_하은 extends JPanel {
 	private JTextField modifyBirthTF;
 	private JLabel modifyPwCorrectLB;
 	
-	private Member loginMember;
 	
 	
-	public void setFrame(TmrHouseMainFrame frame) {
-		this.frame = frame;
-	}
+	
 
 	/**
 	 * Create the panel.
 	 */
 	public MemberMyPageScreenPanel_하은() {
+		addComponentListener(new ComponentAdapter() {
+			@Override
+			public void componentShown(ComponentEvent e) {
+				try {
+					displayMemberInfo(frame.loginMember);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 		setBackground(new Color(255, 255, 255));
 		setLayout(new BorderLayout(0, 0));
 		
@@ -94,6 +105,7 @@ public class MemberMyPageScreenPanel_하은 extends JPanel {
 		memberMyPageCenterPanel.add(addressLB);
 		
 		modifyIdTF = new JTextField();
+		modifyIdTF.setEnabled(false);
 		modifyIdTF.setFont(new Font("D2Coding", Font.PLAIN, 17));
 		modifyIdTF.setColumns(10);
 		modifyIdTF.setBounds(253, 130, 205, 21);
@@ -110,6 +122,7 @@ public class MemberMyPageScreenPanel_하은 extends JPanel {
 		memberMyPageCenterPanel.add(modifyPasswordCorrectField);
 		
 		modifyNameTF = new JTextField();
+		modifyNameTF.setEnabled(false);
 		modifyNameTF.setFont(new Font("D2Coding", Font.PLAIN, 17));
 		modifyNameTF.setColumns(10);
 		modifyNameTF.setBounds(253, 353, 205, 21);
@@ -136,29 +149,7 @@ public class MemberMyPageScreenPanel_하은 extends JPanel {
 		JButton modifyBtn = new JButton("저장");
 		modifyBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				try {
-					String id = modifyIdTF.getText();
-					String password = new String(modifyPasswordField.getPassword());
-					String passwordCorrect = new String(modifyPasswordCorrectField.getPassword());
-					String name = modifyNameTF.getText();
-					String birth = modifyBirthTF.getText();
-					String phoneNumber = modifyPhoneNumberTF.getText();
-					String address = modifyAddressTF.getText();
-					
-					if(password.equals(passwordCorrect)) {
-						Member updateMember = new Member(id,password,name,birth,phoneNumber,address);
-						memberService.memberUpdate(updateMember);
-						loginMember = memberService.memberDetail(id);
-					}else {
-						modifyPwCorrectLB.setText("입력하신 비밀번호와 일치하지 않습니다.");
-						modifyPasswordCorrectField.requestFocus();
-						return;
-					}
-				}catch(Exception e1) {
-					System.out.println(e1.getMessage());
-				}
-				
+				correctPw();
 			}
 		});
 		modifyBtn.setForeground(Color.WHITE);
@@ -172,7 +163,13 @@ public class MemberMyPageScreenPanel_하은 extends JPanel {
 		cancelBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// 원래 로그인 정보 기입
-				displayMemberInfo(loginMember);
+				try {
+					displayMemberInfo(frame.loginMember);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				frame.changePanel(TmrHouseMainFrame.PANEL_PRODUCT_LIST_PANEL_하은);
 			}
 		});
 		cancelBtn.setFont(new Font("D2Coding", Font.PLAIN, 17));
@@ -204,21 +201,58 @@ public class MemberMyPageScreenPanel_하은 extends JPanel {
 		lblNewLabel_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				
 				frame.changePanel(TmrHouseMainFrame.PANEL_ORDERS_DETAIL_하은2);
 			}
 		});
 		lblNewLabel_1.setFont(new Font("D2Coding", Font.PLAIN, 14));
 		lblNewLabel_1.setBounds(354, 72, 118, 24);
 		memberMyPageCenterPanel.add(lblNewLabel_1);
+		
+		
 
 	}
 	
-	public void displayMemberInfo(Member member) {
-		modifyIdTF.setText(member.getM_id());
-		modifyPasswordField.setText(member.getM_pw());
-		modifyBirthTF.setText(member.getM_birth());
-		modifyNameTF.setText(member.getM_name());
-		modifyPhoneNumberTF.setText(member.getM_phone());
-		modifyAddressTF.setText(member.getM_address());
+	public void setFrame(TmrHouseMainFrame frame) {
+		this.frame = frame;
+	}
+	
+	public void displayMemberInfo(Member member) throws Exception {
+		
+			modifyIdTF.setText(member.getM_id());
+			modifyPasswordField.setText(member.getM_pw());
+			modifyBirthTF.setText(member.getM_birth());
+			modifyNameTF.setText(member.getM_name());
+			modifyPhoneNumberTF.setText(member.getM_phone());
+			modifyAddressTF.setText(member.getM_address());
+		}
+	
+	public void correctPw() {
+		try {
+			String id = modifyIdTF.getText();
+			String password = new String(modifyPasswordField.getPassword());
+			String passwordCorrect = new String(modifyPasswordCorrectField.getPassword());
+			String name = modifyNameTF.getText();
+			String birth = modifyBirthTF.getText();
+			String phoneNumber = modifyPhoneNumberTF.getText();
+			String address = modifyAddressTF.getText();
+			
+			if(password.equals(passwordCorrect)) {
+				Member updateMember = new Member(id,password,name,birth,phoneNumber,address);
+				memberService.memberUpdate(updateMember);
+				frame.loginMember = memberService.memberDetail(id);
+			}else {
+				modifyPwCorrectLB.setText("입력하신 비밀번호와 일치하지 않습니다.");
+				modifyPasswordCorrectField.requestFocus();
+				frame.loginMember = memberService.memberDetail(id);
+				return;
+			}
+		}catch(Exception e1) {
+			System.out.println(e1.getMessage());
+		}
+	}
+	
+	public void orderDetail() {
+		
 	}
 }

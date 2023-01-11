@@ -33,7 +33,7 @@ public class TmrHouseMainFrame extends JFrame {
 	
 
 	// 20부터 시작함.
-	public static final int PANEL_PRODUCT_LIST_PANEL = 20;
+	public static final int PANEL_PRODUCT_LIST_PANEL_하은 = 20;
 	public static final int PANEL_PRODUCT_TABLE_STEEL = 21;
 	public static final int PANEL_PRODUCT_TABLE_WOOD = 22;
 	public static final int PANEL_PRODUCT_CHAIR_STEEL = 23;
@@ -68,9 +68,17 @@ public class TmrHouseMainFrame extends JFrame {
 	 * 2. 로그인 유저 객체 선언
 	 */
 	
-	Member loginMember = null;
-	private JPanel parentPanel;
+	public Member loginMember = null;
 	
+	private JPanel parentPanel;
+	private MemberPrimaryScreenPanel_하은 memberPrimaryScreenPanel_하은;
+	private MemberJoinScreenPanel_하은 memberJoinScreenPanel_하은;
+	private MemberLoginScreenPanel_하은 memberLoginScreenPanel_하은;
+	private MemberMyPageScreenPanel_하은 memberMyPageScreenPanel_하은;
+	private OrdersPanel_하은2 ordersPanel_하은2;
+	private OrdersDetailPanel_하은2 ordersDetailPanel_하은2;
+	private ProductListPanel_하은 productListPanel_하은;
+
 
 	/**
 	 * Launch the application.
@@ -111,26 +119,26 @@ public class TmrHouseMainFrame extends JFrame {
 		cardLayout = new CardLayout(0, 0);
 		parentPanel.setLayout(cardLayout);
 		
-		MemberPrimaryScreenPanel_하은 memberPrimaryScreenPanel_하은 = new MemberPrimaryScreenPanel_하은();
+		memberPrimaryScreenPanel_하은 = new MemberPrimaryScreenPanel_하은();
 		parentPanel.add(memberPrimaryScreenPanel_하은, "1");
 		
-		MemberJoinScreenPanel_하은 memberJoinScreenPanel_하은 = new MemberJoinScreenPanel_하은();
+		memberJoinScreenPanel_하은 = new MemberJoinScreenPanel_하은();
 		parentPanel.add(memberJoinScreenPanel_하은, "2");
 		
-		MemberLoginScreenPanel_하은 memberLoginScreenPanel_하은 = new MemberLoginScreenPanel_하은();
+		memberLoginScreenPanel_하은 = new MemberLoginScreenPanel_하은();
 		parentPanel.add(memberLoginScreenPanel_하은, "3");
 
-		MemberMyPageScreenPanel_하은 memberMyPageScreenPanel_하은 = new MemberMyPageScreenPanel_하은();
+		memberMyPageScreenPanel_하은 = new MemberMyPageScreenPanel_하은();
 		parentPanel.add(memberMyPageScreenPanel_하은, "4");
 		
 		
-		OrdersPanel_하은2 ordersPanel_하은2 = new OrdersPanel_하은2();
+		ordersPanel_하은2 = new OrdersPanel_하은2();
 		parentPanel.add(ordersPanel_하은2, "8");
 		
-		OrdersDetailPanel_하은2 ordersDetailPanel_하은2 = new OrdersDetailPanel_하은2();
+		ordersDetailPanel_하은2 = new OrdersDetailPanel_하은2();
 		parentPanel.add(ordersDetailPanel_하은2, "9");
 		
-		ProductListPanel_하은 productListPanel_하은 = new ProductListPanel_하은();
+		productListPanel_하은 = new ProductListPanel_하은();
 		parentPanel.add(productListPanel_하은, "20");
 		
 		
@@ -149,9 +157,8 @@ public class TmrHouseMainFrame extends JFrame {
 		productListPanel_하은.setFrame(this);
 		
 		
-		
 	}
-
+	
 	
 	/******************패널 체인지 메소드************************/
 	
@@ -169,7 +176,7 @@ public class TmrHouseMainFrame extends JFrame {
 		}else if(panel_no == PANEL_MEMBER_MY_PAGE_SCREEN) {
 			cardLayout.show(parentPanel, "4");
 			
-		}else if(panel_no == PANEL_PRODUCT_LIST_PANEL) {
+		}else if(panel_no == PANEL_PRODUCT_LIST_PANEL_하은) {
 			cardLayout.show(parentPanel, "20");
 			
 		}else if(panel_no == PANEL_PRODUCT_TABLE_STEEL) {
