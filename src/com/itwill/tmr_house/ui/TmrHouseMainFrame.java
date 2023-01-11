@@ -18,6 +18,7 @@ import java.awt.Toolkit;
 import com.itwill.tmr_house.order.ui.김하은.OrdersPanel_하은2;
 import com.itwill.tmr_house.order.ui.김하은.OrdersDetailPanel_하은2;
 import com.itwill.tmr_house.product.ui.test.ProductListPanel_하은;
+import com.itwill.tmr_house.product.ui.김세연.ProductListPanel;
 
 public class TmrHouseMainFrame extends JFrame {
 	
@@ -33,7 +34,7 @@ public class TmrHouseMainFrame extends JFrame {
 	
 
 	// 20부터 시작함.
-	public static final int PANEL_PRODUCT_LIST_PANEL_하은 = 20;
+	public static final int PANEL_PRODUCT_LIST_PANEL = 20;
 	public static final int PANEL_PRODUCT_TABLE_STEEL = 21;
 	public static final int PANEL_PRODUCT_TABLE_WOOD = 22;
 	public static final int PANEL_PRODUCT_CHAIR_STEEL = 23;
@@ -78,6 +79,7 @@ public class TmrHouseMainFrame extends JFrame {
 	private OrdersPanel_하은2 ordersPanel_하은2;
 	private OrdersDetailPanel_하은2 ordersDetailPanel_하은2;
 	private ProductListPanel_하은 productListPanel_하은;
+	private ProductListPanel productListPanel;
 
 
 	/**
@@ -138,9 +140,7 @@ public class TmrHouseMainFrame extends JFrame {
 		ordersDetailPanel_하은2 = new OrdersDetailPanel_하은2();
 		parentPanel.add(ordersDetailPanel_하은2, "9");
 		
-		productListPanel_하은 = new ProductListPanel_하은();
-		parentPanel.add(productListPanel_하은, "20");
-		
+	
 		
 	/******service 객체 생성******/
 		memberService = new MemberService();
@@ -154,6 +154,9 @@ public class TmrHouseMainFrame extends JFrame {
 		memberMyPageScreenPanel_하은.setFrame(this);
 		ordersPanel_하은2.setFrame(this);
 		ordersDetailPanel_하은2.setFrame(this);
+		
+		productListPanel = new ProductListPanel();
+		parentPanel.add(productListPanel, "name_1634332826311300");
 		productListPanel_하은.setFrame(this);
 		
 		
@@ -176,7 +179,7 @@ public class TmrHouseMainFrame extends JFrame {
 		}else if(panel_no == PANEL_MEMBER_MY_PAGE_SCREEN) {
 			cardLayout.show(parentPanel, "4");
 			
-		}else if(panel_no == PANEL_PRODUCT_LIST_PANEL_하은) {
+		}else if(panel_no == PANEL_PRODUCT_LIST_PANEL) {
 			cardLayout.show(parentPanel, "20");
 			
 		}else if(panel_no == PANEL_PRODUCT_TABLE_STEEL) {

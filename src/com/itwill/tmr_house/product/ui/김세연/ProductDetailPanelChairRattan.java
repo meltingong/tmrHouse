@@ -32,8 +32,8 @@ import java.awt.GridLayout;
 
 public class ProductDetailPanelChairRattan extends JPanel {
 	
-	TestTmrHouseMainFrame frame;
-	public void setFrame(TestTmrHouseMainFrame frame) throws Exception{		
+	TmrHouseMainFrame frame;
+	public void setFrame(TmrHouseMainFrame frame) throws Exception{		
 	 this.frame = frame;
 	}
 	
@@ -64,7 +64,7 @@ public class ProductDetailPanelChairRattan extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				// 상품리스트 페이지로 전환
-				frame.changePanel(TestTmrHouseMainFrame.PANEL_PRODUCT_LIST_PANEL);
+				frame.changePanel(TmrHouseMainFrame.PANEL_PRODUCT_LIST_PANEL);
 			}
 		});
 		northPanel.setLayout(new GridLayout(0, 1, 0, 0));
