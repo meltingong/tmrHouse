@@ -59,6 +59,7 @@ public class ProductDetailPanelOlive extends JPanel {
 		add(northPanel, BorderLayout.NORTH);
 		
 		JButton productListButton = new JButton("이전 페이지로");
+		productListButton.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
 		productListButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -110,6 +111,8 @@ public class ProductDetailPanelOlive extends JPanel {
 		qtyComboBox.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
 		
 		JLabel productDetailLabel = new JLabel("건조한 환경을 좋아하는 플랜테리어 식물");
+//		"건조한 환경을 좋아하는 플랜테리어 식물"
+//		productDetailLabel.setText(productInfo().getP_desc());
 		productDetailLabel.setFont(new Font("맑은 고딕", Font.PLAIN, 18));
 		productDetailLabel.setBounds(12, 511, 476, 120);
 		productDetailPanel.add(productDetailLabel);
@@ -175,12 +178,13 @@ public class ProductDetailPanelOlive extends JPanel {
 		productDetailPanel.add(priceLabel);
 		
 		JLabel priceDataLabel = new JLabel("20,000원");
-		priceDataLabel.setFont(new Font("굴림", Font.BOLD, 15));
-		priceDataLabel.setBounds(393, 249, 68, 22);
+		priceDataLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+		priceDataLabel.setFont(new Font("맑은 고딕", Font.BOLD, 15));
+		priceDataLabel.setBounds(366, 249, 95, 22);
 		productDetailPanel.add(priceDataLabel);
 		
 		JLabel freeDeliveryDataLabel = new JLabel("무료배송");
-		freeDeliveryDataLabel.setFont(new Font("굴림", Font.BOLD, 15));
+		freeDeliveryDataLabel.setFont(new Font("맑은 고딕", Font.BOLD, 15));
 		freeDeliveryDataLabel.setBounds(393, 316, 68, 22);
 		productDetailPanel.add(freeDeliveryDataLabel);
 
@@ -212,5 +216,10 @@ public class ProductDetailPanelOlive extends JPanel {
 //		cartService.insertCart(new Cart(0, cart_qty, frame.loginMember.getM_id(), product));
 		cartService.insertCart(new Cart(0, cart_qty, "aaaa", product));
 
-				}
+	}
+	
+//	public Product productInfo() throws Exception {
+//		Product product = productService.findByProductNo(8);
+//		return product;
+//	}
 }
