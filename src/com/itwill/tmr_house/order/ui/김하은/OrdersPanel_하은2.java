@@ -112,11 +112,11 @@ public class OrdersPanel_하은2 extends JPanel {
 		ordersService = new OrdersService();
 		Orders orders = new Orders();
 		orders.setM_id("aaaa"); // 로그인하고 주문한 아이디로 바꿔줘야함
-		orders.setO_no(1);
+		orders.setO_no(orders.getO_no());
 		/*orders.setM_id(frame.loginMember.getM_id());
 		orders.setO_no(orders.getO_no());*/
 		displayOrders(orders);
-	}
+	} // 생성자 끝
 	
 	public void displayOrders(Orders order)  {
 		/**********주문데이터보기 [Jtable]*********/
