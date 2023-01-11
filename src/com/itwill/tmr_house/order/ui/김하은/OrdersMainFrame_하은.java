@@ -19,7 +19,6 @@ public class OrdersMainFrame_하은 extends JFrame {
 	
 	
 	CardLayout cardLayout;
-	private OrdersDetailPanel_하은3 ordersDetailPanel_하은3;
 	/**
 	 * Launch the application.
 	 */
@@ -53,12 +52,6 @@ public class OrdersMainFrame_하은 extends JFrame {
 		contentPane.add(parentPanel, BorderLayout.CENTER);
 		cardLayout = new CardLayout(0, 0);
 		parentPanel.setLayout(cardLayout);
-		
-		OrdersPanel_하은3 ordersPanel_하은3 = new OrdersPanel_하은3();
-		parentPanel.add(ordersPanel_하은3, "8");
-		
-		ordersDetailPanel_하은3 = new OrdersDetailPanel_하은3();
-		parentPanel.add(ordersDetailPanel_하은3, "9");
 		
 		
 		

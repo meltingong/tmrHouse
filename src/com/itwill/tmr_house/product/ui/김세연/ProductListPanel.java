@@ -127,7 +127,7 @@ public class ProductListPanel extends JPanel {
 		serchPanel.add(serchTextField);
 		
 		JButton serchBtn = new JButton("");
-		serchBtn.setBackground(new Color(84, 164, 255));
+		serchBtn.setBackground(new Color(64, 184, 255));
 		serchBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// 조회된 페이지로 전환 필요

@@ -193,9 +193,9 @@ private DataSource dataSource;
 			return order;
 		}
 		// 주문 여러개 보기
-		public List<Orders> findByMid(String m_id) throws Exception {
+		public Orders findByMid(String m_id) throws Exception {
 
-			List<Orders> orderList = new ArrayList<Orders>();
+			Orders order = null;
 			Connection con = null;
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
@@ -209,7 +209,7 @@ private DataSource dataSource;
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				Orders order = new Orders(	rs.getInt("o_no"), 
+				order = new Orders(	rs.getInt("o_no"), 
 									rs.getString("o_desc"), 
 									rs.getInt("o_qty"), 
 									rs.getInt("o_price"),
@@ -227,12 +227,12 @@ private DataSource dataSource;
 															rs.getString("p_desc"),
 															rs.getString("p_freeDelivery"))));
 				} while (rs.next());
-				orderList.add(order);
+				//orderList.add(order);
 			}
 			rs.close();
 			pstmt.close();
 			dataSource.close(con);
-			return orderList;
+			return order;
 		}
 	
 }

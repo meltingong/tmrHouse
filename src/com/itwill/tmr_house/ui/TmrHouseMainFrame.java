@@ -170,10 +170,10 @@ public class TmrHouseMainFrame extends JFrame {
 		parentPanel.add(productDetailPanelOlive, "28");
 		
 		productDetailPanelPendant = new ProductDetailPanelPendant();
-		parentPanel.add(productDetailPanelPendant, "25");
+		parentPanel.add(productDetailPanelPendant, "26");
 		
 		productDetailPanelShortstand = new ProductDetailPanelShortstand();
-		parentPanel.add(productDetailPanelShortstand, "26");
+		parentPanel.add(productDetailPanelShortstand, "25");
 		
 		productDetailPanelTableSteel = new ProductDetailPanelTableSteel();
 		parentPanel.add(productDetailPanelTableSteel, "21");
