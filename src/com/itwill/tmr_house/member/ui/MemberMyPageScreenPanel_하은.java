@@ -1,24 +1,20 @@
 package com.itwill.tmr_house.member.ui;
 
-import javax.swing.JPanel;
 import java.awt.BorderLayout;
-import javax.swing.JTextPane;
-import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.Color;
-import javax.swing.JTextField;
-import javax.swing.JPasswordField;
-import javax.swing.SwingConstants;
 
 import com.itwill.tmr_house.member.Member;
 import com.itwill.tmr_house.member.MemberService;
 import com.itwill.tmr_house.ui.*;
 
-import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
+import javax.swing.*;
+
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 
@@ -149,7 +145,8 @@ public class MemberMyPageScreenPanel_하은 extends JPanel {
 		JButton modifyBtn = new JButton("저장");
 		modifyBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				correctPw();
+				
+				updateMemberMyPage();
 			}
 		});
 		modifyBtn.setForeground(Color.WHITE);
@@ -227,7 +224,7 @@ public class MemberMyPageScreenPanel_하은 extends JPanel {
 			modifyAddressTF.setText(member.getM_address());
 		}
 	
-	public void correctPw() {
+	public void updateMemberMyPage() {
 		try {
 			String id = modifyIdTF.getText();
 			String password = new String(modifyPasswordField.getPassword());
@@ -241,18 +238,16 @@ public class MemberMyPageScreenPanel_하은 extends JPanel {
 				Member updateMember = new Member(id,password,name,birth,phoneNumber,address);
 				memberService.memberUpdate(updateMember);
 				frame.loginMember = memberService.memberDetail(id);
-			}else {
+				JOptionPane.showMessageDialog(null, "저장되었습니다.");
+			} else  {
 				modifyPwCorrectLB.setText("입력하신 비밀번호와 일치하지 않습니다.");
 				modifyPasswordCorrectField.requestFocus();
 				frame.loginMember = memberService.memberDetail(id);
 				return;
-			}
+				}
 		}catch(Exception e1) {
 			System.out.println(e1.getMessage());
 		}
 	}
 	
-	public void orderDetail() {
-		
-	}
 }
