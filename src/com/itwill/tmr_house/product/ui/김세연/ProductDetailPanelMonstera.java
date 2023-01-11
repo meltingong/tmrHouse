@@ -144,7 +144,7 @@ public class ProductDetailPanelMonstera extends JPanel {
 					addCart(Integer.parseInt((String)qtyComboBox.getSelectedItem()));
 		/**************************************** 카트 페이지로 전환 *******************************/
 					
-					
+					frame.changePanel(TmrHouseMainFrame.PANEL_CARTLIST);
 					
 					
 					

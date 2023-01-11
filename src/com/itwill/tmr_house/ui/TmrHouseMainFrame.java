@@ -26,6 +26,7 @@ import com.itwill.tmr_house.product.ui.김세연.ProductDetailPanelPendant;
 import com.itwill.tmr_house.product.ui.김세연.ProductDetailPanelShortstand;
 import com.itwill.tmr_house.product.ui.김세연.ProductDetailPanelTableSteel;
 import com.itwill.tmr_house.product.ui.김세연.ProductDetailPanelTableWood;
+import com.itwill.tmr_house.cart.ui.박주용.CartListPanel_test_박주용;
 
 public class TmrHouseMainFrame extends JFrame {
 	
@@ -51,7 +52,7 @@ public class TmrHouseMainFrame extends JFrame {
 	public static final int PANEL_PRODUCT_PLANT_MONSTERA = 27;
 	public static final int PANEL_PRODUCT_PLANT_OLIVE = 28;
 
-	
+	public static final int PANEL_CARTLIST = 99;
 	
 	// 카트
 	
@@ -94,8 +95,9 @@ public class TmrHouseMainFrame extends JFrame {
 	private ProductDetailPanelShortstand productDetailPanelShortstand;
 	private ProductDetailPanelTableSteel productDetailPanelTableSteel;
 	private ProductDetailPanelTableWood productDetailPanelTableWood;
+	private CartListPanel_test_박주용 cartListPanel_test_박주용;
 
-
+	
 	/**
 	 * Launch the application.
 	 */
@@ -181,6 +183,8 @@ public class TmrHouseMainFrame extends JFrame {
 		productDetailPanelTableWood = new ProductDetailPanelTableWood();
 		parentPanel.add(productDetailPanelTableWood, "22");
 	
+		cartListPanel_test_박주용 = new CartListPanel_test_박주용();
+		parentPanel.add(cartListPanel_test_박주용, "99");
 		
 	/******service 객체 생성******/
 		memberService = new MemberService();
@@ -203,6 +207,10 @@ public class TmrHouseMainFrame extends JFrame {
 		productDetailPanelShortstand.setFrame(this);
 		productDetailPanelTableSteel.setFrame(this);
 		productDetailPanelTableWood.setFrame(this);
+		
+		
+		cartListPanel_test_박주용.setFrame(this);
+		
 		
 		
 		
@@ -262,6 +270,8 @@ public class TmrHouseMainFrame extends JFrame {
 		}else if(panel_no == PANEL_ORDERS_DETAIL_하은2) {
 			cardLayout.show(parentPanel, "9");
 			
+		}else if(panel_no == PANEL_CARTLIST ) {
+			cardLayout.show(parentPanel, "99");
 		}
 	}
 	

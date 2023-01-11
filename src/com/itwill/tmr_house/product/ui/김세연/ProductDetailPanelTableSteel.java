@@ -140,7 +140,7 @@ public class ProductDetailPanelTableSteel extends JPanel {
 				try {
 					addCart(Integer.parseInt((String)qtyComboBox.getSelectedItem()));
 //					카트 패널로 전환
-					
+					frame.changePanel(TmrHouseMainFrame.PANEL_CARTLIST);
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}

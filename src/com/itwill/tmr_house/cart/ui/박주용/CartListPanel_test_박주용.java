@@ -51,6 +51,12 @@ public class CartListPanel_test_박주용 extends JPanel {
 	private JButton cartItemDeleteBTN_1;
 	private JButton cartItemUpdateBTN;
 
+	
+	public void setFrame(TmrHouseMainFrame frame) {
+		this.frame = frame;
+	}
+
+
 	/**
 	 * Create the panel.
 	 */
