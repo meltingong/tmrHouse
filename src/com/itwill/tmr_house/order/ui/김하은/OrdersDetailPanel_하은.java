@@ -60,12 +60,13 @@ public class OrdersDetailPanel_하은 extends JPanel {
 		ordersDetailSouthPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 
 		JButton ordersHomeBtn = new JButton("");
+		ordersHomeBtn.setBorderPainted(false);
 		ordersHomeBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.changePanel(TmrHouseMainFrame.PANEL_PRODUCT_LIST_PANEL);
 			}
 		});
-		ordersHomeBtn.setBackground(new Color(64, 184, 255));
+		ordersHomeBtn.setBackground(new Color(255, 255, 255));
 		ordersHomeBtn.setIcon(new ImageIcon(
 				OrdersDetailPanel_하은.class.getResource("/com/itwill/tmr_house/member/images/home(30x30).png")));
 		ordersDetailSouthPanel.add(ordersHomeBtn);
