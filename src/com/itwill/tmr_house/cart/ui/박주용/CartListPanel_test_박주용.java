@@ -70,7 +70,7 @@ public class CartListPanel_test_박주용 extends JPanel {
 		cartContentPanelScrollPane.setViewportView(cartContentPanel);
 		cartContentPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		JPanel cartItemPanel = new JPanel();
-		cartItemPanel.setPreferredSize(new Dimension(420, 120));
+		cartItemPanel.setPreferredSize(new Dimension(460, 120));
 		cartContentPanel.add(cartItemPanel);
 		cartItemPanel.setLayout(null);
 		
@@ -80,6 +80,7 @@ public class CartListPanel_test_박주용 extends JPanel {
 		cartItemPanel.add(productImageLB);
 		
 		productTitleLB = new JLabel("상품 이름");
+		productTitleLB.setPreferredSize(new Dimension(60, 15));
 		productTitleLB.setFont(new Font("굴림", Font.PLAIN, 10));
 		productTitleLB.setBounds(101, 51, 126, 25);
 		cartItemPanel.add(productTitleLB);

@@ -63,3 +63,8 @@ commit;
 
 
 
+
+
+
+select * from orders o join order_item oi on o.o_no = oi.o_no join product p on oi.p_no = p.p_no where o.m_id='bbbb';
+
