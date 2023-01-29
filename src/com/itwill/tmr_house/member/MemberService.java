@@ -34,7 +34,6 @@ private MemberDao memberDao;
 	 * - 아이디(소문자,숫자만 사용가능 & 4~10자 이내)) 조합으로 되어있지 않다면 
 	 * 	 올바른 아이디 형태가 아닙니다 메시지 
 	 * 
-	 * >> 기존에 소문자+숫자 조합만 가능이라고 하고싶었으나 char 배열로 구현하려면 여집합으로 해야해서 코드 많이 늘어날 것같음
 	 */
 	public String addMemberDetail(Member member) throws Exception {
 		String isSuccess = "";

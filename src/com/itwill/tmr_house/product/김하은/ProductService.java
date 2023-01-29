@@ -16,7 +16,7 @@ public class ProductService {
 	}
 	
 	/*
-	 * product 카테고리(?) 이름으로 검색 시 관련된 모든 상품 노출
+	 * product 키워드 이름으로 검색 시 관련된 모든 상품 노출
 	 * ex) 의자 검색 시 xxx의자 상품 다 나오게
 	 */
 	
